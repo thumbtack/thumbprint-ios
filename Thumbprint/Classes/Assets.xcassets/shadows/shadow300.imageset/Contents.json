@@ -1,0 +1,86 @@
+{
+  "images" : [
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 11,
+          "top" : 10,
+          "right" : 11,
+          "left" : 10
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "shadow300.png",
+      "alignment-insets" : {
+        "top" : 5,
+        "left" : 7,
+        "bottom" : 9,
+        "right" : 7
+      },
+      "scale" : "1x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 22,
+          "top" : 21,
+          "right" : 22,
+          "left" : 21
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "shadow300@2x.png",
+      "alignment-insets" : {
+        "top" : 10,
+        "left" : 14,
+        "bottom" : 18,
+        "right" : 14
+      },
+      "scale" : "2x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 33,
+          "top" : 32,
+          "right" : 33,
+          "left" : 32
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "shadow300@3x.png",
+      "alignment-insets" : {
+        "top" : 15,
+        "left" : 21,
+        "bottom" : 27,
+        "right" : 21
+      },
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
+  }
+}

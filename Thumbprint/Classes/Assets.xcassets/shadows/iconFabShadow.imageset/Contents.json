@@ -1,0 +1,41 @@
+{
+  "images" : [
+    {
+      "alignment-insets" : {
+        "top" : 8,
+        "left" : 10,
+        "bottom" : 12,
+        "right" : 10
+      },
+      "idiom" : "universal",
+      "filename" : "IconFabShadow-x1.png",
+      "scale" : "1x"
+    },
+    {
+      "alignment-insets" : {
+        "top" : 16,
+        "left" : 10,
+        "bottom" : 24,
+        "right" : 10
+      },
+      "idiom" : "universal",
+      "filename" : "IconFabShadow-x2.png",
+      "scale" : "2x"
+    },
+    {
+      "alignment-insets" : {
+        "top" : 24,
+        "left" : 10,
+        "bottom" : 36,
+        "right" : 10
+      },
+      "idiom" : "universal",
+      "filename" : "IconFabShadow-x3.png",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

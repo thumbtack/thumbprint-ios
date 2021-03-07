@@ -1,0 +1,86 @@
+{
+  "images" : [
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 9,
+          "top" : 8,
+          "right" : 9,
+          "left" : 8
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "roundedShadow100.png",
+      "alignment-insets" : {
+        "top" : 2,
+        "left" : 3,
+        "bottom" : 4,
+        "right" : 3
+      },
+      "scale" : "1x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 18,
+          "top" : 17,
+          "right" : 18,
+          "left" : 17
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "roundedShadow100@2x.png",
+      "alignment-insets" : {
+        "top" : 4,
+        "left" : 6,
+        "bottom" : 8,
+        "right" : 6
+      },
+      "scale" : "2x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 27,
+          "top" : 26,
+          "right" : 27,
+          "left" : 26
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "roundedShadow100@3x.png",
+      "alignment-insets" : {
+        "top" : 6,
+        "left" : 9,
+        "bottom" : 12,
+        "right" : 9
+      },
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
+  }
+}
