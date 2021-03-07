@@ -1,0 +1,6 @@
+module Pods_Thumbprint {
+  umbrella header "Pods-Thumbprint-umbrella.h"
+
+  export *
+  module * { export * }
+}

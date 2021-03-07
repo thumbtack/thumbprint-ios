@@ -1,0 +1,6 @@
+module TTCalendarPicker {
+  umbrella header "TTCalendarPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

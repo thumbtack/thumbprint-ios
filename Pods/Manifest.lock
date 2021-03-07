@@ -1,0 +1,29 @@
+PODS:
+  - SnapKit (5.0.1)
+  - SnapshotTesting (1.8.2)
+  - ThumbprintTokens (12.1.1)
+  - TTCalendarPicker (0.1.7):
+    - SnapKit
+
+DEPENDENCIES:
+  - SnapKit (~> 5.0)
+  - SnapshotTesting
+  - ThumbprintTokens (~> 12.1.0)
+  - TTCalendarPicker
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - SnapKit
+    - SnapshotTesting
+    - ThumbprintTokens
+    - TTCalendarPicker
+
+SPEC CHECKSUMS:
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SnapshotTesting: 38947050d13960d57a4a9c166fcf51bca7d56970
+  ThumbprintTokens: cfb6b1a3bff5079010ea9b875f558d0016579209
+  TTCalendarPicker: 41a4cecbc0be87bcc2aff2740c6cb835a1c26a90
+
+PODFILE CHECKSUM: 5b1b3f61d6c47661a51fd3a59a2e746045c360a7
+
+COCOAPODS: 1.9.1
