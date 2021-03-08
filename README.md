@@ -1,3 +1,5 @@
+![Thumbprint iOS header](./.github/thumbprint-header.png)
+
 # Thumbprint
 
 Thumbprint is the design system at Thumbtack. Though its primary purpose to support Thumbtack projects, we have open-sourced it for those interested in how we build and manage our documentation and code.
@@ -5,8 +7,6 @@ Thumbprint is the design system at Thumbtack. Though its primary purpose to supp
 ## Documentation
 
 Thumbprint is documented at [thumbprint.design](https://thumbprint.design/).
-
-[![Screenshot of Thumbprint documentation](https://i.imgur.com/ioUtLO5.png)](https://thumbprint.design/)
 
 ## Contributing
 
