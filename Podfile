@@ -1,6 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
 workspace 'Thumbprint'
+inhibit_all_warnings!
+use_modular_headers!
+install! 'cocoapods',
+  generate_multiple_pod_projects: true,
+  incremental_installation: true
 
 target 'Thumbprint' do
   project 'Thumbprint/Thumbprint'
