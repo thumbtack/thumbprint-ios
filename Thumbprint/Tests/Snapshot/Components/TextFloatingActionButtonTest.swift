@@ -10,7 +10,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
     func testWithPrimaryThemeAndImage() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         let imageView = UIImageView()
-        imageView.image = Icon.contentActionsAddMedium
+        imageView.image = Icon.notificationAlertsInfoFilledMedium
         button.setLeftView(imageView, largeContentImage: imageView.image)
         verify(view: button, contentSizeCategories: [.unspecified])
     }
@@ -18,7 +18,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
     func testWithPrimaryThemeImageAndShortText() {
         let button = TextFloatingActionButton(text: "Hey", accessibilityLabel: "Hey")
         let imageView = UIImageView()
-        imageView.image = Icon.contentActionsAddMedium
+        imageView.image = Icon.notificationAlertsInfoFilledMedium
         button.setLeftView(imageView, largeContentImage: imageView.image)
         verify(view: button, contentSizeCategories: [.unspecified])
     }
@@ -39,7 +39,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
             theme: .secondary
         )
         let imageView = UIImageView()
-        imageView.image = Icon.contentActionsAddMedium
+        imageView.image = Icon.notificationAlertsInfoFilledMedium
         button.setLeftView(imageView, largeContentImage: imageView.image)
         verify(view: button, contentSizeCategories: [.unspecified])
     }
@@ -51,7 +51,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
             theme: .secondary
         )
         let imageView = UIImageView()
-        imageView.image = Icon.contentActionsAddMedium
+        imageView.image = Icon.notificationAlertsInfoFilledMedium
         button.setLeftView(imageView, largeContentImage: imageView.image)
         verify(view: button, contentSizeCategories: [.unspecified])
     }
@@ -75,7 +75,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
     func testChangeTheme() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         let imageView = UIImageView()
-        imageView.image = Icon.contentActionsAddMedium
+        imageView.image = Icon.notificationAlertsInfoFilledMedium
         button.setLeftView(imageView, largeContentImage: imageView.image)
         button.theme = .secondary
         verify(view: button, contentSizeCategories: [.unspecified])
@@ -84,7 +84,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
     func testChangeThemeHighlighted() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         let imageView = UIImageView()
-        imageView.image = Icon.contentActionsAddMedium
+        imageView.image = Icon.notificationAlertsInfoFilledMedium
         button.setLeftView(imageView, largeContentImage: imageView.image)
         button.theme = .secondary
         button.isHighlighted = true
@@ -94,7 +94,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
     func testChangeThemeAndBack() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         let imageView = UIImageView()
-        imageView.image = Icon.contentActionsAddMedium
+        imageView.image = Icon.notificationAlertsInfoFilledMedium
         button.setLeftView(imageView, largeContentImage: imageView.image)
         button.theme = .secondary
         button.theme = .primary
@@ -104,7 +104,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
     func testChangeThemeAndBackHighlighted() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         let imageView = UIImageView()
-        imageView.image = Icon.contentActionsAddMedium
+        imageView.image = Icon.notificationAlertsInfoFilledMedium
         button.setLeftView(imageView, largeContentImage: imageView.image)
         button.theme = .secondary
         button.theme = .primary

@@ -15,7 +15,7 @@ class IconButtonTest: SnapshotTestCase {
             let (themeIdentifier, theme) = $0
 
             let iconButton = IconButton(
-                icon: Icon.contentActionsAddSmall,
+                icon: Icon.notificationAlertsInfoFilledMedium,
                 accessibilityLabel: "Add",
                 theme: theme
             )
@@ -49,13 +49,13 @@ class IconButtonTest: SnapshotTestCase {
 
     func testChangeIconSize() {
         let iconButton = IconButton(
-            icon: Icon.contentActionsAddSmall,
+            icon: Icon.notificationAlertsInfoFilledMedium,
             accessibilityLabel: "Add",
             theme: .default
         )
 
         iconButton.setIcon(
-            Icon.contentActionsFilterMedium,
+            Icon.notificationAlertsWarningFilledMedium,
             accessibilityLabel: "Filter"
         )
 
@@ -64,7 +64,7 @@ class IconButtonTest: SnapshotTestCase {
 
     func testAddInsetsToIconButton() {
         let iconButton = IconButton(
-            icon: Icon.contentActionsAddSmall,
+            icon: Icon.notificationAlertsInfoFilledMedium,
             accessibilityLabel: "Add",
             theme: .dark
         )

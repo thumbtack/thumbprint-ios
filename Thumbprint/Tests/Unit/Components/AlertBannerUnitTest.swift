@@ -4,12 +4,6 @@ import XCTest
 class AlertBannerUnitTest: UnitTestCase {
     var tappedActionLink: String?
 
-    override func setUp() {
-        super.setUp()
-
-        Icon.register(bundle: Bundle.thumbprint)
-    }
-
     override func tearDown() {
         tappedActionLink = nil
 

@@ -1,4 +1,5 @@
 @testable import Thumbprint
+import TestsHostApp
 import UIKit
 
 // Used for snapshot tests

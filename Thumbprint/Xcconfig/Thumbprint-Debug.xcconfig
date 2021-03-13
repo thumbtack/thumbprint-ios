@@ -1,4 +1,4 @@
-#include "../Pods/Target Support Files/Pods-Thumbprint/Pods-Thumbprint.debug.xcconfig"
+#include "../Pods/Target Support Files/Pods-Abstract-Thumbprint/Pods-Abstract-Thumbprint.debug.xcconfig"
 
 ALWAYS_SEARCH_USER_PATHS = NO
 APPLICATION_EXTENSION_API_ONLY = YES

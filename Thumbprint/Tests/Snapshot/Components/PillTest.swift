@@ -5,7 +5,6 @@ import XCTest
 
 class PillTest: SnapshotTestCase {
     var stackView: UIStackView!
-    var iconImages: [UIImage]!
 
     override func setUp() {
         super.setUp()
@@ -13,21 +12,10 @@ class PillTest: SnapshotTestCase {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.spacing = 8
-
-        iconImages = [
-            Icon.inputsThumbsUpTiny,
-            Icon.featurePromotedTiny,
-            Icon.inputsThumbsDownTiny,
-            Icon.metaCategoryEventsTiny,
-            Icon.contentModifierMapPinTiny,
-            Icon.contentModifierDatePlaceholderTiny,
-            Icon.contentModifierLightningTiny,
-        ]
     }
 
     override func tearDown() {
         stackView = nil
-        iconImages = nil
 
         super.tearDown()
     }
@@ -63,13 +51,13 @@ class PillTest: SnapshotTestCase {
     func testPillsWithIconAndText() {
         let defaultPill = Pill()
         defaultPill.text = "Default"
-        defaultPill.image = Icon.contentActionsAttachTiny
+        defaultPill.image = Icon.notificationAlertsInfoFilledMedium
         stackView.addArrangedSubview(defaultPill)
 
-        for (i, theme) in Pill.Theme.allPredefined.enumerated() {
+        for theme in Pill.Theme.allPredefined {
             let pill = Pill()
             pill.theme = theme
-            pill.image = iconImages[i]
+            pill.image = Icon.notificationAlertsInfoFilledMedium
             pill.text = "\(theme.name ?? "Wrong")"
             stackView.addArrangedSubview(pill)
         }
@@ -82,14 +70,14 @@ class PillTest: SnapshotTestCase {
         stackView.alignment = .fill
         let defaultPill = Pill()
         defaultPill.text = "Default"
-        defaultPill.image = Icon.contentActionsAttachTiny
+        defaultPill.image = Icon.notificationAlertsInfoFilledMedium
         defaultPill.setContentHuggingPriority(.defaultLow, for: .horizontal)
         stackView.addArrangedSubview(defaultPill)
 
-        for (i, theme) in Pill.Theme.allPredefined.enumerated() {
+        for theme in Pill.Theme.allPredefined {
             let pill = Pill()
             pill.theme = theme
-            pill.image = iconImages[i]
+            pill.image = Icon.notificationAlertsInfoFilledMedium
             pill.text = "\(theme.name ?? "Wrong")"
             pill.setContentHuggingPriority(.defaultLow, for: .horizontal)
             stackView.addArrangedSubview(pill)
@@ -104,13 +92,13 @@ class PillTest: SnapshotTestCase {
     func testPillsCompressed() {
         let defaultPill = Pill()
         defaultPill.text = "Default"
-        defaultPill.image = Icon.contentActionsAttachTiny
+        defaultPill.image = Icon.notificationAlertsInfoFilledMedium
         stackView.addArrangedSubview(defaultPill)
 
-        for (i, theme) in Pill.Theme.allPredefined.enumerated() {
+        for theme in Pill.Theme.allPredefined {
             let pill = Pill()
             pill.theme = theme
-            pill.image = iconImages[i]
+            pill.image = Icon.notificationAlertsInfoFilledMedium
             pill.text = "\(theme.name ?? "Wrong")"
             stackView.addArrangedSubview(pill)
         }
@@ -127,13 +115,13 @@ class PillTest: SnapshotTestCase {
      */
     func testDocumentationPills() {
         let documentationPills: [(title: String, icon: UIImage, theme: Pill.Theme)] = [
-            ("Green", Icon.contentModifierMoneyTiny, .green),
-            ("Red", Icon.contentModifierMapPinTiny, .red),
-            ("Indigo", Icon.contentActionsPhoneCallTiny, .indigo),
-            ("Gray", Icon.navigationSearchTiny, .gray),
-            ("Blue", Icon.contentActionsImageTiny, .blue),
-            ("Yellow", Icon.contentModifierLightningTiny, .yellow),
-            ("Purple", Icon.metaCategoryEventsTiny, .purple),
+            ("Green", Icon.notificationAlertsInfoFilledMedium, .green),
+            ("Red", Icon.notificationAlertsInfoFilledMedium, .red),
+            ("Indigo", Icon.notificationAlertsInfoFilledMedium, .indigo),
+            ("Gray", Icon.notificationAlertsInfoFilledMedium, .gray),
+            ("Blue", Icon.notificationAlertsInfoFilledMedium, .blue),
+            ("Yellow", Icon.notificationAlertsInfoFilledMedium, .yellow),
+            ("Purple", Icon.notificationAlertsInfoFilledMedium, .purple),
         ]
 
         documentationPills.forEach { pillSpec in

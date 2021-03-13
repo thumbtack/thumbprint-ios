@@ -7,15 +7,24 @@ install! 'cocoapods',
   generate_multiple_pod_projects: true,
   incremental_installation: true
 
-target 'Thumbprint' do
-  project 'Thumbprint/Thumbprint'
+abstract_target 'Abstract' do
 
-  pod 'SnapKit', '~> 5.0'
-  pod 'ThumbprintTokens', '~> 12.1.0'
-  pod 'TTCalendarPicker'
+  target 'Thumbprint' do
+    project 'Thumbprint/Thumbprint'
 
-  target 'ThumbprintTests' do
-    pod 'SnapshotTesting'
+    pod 'SnapKit', '~> 5.0'
+    pod 'ThumbprintTokens', '~> 12.1.0'
+    pod 'TTCalendarPicker'
+
+    target 'TestsHostApp' do
+      inherit! :search_paths
+
+      target 'ThumbprintTests' do
+        inherit! :search_paths
+
+        pod 'SnapshotTesting'
+      end
+    end
   end
 end
 

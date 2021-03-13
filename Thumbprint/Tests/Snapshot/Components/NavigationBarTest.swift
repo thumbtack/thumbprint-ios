@@ -39,7 +39,7 @@ class NavigationBarTest: SnapshotTestCase {
                 let viewController = UIViewController()
                 viewController.view.backgroundColor = Color.gray
                 viewController.title = "Test"
-                viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: Icon.navigationCloseMedium, style: .plain, target: nil, action: nil)
+                viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: Icon.navigationCaretRightMedium, style: .plain, target: nil, action: nil)
 
                 let navigationController = UINavigationController(rootViewController: viewController)
                 navigationController.view.frame = CGRect(x: 0, y: 0, width: 375, height: 400)

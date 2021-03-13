@@ -83,6 +83,8 @@ open class SnapshotTestCase: XCTestCase {
     }
 
     open override func tearDown() {
+        recordMode = false
+
         let localBehavior = behavior
         behavior = nil
         localBehavior?.tearDown(

@@ -371,7 +371,7 @@ public enum Icon {
 
     private static func requiredIcon(named name: String) -> UIImage {
         guard let icon = UIImage(named: name, in: bundle, compatibleWith: nil) else {
-            print("Expected bundle at path \(bundle?.bundlePath ?? "<missing>") to contain icon with name \(name).")
+            assertionFailure("Expected bundle at path \(bundle?.bundlePath ?? "<missing>") to contain icon with name \(name).")
             return UIImage()
         }
 
