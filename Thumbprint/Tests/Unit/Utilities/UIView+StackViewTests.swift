@@ -10,7 +10,7 @@ class UIView_StackViewTests: UnitTestCase {
      means they finally fixed the problem and we can mark that iOS version as the one where we'd be able to remove
      the workaround once older ones are no longer supported.
      */
-    func testUIKitBug() {
+    func testUIKitBugFixed() {
         let view1 = UIView()
         let view2 = UIView()
         stackView = .init(arrangedSubviews: [view1, view2])
@@ -28,7 +28,7 @@ class UIView_StackViewTests: UnitTestCase {
         }
 
         waitForExpectations(timeout: 1.0)
-        XCTAssertEqual(view1.isHidden, true)
+        XCTAssertEqual(view1.isHidden, false)
     }
 
     func testWorkaroundProperty() {
