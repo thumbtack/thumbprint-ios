@@ -2,12 +2,6 @@ import Foundation
 @testable import Thumbprint
 import XCTest
 
-private class ThumbprintResourcesBundleClass {}
-
-public extension Bundle {
-    static let thumbprint = Bundle(for: ThumbprintResourcesBundleClass.self)
-}
-
 class TestCaseBehavior {
     static func setUp() {
         NSTimeZone.default = TimeZone(abbreviation: "UTC")!

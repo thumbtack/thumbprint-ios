@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "080E7C4C25F48A0E002DBE7B"
-               BuildableName = "Thumbprint.framework"
+               BlueprintIdentifier = "080E6F2B25FFD333006D8056"
+               BuildableName = "libThumbprint.a"
                BlueprintName = "Thumbprint"
                ReferencedContainer = "container:Thumbprint.xcodeproj">
             </BuildableReference>
@@ -60,8 +60,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "080E7C4C25F48A0E002DBE7B"
-            BuildableName = "Thumbprint.framework"
+            BlueprintIdentifier = "080E6F2B25FFD333006D8056"
+            BuildableName = "libThumbprint.a"
             BlueprintName = "Thumbprint"
             ReferencedContainer = "container:Thumbprint.xcodeproj">
          </BuildableReference>

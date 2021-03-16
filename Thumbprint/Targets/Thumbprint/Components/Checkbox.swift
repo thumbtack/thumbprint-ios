@@ -1,3 +1,4 @@
+// import ThumbprintResources
 import UIKit
 
 public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {

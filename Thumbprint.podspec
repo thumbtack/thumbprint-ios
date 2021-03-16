@@ -35,8 +35,10 @@ Design system for building user interfaces at Thumbtack.
   s.platform = :ios
   s.ios.deployment_target = '12.0'
 
-  s.source_files = 'Thumbprint/Classes/**/*.swift'
-  s.resources = ['Thumbprint/Classes/Assets.xcassets']
+  s.source_files = 'Thumbprint/Targets/Thumbprint/**/*.swift'
+  s.resource_bundles = {
+    'ThumbprintResources' => ['Thumbprint/Targets/ThumbprintResources/**/*.xcassets'],
+  }
 
   s.frameworks = 'UIKit'
 

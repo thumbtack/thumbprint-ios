@@ -7,25 +7,20 @@ install! 'cocoapods',
   generate_multiple_pod_projects: true,
   incremental_installation: true
 
-abstract_target 'Abstract' do
+project 'Thumbprint/Thumbprint'
 
-  target 'Thumbprint' do
-    project 'Thumbprint/Thumbprint'
+pod 'SnapKit', '~> 5.0'
+pod 'ThumbprintTokens', '~> 12.1.0'
+pod 'TTCalendarPicker'
 
-    pod 'SnapKit', '~> 5.0'
-    pod 'ThumbprintTokens', '~> 12.1.0'
-    pod 'TTCalendarPicker'
+target 'Thumbprint' do
+end
 
-    target 'TestsHostApp' do
-      inherit! :search_paths
+target 'ThumbprintTests' do
+  pod 'SnapshotTesting'
+end
 
-      target 'ThumbprintTests' do
-        inherit! :search_paths
-
-        pod 'SnapshotTesting'
-      end
-    end
-  end
+target 'TestsHostApp' do
 end
 
 PROJECT_ROOT_DIR = File.dirname(File.expand_path(__FILE__))

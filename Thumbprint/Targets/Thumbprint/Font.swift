@@ -85,6 +85,8 @@ public enum Font {
 
     /// Used by snapshot tests to forcefully apply the given trait collection. Do not use in application code.
     public static var traitCollectionOverrideForTesting: UITraitCollection?
+
+    private static var didRegisterFonts = false
 }
 
 // MARK: - Public Functions
@@ -93,9 +95,24 @@ public extension Font {
     ///
     /// - Parameter bundle: Bundle in which font assets are located
     static func register(bundle: Bundle) {
-        registerFont(bundle: bundle, fileName: "MarkForThumbtack.otf")
-        registerFont(bundle: bundle, fileName: "MarkForThumbtack-Bold.otf")
-        registerFont(bundle: bundle, fileName: "MarkForThumbtack-Heavy.otf")
+        guard !didRegisterFonts else { return }
+
+        guard let urls = bundle.urls(forResourcesWithExtension: "otf", subdirectory: nil) else {
+            print("Failed to find any fonts in bundle \(bundle.bundleURL) to register.")
+            return
+        }
+
+        guard CTFontManagerRegisterFontsForURLs(urls as CFArray, .process, nil) else {
+            print("Failed to register fonts at \(urls).")
+            return
+        }
+
+        guard UIFont.familyNames.contains("Mark For Thumbtack") else {
+            print("Registered fonts at \(urls), but still missing Mark For Thumbtack font family.")
+            return
+        }
+
+        didRegisterFonts = true
     }
 
     static func scaledValue(_ value: CGFloat, for style: TextStyle, compatibleWith traitCollection: UITraitCollection? = nil) -> CGFloat {
@@ -130,7 +147,7 @@ public extension Font {
 
             if let font = font {
                 self.uiFont = font
-            } else if UIFont.familyNames.contains("MarkForThumbtack") {
+            } else if UIFont.familyNames.contains("Mark For Thumbtack") {
                 let fontName: String
                 switch (weight, UIAccessibility.isBoldTextEnabled) {
                 case (.normal, false):
@@ -297,35 +314,6 @@ private extension Font {
             return style.uiFont.withSize(scaledFont.pointSize)
         case (.none, .none), (.some, .none), (.some, .some):
             return scaledFont
-        }
-    }
-
-    static func registerFont(bundle: Bundle, fileName: String) {
-        guard let pathForResourceString = bundle.path(forResource: fileName, ofType: nil) else {
-            print("Failed to register font: path for resource not found.")
-            return
-        }
-        guard let fontData = NSData(contentsOfFile: pathForResourceString) else {
-            print("Failed to register font: font data could not be loaded.")
-            return
-        }
-        guard let dataProvider = CGDataProvider(data: fontData) else {
-            print("Failed to register font: data provider could not be loaded.")
-            return
-        }
-
-        // This fixes a deadlock issue with the CGFont initializer that follows
-        // https://stackoverflow.com/questions/40242370/app-hangs-in-simulator
-        _ = UIFont()
-
-        guard let fontRef = CGFont(dataProvider) else {
-            print("Failed to register font: font could not be loaded.")
-            return
-        }
-
-        var errorRef: Unmanaged<CFError>?
-        if !CTFontManagerRegisterGraphicsFont(fontRef, &errorRef) {
-            print("Failed to register font: register graphics font failed.")
         }
     }
 }

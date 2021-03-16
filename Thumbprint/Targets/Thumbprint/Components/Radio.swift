@@ -1,4 +1,5 @@
 import SnapKit
+// import ThumbprintResources
 import UIKit
 
 // MARK: - Protocols
