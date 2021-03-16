@@ -9,8 +9,8 @@ private protocol ToastViewDelegate: AnyObject {
  */
 public class Toast: UIView {
     public struct Action {
-        let text: String
-        let handler: () -> Void
+        public let text: String
+        public let handler: () -> Void
 
         public init(text: String, handler: @escaping () -> Void) {
             self.text = text

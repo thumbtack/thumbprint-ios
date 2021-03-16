@@ -4,7 +4,7 @@ import UIKit
  * Vertical button stack
  */
 public final class ButtonStack: UIStackView {
-    let buttons: [Button]
+    public let buttons: [Button]
 
     /// Creates and returns a new button stack with the specified buttons.
     public init(buttons: [Button] = []) {
