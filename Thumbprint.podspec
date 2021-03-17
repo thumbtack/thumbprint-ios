@@ -43,7 +43,6 @@ Design system for building user interfaces at Thumbtack.
   s.frameworks = 'UIKit'
 
   s.dependency 'SnapKit', '~> 5.0'
-  s.dependency 'SnapshotTesting'
   s.dependency 'ThumbprintTokens', '~> 12.1.0'
   s.dependency 'TTCalendarPicker'
 end
