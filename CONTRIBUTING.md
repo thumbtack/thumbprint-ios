@@ -33,4 +33,11 @@ This will be done by a member of the Thumbtack iOS team when code has been merge
 4. **Create a new release in GitHub:** On the [Releases](https://github.com/thumbtack/thumbprint-ios/releases) page for the repo, click "Draft a new release". Set "Tag version" to the name of the tag you created in step 3 (e.g., `1.2.3`). Set "Release title" to the same value as the tag version. In the description field, give an overview of the changes going into this release. When all fields have been filled out, click "Publish release."
 5. **Publish CocoaPod:** Run `pod trunk push Thumbprint.podspec`. If you get an error saying you are not authorized to publish this CocoaPod, ask one of the maintainers of the library to [add you as a contributor](https://guides.cocoapods.org/making/getting-setup-with-trunk#adding-other-people-as-contributors).
 
+### Common release issues
+
+`[!] Authentication token is invalid or unverified. Either verify it with the email that was sent or register a new session.`
+- Run `pod trunk register <email> '<name>'` (e.g., `pod trunk register kevinb@thumbtack.com 'Kevin Beaulieu'`) and click the link in the verification email you receive. Then try running `pod trunk push Thumbprint.podspec` again.
+
+---
+
 As always, reach out to [#design-systems](https://thumbtack.slack.com/messages/C7FLM0ZGU/details/) (internal to Thumbtack employees) or [create an issue](https://github.com/thumbtack/thumbprint-ios/issues) if you have questions or feedback.
