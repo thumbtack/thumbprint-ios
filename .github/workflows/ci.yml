@@ -2,7 +2,7 @@ name: CI
 on: push
 jobs:
   test:
-    name: Test
+    name: Run tests
     runs-on: macos-latest
     strategy:
       matrix:
