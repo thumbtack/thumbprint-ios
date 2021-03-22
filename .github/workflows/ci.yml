@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Install bundler
+        run: command -v bundle || gem install bundler
       - name: Pod install
         run: bundle exec pod install || bundle exec pod install --repo-update || (bundle install && bundle exec pod install)
       - name: Build and test
