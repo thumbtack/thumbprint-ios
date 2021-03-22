@@ -6,19 +6,21 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
+        # Adding additional destinations, schemes, etc. here will make GitHub run the steps
+        # on all combinations of them (e.g., if there are 2 destinations and 2 schemes, the
+        # test suite will get run 4 times).
         destination: ['platform=iOS Simulator,OS=14.4,name=iPhone 8']
         scheme: ['Thumbprint']
         xcode: ['/Applications/Xcode_12.4.app']
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
       - name: Install bundler
         run: (command -v bundle && bundle update --bundler) || gem install bundler
       - name: Pod install
         run: bundle exec pod install || bundle exec pod install --repo-update || (bundle install && bundle exec pod install)
       - name: Build and test
-        run: xcodebuild -workspace Thumbprint.xcworkspace -scheme $scheme -destination $destination clean test | xcpretty
+        run: sh .github/scripts/run_tests.sh
         env:
           scheme: ${{ matrix.scheme }}
           destination: ${{ matrix.destination }}
