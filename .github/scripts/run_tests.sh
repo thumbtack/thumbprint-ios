@@ -7,3 +7,4 @@ xcodebuild \
     -scheme "$scheme" \
     -destination "$destination" \
     clean test | xcpretty
+
