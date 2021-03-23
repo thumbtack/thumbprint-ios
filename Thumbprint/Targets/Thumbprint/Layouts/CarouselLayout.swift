@@ -1,7 +1,7 @@
 import UIKit
 
-public final class CarouselLayout: UICollectionViewFlowLayout {
-    public override var minimumLineSpacing: CGFloat {
+open class CarouselLayout: UICollectionViewFlowLayout {
+    override open var minimumLineSpacing: CGFloat {
         get {
             Space.two
         }
@@ -20,7 +20,7 @@ public final class CarouselLayout: UICollectionViewFlowLayout {
     }
 
     @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
