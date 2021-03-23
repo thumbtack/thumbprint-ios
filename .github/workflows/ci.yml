@@ -32,7 +32,6 @@ jobs:
             ${{ runner.os }}-pods-
 
       - name: 🗂 Install Pods
-        if: steps.restore-pods.outputs.cache-hit != 'true'
         run: bundle exec pod install || bundle exec pod install --repo-update
 
       - name: 📋 Build and test
