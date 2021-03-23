@@ -1,3 +1,5 @@
+[![Build status](https://github.com/thumbtack/thumbprint-ios/workflows/CI/badge.svg)](https://github.com/thumbtack/thumbprint-ios/actions/workflows/ci.yml)
+
 ![Thumbprint iOS header](./.github/thumbprint-header.png)
 
 # Thumbprint
