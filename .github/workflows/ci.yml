@@ -13,13 +13,29 @@ jobs:
         scheme: ['Thumbprint']
         xcode: ['/Applications/Xcode_12.4.app']
     steps:
-      - name: Checkout
+      - name: 📥 Checkout
         uses: actions/checkout@v2
-      - name: Install bundler
-        run: (command -v bundle && bundle update --bundler) || gem install bundler
-      - name: Pod install
-        run: bundle exec pod install || bundle exec pod install --repo-update || (bundle install && bundle exec pod install)
-      - name: Build and test
+
+      - name: 💎 Install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true # Runs `bundle install` and caches gems automatically.
+
+      - name: 🍫 Restore cached Pods
+        id: restore-pods
+        uses: actions/cache@v2
+        with:
+          path: Pods
+          key: ${{ runner.os }}-pods-${{ strategy.xcode }}-${{ hashFiles('Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-${{ strategy.xcode }}-
+            ${{ runner.os }}-pods-
+
+      - name: 🗂 Install Pods
+        if: steps.restore-pods.outputs.cache-hit != 'true'
+        run: bundle exec pod install || bundle exec pod install --repo-update
+
+      - name: 📋 Build and test
         run: sh .github/scripts/run_tests.sh
         env:
           scheme: ${{ matrix.scheme }}

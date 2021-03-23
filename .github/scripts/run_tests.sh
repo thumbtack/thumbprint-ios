@@ -6,5 +6,5 @@ xcodebuild \
     -workspace 'Thumbprint.xcworkspace' \
     -scheme "$scheme" \
     -destination "$destination" \
-    clean test | xcpretty
+    clean test
 
