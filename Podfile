@@ -1,4 +1,4 @@
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org/'
 platform :ios, '12.0'
 workspace 'Thumbprint'
 inhibit_all_warnings!
