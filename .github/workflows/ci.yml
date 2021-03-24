@@ -34,6 +34,39 @@ jobs:
       - name: 🗂 Install Pods
         run: bundle exec pod install || bundle exec pod install --repo-update
 
+        # Get the current date components to build cache keys for Derived Data step below
+      - name: 📆 Get date
+        id: get-date
+        run: |
+          echo "::set-output name=minute::$(date -u '+%M')"
+          echo "::set-output name=hour::$(date -u '+%H')"
+          echo "::set-output name=date::$(date -u '+%Y%m%d')"
+          echo "::set-output name=week::$(date -u '+%U')"
+
+      - name: 🔨 Restore Derived Data cache
+        uses: actions/cache@v2
+        with:
+          path: .github/cache/derived-data-tar-cache
+          key: ${{ runner.os }}-deriveddata-${{ strategy.xcode }}-${{ steps.get-date.outputs.week }}-${{ steps.get-date.outputs.date }}-${{ steps.get-date.outputs.hour }}-${{ steps.get-date.outputs.minute }}
+          restore-keys: |
+            ${{ runner.os }}-deriveddata-${{ strategy.xcode }}-${{ steps.get-date.outputs.week }}-${{ steps.get-date.outputs.date }}-${{ steps.get-date.outputs.hour }}-
+            ${{ runner.os }}-deriveddata-${{ strategy.xcode }}-${{ steps.get-date.outputs.week }}-${{ steps.get-date.outputs.date }}-
+            ${{ runner.os }}-deriveddata-${{ strategy.xcode }}-${{ steps.get-date.outputs.week }}-
+            ${{ runner.os }}-deriveddata-${{ strategy.xcode }}-
+      
+      - name: 🥡 Extract Derived Data archive
+        run: |
+          sh .github/scripts/extract_derived_data.sh
+
+        # Xcode uses the mtime as one of its signals for incremental builds.  When we check out a repository, the mtime
+        # is initially the time we did the checkout, which means that each build will be 'new'.
+        # The script below sets the mtime based on the time the file was modified in git.  It's not exact,
+        # but it's at least *consistent*, which is what we need for incremental builds.
+        # See: http://faq.sealedabstract.com/github_actions/
+      - name: 🕓 Set mtime on Swift source files
+        run: |
+          sh .github/scripts/set_file_mtimes.sh
+
       - name: 📋 Build and test
         run: sh .github/scripts/run_tests.sh
         env:
@@ -41,3 +74,6 @@ jobs:
           destination: ${{ matrix.destination }}
           DEVELOPER_DIR: ${{ matrix.xcode }}
 
+      - name: 🧳 Archive Derived Data for cache
+        run: |
+          sh .github/scripts/archive_derived_data.sh
