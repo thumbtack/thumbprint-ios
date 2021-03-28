@@ -30,6 +30,9 @@ jobs:
     needs: setup
     runs-on: macos-10.15
     steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v2
+
       - name: 🔎 Run lint checks
         run: sh .github/scripts/lint.sh
 
@@ -46,6 +49,9 @@ jobs:
         scheme: ['Thumbprint']
         xcode: ['/Applications/Xcode_12.4.app']
     steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v2
+
       - name: 📋 Build and test
         run: sh .github/scripts/run_tests.sh
         env:
