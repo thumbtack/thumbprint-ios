@@ -1,0 +1,72 @@
+# If updating, make sure to also update the swiftformat.exclude command for the SwiftFormat step in the Dangerfile
+--exclude Pods
+
+--disable fileHeader # We let swiftlint handle this
+--disable isEmpty # Has the potential to auto-fix in a way that breaks the code
+--disable numberFormatting # Many of our numbers are ids or timestamps, i.e. not intended to be readable as numbers
+--disable strongOutlets # While Apple recommends strong outlets (see SwiftFormat docs for this rule) we don't use storyboard often
+--disable unusedArguments # We don't see enough value in the consistency this rule gives, and it could introduce conflicts in dependent PRs
+--disable wrapMultilineStatementBraces # We don't want this kind of formatting.
+
+# These are potentially controversial.
+# TODO: (bryan/anyone) Look into enabling each, given we can get general agreement
+--disable blankLinesAroundMark # Is it a net improvement in code quality to enable this?
+--disable redundantLetError # Do we want to rely on implicit stuff?
+--disable redundantRawValues # It can be preferable to have all the cases values be explicit
+--disable trailingClosures # Maybe we want to leave this up to stylistic preference? It was changing a lot of code
+
+--enable andOperator # Use of a comma instead of && is considered idiomatic Swift
+--enable anyObjectProtocol # `AnyObject` and `class` constraints are identical in function, but `class` is due to be deprecated
+--enable blankLinesAtEndOfScope
+--enable blankLinesAtStartOfScope
+--enable blankLinesBetweenScopes
+--enable braces
+--enable consecutiveBlankLines
+--enable consecutiveSpaces
+--enable duplicateImports
+--enable elseOnSameLine
+--enable emptyBraces
+--enable hoistPatternLet
+--enable indent
+--enable leadingDelimiters
+--enable linebreakAtEndOfFile
+--enable linebreaks
+--enable modifierorder
+    --modifierorder public, internal, private, fileprivate, required, convenience, override
+--enable redundantBackticks
+--enable redundantBreak
+--enable redundantExtensionACL
+--enable redundantFileprivate
+--enable redundantGet
+--enable redundantInit
+--enable redundantLet
+--enable redundantNilInit
+--enable redundantObjc
+--enable redundantParens
+--enable redundantPattern
+--enable redundantReturn
+--enable redundantSelf
+    --self init-only
+--enable redundantVoidReturnType
+--enable semicolons
+--enable sortedImports
+--enable spaceAroundBraces
+--enable spaceAroundBrackets
+--enable spaceAroundComments
+--enable spaceAroundGenerics
+--enable spaceAroundOperators
+--enable spaceAroundParens
+--enable spaceInsideBraces
+--enable spaceInsideBrackets
+--enable spaceInsideComments
+--enable spaceInsideGenerics
+--enable spaceInsideParens
+--enable strongifiedSelf
+--enable todos
+--enable trailingCommas
+--enable trailingSpace
+--enable typeSugar
+--enable void
+--enable wrapArguments
+    --wrapcollections before-first
+--enable yodaConditions
