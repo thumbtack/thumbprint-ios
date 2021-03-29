@@ -3,7 +3,6 @@ on: push
 jobs:
   test:
     name: Run tests
-    needs: setup
     runs-on: macos-10.15
     strategy:
       matrix:
