@@ -108,7 +108,7 @@ public final class TextArea: Control, UIContentSizeCategoryAdjusting, UITextInpu
         set { textView.returnKeyType = newValue }
     }
 
-    public var textContentType: UITextContentType! {
+    public var textContentType: UITextContentType! { // swiftlint:disable:this implicitly_unwrapped_optional
         get { textView.textContentType }
         set { textView.textContentType = newValue }
     }
@@ -203,7 +203,7 @@ public final class TextArea: Control, UIContentSizeCategoryAdjusting, UITextInpu
 
         addSubviewConstraints()
 
-        defer { updateState() }
+        defer { updateState() } // swiftlint:disable:this inert_defer
     }
 
     @available(*, unavailable)

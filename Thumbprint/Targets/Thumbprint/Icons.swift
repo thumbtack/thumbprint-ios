@@ -367,7 +367,7 @@ public enum Icon {
     }
 
     // MARK: - Private
-    private static var bundle: Bundle!
+    private static var bundle: Bundle! // swiftlint:disable:this implicitly_unwrapped_optional
 
     private static func requiredIcon(named name: String) -> UIImage {
         guard let icon = UIImage(named: name, in: bundle, compatibleWith: nil) else {

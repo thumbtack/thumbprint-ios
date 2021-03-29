@@ -158,7 +158,7 @@ public extension Font {
                     fontName = "MarkForThumbtack-Heavy"
                 }
 
-                self.uiFont = UIFont(name: fontName, size: size)!
+                self.uiFont = UIFont(name: fontName, size: size)! // swiftlint:disable:this force_unwrapping
             } else {
                 // Fall back on system font if Mark is unavailable.
                 let uiFontWeight: UIFont.Weight

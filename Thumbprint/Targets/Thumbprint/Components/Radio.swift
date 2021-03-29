@@ -24,7 +24,7 @@ public final class RadioGroup {
     private var radios: Set<Radio> = []
     public var selectedRadio: Radio? {
         didSet {
-            guard selectedRadio == nil || radios.contains(selectedRadio!) else {
+            guard selectedRadio == nil || radios.contains(selectedRadio!) else { // swiftlint:disable:this force_unwrapping
                 assertionFailure("Cannot select a radio that has not been registered with this group")
                 selectedRadio = nil
                 return
@@ -437,7 +437,7 @@ internal class RadioImage: UIView {
 
         backgroundColor = .clear
 
-        defer {
+        defer { // swiftlint:disable:this inert_defer
             isSelected = false
             inputState = .default
         }

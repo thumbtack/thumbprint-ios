@@ -347,7 +347,7 @@ open class SnapshotTestCase: XCTestCase {
 
     // MARK: - Private
 
-    private func verifyPrivate<T: UIViewController>(viewControllerFactory: () -> T,
+    private func verifyPrivate<T: UIViewController>(viewControllerFactory: () -> T, // swiftlint:disable:this function_parameter_count
                                                     identifier: String?,
                                                     useNavigationController: Bool,
                                                     sizes: [WindowSize],

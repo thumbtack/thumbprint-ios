@@ -124,7 +124,7 @@ public final class Dropdown: Control, UIContentSizeCategoryAdjusting {
         addTapToPresentPickerGesture()
         listenForPickerViewPresentation()
 
-        defer { updateState() }
+        defer { updateState() } // swiftlint:disable:this inert_defer
     }
 
     @available(*, unavailable)
