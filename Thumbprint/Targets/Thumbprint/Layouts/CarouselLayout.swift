@@ -1,11 +1,11 @@
 import UIKit
 
 open class CarouselLayout: UICollectionViewFlowLayout {
-    override open var minimumLineSpacing: CGFloat {
+    open override var minimumLineSpacing: CGFloat {
         get {
             Space.two
         }
-        set {
+        set { // swiftlint:disable:this unused_setter_value
             assertionFailure("minimumLineSpacing setter is a no-op")
         }
     }

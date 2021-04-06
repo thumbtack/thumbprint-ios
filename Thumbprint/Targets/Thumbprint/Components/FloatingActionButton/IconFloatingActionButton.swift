@@ -42,7 +42,10 @@ public class IconFloatingActionButton: Control {
 
     private let iconImageView: UIImageView
     private let contentView = UIView()
-    private let shadowImageView = UIImageView(image: UIImage(named: "iconFabShadow", in: Bundle.thumbprint, compatibleWith: nil)!)
+    private let shadowImageView: UIImageView = {
+        let image = UIImage(named: "iconFabShadow", in: Bundle.thumbprint, compatibleWith: nil)! // swiftlint:disable:this force_unwrapping
+        return UIImageView(image: image)
+    }()
 
     public private(set) var icon: UIImage? {
         get {

@@ -129,7 +129,7 @@ public extension CalendarPickerView {
     /// Scrolls the calendar to the selected date, optionally animated
     func goToDate(_ date: Date, animated: Bool) {
         let components = picker.calendar.dateComponents([.month, .year], from: date)
-        picker.scrollTo(month: components.month!, year: components.year!, animated: animated)
+        picker.scrollTo(month: components.month!, year: components.year!, animated: animated) // swiftlint:disable:this force_unwrapping
     }
 
     /// Scrolls the calendar to the month immediately after the visible month, optionally animated
@@ -260,7 +260,7 @@ open class CalendarPickerView: UIView, UIContentSizeCategoryAdjusting {
     private func updateMonthHeader() {
         let year = picker.visibleYear
         let month = picker.visibleMonth
-        let date = picker.calendar.date(from: DateComponents(year: year, month: month, day: 1))!
+        let date = picker.calendar.date(from: DateComponents(year: year, month: month, day: 1))! // swiftlint:disable:this force_unwrapping
         let text = monthFormatter.string(from: date)
 
         UIView.transition(with: monthHeader,
@@ -305,7 +305,7 @@ extension CalendarPickerView: CalendarPickerDataSource {
                                                 indexPath: indexPath) as! CalendarPickerDateCell
 
         let components = DateComponents(year: year, month: month, day: day)
-        let date = picker.calendar.date(from: components)!
+        let date = picker.calendar.date(from: components)! // swiftlint:disable:this force_unwrapping
         let isToday = todayComponents == components
         cell.configure(withDay: day,
                        inVisibleMonth: inVisibleMonth,

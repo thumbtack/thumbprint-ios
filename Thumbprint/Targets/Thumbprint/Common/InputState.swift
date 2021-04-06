@@ -14,10 +14,12 @@ public enum InputState {
     case disabled
     case error
 
+    // swiftlint:disable force_unwrapping
     private static let defaultInputStateBackgroundImage = UIImage(named: "defaultInputStateBackground", in: Bundle.thumbprint, compatibleWith: nil)!
     private static let highlightedInputStateBackground = UIImage(named: "highlightedInputStateBackground", in: Bundle.thumbprint, compatibleWith: nil)!
     private static let errorInputStateBackground = UIImage(named: "errorInputStateBackground", in: Bundle.thumbprint, compatibleWith: nil)!
     private static let disabledInputStateBackground = UIImage(named: "disabledInputStateBackground", in: Bundle.thumbprint, compatibleWith: nil)!
+    // swiftlint:enable force_unwrapping
 
     public var backgroundImage: UIImage {
         switch self {

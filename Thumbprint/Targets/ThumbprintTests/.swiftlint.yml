@@ -1,0 +1,8 @@
+disabled_rules:
+  - implicitly_unwrapped_optional
+  - force_cast
+  - force_unwrapping
+  - weak_delegate
+  - force_try
+  - type_name
+  - line_length

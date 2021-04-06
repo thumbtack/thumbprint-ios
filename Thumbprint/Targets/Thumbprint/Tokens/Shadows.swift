@@ -36,6 +36,8 @@ public enum Shadow {
 
     // MARK: - Regular shadows
 
+    // swiftlint:disable force_unwrapping
+
     /// Shadow with blur radius: 3pt, opacity: 10%, vertical alignment offset 1pt, cornerRadius: 0
     public static let shadow100 = UIImage(named: "shadow100", in: Bundle.thumbprint, compatibleWith: nil)!
 
@@ -61,4 +63,6 @@ public enum Shadow {
 
     /// Shadow with blur radius: 10pt, opacity: 20%, vertical alignment offset 2pt, cornerRadius: 4
     public static let roundedShadow400 = UIImage(named: "roundedShadow400", in: Bundle.thumbprint, compatibleWith: nil)!
+
+    // swiftlint:enable force_unwrapping
 }

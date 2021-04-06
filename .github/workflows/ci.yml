@@ -26,9 +26,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: Pods
-          key: ${{ runner.os }}-pods-${{ strategy.xcode }}-${{ hashFiles('Podfile.lock') }}
+          key: ${{ runner.os }}-pods-${{ hashFiles('Podfile.lock') }}
           restore-keys: |
-            ${{ runner.os }}-pods-${{ strategy.xcode }}-
             ${{ runner.os }}-pods-
 
       - name: 🗂 Install Pods
@@ -41,3 +40,5 @@ jobs:
           destination: ${{ matrix.destination }}
           DEVELOPER_DIR: ${{ matrix.xcode }}
 
+      - name: 🔎 Run lint checks
+        run: sh .github/scripts/lint.sh

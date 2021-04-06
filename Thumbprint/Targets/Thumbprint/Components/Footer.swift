@@ -18,7 +18,8 @@ open class Footer: UIView, UIScrollViewDelegate {
     private var compactHorizontalConstraints: [Constraint] = []
     private var regularHorizontalConstraints: [Constraint] = []
 
-    private static let shadowImage = UIImage(named: "footer-shadow", in: Bundle.thumbprint, compatibleWith: nil)!
+    private static let shadowImage =
+        UIImage(named: "footer-shadow", in: Bundle.thumbprint, compatibleWith: nil)! // swiftlint:disable:this force_unwrapping
 
     /// When in a .regular horizontal size class, what proportion of the
     /// footer width should be taken up by the content view.

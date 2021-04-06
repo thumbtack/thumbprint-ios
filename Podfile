@@ -10,6 +10,8 @@ install! 'cocoapods',
 project 'Thumbprint/Thumbprint'
 
 pod 'SnapKit', '~> 5.0'
+pod 'SwiftLint'
+pod 'SwiftFormat/CLI'
 pod 'ThumbprintTokens', '~> 12.1.0'
 pod 'TTCalendarPicker'
 
