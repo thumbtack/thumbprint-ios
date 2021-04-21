@@ -26,7 +26,11 @@ open class CarouselLayout: UICollectionViewFlowLayout {
 
     // MARK: - Making this a left aligned, 1 row layout
     public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        super.layoutAttributesForElements(in: rect)?.map {
+        guard let superAttributes = super.layoutAttributesForElements(in: rect),
+              let attributes = NSArray(array: superAttributes, copyItems: true) as? [UICollectionViewLayoutAttributes]
+        else { return nil }
+
+        return attributes.map {
             if $0.representedElementKind == nil, let itemAttributes = layoutAttributesForItem(at: $0.indexPath) {
                 return itemAttributes
             } else {
@@ -36,12 +40,12 @@ open class CarouselLayout: UICollectionViewFlowLayout {
     }
 
     public override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        guard let currentItemAttributes = super.layoutAttributesForItem(at: indexPath) else {
+        guard let superAttributes = super.layoutAttributesForItem(at: indexPath),
+              let attributes = superAttributes.copy() as? UICollectionViewLayoutAttributes else {
             return nil
         }
 
-        // Force top-alignment
-        currentItemAttributes.frame.origin.y = sectionInset.top
-        return currentItemAttributes
+        attributes.frame.origin.y = sectionInset.top // Force top-alignment
+        return attributes
     }
 }

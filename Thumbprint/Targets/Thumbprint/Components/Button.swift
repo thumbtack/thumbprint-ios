@@ -220,15 +220,19 @@ public final class Button: Control, UIContentSizeCategoryAdjusting {
 
         //  Center and add content width less than button width in case of tight layout clipping.
         let widthConstraint = contentView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor)
+        let heightConstraint = contentView.heightAnchor.constraint(equalTo: heightAnchor)
+        heightConstraint.priority = .defaultHigh
         NSLayoutConstraint.activate([
             contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
             contentView.centerYAnchor.constraint(equalTo: centerYAnchor),
             widthConstraint,
+            heightConstraint,
+            contentView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor),
         ])
 
         //  We allow some expansion of the label beyond the padding on tight layouts but limit it to 2/3 of the
         //  declared padding as to avoid really messing the look of the button. Constant is set in `updateSize()`
-        maxContentWidthConstraint = widthConstraint
+        self.maxContentWidthConstraint = widthConstraint
 
         contentView.addArrangedSubview(titleLabel)
         titleLabel.adjustsFontSizeToFitWidth = adjustsFontForContentSizeCategory
