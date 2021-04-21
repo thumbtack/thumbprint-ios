@@ -29,9 +29,11 @@ This will be done by a member of the Thumbtack iOS team when code has been merge
 
 1. **Update CocoaPod version:** Update `s.version` in `Thumbprint.podspec`. We follow [semantic versioning](https://semver.org/), so look at the changes that will be included in this release and increment it accordingly.
 2. **Run Pod linter:** In the root directory of the repo, run `pod lib lint`. If there are any errors, resolve them before continuing with the release.
-3. Commit the changes you made in step 1 with the subject "Release <version>" (e.g., "Release 1.2.3"). Run `git tag '<version>'` (e.g., `git tag '1.2.3'`) to tag this commit. Run `git push --tags` to push the new tag, then create and merge a pull request with the release commit.
-4. **Create a new release in GitHub:** On the [Releases](https://github.com/thumbtack/thumbprint-ios/releases) page for the repo, click "Draft a new release". Set "Tag version" to the name of the tag you created in step 3 (e.g., `1.2.3`). Set "Release title" to the same value as the tag version. In the description field, give an overview of the changes going into this release. When all fields have been filled out, click "Publish release."
-5. **Publish CocoaPod:** Run `pod trunk push Thumbprint.podspec`. If you get an error saying you are not authorized to publish this CocoaPod, ask one of the maintainers of the library to [add you as a contributor](https://guides.cocoapods.org/making/getting-setup-with-trunk#adding-other-people-as-contributors).
+3. **Commit:** Commit the change you made in step 1 with the subject "Release <version>" (e.g., "Release 1.2.3"). Create and merge a pull request with this commit.
+4. **Checkout main:** Return to the `main` branch and pull to get the commit you just merged.
+5. **Tag release:** Run `git tag '<version>'` (e.g., `git tag '1.2.3'`) to tag this commit, and then run `git push --tags` to push the new tag.
+6. **Create a new release in GitHub:** On the [Releases](https://github.com/thumbtack/thumbprint-ios/releases) page for the repo, click "Draft a new release". Set "Tag version" to the name of the tag you created in step 3 (e.g., `1.2.3`). Set "Release title" to the same value as the tag version. In the description field, give an overview of the changes going into this release. When all fields have been filled out, click "Publish release."
+7. **Publish CocoaPod:** Run `pod trunk push Thumbprint.podspec`. If you get an error saying you are not authorized to publish this CocoaPod, ask one of the maintainers of the library to [add you as a contributor](https://guides.cocoapods.org/making/getting-setup-with-trunk#adding-other-people-as-contributors).
 
 ### Common release issues
 
