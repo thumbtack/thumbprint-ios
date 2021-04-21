@@ -227,12 +227,12 @@ public final class Button: Control, UIContentSizeCategoryAdjusting {
             contentView.centerYAnchor.constraint(equalTo: centerYAnchor),
             widthConstraint,
             heightConstraint,
-            contentView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor)
+            contentView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor),
         ])
 
         //  We allow some expansion of the label beyond the padding on tight layouts but limit it to 2/3 of the
         //  declared padding as to avoid really messing the look of the button. Constant is set in `updateSize()`
-        maxContentWidthConstraint = widthConstraint
+        self.maxContentWidthConstraint = widthConstraint
 
         contentView.addArrangedSubview(titleLabel)
         titleLabel.adjustsFontSizeToFitWidth = adjustsFontForContentSizeCategory
