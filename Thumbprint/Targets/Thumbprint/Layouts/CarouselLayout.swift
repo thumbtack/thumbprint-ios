@@ -1,22 +1,15 @@
 import UIKit
 
 open class CarouselLayout: UICollectionViewFlowLayout {
-    open override var minimumLineSpacing: CGFloat {
-        get {
-            Space.two
-        }
-        set { // swiftlint:disable:this unused_setter_value
-            assertionFailure("minimumLineSpacing setter is a no-op")
-        }
-    }
-
     public override init() {
         super.init()
 
         // Hardcoding scrollDirection's getter to return .horizontal does not
         // seem to be sufficient. Calling the setter once explicitly ensures
         // that the scroll direction does get set properly.
-        super.scrollDirection = .horizontal
+        scrollDirection = .horizontal
+
+        minimumLineSpacing = Space.two
     }
 
     @available(*, unavailable)
