@@ -114,7 +114,7 @@ public enum Icon {
     public static let contentModifierFireMedium = Self.requiredIcon(named: "fire--medium")
     public static let contentModifierGiftMedium = Self.requiredIcon(named: "gift--medium")
     public static let contentModifierGiftSmall = Self.requiredIcon(named: "gift--small")
-   public static let contentModifierHeartRateMedium = Self.requiredIcon(named: "heart-rate--medium")
+    public static let contentModifierHeartRateMedium = Self.requiredIcon(named: "heart-rate--medium")
     public static let contentModifierLightbulbMedium = Self.requiredIcon(named: "lightbulb--medium")
     public static let contentModifierLightbulbSmall = Self.requiredIcon(named: "lightbulb--small")
     public static let contentModifierLightningMedium = Self.requiredIcon(named: "lightning--medium")
