@@ -19,6 +19,13 @@ public final class RadioGroup<Key> where Key: Hashable {
     private var selectionSubject = CurrentValueSubject<Key?, Never>(nil)
 
     /**
+     Some times you want to access the `Radio` objects themselves i.e. for dynamic UI adjustments.
+     */
+    public var registeredRadios: some Collection {
+        radioToKey.keys
+    }
+
+    /**
      The selection state is vended as a publisher. Subscribing to it will give you a first update with the value at the time of subscription, followed by update
      callbacks for any further changes.
      */
