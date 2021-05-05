@@ -104,6 +104,7 @@
 		CD5A0287B7D3129E8BDD06E5 /* libPods-TestsHostApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BB25065E7ACE32CDDE00D1 /* libPods-TestsHostApp.a */; };
 		FF2929B62642168D001A711A /* RadioStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B52642168D001A711A /* RadioStack.swift */; };
 		FF2929B82642306F001A711A /* RadioGroupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B72642306F001A711A /* RadioGroupTest.swift */; };
+		FF292A96264250CF001A711A /* RadioGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF292A95264250CF001A711A /* RadioGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,6 +284,7 @@
 		F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Thumbprint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2929B52642168D001A711A /* RadioStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStack.swift; sourceTree = "<group>"; };
 		FF2929B72642306F001A711A /* RadioGroupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroupTest.swift; sourceTree = "<group>"; };
+		FF292A95264250CF001A711A /* RadioGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -497,6 +499,7 @@
 				08C819BC25F574460082FD2D /* NavigationBar.swift */,
 				08C819CA25F574460082FD2D /* Pill.swift */,
 				08C819D325F574470082FD2D /* Radio.swift */,
+				FF292A95264250CF001A711A /* RadioGroup.swift */,
 				FF2929B52642168D001A711A /* RadioStack.swift */,
 				08C819AD25F574460082FD2D /* RadioTableViewCell.swift */,
 				08C819D025F574470082FD2D /* ShadowCard.swift */,
@@ -1014,6 +1017,7 @@
 				080E6F4A25FFD38D006D8056 /* Avatar.swift in Sources */,
 				080E6F6025FFD38D006D8056 /* CalendarPickerDateCell.swift in Sources */,
 				080E6F4D25FFD38D006D8056 /* CarouselLayout.swift in Sources */,
+				FF292A96264250CF001A711A /* RadioGroup.swift in Sources */,
 				080E6F4725FFD38D006D8056 /* TabBar.swift in Sources */,
 				FF2929B62642168D001A711A /* RadioStack.swift in Sources */,
 			);
