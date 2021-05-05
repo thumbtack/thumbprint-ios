@@ -40,6 +40,9 @@ This will be done by a member of the Thumbtack iOS team when code has been merge
 `[!] Authentication token is invalid or unverified. Either verify it with the email that was sent or register a new session.`
 - Run `pod trunk register <email> '<name>'` (e.g., `pod trunk register kevinb@thumbtack.com 'Kevin Beaulieu'`) and click the link in the verification email you receive. Then try running `pod trunk push Thumbprint.podspec` again.
 
+`[!] You (<your-email>) are not allowed to push new versions for this pod. The owners of this pod are <owner-emails>.`
+- Ask one of the owners to [add you as a contributor](https://guides.cocoapods.org/making/getting-setup-with-trunk#adding-other-people-as-contributors) by running `pod trunk add-owner Thumbprint <your-email>`.
+
 ---
 
 As always, reach out to [#design-systems](https://thumbtack.slack.com/messages/C7FLM0ZGU/details/) (internal to Thumbtack employees) or [create an issue](https://github.com/thumbtack/thumbprint-ios/issues) if you have questions or feedback.
