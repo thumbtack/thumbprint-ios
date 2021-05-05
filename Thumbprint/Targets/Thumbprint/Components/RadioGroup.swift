@@ -6,6 +6,9 @@ import UIKit
  can be easily uniqued and compared. Updates of the selected radio in the group can be subscribed to using the `selection` publisher property.
  */
 public final class RadioGroup<Key> where Key: Hashable {
+    /// Need to declare it to make it public.
+    public init() {}
+
     /// Relates `Radio` objects to their corresponding key for user selection management.
     private var radioToKey = [Radio: Key]()
 
