@@ -1,62 +1,93 @@
+import Combine
 import SnapKit
-// import ThumbprintResources
 import UIKit
 
 // MARK: - Protocols
-public protocol RadioGroupDelegate: AnyObject {
-    func radioGroup(_ radioGroup: RadioGroup, didSelect radio: Radio?)
-}
-
 public protocol RadioStackDelegate: AnyObject {
     func radioStack(_ radioStack: RadioStack, didSelectRadioAt index: Int?)
 }
 
 // MARK: - RadioGroup
-// The collective state manager for a set of related radios
-// Changes to the selected radio are notified via the radioGroup(_ : didSelect:) method of the RadioGroup delegate.
-public final class RadioGroup {
-    public weak var delegate: RadioGroupDelegate?
+/**
+ An object that manages a group of radio buttons and its selection. The class is generic meaning it can be instantiated with any type of key as long as it
+ can be easily uniqued and compared. Updates of the selected radio in the group can be subscribed to using the `selection` publisher property.
+ */
+public final class RadioGroup<Key> where Key: Hashable {
 
-    public init(delegate: RadioGroupDelegate? = nil) {
-        self.delegate = delegate
+    /// Relates `Radio` objects to their corresponding key for user selection management.
+    private var radioToKey = [Radio: Key]()
+
+    /// Relates a key to their radios.
+    private var keyToRadio = [Key: Radio]()
+
+    /// Internal storage for the selected value and internal implementation for publisher behavior.
+    private var selectionSubject = CurrentValueSubject<Key?, Never>(nil)
+
+    /**
+     The selection state is vended as a publisher. Subscribing to it will give you a first update with the value at the time of subscription, followed by update
+     callbacks for any further changes.
+     */
+    var selection: AnyPublisher<Key?, Never> {
+        selectionSubject.eraseToAnyPublisher()
     }
 
-    private var radios: Set<Radio> = []
-    public var selectedRadio: Radio? {
-        didSet {
-            guard selectedRadio == nil || radios.contains(selectedRadio!) else { // swiftlint:disable:this force_unwrapping
-                assertionFailure("Cannot select a radio that has not been registered with this group")
-                selectedRadio = nil
+    /**
+     Sets the selection to the given key. Can be used to programmatically set the radio group's selection.
+     - Parameter value: The new selected key. Pass in `nil` to empty the selection.
+     */
+    public func setSelection(_ value: Key?) {
+        let outgoingSelection = selectionSubject.value
+        guard value != outgoingSelection else {
+            return
+        }
+
+        if let outgoingSelection = outgoingSelection {
+            keyToRadio[outgoingSelection]?.isSelected = false
+        }
+
+        if let incomingSelection = value {
+            guard let selectedRadio = keyToRadio[incomingSelection] else {
+                assertionFailure("Cannot select a key that has not been registered with this group")
                 return
             }
-
-            guard selectedRadio != oldValue else { return }
-            if selectedRadio?.isSelected != true { selectedRadio?.isSelected = true }
-
-            oldValue?.isSelected = false
-            delegate?.radioGroup(self, didSelect: selectedRadio)
+            selectedRadio.isSelected = true
         }
     }
 
-    public func registerRadio(_ radio: Radio) {
-        guard !radios.contains(radio) else { return }
+    /**
+     Registers a `Radio` view for the given key.
 
-        radio.addTarget(self, action: #selector(radioIsSelectedDidChange(_:)), for: .valueChanged)
-        radios.insert(radio)
-    }
-
-    @objc private func radioIsSelectedDidChange(_ sender: Radio) {
-        if sender.isSelected {
-            selectedRadio = sender
+     The function will assert when attempting to register the same radio more than once or registering an already registered key.
+     - Parameter radio: The `Radio` view associated in the UI with the given key.
+     - Parameter key: The key to be associated with the given radio.
+     */
+    public func registerRadio(_ radio: Radio, forKey key: Key) {
+        guard !radioToKey.keys.contains(radio) else {
+            assertionFailure("Attempted to register radio object \(radio) with key \(key) already registered for key \(String(describing: radioToKey[radio]))")
+            return
         }
+
+        guard !keyToRadio.keys.contains(key) else {
+            assertionFailure("Attempted to register key \(key) for radio \(radio) already registered for radio \(String(describing: keyToRadio[key]))")
+            return
+        }
+
+        radio.addTarget(self, action: #selector(selectRadio(_:)), for: .valueChanged)
+        radioToKey[radio] = key
+        keyToRadio[key] = radio
     }
 
-    public func unregisterRadio(_ radio: Radio) {
-        guard radios.contains(radio) else { return }
+    @objc private func selectRadio(_ sender: Radio) {
+        guard let selectedKey = radioToKey[sender] else {
+            assertionFailure("Attempted to select radio \(sender) not registered in radio group \(self)")
+            return
+        }
 
-        if radio == selectedRadio { selectedRadio = nil }
-        radio.removeTarget(self, action: #selector(radioIsSelectedDidChange(_:)), for: .valueChanged)
-        radios.remove(radio)
+        guard sender.isSelected else {
+            return
+        }
+
+        setSelection(selectedKey)
     }
 }
 
@@ -267,90 +298,10 @@ public final class Radio: Control, UIContentSizeCategoryAdjusting {
     }
 }
 
-// MARK: - Radio Stack
-/// A convenience class for displaying a group of text only radioViews with consistent styling and spacing.
-public final class RadioStack: UIView, RadioGroupDelegate, UIContentSizeCategoryAdjusting {
-    /// The radios belonging to this stack
-    let radioViews: [Radio]
-
-    /// A delegate conforming to RadioStackDelegate
-    public weak var delegate: RadioStackDelegate?
-
-    public var spacing: CGFloat {
-        get { stack.spacing }
-        set { stack.spacing = newValue }
-    }
-
-    /// Sets the numberOfLines of each `Radio` in the stack.
-    public var numberOfLines: Int = 1 {
-        didSet {
-            radioViews.forEach { $0.numberOfLines = numberOfLines }
-        }
-    }
-
-    public var adjustsFontForContentSizeCategory: Bool {
-        didSet {
-            guard adjustsFontForContentSizeCategory != oldValue else { return }
-
-            for radio in radioViews {
-                radio.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
-            }
-        }
-    }
-
-    private let stack: UIStackView
-    private let radioGroup: RadioGroup
-
-    /// Initializes a new RadioStack with the given radio titles
-    ///
-    /// - Parameters:
-    ///   - titles: An array of titles with which to create the radio buttons
-    ///   - adjustsFontForContentSizeCategory: Boolean indicating whether the radios in this stack should support Dynamic Type.
-    public init(titles: [String], adjustsFontForContentSizeCategory: Bool = true) {
-        self.radioGroup = RadioGroup()
-        self.radioViews = titles.map({ Radio(text: $0, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory) })
-        self.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
-
-        self.stack = UIStackView(arrangedSubviews: radioViews)
-        stack.axis = .vertical
-        stack.alignment = .leading
-        stack.spacing = Space.three
-
-        super.init(frame: .null)
-
-        radioViews.forEach({ radioGroup.registerRadio($0) })
-        radioGroup.delegate = self
-
-        addSubview(stack)
-
-        stack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
-
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    public func setSelectedTitle(_ title: String) {
-        radioGroup.selectedRadio = radioViews.first(where: { $0.text == title })
-    }
-
-    // RadioGroupDelegate
-    public func radioGroup(_ radioGroup: RadioGroup, didSelect radio: Radio?) {
-        if let radio = radio {
-            delegate?.radioStack(self, didSelectRadioAt: radioViews.firstIndex(of: radio))
-        } else {
-            delegate?.radioStack(self, didSelectRadioAt: nil)
-        }
-    }
-}
-
 // MARK: - RadioImage
 internal class RadioImage: UIView {
     override var intrinsicContentSize: CGSize {
-        CGSize(width: 20, height: 20)
+        Self.backgroundFillImage?.size ?? super.intrinsicContentSize
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {

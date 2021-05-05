@@ -102,6 +102,7 @@
 		08DC57BD26003E2E00B95596 /* libPods-ThumbprintTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08DC57BC26003E2E00B95596 /* libPods-ThumbprintTests.a */; };
 		7B7A49A6AABE9CD4F18A04F0 /* libPods-Thumbprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */; };
 		CD5A0287B7D3129E8BDD06E5 /* libPods-TestsHostApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BB25065E7ACE32CDDE00D1 /* libPods-TestsHostApp.a */; };
+		FF2929B62642168D001A711A /* RadioStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B52642168D001A711A /* RadioStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -279,6 +280,7 @@
 		D12EA88E3D1B084D408E2707 /* Pods-ThumbprintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThumbprintTests.release.xcconfig"; path = "Target Support Files/Pods-ThumbprintTests/Pods-ThumbprintTests.release.xcconfig"; sourceTree = "<group>"; };
 		E960F8432D6A9D65F3873172 /* Pods-TestsHostApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestsHostApp.release.xcconfig"; path = "Target Support Files/Pods-TestsHostApp/Pods-TestsHostApp.release.xcconfig"; sourceTree = "<group>"; };
 		F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Thumbprint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF2929B52642168D001A711A /* RadioStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,8 +480,8 @@
 				08C819AF25F574460082FD2D /* FloatingActionButton */,
 				08C819B225F574460082FD2D /* AlertBanner.swift */,
 				08C819B625F574460082FD2D /* Avatar.swift */,
-				08C819D425F574470082FD2D /* Button.swift */,
 				08C819C125F574460082FD2D /* Button.Model.swift */,
+				08C819D425F574470082FD2D /* Button.swift */,
 				08C819BF25F574460082FD2D /* Button.Theme.swift */,
 				08C819CF25F574470082FD2D /* ButtonRow.swift */,
 				08C819BE25F574460082FD2D /* ButtonStack.swift */,
@@ -493,6 +495,7 @@
 				08C819BC25F574460082FD2D /* NavigationBar.swift */,
 				08C819CA25F574460082FD2D /* Pill.swift */,
 				08C819D325F574470082FD2D /* Radio.swift */,
+				FF2929B52642168D001A711A /* RadioStack.swift */,
 				08C819AD25F574460082FD2D /* RadioTableViewCell.swift */,
 				08C819D025F574470082FD2D /* ShadowCard.swift */,
 				08C819A325F574460082FD2D /* Slider.swift */,
@@ -1009,6 +1012,7 @@
 				080E6F6025FFD38D006D8056 /* CalendarPickerDateCell.swift in Sources */,
 				080E6F4D25FFD38D006D8056 /* CarouselLayout.swift in Sources */,
 				080E6F4725FFD38D006D8056 /* TabBar.swift in Sources */,
+				FF2929B62642168D001A711A /* RadioStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
