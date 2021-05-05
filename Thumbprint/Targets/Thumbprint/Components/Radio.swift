@@ -41,10 +41,14 @@ public final class RadioGroup<Key> where Key: Hashable {
             return
         }
 
+        // Deselect prior selected radio.
         if let outgoingSelection = outgoingSelection {
             keyToRadio[outgoingSelection]?.isSelected = false
         }
 
+        selectionSubject.value = value
+
+        // Select newly selected radio.
         if let incomingSelection = value {
             guard let selectedRadio = keyToRadio[incomingSelection] else {
                 assertionFailure("Cannot select a key that has not been registered with this group")

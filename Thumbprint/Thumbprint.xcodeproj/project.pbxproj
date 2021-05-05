@@ -103,6 +103,7 @@
 		7B7A49A6AABE9CD4F18A04F0 /* libPods-Thumbprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */; };
 		CD5A0287B7D3129E8BDD06E5 /* libPods-TestsHostApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BB25065E7ACE32CDDE00D1 /* libPods-TestsHostApp.a */; };
 		FF2929B62642168D001A711A /* RadioStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B52642168D001A711A /* RadioStack.swift */; };
+		FF2929B82642306F001A711A /* RadioGroupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B72642306F001A711A /* RadioGroupTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -281,6 +282,7 @@
 		E960F8432D6A9D65F3873172 /* Pods-TestsHostApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestsHostApp.release.xcconfig"; path = "Target Support Files/Pods-TestsHostApp/Pods-TestsHostApp.release.xcconfig"; sourceTree = "<group>"; };
 		F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Thumbprint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2929B52642168D001A711A /* RadioStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStack.swift; sourceTree = "<group>"; };
+		FF2929B72642306F001A711A /* RadioGroupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroupTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -633,6 +635,7 @@
 			isa = PBXGroup;
 			children = (
 				08C81A7C25F5A66B0082FD2D /* AlertBannerUnitTest.swift */,
+				FF2929B72642306F001A711A /* RadioGroupTest.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1047,6 +1050,7 @@
 				08C81CEE25F5A6B60082FD2D /* ToggleChipTest.swift in Sources */,
 				08C81CE225F5A6B60082FD2D /* ButtonTest.swift in Sources */,
 				08C81A8225F5A66B0082FD2D /* UIView+StackViewTests.swift in Sources */,
+				FF2929B82642306F001A711A /* RadioGroupTest.swift in Sources */,
 				08C81CEB25F5A6B60082FD2D /* ButtonRowTest.swift in Sources */,
 				08C81CED25F5A6B60082FD2D /* ButtonStackTest.swift in Sources */,
 				08C81CE925F5A6B60082FD2D /* AlertBannerTest.swift in Sources */,
