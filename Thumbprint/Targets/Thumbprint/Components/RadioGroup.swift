@@ -20,9 +20,11 @@ public final class RadioGroup<Key> where Key: Hashable {
 
     /**
      Some times you want to access the `Radio` objects themselves i.e. for dynamic UI adjustments.
+
+     If the language ever allows, we should return `some Collection where Element = Radio`
      */
-    public var registeredRadios: some Collection {
-        radioToKey.keys
+    public var registeredRadios: AnyCollection<Radio> {
+        AnyCollection(radioToKey.keys)
     }
 
     /**
