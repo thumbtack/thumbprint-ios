@@ -51,7 +51,7 @@ public final class RadioStack: UIView, UIContentSizeCategoryAdjusting {
 
         super.init(frame: .null)
 
-        radioViews.enumerated().forEach { (index, radio) in
+        radioViews.enumerated().forEach { index, radio in
             radioGroup.registerRadio(radio, forKey: index)
         }
 

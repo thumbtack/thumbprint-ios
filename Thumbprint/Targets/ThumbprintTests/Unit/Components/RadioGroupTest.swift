@@ -11,10 +11,10 @@ class RadioGroupTest: UnitTestCase {
             Radio(text: "Two"),
             Radio(text: "Thre"),
             Radio(text: "Four"),
-            Radio(text: "Five")
+            Radio(text: "Five"),
         ]
 
-        radios.enumerated().forEach { (index, radio) in
+        radios.enumerated().forEach { index, radio in
             radioGroup.registerRadio(radio, forKey: index + 1)
         }
 

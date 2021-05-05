@@ -13,7 +13,6 @@ public protocol RadioStackDelegate: AnyObject {
  can be easily uniqued and compared. Updates of the selected radio in the group can be subscribed to using the `selection` publisher property.
  */
 public final class RadioGroup<Key> where Key: Hashable {
-
     /// Relates `Radio` objects to their corresponding key for user selection management.
     private var radioToKey = [Radio: Key]()
 
