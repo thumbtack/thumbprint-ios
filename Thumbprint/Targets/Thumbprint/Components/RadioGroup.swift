@@ -70,10 +70,10 @@ public final class RadioGroup<Key> where Key: Hashable {
      - Parameter key: The key to be associated with the given radio.
      */
     public func registerRadio(_ radio: Radio, forKey key: Key) {
-        guard !radioToKey.keys.contains(radio) else {
-            assertionFailure("Attempted to register radio object \(radio) with key \(key) already registered for key \(String(describing: radioToKey[radio]))")
-            return
-        }
+        assert(
+            !radioToKey.keys.contains(radio),
+            "Attempted to register radio object \(radio) with key \(key) already registered for key \(String(describing: radioToKey[radio]))"
+        )
 
         guard !keyToRadio.keys.contains(key) else {
             assertionFailure("Attempted to register key \(key) for radio \(radio) already registered for radio \(String(describing: keyToRadio[key]))")
