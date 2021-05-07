@@ -2,7 +2,7 @@ import Combine
 import UIKit
 
 // MARK: - Radio Stack
-/// A convenience class for displaying a group of text only radioViews with consistent styling and spacing.
+/// A convenience class for displaying a group of text only radio views with consistent styling and spacing.
 public final class RadioStack: UIView, UIContentSizeCategoryAdjusting {
     /// The radios belonging to this stack
     private let radioViews: [Radio]
