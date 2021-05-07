@@ -5,7 +5,7 @@
 
 Pod::Spec.new do |s|
   s.name = 'Thumbprint'
-  s.version = '0.2.3'
+  s.version = '0.3.0'
   s.summary = 'iOS implementation of Thumbprint design system'
 
   s.description = <<-DESC
@@ -33,7 +33,7 @@ Design system for building user interfaces at Thumbtack.
 
   s.swift_version = '5.0'
   s.platform = :ios
-  s.ios.deployment_target = '12.0'
+  s.ios.deployment_target = '13.0'
 
   s.source_files = 'Thumbprint/Targets/Thumbprint/**/*.swift'
   s.resource_bundles = {
