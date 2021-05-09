@@ -1,0 +1,32 @@
+name: Publish Release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number for new release (x.x.x)'
+        required: true
+jobs:
+  test:
+    name: Run tests
+    runs-on: macos-10.15
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v2
+
+      - name: 🍫 Update podspec
+        run: sh .github/scripts/set_podspec_version.sh "${{ github.events.inputs.version }}"
+
+      - name: 🏷 Create release tag
+        run: git tag "${{ github.events.inputs.version }}" && git push --tags
+
+      - name: 🪧 Create GitHub release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: "${{ github.events.inputs.version }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🚀 Publish pod
+        run: pod trunk push Thumbprint.podspec --allow-warnings
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
