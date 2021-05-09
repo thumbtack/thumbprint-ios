@@ -15,7 +15,7 @@ fi
 # Create PR with the podspec change and merge into `main`.
 git checkout -b "kb/release-$1"
 git add Thumbprint.podspec
-git commit -m "Release ${{ github.events.inputs.version }}"
+git commit -m "Release $1"
 gh pr create --fill
 gh pr review --approve
 gh pr merge --squash
