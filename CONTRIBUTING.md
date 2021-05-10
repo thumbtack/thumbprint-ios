@@ -27,6 +27,21 @@ Here are a few things to keep in mind when creating a pull request:
 
 This will be done by a member of the Thumbtack iOS team when code has been merged and is ready for release.
 
+1. **Go to release workflow:** In GitHub, go to the repo's Actions tab and select the [Release Thumbprint](https://github.com/thumbtack/thumbprint-ios/actions/workflows/release.yml) workflow.
+![Screenshot of Actions tab on GitHub](./.github/release-workflow-screenshot.png)
+2. **Open dialog:** On the righthand side of the blue banner labeled "This workflow has a workflow_dispatch event trigger.", click "Run workflow."
+![Screenshot of the manual trigger dialog](./.github/release-dialog-screenshot.png)
+3. **Update version:** Enter a version number for the release (e.g. `1.2.3`). We follow [semantic versioning](https://semver.org/), so look at the changes that will be included in this release and increment it accordingly. Leave "Branch" as `main`.
+4. **Start job:** Click "Run workflow" to start the release process.
+5. **Manual step:** The script will create a PR that bumps the version in the podspec. *This PR must be merged manually,* as GitHub Actions do not have write access for the `main` branch.
+
+This job
+(a) creates the version bump PR mentioned above
+(b) creates a tag for the release
+(c) creates a release in GitHub tied to this tag
+(d) publishes the new version of the CocoaPod
+
+### Manual process (if GitHub Action is broken)
 1. **Update CocoaPod version:** Update `s.version` in `Thumbprint.podspec`. We follow [semantic versioning](https://semver.org/), so look at the changes that will be included in this release and increment it accordingly.
 2. **Run Pod linter:** In the root directory of the repo, run `pod lib lint`. If there are any errors, resolve them before continuing with the release.
 3. **Commit:** Commit the change you made in step 1 with the subject "Release <version>" (e.g., "Release 1.2.3"). Create and merge a pull request with this commit.

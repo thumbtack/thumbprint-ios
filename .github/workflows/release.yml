@@ -13,16 +13,23 @@ jobs:
       - name: 📥 Checkout
         uses: actions/checkout@v2
 
-      - name: 🍫 Update podspec
-        run: sh .github/scripts/set_podspec_version.sh "$INPUT_VERSION"
+      - name: ⬇️ Install GitHub CLI
+        run: if ![ command -v gh ]; then brew install gh; fi
+
+      - name: 🍫 Bump version in podspec
+        run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🏷 Create release tag
-        run: git tag "$INPUT_VERSION" && git push --tags
+        run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🪧 Create GitHub release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: "$INPUT_VERSION"
+          tag_name: "${{ github.event.inputs.version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
