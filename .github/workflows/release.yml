@@ -14,17 +14,17 @@ jobs:
         uses: actions/checkout@v2
 
       - name: 🍫 Update podspec
-        run: sh .github/scripts/set_podspec_version.sh "$INPUT_VERSION"
+        run: sh .github/scripts/set_podspec_version.sh "${{ inputs.version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🏷 Create release tag
-        run: git tag "$INPUT_VERSION" && git push --tags
+        run: git tag "${{ inputs.version }}" && git push --tags
 
       - name: 🪧 Create GitHub release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: "$INPUT_VERSION"
+          tag_name: "${{ inputs.version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
