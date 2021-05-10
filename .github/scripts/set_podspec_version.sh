@@ -17,7 +17,7 @@ git checkout -b "release/$1"
 git add Thumbprint.podspec
 git commit -m "Release $1"
 git push origin "release/$1"
-gh pr create --title "Release $1"
+gh pr create --title "Release $1" --body ""
 gh pr review --approve
 gh pr merge --squash
 git checkout main
