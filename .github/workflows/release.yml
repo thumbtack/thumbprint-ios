@@ -1,10 +1,9 @@
 name: Publish Release
-on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version number for new release (x.x.x)'
-        required: true
+on: workflow_dispatch
+inputs:
+  version:
+    description: 'Version number for new release (x.x.x)'
+    required: true
 jobs:
   test:
     name: Run tests
