@@ -13,11 +13,11 @@ if ! command -v gh &> /dev/null; then
 fi
 
 # Create PR with the podspec change and merge into `main`.
-git checkout -b "kb/release-$1"
+git checkout -b "release/$1"
 git add Thumbprint.podspec
 git commit -m "Release $1"
-git push origin "kb/release-$1"
-gh pr create --fill
+git push origin "release/$1"
+gh pr create --title "Release $1"
 gh pr review --approve
 gh pr merge --squash
 git checkout main
