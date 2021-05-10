@@ -13,20 +13,44 @@ jobs:
       - name: 📥 Checkout
         uses: actions/checkout@v2
 
-      - name: 🍫 Update podspec
-        run: sh .github/scripts/set_podspec_version.sh "$INPUT_VERSION"
+      - name: ☎️ Set up SSH agent
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          echo ${{ secrets.SSH_PRIVATE_KEY }} >> .github/workflows/secrets/id_ed25519
+          chmod 0600 .github/workflows/secrets/id_ed25519
+          ssh-add .github/workflows/secrets/id_ed25519
+
+      - name: 🍫 Bump version in podspec
+        run: sh .github/scripts/set_podspec_version.sh "${{ github.event.inputs.version }}"
+
+      - name: 💾 Create release commit
+        run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}"
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
       - name: 🏷 Create release tag
-        run: git tag "$INPUT_VERSION" && git push --tags
+        run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}"
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
       - name: 🪧 Create GitHub release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: "$INPUT_VERSION"
+          tag_name: "${{ github.event.inputs.version }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
       - name: 🚀 Publish pod
         run: pod trunk push Thumbprint.podspec --allow-warnings
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+
+      - name: 🧹 Clean up
+        if: always()
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: ssh-add -D; rm .github/workflows/secrets/id_ed25519
