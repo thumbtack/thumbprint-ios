@@ -16,6 +16,7 @@ fi
 git checkout -b "kb/release-$1"
 git add Thumbprint.podspec
 git commit -m "Release $1"
+git push
 gh pr create --fill
 gh pr review --approve
 gh pr merge --squash
