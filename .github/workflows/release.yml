@@ -1,9 +1,10 @@
 name: Publish Release
-on: workflow_dispatch
-inputs:
-  version:
-    description: 'Version number for new release (x.x.x)'
-    required: true
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number for new release (x.x.x)'
+        required: true
 jobs:
   test:
     name: Run tests
@@ -13,17 +14,17 @@ jobs:
         uses: actions/checkout@v2
 
       - name: 🍫 Update podspec
-        run: sh .github/scripts/set_podspec_version.sh "${{ inputs.version }}"
+        run: sh .github/scripts/set_podspec_version.sh "${{ github.event.inputs.version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🏷 Create release tag
-        run: git tag "${{ inputs.version }}" && git push --tags
+        run: git tag "${{ github.event.inputs.version }}" && git push --tags
 
       - name: 🪧 Create GitHub release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: "${{ inputs.version }}"
+          tag_name: "${{ github.event.inputs.version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
