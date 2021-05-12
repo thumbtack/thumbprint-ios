@@ -69,8 +69,13 @@ public class Chip: Control {
     private var feedbackGenerator: UISelectionFeedbackGenerator?
 
     // MARK: - Public API
-    public init(adjustsFontForContentSizeCategory: Bool = true) {
-        self.pill = ChipPill(adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
+    public convenience init(adjustsFontForContentSizeCategory: Bool = true) {
+        let pill = ChipPill(adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
+        self.init(pill: pill)
+    }
+
+    public init(pill: ChipPill) {
+        self.pill = pill
         self.isHapticFeedbackEnabled = true
 
         super.init(frame: .null)
@@ -198,7 +203,7 @@ extension Chip: UIContentSizeCategoryAdjusting {
 private class ChipPill: Pill {
     // MARK: - Class configuration
 
-    override class var defaultHeight: CGFloat {
+    open override class var defaultHeight: CGFloat {
         return 32.0
     }
 
@@ -206,7 +211,7 @@ private class ChipPill: Pill {
         return 16.0
     }
 
-    override class var textStyle: Font.TextStyle {
+    open override class var textStyle: Font.TextStyle {
         return .title8
     }
 
