@@ -249,7 +249,7 @@ open class ChipPill: Pill {
         }
     }
 
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
 
         //  Configure the border as set up.
