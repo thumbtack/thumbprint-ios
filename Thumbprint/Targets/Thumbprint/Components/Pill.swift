@@ -6,7 +6,7 @@ import UIKit
  See documentation at https://thumbprint.design/components/pill/ios
 
  Pills often get used, as a UI element, for other purposes beyond simple informative labels so the API presented
- here is a bit more exptensive than what is needed for the component's ostensible intended use.
+ here is a bit more extensive than what is needed for the component's ostensible intended use.
  */
 open class Pill: UIView, UIContentSizeCategoryAdjusting {
     // MARK: - Class configuration
