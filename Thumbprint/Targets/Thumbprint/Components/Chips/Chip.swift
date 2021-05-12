@@ -200,7 +200,7 @@ extension Chip: UIContentSizeCategoryAdjusting {
 /**
  Basically a pill with facilities to add a border.
  */
-private class ChipPill: Pill {
+open class ChipPill: Pill {
     // MARK: - Class configuration
 
     open override class var defaultHeight: CGFloat {
