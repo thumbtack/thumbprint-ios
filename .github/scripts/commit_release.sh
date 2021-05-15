@@ -16,4 +16,4 @@ rm Thumbprint.podspec.bak
 # Commit changes and push.
 git add --all
 git commit -m "Release $1"
-git -c core.sshCommand="ssh- i $2" push origin main
+git -c core.sshCommand="ssh -i $2" push origin main
