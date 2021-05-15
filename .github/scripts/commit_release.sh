@@ -11,6 +11,7 @@ rm Thumbprint.podspec.bak
 # Commit changes and push.
 git add --all
 git commit -m "Release $1"
+git -c core.sshCommand="ssh -i $2" push origin $(git branch --show-current)
 curl \
   -X POST \
   -H "Accept: application/vnd.github.v3+json" \

@@ -2,5 +2,5 @@
 
 set -e -o pipefail
 
-git tag "${{ github.event.inputs.version }}"
-git -c core.sshCommand="ssh -i $1" push --tags
+git tag "$1"
+git -c core.sshCommand="ssh -i $2" push --tags
