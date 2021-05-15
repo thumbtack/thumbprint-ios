@@ -20,24 +20,15 @@ jobs:
           chmod 0600 .github/workflows/secrets/id_ed25519
 
       - name: 🍫 Bump version in podspec
-        run: sh .github/scripts/set_podspec_version.sh "${{ github.event.inputs.version }}"
-
-      - name: 💾 Create release commit
         run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}" ".github/workflows/secrets/id_ed25519"
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
       - name: 🏷 Create release tag
         run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}" ".github/workflows/secrets/id_ed25519"
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
       - name: 🪧 Create GitHub release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: "${{ github.event.inputs.version }}"
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
       - name: 🚀 Publish pod
         run: pod trunk push Thumbprint.podspec --allow-warnings
