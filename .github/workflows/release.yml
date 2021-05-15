@@ -13,16 +13,10 @@ jobs:
       - name: 📥 Checkout
         uses: actions/checkout@v2
 
-      - name: ☎️ Set up SSH agent
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      - name: ☎️ Set up SSH key
         run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          echo ${{ secrets.SSH_PRIVATE_KEY }} >> .github/workflows/secrets/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}"" >> .github/workflows/secrets/id_ed25519
           chmod 0600 .github/workflows/secrets/id_ed25519
-          ssh-add .github/workflows/secrets/id_ed25519
 
       - name: 🍫 Bump version in podspec
         run: sh .github/scripts/set_podspec_version.sh "${{ github.event.inputs.version }}"
