@@ -15,7 +15,7 @@ jobs:
 
       - name: ☎️ Set up SSH key
         run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" >> .github/workflows/secrets/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > .github/workflows/secrets/id_ed25519
           chmod 0600 .github/workflows/secrets/id_ed25519
 
       - name: 🍫 Bump version in podspec
@@ -47,4 +47,5 @@ jobs:
         if: always()
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: ssh-add -D; rm .github/workflows/secrets/id_ed25519
+        run: |
+          rm .github/workflows/secrets/id_ed25519
