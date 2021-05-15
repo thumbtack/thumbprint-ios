@@ -15,6 +15,7 @@ jobs:
 
       - name: ☎️ Set up SSH key
         run: |
+          mkdir -p .github/workflows/secrets/
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > .github/workflows/secrets/id_ed25519
           chmod 0600 .github/workflows/secrets/id_ed25519
 
@@ -48,4 +49,4 @@ jobs:
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          rm .github/workflows/secrets/id_ed25519
+          rm -r .github/workflows/secrets/
