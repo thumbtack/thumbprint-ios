@@ -28,12 +28,12 @@ jobs:
         run: sh .github/scripts/set_podspec_version.sh "${{ github.event.inputs.version }}"
 
       - name: 💾 Create release commit
-        run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}"
+        run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}" ".github/workflows/secrets/id_ed25519"
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
       - name: 🏷 Create release tag
-        run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}"
+        run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}" ".github/workflows/secrets/id_ed25519"
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
