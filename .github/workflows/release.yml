@@ -13,9 +13,6 @@ jobs:
       - name: 📥 Checkout
         uses: actions/checkout@v2
 
-      - name: ⬇️ Install GitHub CLI
-        run: if ![ command -v gh ]; then brew install gh; fi
-
       - name: ☎️ Set up SSH key
         run: |
           mkdir -p .github/tmp/

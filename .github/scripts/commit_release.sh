@@ -11,4 +11,8 @@ rm Thumbprint.podspec.bak
 # Commit changes and push.
 git add --all
 git commit -m "Release $1"
-gh pr create --title "Release $1" --body ""
+curl \
+  -X POST \
+  -H "Accept: application/vnd.github.v3+json" \
+  https://api.github.com/repos/thumbtack/thumbprint-ios/pulls \
+  -d "{\"head\":\"head\",\"base\":\"main\",\"title\": \"Release $1\",\"body\":\"\"}"
