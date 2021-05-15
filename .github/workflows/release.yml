@@ -1,4 +1,4 @@
-name: Publish Release
+name: Release Thumbprint
 on:
   workflow_dispatch:
     inputs:
@@ -6,8 +6,8 @@ on:
         description: 'Version number for new release (x.x.x)'
         required: true
 jobs:
-  test:
-    name: Run tests
+  release:
+    name: Publish CocoaPod
     runs-on: macos-10.15
     steps:
       - name: 📥 Checkout
