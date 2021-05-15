@@ -15,4 +15,4 @@ curl \
   -X POST \
   -H "Accept: application/vnd.github.v3+json" \
   https://api.github.com/repos/thumbtack/thumbprint-ios/pulls \
-  -d "{\"head\":\"head\",\"base\":\"main\",\"title\": \"Release $1\",\"body\":\"\"}"
+  -d "{\"head\":\"$(git branch --show-current)\",\"base\":\"main\",\"title\": \"Release $1\",\"body\":\"\"}"
