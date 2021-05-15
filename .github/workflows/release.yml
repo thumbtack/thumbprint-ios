@@ -15,15 +15,15 @@ jobs:
 
       - name: ☎️ Set up SSH key
         run: |
-          mkdir -p .github/workflows/secrets/
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > .github/workflows/secrets/id_ed25519
-          chmod 0600 .github/workflows/secrets/id_ed25519
+          mkdir -p .github/tmp/
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > .github/tmp/id_ed25519
+          chmod 0600 .github/tmp/id_ed25519
 
       - name: 🍫 Bump version in podspec
-        run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}" ".github/workflows/secrets/id_ed25519"
+        run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}" ".github/tmp/id_ed25519"
 
       - name: 🏷 Create release tag
-        run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}" ".github/workflows/secrets/id_ed25519"
+        run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}" ".github/tmp/id_ed25519"
 
       - name: 🪧 Create GitHub release
         uses: softprops/action-gh-release@v1
@@ -37,7 +37,5 @@ jobs:
 
       - name: 🧹 Clean up
         if: always()
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          rm -r .github/workflows/secrets/
+          rm -r .github/tmp/
