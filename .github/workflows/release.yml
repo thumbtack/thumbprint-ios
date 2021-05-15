@@ -13,14 +13,13 @@ jobs:
       - name: 📥 Checkout
         uses: actions/checkout@v2
 
-      - name: ☎️ Set up SSH key
-        run: |
-          mkdir -p .github/tmp/
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > .github/tmp/id_ed25519
-          chmod 0600 .github/tmp/id_ed25519
+      - name: ⬇️ Install GitHub CLI
+        run: if ![ command -v gh ]; then brew install gh; fi
 
       - name: 🍫 Bump version in podspec
         run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}" ".github/tmp/id_ed25519"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🏷 Create release tag
         run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}" ".github/tmp/id_ed25519"
@@ -29,6 +28,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: "${{ github.event.inputs.version }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🚀 Publish pod
         run: pod trunk push Thumbprint.podspec --allow-warnings
