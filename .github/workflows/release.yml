@@ -15,7 +15,7 @@ jobs:
 
       - name: ☎️ Set up SSH key
         run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}"" >> .github/workflows/secrets/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" >> .github/workflows/secrets/id_ed25519
           chmod 0600 .github/workflows/secrets/id_ed25519
 
       - name: 🍫 Bump version in podspec
