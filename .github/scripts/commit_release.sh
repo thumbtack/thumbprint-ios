@@ -2,6 +2,8 @@
 
 set -e -o pipefail
 
+git checkout -b "release/$1"
+
 # Update version in podspec.
 # (Search podspec for `.version = '1.2.3` and update with new version
 # number passed in as script argument).

@@ -37,8 +37,3 @@ jobs:
         run: pod trunk push Thumbprint.podspec --allow-warnings
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-
-      - name: 🧹 Clean up
-        if: always()
-        run: |
-          rm -r .github/tmp/
