@@ -32,10 +32,11 @@ This will be done by a member of the Thumbtack iOS team when code has been merge
 2. **Open dialog:** On the righthand side of the blue banner labeled "This workflow has a workflow_dispatch event trigger.", click "Run workflow."
 ![Screenshot of the manual trigger dialog](./.github/release-dialog-screenshot.png)
 3. **Update version:** Enter a version number for the release (e.g. `1.2.3`). We follow [semantic versioning](https://semver.org/), so look at the changes that will be included in this release and increment it accordingly. Leave "Branch" as `main`.
-4. **Start job:** Click "Run workflow" to start the release process.
+4. **Start action:** Click "Run workflow" to start the release process.
 5. **Manual step:** The script will create a PR that bumps the version in the podspec. *This PR must be merged manually,* as GitHub Actions do not have write access for the `main` branch.
+6. **Manual step:** Update the description of the [GitHub release](https://github.com/thumbtack/thumbprint-ios/releases) created by the action with the changes included in this version.
 
-This job
+This action
 (a) creates the version bump PR mentioned above
 (b) creates a tag for the release
 (c) creates a release in GitHub tied to this tag
