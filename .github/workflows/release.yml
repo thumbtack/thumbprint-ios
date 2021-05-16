@@ -17,12 +17,14 @@ jobs:
         run: if ![ command -v gh ]; then brew install gh; fi
 
       - name: 🍫 Bump version in podspec
-        run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}" ".github/tmp/id_ed25519"
+        run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🏷 Create release tag
-        run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}" ".github/tmp/id_ed25519"
+        run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🪧 Create GitHub release
         uses: softprops/action-gh-release@v1
