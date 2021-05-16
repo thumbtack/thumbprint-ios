@@ -1,5 +1,6 @@
 [![Build Status](https://github.com/thumbtack/thumbprint-ios/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/thumbtack/thumbprint-ios/actions/workflows/ci.yml)
 [![CocoaPod Latest Version](https://shields.io/cocoapods/v/Thumbprint?color=informational)](https://github.com/thumbtack/thumbprint-ios/releases)
+[![License](https://badgen.net/github/license/thumbtack/thumbprint-ios)](https://github.com/thumbtack/thumbprint-ios/blob/main/LICENSE)
 
 ![Thumbprint iOS header](./.github/thumbprint-header.png)
 
