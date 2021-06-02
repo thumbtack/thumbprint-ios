@@ -1,9 +1,3 @@
-//
-//  ButtonUnitTest.swift
-//  ThumbprintTests
-//
-//  Created by yliao on 6/2/21.
-//
 @testable import Thumbprint
 import XCTest
 
