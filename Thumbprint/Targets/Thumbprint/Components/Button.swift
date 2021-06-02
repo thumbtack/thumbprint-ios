@@ -141,16 +141,6 @@ public final class Button: Control, UIContentSizeCategoryAdjusting {
         }
     }
 
-    public override var accessibilityLabel: String? {
-        get {
-            title
-        }
-        set {
-            _ = newValue
-            assertionFailure("Accessibility label of Thumbprint buttons is set to the button's title, and so cannot be overridden.")
-        }
-    }
-
     public override var intrinsicContentSize: CGSize {
         var intrinsicWidth = size.contentPadding.width * 2.0 + titleLabel.intrinsicContentSize.width
         if icon != nil {
@@ -355,6 +345,10 @@ private extension Button {
             titleLabel.text = newValue
         }
         invalidateIntrinsicContentSize()
+
+        if accessibilityLabel == nil {
+            accessibilityLabel = newValue
+        }
     }
 
     private func updateTheme() {
