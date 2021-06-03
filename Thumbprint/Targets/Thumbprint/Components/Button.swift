@@ -143,11 +143,10 @@ public final class Button: Control, UIContentSizeCategoryAdjusting {
 
     public override var accessibilityLabel: String? {
         get {
-            title
+            super.accessibilityLabel ?? title
         }
         set {
-            _ = newValue
-            assertionFailure("Accessibility label of Thumbprint buttons is set to the button's title, and so cannot be overridden.")
+            super.accessibilityLabel = newValue
         }
     }
 
