@@ -3,4 +3,4 @@
 set -e -o pipefail
 
 git tag "$1"
-git push --tags
+git push --tags https://$GITHUB_TOKEN@github.com/thumbtack/thumbprint-ios.git
