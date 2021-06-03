@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v2
+        persist-credentials: false
 
       - name: ⬇️ Install GitHub CLI
         run: if ![ command -v gh ]; then brew install gh; fi
