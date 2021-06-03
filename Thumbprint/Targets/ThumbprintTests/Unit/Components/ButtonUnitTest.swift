@@ -2,7 +2,6 @@
 import XCTest
 
 class ButtonUnitTest: XCTestCase {
-
     func testAccessibilityLabel() {
         let button = Button()
         XCTAssertNil(button.title)
@@ -20,5 +19,4 @@ class ButtonUnitTest: XCTestCase {
         button.title = nil
         XCTAssertEqual(button.accessibilityLabel, "smash it to select an item")
     }
-
 }
