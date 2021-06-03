@@ -5,7 +5,7 @@
 
 Pod::Spec.new do |s|
   s.name = 'Thumbprint'
-  s.version = '0.3.1'
+  s.version = '0.4'
   s.summary = 'iOS implementation of Thumbprint design system'
 
   s.description = <<-DESC
