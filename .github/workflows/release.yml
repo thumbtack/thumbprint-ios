@@ -24,14 +24,14 @@ jobs:
       - name: 🏷 Create release tag
         run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PERSONAL_ACCESS_TOKEN }}
 
       - name: 🪧 Create GitHub release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: "${{ github.event.inputs.version }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PERSONAL_ACCESS_TOKEN }}
 
       - name: 🚀 Publish pod
         run: pod trunk push Thumbprint.podspec --allow-warnings
