@@ -12,16 +12,11 @@ jobs:
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-
-      - name: ⬇️ Install GitHub CLI
-        run: if ![ command -v gh ]; then brew install gh; fi
 
       - name: 🍫 Bump version in podspec
         run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PERSONAL_ACCESS_TOKEN }}
 
       - name: 🏷 Create release tag
         run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}"
