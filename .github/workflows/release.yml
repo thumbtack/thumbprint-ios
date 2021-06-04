@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.RELEASE_PERSONAL_ACCESS_TOKEN }}
+          persist-credentials: false
 
       - name: 🍫 Bump version in podspec
         run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}"
