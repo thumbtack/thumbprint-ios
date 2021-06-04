@@ -7,8 +7,11 @@ git checkout -b "release/$1"
 # Update version in podspec.
 # (Search podspec for `.version = '1.2.3` and update with new version
 # number passed in as script argument).
-sed -i.bak -E "s/\.version *= *(["'"'"'])[0-9](\.[0-9])?(\.[0-9])?["'"'"']/.version = \1$1\1/g" Thumbprint.podspec
-rm Thumbprint.podspec.bak
+#
+# Regex pattern adapted from
+# https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+# for compatibility with sed.
+sed -i "" -E "s/\.version *= *(["'"'"'])(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-(0|[1-9][0-9]]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?["'"'"']/.version = \1$1\1/g" Thumbprint.podspec
 
 # Commit changes and push.
 git add --all
