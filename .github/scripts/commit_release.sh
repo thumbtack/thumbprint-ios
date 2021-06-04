@@ -14,4 +14,4 @@ rm Thumbprint.podspec.bak
 git add --all
 git commit -m "Release $1"
 git push https://$GITHUB_TOKEN@github.com/thumbtack/thumbprint-ios.git $(git branch --show-current)
-gh pr create --title "Release $1" --body ""
+gh pr create --title "Release $1" --body "" --head $(git branch --show-current)
