@@ -106,6 +106,8 @@
 		FF2929B62642168D001A711A /* RadioStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B52642168D001A711A /* RadioStack.swift */; };
 		FF2929B82642306F001A711A /* RadioGroupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B72642306F001A711A /* RadioGroupTest.swift */; };
 		FF292A96264250CF001A711A /* RadioGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF292A95264250CF001A711A /* RadioGroup.swift */; };
+		FF332814267748AC009D344B /* LabelCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF332813267748AC009D344B /* LabelCheckbox.swift */; };
+		FF33281626774AF6009D344B /* LabelCheckboxTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33281526774AF6009D344B /* LabelCheckboxTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -287,6 +289,8 @@
 		FF2929B52642168D001A711A /* RadioStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStack.swift; sourceTree = "<group>"; };
 		FF2929B72642306F001A711A /* RadioGroupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroupTest.swift; sourceTree = "<group>"; };
 		FF292A95264250CF001A711A /* RadioGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroup.swift; sourceTree = "<group>"; };
+		FF332813267748AC009D344B /* LabelCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCheckbox.swift; sourceTree = "<group>"; };
+		FF33281526774AF6009D344B /* LabelCheckboxTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCheckboxTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -481,9 +485,6 @@
 		08C819A925F574460082FD2D /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				08C819CB25F574460082FD2D /* CalendarPicker */,
-				08C819B825F574460082FD2D /* Chips */,
-				08C819AF25F574460082FD2D /* FloatingActionButton */,
 				08C819B225F574460082FD2D /* AlertBanner.swift */,
 				08C819B625F574460082FD2D /* Avatar.swift */,
 				08C819C125F574460082FD2D /* Button.Model.swift */,
@@ -497,6 +498,7 @@
 				08C819B725F574460082FD2D /* Footer.swift */,
 				08C819BD25F574460082FD2D /* IconButton.swift */,
 				08C819AB25F574460082FD2D /* Label.swift */,
+				FF332813267748AC009D344B /* LabelCheckbox.swift */,
 				08C819C925F574460082FD2D /* LoaderDots.swift */,
 				08C819BC25F574460082FD2D /* NavigationBar.swift */,
 				08C819CA25F574460082FD2D /* Pill.swift */,
@@ -511,6 +513,9 @@
 				08C819C025F574460082FD2D /* TextInput.swift */,
 				08C819D525F574470082FD2D /* Toast.swift */,
 				08C819B325F574460082FD2D /* UserAvatar.swift */,
+				08C819CB25F574460082FD2D /* CalendarPicker */,
+				08C819B825F574460082FD2D /* Chips */,
+				08C819AF25F574460082FD2D /* FloatingActionButton */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -661,6 +666,7 @@
 				08C81CDA25F5A6B60082FD2D /* FooterTest.swift */,
 				08C81CD725F5A6B60082FD2D /* IconButtonTest.swift */,
 				08C81A9A25F5A6B10082FD2D /* IconFloatingActionButtonTest.swift */,
+				FF33281526774AF6009D344B /* LabelCheckboxTest.swift */,
 				08C81CD925F5A6B60082FD2D /* LoaderDotsTest.swift */,
 				08C81A9825F5A6B10082FD2D /* NavigationBarTest.swift */,
 				08C81A9C25F5A6B10082FD2D /* PillTest.swift */,
@@ -1002,6 +1008,7 @@
 				080E6F7125FFD38D006D8056 /* TextArea.swift in Sources */,
 				080E6F4325FFD38D006D8056 /* Font.swift in Sources */,
 				080E6F4625FFD38D006D8056 /* PartialSheetPresentation.swift in Sources */,
+				FF332814267748AC009D344B /* LabelCheckbox.swift in Sources */,
 				080E6F5325FFD38D006D8056 /* ButtonRow.swift in Sources */,
 				080E6F4825FFD38D006D8056 /* Slider.swift in Sources */,
 				080E6F6925FFD38D006D8056 /* PartialSheetPresentationController.swift in Sources */,
@@ -1049,6 +1056,7 @@
 				B98FE98D2668312400B52979 /* ButtonUnitTest.swift in Sources */,
 				08C81CDE25F5A6B60082FD2D /* TabBarTest.swift in Sources */,
 				08C81CE425F5A6B60082FD2D /* CalendarPickerTest.swift in Sources */,
+				FF33281626774AF6009D344B /* LabelCheckboxTest.swift in Sources */,
 				08C81CE825F5A6B60082FD2D /* NavigationBarTest.swift in Sources */,
 				08C81CEC25F5A6B60082FD2D /* PillTest.swift in Sources */,
 				08C81A8025F5A66B0082FD2D /* AlertBannerUnitTest.swift in Sources */,
