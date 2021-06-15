@@ -1,9 +1,9 @@
 import UIKit
 
 public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
-    public enum ContentPlacement: String {
-        case left
-        case right
+    public enum LabelPlacement: String {
+        case leading
+        case trailing
     }
 
     // MARK: - Public State Management
@@ -49,19 +49,27 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
     }
 
     /// Sets the content placement in accordance to the checkbox. If right, content will be placed to the right of the checkbox.
-    public var contentPlacement: ContentPlacement = .right {
+    public var labelPlacement: LabelPlacement = .trailing {
         didSet {
-            if contentPlacement != oldValue {
-                if contentPlacement == .right {
-                    label.textAlignment = .left
-                    NSLayoutConstraint.deactivate(leftAlignmentConstraints)
-                    NSLayoutConstraint.activate(rightAlignmentConstraints)
-                } else {
-                    label.textAlignment = .right
-                    NSLayoutConstraint.deactivate(rightAlignmentConstraints)
-                    NSLayoutConstraint.activate(leftAlignmentConstraints)
-                }
+            guard labelPlacement != oldValue else {
+                return
             }
+
+            apply(labelPlacement: labelPlacement)
+        }
+    }
+
+    private func apply(labelPlacement: LabelPlacement) {
+        label.removeFromSuperview()
+        checkbox.removeFromSuperview()
+        switch labelPlacement {
+        case .trailing:
+            contentsStack.addArrangedSubview(checkbox)
+            contentsStack.addArrangedSubview(label)
+
+        case .leading:
+            contentsStack.addArrangedSubview(label)
+            contentsStack.addArrangedSubview(checkbox)
         }
     }
 
@@ -84,25 +92,19 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
         }
         set {
             label.textStyle = newValue
-            setNeedsUpdateConstraints()
         }
     }
 
-    public var contentInsets: UIEdgeInsets = .zero {
+    public var contentInsets: NSDirectionalEdgeInsets = .zero {
         didSet {
-            if contentInsets != oldValue {
-                labelLeftSuperviewConstraint.constant = contentInsets.left
-                checkboxLeftSuperviewConstraint.constant = contentInsets.left
-
-                labelRightSuperviewConstraint.constant = 0 - contentInsets.right
-                checkboxRightSuperviewConstraint.constant = 0 - contentInsets.right
-
-                labelTopConstraint.constant = contentInsets.top
-                checkboxTopConstraint.constant = contentInsets.top
-
-                labelBottomConstraint.constant = 0 - contentInsets.bottom
-                checkboxBottomConstraint.constant = 0 - contentInsets.bottom
+            guard contentInsets != oldValue else {
+                return
             }
+
+            leadingInsetConstraint.constant = contentInsets.leading
+            topInsetConstraint.constant = contentInsets.top
+            trailingInsetConstraint.constant = -contentInsets.trailing
+            bottomInsetConstraint.constant = -contentInsets.bottom
         }
     }
 
@@ -156,31 +158,27 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
     }
 
     // MARK: - Private Implementation
+    private let contentsStack: UIStackView = {
+        let stack = UIStackView()
+        stack.spacing = Space.two
+        stack.alignment = .center
+        return stack
+    }()
     private let checkbox = Checkbox()
     private let label: Label
-    private var checkboxIconCenterYConstraint: NSLayoutConstraint?
 
-    private lazy var checkboxLeftSuperviewConstraint = checkbox.leftAnchor.constraint(equalTo: leftAnchor)
-    private lazy var checkboxRightSuperviewConstraint = checkbox.rightAnchor.constraint(equalTo: rightAnchor)
-    private lazy var labelLeftSuperviewConstraint = label.leftAnchor.constraint(equalTo: leftAnchor)
-    private lazy var labelRightSuperviewConstraint = label.rightAnchor.constraint(equalTo: rightAnchor)
-
-    private lazy var labelTopConstraint = label.topAnchor.constraint(greaterThanOrEqualTo: topAnchor)
-    private lazy var labelBottomConstraint = label.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
-    private lazy var checkboxTopConstraint = checkbox.topAnchor.constraint(greaterThanOrEqualTo: topAnchor)
-    private lazy var checkboxBottomConstraint = checkbox.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
-
-    private lazy var leftAlignmentConstraints: [NSLayoutConstraint] = [
-        label.rightAnchor.constraint(equalTo: checkbox.leftAnchor, constant: 0 - Space.two),
-        labelLeftSuperviewConstraint,
-        checkboxRightSuperviewConstraint,
-    ]
-
-    private lazy var rightAlignmentConstraints: [NSLayoutConstraint] = [
-        checkbox.rightAnchor.constraint(equalTo: label.leftAnchor, constant: 0 - Space.two),
-        checkboxLeftSuperviewConstraint,
-        labelRightSuperviewConstraint,
-    ]
+    private lazy var leadingInsetConstraint: NSLayoutConstraint = {
+        leadingAnchor.constraint(equalTo: contentsStack.leadingAnchor)
+    }()
+    private lazy var topInsetConstraint: NSLayoutConstraint = {
+        topAnchor.constraint(equalTo: contentsStack.topAnchor)
+    }()
+    private lazy var trailingInsetConstraint: NSLayoutConstraint = {
+        contentsStack.trailingAnchor.constraint(equalTo: trailingAnchor)
+    }()
+    private lazy var bottomInsetConstraint: NSLayoutConstraint = {
+        contentsStack.bottomAnchor.constraint(equalTo: bottomAnchor)
+    }()
 
     /// Creates and returns a new checkbox with label.
     ///
@@ -193,39 +191,20 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
 
         super.init(frame: .null)
 
+        //  Set up the contents stack.
+        addSubview(contentsStack)
+        NSLayoutConstraint.activate([leadingInsetConstraint, topInsetConstraint, trailingInsetConstraint, bottomInsetConstraint])
+
         label.text = text
-        label.textAlignment = .left
+        label.textAlignment = .natural
 
-        addSubview(checkbox)
-        addSubview(label)
-
-        checkbox.translatesAutoresizingMaskIntoConstraints = false
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        // The original implementation of this class utilized SnapKit's remakeConstraints()
-        // method for dealing with left/right alignment swapping.  However, this method has
-        // proven be to both slow and buggy (https://github.com/SnapKit/SnapKit/issues/571),
-        // so we've opted to fall back to the vanilla Auto Layout API.
-        NSLayoutConstraint.activate(
-            rightAlignmentConstraints +
-                [
-                    labelTopConstraint,
-                    labelBottomConstraint,
-                    checkboxTopConstraint,
-                    checkboxBottomConstraint,
-                ]
-        )
-
-        let constant: CGFloat = (0 - label.font.capHeight) / 2.0
-        self.checkboxIconCenterYConstraint = checkbox.centerYAnchor.constraint(equalTo: label.firstBaselineAnchor, constant: constant)
-        checkboxIconCenterYConstraint?.isActive = true
+        // Will add to contentsStack the right way.
+        apply(labelPlacement: labelPlacement)
 
         checkbox.isUserInteractionEnabled = false
 
         setContentHuggingPriority(.required, for: .horizontal)
         setContentHuggingPriority(.required, for: .vertical)
-
-        setNeedsUpdateConstraints()
     }
 
     public override func layoutSubviews() {
@@ -259,20 +238,6 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        if traitCollection.preferredContentSizeCategory != previousTraitCollection?.preferredContentSizeCategory {
-            setNeedsUpdateConstraints()
-        }
-    }
-
-    public override func updateConstraints() {
-        let constant: CGFloat = (0 - label.font.capHeight) / 2.0
-        checkboxIconCenterYConstraint?.constant = constant
-
-        super.updateConstraints()
     }
 
     public override func endTracking(_ touch: UITouch?, with event: UIEvent?) {

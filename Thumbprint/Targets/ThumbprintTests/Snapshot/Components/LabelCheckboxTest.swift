@@ -99,13 +99,13 @@ class LabelCheckboxTest: SnapshotTestCase {
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxContentLeft() {
-        labelCheckbox.contentPlacement = .left
+    func testLabelCheckboxContentLeading() {
+        labelCheckbox.labelPlacement = .leading
         verifyLabelCheckbox()
     }
 
     func testLabelCheckboxContentInsets() {
-        labelCheckbox.contentInsets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+        labelCheckbox.contentInsets = .init(top: 10, leading: 20, bottom: 30, trailing: 40)
         verifyLabelCheckbox()
     }
 
