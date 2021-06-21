@@ -3,7 +3,7 @@ on: push
 jobs:
   test:
     name: Run tests
-    runs-on: macos-11.0
+    runs-on: macos-11
     strategy:
       matrix:
         # Adding additional destinations, schemes, etc. here will make GitHub run the steps
