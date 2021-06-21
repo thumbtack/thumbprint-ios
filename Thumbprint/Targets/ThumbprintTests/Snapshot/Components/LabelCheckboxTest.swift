@@ -2,124 +2,138 @@
 import XCTest
 
 class LabelCheckboxTest: SnapshotTestCase {
-    var labelCheckbox: LabelCheckbox!
-
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-
-        labelCheckbox = LabelCheckbox(text: "This is a label checkbox", adjustsFontForContentSizeCategory: true)
-    }
-
-    override func tearDownWithError() throws {
-        labelCheckbox = nil
-
-        try super.tearDownWithError()
-    }
-
-
     func testLabelCheckboxEmpty() {
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { _ in
+        }
     }
 
     func testLabelCheckboxEmptyDisabled() {
-        labelCheckbox.isEnabled = false
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.isEnabled = false
+        }
     }
 
     func testLabelCheckboxEmptyHighlighted() {
-        labelCheckbox.isHighlighted = true
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.isHighlighted = true
+        }
     }
 
     func testLabelCheckboxEmptyError() {
-        labelCheckbox.hasError = true
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.hasError = true
+        }
     }
 
     func testLabelCheckboxEmptyLarge() {
-        labelCheckbox.checkBoxSize = 80
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.checkBoxSize = 80
+        }
     }
 
     func testLabelCheckboxChecked() {
-        labelCheckbox.isSelected = true
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.isSelected = true
+        }
     }
 
     func testLabelCheckboxCheckedDisabled() {
-        labelCheckbox.isSelected = true
-        labelCheckbox.isEnabled = false
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.isSelected = true
+            labelCheckbox.isEnabled = false
+        }
     }
 
     func testLabelCheckboxCheckedHighlighted() {
-        labelCheckbox.isSelected = true
-        labelCheckbox.isHighlighted = true
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.isSelected = true
+            labelCheckbox.isHighlighted = true
+        }
     }
 
     func testLabelCheckboxCheckedError() {
-        labelCheckbox.isSelected = true
-        labelCheckbox.hasError = true
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.isSelected = true
+            labelCheckbox.hasError = true
+        }
     }
 
     func testLabelCheckboxCheckedLarge() {
-        labelCheckbox.checkBoxSize = 80
-        labelCheckbox.isSelected = true
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.checkBoxSize = 80
+            labelCheckbox.isSelected = true
+        }
     }
 
     func testLabelCheckboxIntermediate() {
-        labelCheckbox.mark = .intermediate
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.mark = .intermediate
+        }
     }
 
     func testLabelCheckboxIntermediateDisabled() {
-        labelCheckbox.mark = .intermediate
-        labelCheckbox.isEnabled = false
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.mark = .intermediate
+            labelCheckbox.isEnabled = false
+        }
     }
 
     func testLabelCheckboxIntermediateHighlighted() {
-        labelCheckbox.mark = .intermediate
-        labelCheckbox.isHighlighted = true
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.mark = .intermediate
+            labelCheckbox.isHighlighted = true
+        }
     }
 
     func testLabelCheckboxIntermediateError() {
-        labelCheckbox.mark = .intermediate
-        labelCheckbox.hasError = true
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.mark = .intermediate
+            labelCheckbox.hasError = true
+        }
     }
 
     func testLabelCheckboxIntermediateLarge() {
-        labelCheckbox.checkBoxSize = 80
-        labelCheckbox.mark = .intermediate
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.checkBoxSize = 80
+            labelCheckbox.mark = .intermediate
+        }
     }
 
     func testLabelCheckboxLeadingLabel() {
-        labelCheckbox.labelPlacement = .leading
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.labelPlacement = .leading
+        }
     }
 
     func testLabelCheckboxContentInsets() {
-        labelCheckbox.contentInsets = .init(top: 10, leading: 20, bottom: 30, trailing: 40)
-        verifyLabelCheckbox()
+        verifyLabelCheckbox { labelCheckbox in
+            labelCheckbox.contentInsets = .init(top: 10, leading: 20, bottom: 30, trailing: 40)
+        }
     }
 
     func testLabelCheckboxMultilineText() {
-        labelCheckbox.numberOfLines = 0
-        labelCheckbox.text = "This is a checkbox label text that will spread out over multiple lines because this text is too big to fit on one line"
-        verifyLabelCheckbox(limitedWidth: true)
+        verifyLabelCheckbox(limitedWidth: true) { labelCheckbox in
+            labelCheckbox.numberOfLines = 0
+            labelCheckbox.text = "This is a checkbox label text that will spread out over multiple lines because this text is too big to fit on one line"
+        }
+    }
+
+    func testLabelCheckboxExtraSpaceLeading() {
+        verifyLabelCheckbox(limitedWidth: true) { labelCheckbox in
+            labelCheckbox.text = "Checkbox!"
+            labelCheckbox.labelPlacement = .leading
+        }
     }
 
     // MARK: - Private
 
-    private func verifyLabelCheckbox(limitedWidth: Bool = false) {
+    private func verifyLabelCheckbox(limitedWidth: Bool = false, configure: @escaping (LabelCheckbox) -> Void) {
         verify(
-            view: labelCheckbox,
+            viewFactory: {
+                let labelCheckbox = LabelCheckbox(text: "This is a label checkbox", adjustsFontForContentSizeCategory: true)
+                configure(labelCheckbox)
+                return labelCheckbox
+            },
             sizes: [limitedWidth ? .defaultWidthIntrinsicHeight : .intrinsic],
             verifyLayoutAmbiguity: false
         )

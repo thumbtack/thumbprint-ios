@@ -39,7 +39,6 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
             }
 
             label.text = newValue
-            invalidateIntrinsicContentSize()
         }
     }
 
@@ -54,7 +53,6 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
             }
 
             label.attributedText = newValue
-            invalidateIntrinsicContentSize()
         }
     }
 
@@ -98,7 +96,6 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
             }
 
             label.numberOfLines = newValue
-            invalidateIntrinsicContentSize()
         }
     }
 
@@ -114,8 +111,7 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
             }
 
             label.textStyle = newValue
-            updateCheckboxAlignment()
-            invalidateIntrinsicContentSize()
+            setNeedsUpdateConstraints()
         }
     }
 
@@ -160,8 +156,7 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
 
             label.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
 
-            updateCheckboxAlignment()
-            invalidateIntrinsicContentSize()
+            setNeedsUpdateConstraints()
         }
     }
 
@@ -185,7 +180,6 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
             }
 
             checkbox.checkBoxSize = newValue
-            invalidateIntrinsicContentSize()
         }
     }
 
@@ -193,7 +187,6 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
     private let contentsStack: UIStackView = {
         let stack = UIStackView()
         stack.spacing = Space.two
-        stack.alignment = .center
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -215,7 +208,7 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
         contentsStack.bottomAnchor.constraint(equalTo: bottomAnchor)
     }()
     private lazy var checkboxAlignmentConstraint: NSLayoutConstraint = {
-        checkbox.centerYAnchor.constraint(equalTo: label.topAnchor, constant: label.intrinsicContentSize.height * 0.5)
+        label.firstBaselineAnchor.constraint(equalTo: checkbox.centerYAnchor)
     }()
 
     /// Creates and returns a new checkbox with label.
@@ -236,10 +229,6 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
         label.text = text
         label.textAlignment = .natural
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentHuggingPriority(.fittingSizeLevel - 2.0, for: .horizontal)
-        label.setContentHuggingPriority(.fittingSizeLevel - 2.0, for: .vertical)
-        label.setContentCompressionResistancePriority(.fittingSizeLevel - 2.0, for: .horizontal)
-        label.setContentCompressionResistancePriority(.fittingSizeLevel - 2.0, for: .vertical)
         labelContainer.addSubview(label)
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: labelContainer.leadingAnchor),
@@ -248,15 +237,8 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
             labelContainer.bottomAnchor.constraint(greaterThanOrEqualTo: label.bottomAnchor)
         ])
 
-        // Will add to contentsStack the right way.
-        apply(labelPlacement: labelPlacement)
-
         checkbox.isUserInteractionEnabled = false
         checkbox.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentHuggingPriority(.fittingSizeLevel - 1.0, for: .horizontal)
-        label.setContentHuggingPriority(.fittingSizeLevel - 1.0, for: .vertical)
-        label.setContentCompressionResistancePriority(.fittingSizeLevel - 1.0, for: .horizontal)
-        label.setContentCompressionResistancePriority(.fittingSizeLevel - 1.0, for: .vertical)
         checkboxContainer.addSubview(checkbox)
         NSLayoutConstraint.activate([
             checkbox.leadingAnchor.constraint(equalTo: checkboxContainer.leadingAnchor),
@@ -265,11 +247,16 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
             checkboxContainer.bottomAnchor.constraint(greaterThanOrEqualTo: checkbox.bottomAnchor)
         ])
 
+        // Will add to contentsStack the right way.
+        apply(labelPlacement: labelPlacement)
+
         // Default to log content hugging/high content compression resistance like similar system controls
         setContentHuggingPriority(.defaultLow, for: .horizontal)
         setContentHuggingPriority(.defaultLow, for: .vertical)
         setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+
+        setNeedsUpdateConstraints()
     }
 
     public override func layoutSubviews() {
@@ -298,6 +285,11 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
         }
 
         super.layoutSubviews()
+
+//        if label.preferredMaxLayoutWidth != label.bounds.width {
+//            label.preferredMaxLayoutWidth = label.bounds.width
+//            setNeedsLayout()
+//        }
     }
 
     @available(*, unavailable)
@@ -308,19 +300,19 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if traitCollection.preferredContentSizeCategory != previousTraitCollection?.preferredContentSizeCategory {
-            updateCheckboxAlignment()
-            invalidateIntrinsicContentSize()
+            setNeedsUpdateConstraints()
         }
     }
 
-    private func updateCheckboxAlignment() {
-        let constant: CGFloat = label.intrinsicContentSize.height * 0.5
+    public override func updateConstraints() {
+        super.updateConstraints()
+
+        let constant: CGFloat = label.font.capHeight * 0.5
         guard constant != checkboxAlignmentConstraint.constant else {
             return
         }
 
         checkboxAlignmentConstraint.constant = constant
-        invalidateIntrinsicContentSize()
     }
 
     public override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
@@ -348,14 +340,5 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
         }
 
         return nil
-    }
-
-    public override var intrinsicContentSize: CGSize {
-        let labelSize = label.intrinsicContentSize
-        let checkboxSize = checkbox.intrinsicContentSize
-        return .init(
-            width: labelSize.width + checkboxSize.width + Space.two + contentInsets.leading + contentInsets.trailing,
-            height: contentsStack.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height + contentInsets.top + contentInsets.bottom
-        )
     }
 }
