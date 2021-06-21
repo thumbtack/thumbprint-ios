@@ -99,7 +99,7 @@ class LabelCheckboxTest: SnapshotTestCase {
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxContentLeading() {
+    func testLabelCheckboxLeadingLabel() {
         labelCheckbox.labelPlacement = .leading
         verifyLabelCheckbox()
     }

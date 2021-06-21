@@ -101,8 +101,8 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
                 return
             }
 
-            leadingInsetConstraint.constant = contentInsets.leading
-            topInsetConstraint.constant = contentInsets.top
+            leadingInsetConstraint.constant = -contentInsets.leading
+            topInsetConstraint.constant = -contentInsets.top
             trailingInsetConstraint.constant = -contentInsets.trailing
             bottomInsetConstraint.constant = -contentInsets.bottom
         }
@@ -162,6 +162,7 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
         let stack = UIStackView()
         stack.spacing = Space.two
         stack.alignment = .center
+        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     private let checkbox = Checkbox()
