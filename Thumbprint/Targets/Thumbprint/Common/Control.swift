@@ -1,5 +1,9 @@
 import UIKit
 
+/**
+ Thumbprint controls should always have a minimum tappable target size for ease of user interaction. All Thumbprint controls thus inherit from
+ `Thumbprint.Control` which enforces a reasonably large tappable area no matter the actual control layout.
+ */
 open class Control: UIControl {
     public var minTapTargetSize: CGSize? = CGSize(width: 48, height: 48)
 
@@ -16,4 +20,12 @@ open class Control: UIControl {
         )
         return tapTargetBounds.contains(point)
     }
+}
+
+/**
+ A protocol for simple controls that just execute a single action upon user interaction (usually tapping).
+ */
+public protocol SimpleControl: Control {
+    /// Performs the control's action. Call to programmatically cause the control's action to be run.
+    func performAction()
 }

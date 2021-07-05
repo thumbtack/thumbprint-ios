@@ -108,6 +108,7 @@
 		FF292A96264250CF001A711A /* RadioGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF292A95264250CF001A711A /* RadioGroup.swift */; };
 		FF332814267748AC009D344B /* LabelCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF332813267748AC009D344B /* LabelCheckbox.swift */; };
 		FF33281626774AF6009D344B /* LabelCheckboxTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33281526774AF6009D344B /* LabelCheckboxTest.swift */; };
+		FFD57F232681189B004F2BBB /* LabelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD57F222681189B004F2BBB /* LabelControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +292,7 @@
 		FF292A95264250CF001A711A /* RadioGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroup.swift; sourceTree = "<group>"; };
 		FF332813267748AC009D344B /* LabelCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCheckbox.swift; sourceTree = "<group>"; };
 		FF33281526774AF6009D344B /* LabelCheckboxTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCheckboxTest.swift; sourceTree = "<group>"; };
+		FFD57F222681189B004F2BBB /* LabelControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,6 +501,7 @@
 				08C819BD25F574460082FD2D /* IconButton.swift */,
 				08C819AB25F574460082FD2D /* Label.swift */,
 				FF332813267748AC009D344B /* LabelCheckbox.swift */,
+				FFD57F222681189B004F2BBB /* LabelControl.swift */,
 				08C819C925F574460082FD2D /* LoaderDots.swift */,
 				08C819BC25F574460082FD2D /* NavigationBar.swift */,
 				08C819CA25F574460082FD2D /* Pill.swift */,
@@ -1021,6 +1024,7 @@
 				080E6F6B25FFD38D006D8056 /* RadioTableViewCell.swift in Sources */,
 				08649463260156F300EB82E8 /* Bundle+Extensions.swift in Sources */,
 				080E6F4C25FFD38D006D8056 /* CalendarPicker.swift in Sources */,
+				FFD57F232681189B004F2BBB /* LabelControl.swift in Sources */,
 				080E6F7225FFD38D006D8056 /* Control.swift in Sources */,
 				080E6F6E25FFD38D006D8056 /* UIView+StackView.swift in Sources */,
 				080E6F5425FFD38D006D8056 /* Label.swift in Sources */,
