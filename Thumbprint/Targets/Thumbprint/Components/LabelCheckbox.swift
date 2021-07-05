@@ -190,6 +190,7 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+
     private let checkbox = Checkbox()
     private let checkboxContainer = UIView()
     private let label: Label
@@ -198,15 +199,19 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
     private lazy var leadingInsetConstraint: NSLayoutConstraint = {
         leadingAnchor.constraint(equalTo: contentsStack.leadingAnchor)
     }()
+
     private lazy var topInsetConstraint: NSLayoutConstraint = {
         topAnchor.constraint(equalTo: contentsStack.topAnchor)
     }()
+
     private lazy var trailingInsetConstraint: NSLayoutConstraint = {
         contentsStack.trailingAnchor.constraint(equalTo: trailingAnchor)
     }()
+
     private lazy var bottomInsetConstraint: NSLayoutConstraint = {
         contentsStack.bottomAnchor.constraint(equalTo: bottomAnchor)
     }()
+
     private lazy var checkboxAlignmentConstraint: NSLayoutConstraint = {
         label.firstBaselineAnchor.constraint(equalTo: checkbox.centerYAnchor)
     }()
@@ -234,7 +239,7 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
             label.leadingAnchor.constraint(equalTo: labelContainer.leadingAnchor),
             label.topAnchor.constraint(greaterThanOrEqualTo: labelContainer.topAnchor),
             labelContainer.trailingAnchor.constraint(equalTo: label.trailingAnchor),
-            labelContainer.bottomAnchor.constraint(greaterThanOrEqualTo: label.bottomAnchor)
+            labelContainer.bottomAnchor.constraint(greaterThanOrEqualTo: label.bottomAnchor),
         ])
 
         checkbox.isUserInteractionEnabled = false
@@ -244,7 +249,7 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
             checkbox.leadingAnchor.constraint(equalTo: checkboxContainer.leadingAnchor),
             checkbox.topAnchor.constraint(greaterThanOrEqualTo: checkboxContainer.topAnchor),
             checkboxContainer.trailingAnchor.constraint(equalTo: checkbox.trailingAnchor),
-            checkboxContainer.bottomAnchor.constraint(greaterThanOrEqualTo: checkbox.bottomAnchor)
+            checkboxContainer.bottomAnchor.constraint(greaterThanOrEqualTo: checkbox.bottomAnchor),
         ])
 
         // Will add to contentsStack the right way.

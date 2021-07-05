@@ -14,7 +14,6 @@ import UIKit
  rest of the internal layout of the control is hardcoded.
  */
 public class LabelControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjusting where T: SimpleControl {
-
     // MARK: - Types
 
     /// Controls the placement of the label respective to the root control.
@@ -48,7 +47,7 @@ public class LabelControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjus
             label.leadingAnchor.constraint(equalTo: labelContainer.leadingAnchor),
             label.topAnchor.constraint(greaterThanOrEqualTo: labelContainer.topAnchor),
             labelContainer.trailingAnchor.constraint(equalTo: label.trailingAnchor),
-            labelContainer.bottomAnchor.constraint(greaterThanOrEqualTo: label.bottomAnchor)
+            labelContainer.bottomAnchor.constraint(greaterThanOrEqualTo: label.bottomAnchor),
         ])
 
         rootControl.isUserInteractionEnabled = false
@@ -58,7 +57,7 @@ public class LabelControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjus
             rootControl.leadingAnchor.constraint(equalTo: rootControlContainer.leadingAnchor),
             rootControl.topAnchor.constraint(greaterThanOrEqualTo: rootControlContainer.topAnchor),
             rootControlContainer.trailingAnchor.constraint(equalTo: rootControl.trailingAnchor),
-            rootControlContainer.bottomAnchor.constraint(greaterThanOrEqualTo: rootControl.bottomAnchor)
+            rootControlContainer.bottomAnchor.constraint(greaterThanOrEqualTo: rootControl.bottomAnchor),
         ])
 
         // Will add to contentsStack the right way.
@@ -199,15 +198,19 @@ public class LabelControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjus
     private lazy var leadingInsetConstraint: NSLayoutConstraint = {
         leadingAnchor.constraint(equalTo: contentsStack.leadingAnchor)
     }()
+
     private lazy var topInsetConstraint: NSLayoutConstraint = {
         topAnchor.constraint(equalTo: contentsStack.topAnchor)
     }()
+
     private lazy var trailingInsetConstraint: NSLayoutConstraint = {
         contentsStack.trailingAnchor.constraint(equalTo: trailingAnchor)
     }()
+
     private lazy var bottomInsetConstraint: NSLayoutConstraint = {
         contentsStack.bottomAnchor.constraint(equalTo: bottomAnchor)
     }()
+
     private lazy var rootControlAlignmentConstraint: NSLayoutConstraint = {
         label.firstBaselineAnchor.constraint(equalTo: rootControl.centerYAnchor)
     }()
