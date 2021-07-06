@@ -1,7 +1,7 @@
 @testable import Thumbprint
 import XCTest
 
-class LabelCheckboxTest: SnapshotTestCase {
+class LabeledCheckboxTest: SnapshotTestCase {
     func testLabelCheckboxEmpty() {
         verifyLabelCheckbox { _ in
         }
@@ -16,12 +16,6 @@ class LabelCheckboxTest: SnapshotTestCase {
     func testLabelCheckboxEmptyHighlighted() {
         verifyLabelCheckbox { labelCheckbox in
             labelCheckbox.isHighlighted = true
-        }
-    }
-
-    func testLabelCheckboxEmptyError() {
-        verifyLabelCheckbox { labelCheckbox in
-            labelCheckbox.hasError = true
         }
     }
 
@@ -51,13 +45,6 @@ class LabelCheckboxTest: SnapshotTestCase {
         }
     }
 
-    func testLabelCheckboxCheckedError() {
-        verifyLabelCheckbox { labelCheckbox in
-            labelCheckbox.isSelected = true
-            labelCheckbox.hasError = true
-        }
-    }
-
     func testLabelCheckboxCheckedLarge() {
         verifyLabelCheckbox { labelCheckbox in
             labelCheckbox.checkBoxSize = 80
@@ -82,13 +69,6 @@ class LabelCheckboxTest: SnapshotTestCase {
         verifyLabelCheckbox { labelCheckbox in
             labelCheckbox.mark = .intermediate
             labelCheckbox.isHighlighted = true
-        }
-    }
-
-    func testLabelCheckboxIntermediateError() {
-        verifyLabelCheckbox { labelCheckbox in
-            labelCheckbox.mark = .intermediate
-            labelCheckbox.hasError = true
         }
     }
 
@@ -127,10 +107,10 @@ class LabelCheckboxTest: SnapshotTestCase {
 
     // MARK: - Private
 
-    private func verifyLabelCheckbox(limitedWidth: Bool = false, configure: @escaping (LabelCheckbox) -> Void) {
+    private func verifyLabelCheckbox(limitedWidth: Bool = false, configure: @escaping (LabeledCheckbox) -> Void) {
         verify(
             viewFactory: {
-                let labelCheckbox = LabelCheckbox(text: "This is a label checkbox", adjustsFontForContentSizeCategory: true)
+                let labelCheckbox = LabeledCheckbox(text: "This is a label checkbox", adjustsFontForContentSizeCategory: true)
                 configure(labelCheckbox)
                 return labelCheckbox
             },

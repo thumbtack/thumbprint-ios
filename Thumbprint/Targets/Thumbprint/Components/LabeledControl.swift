@@ -13,7 +13,7 @@ import UIKit
  - Exposes the label's content hugging and content compression resistance priorities so they can be adjusted if needed within a larger layout. The
  rest of the internal layout of the control is hardcoded.
  */
-public class LabelControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjusting where T: SimpleControl {
+public class LabeledControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjusting where T: SimpleControl {
     // MARK: - Types
 
     /// Controls the placement of the label respective to the root control.
@@ -29,7 +29,8 @@ public class LabelControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjus
     /// - Parameters:
     ///   - text: Initial text value of the label
     ///   - adjustsFontForContentSizeCategory: Boolean indicating whether the label should support Dynamic Type.
-    public required init(text: String? = nil, adjustsFontForContentSizeCategory: Bool = true) {
+    public required init(control: T = T(), text: String? = nil, adjustsFontForContentSizeCategory: Bool = true) {
+        self.rootControl = control
         self.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
         self.label = Label(textStyle: .text1, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
 
@@ -187,7 +188,7 @@ public class LabelControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjus
         return stack
     }()
 
-    private let rootControl = T()
+    private let rootControl: T
 
     private let rootControlContainer = UIView()
 
@@ -257,6 +258,11 @@ public class LabelControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjus
         }
     }
 
+    private func updateHighlight(_ tracking: Bool, touch: UITouch, event: UIEvent?) {
+        // Highlight root control.
+        rootControl.isHighlighted = tracking && point(inside: touch.location(in: self), with: event)
+    }
+
     // MARK: - SimpleControl Implementation
 
     public func performAction() {
@@ -323,8 +329,26 @@ public class LabelControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjus
         rootControlAlignmentConstraint.constant = constant
     }
 
+    public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let result = super.beginTracking(touch, with: event)
+
+        updateHighlight(result, touch: touch, event: event)
+
+        return result
+    }
+
+    public override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let result = super.continueTracking(touch, with: event)
+
+        updateHighlight(result, touch: touch, event: event)
+
+        return result
+    }
+
     public override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         super.endTracking(touch, with: event)
+
+        rootControl.isHighlighted = false
 
         // Redirect to root control.
         rootControl.performAction()
@@ -341,5 +365,35 @@ public class LabelControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjus
         }
 
         return nil
+    }
+}
+
+public typealias LabeledCheckbox = LabeledControl<Checkbox>
+
+extension LabeledCheckbox {
+    var checkBoxSize: CGFloat {
+        get {
+            rootControl.checkBoxSize
+        }
+
+        set {
+            // This may require a revision of the layout so we can't just redirect.
+            guard newValue != checkBoxSize else {
+                return
+            }
+
+            rootControl.checkBoxSize = newValue
+            setNeedsUpdateConstraints()
+        }
+    }
+
+    var mark: Checkbox.Mark {
+        get {
+            rootControl.mark
+        }
+
+        set {
+            rootControl.mark = newValue
+        }
     }
 }
