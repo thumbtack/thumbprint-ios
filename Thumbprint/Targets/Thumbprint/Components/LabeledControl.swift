@@ -27,11 +27,14 @@ public class LabeledControl<T>: Control, SimpleControl, UIContentSizeCategoryAdj
 
     // MARK: - Initializers
 
-    /// Creates and returns a new checkbox with label.
-    ///
-    /// - Parameters:
-    ///   - text: Initial text value of the label
-    ///   - adjustsFontForContentSizeCategory: Boolean indicating whether the label should support Dynamic Type.
+    /**
+     Creates and returns a new checkbox with the given parameters.
+     - Parameter control: Optionally it can be initialized with an already created control. Defaults to a control created with no parameters, but can
+     be used for testing purposes or with control types that are not directly supported by Thumbprint and where access to the root control may be needed.
+     - Parameter text: Initial text value of the label. Defaults to no content, which will be interpreted as an empty string.
+     - Parameter adjustsFontForContentSizeCategory: Boolean indicating whether the label should initially support Dynamic Type. Defaults
+     to `true`
+     */
     public required init(control: T = T(), text: String? = nil, adjustsFontForContentSizeCategory: Bool = true) {
         self.rootControl = control
         self.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory

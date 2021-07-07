@@ -1,6 +1,10 @@
 // import ThumbprintResources
 import UIKit
 
+/**
+ A checkbox button. Can be tapped to turn off and on, and may display a mixed state as well. Should usually not be used on its own but as the graphical
+ part of a LabeledCheckbox.
+ */
 public final class Checkbox: Control {
     private static let dashImage = UIImage(named: "Checkbox-Dash", in: Bundle.thumbprint, compatibleWith: nil)
     private static let checkImage = UIImage(named: "Checkbox-Check", in: Bundle.thumbprint, compatibleWith: nil)
