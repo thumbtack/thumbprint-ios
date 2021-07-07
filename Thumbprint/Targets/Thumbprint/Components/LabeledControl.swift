@@ -4,6 +4,9 @@ import UIKit
  Base class for controls built off a tappable control (aka "root control") and a wrappable label next to it. Currently used as a base class for
  checkbox and radio button labeled controls but could be expanded into other use cases.
 
+ The control is supposed to offer a simple action (therefore compliance with `SimpleControl` and be graphical in nature which is why
+ we are not requiring compliance with `UIContentSizeCategoryAdjusting`.
+
  The facilities this class provides are the following:
  - Proxies the root control to the whole surface including the label.
  - Allows for enabled/error state to reflect on the label as well.

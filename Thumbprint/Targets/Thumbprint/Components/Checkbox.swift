@@ -1,7 +1,7 @@
 // import ThumbprintResources
 import UIKit
 
-public class Checkbox: Control, SimpleControl {
+public final class Checkbox: Control {
     private static let dashImage = UIImage(named: "Checkbox-Dash", in: Bundle.thumbprint, compatibleWith: nil)
     private static let checkImage = UIImage(named: "Checkbox-Check", in: Bundle.thumbprint, compatibleWith: nil)
     private static let borderImage = UIImage(named: "Checkbox-Border", in: Bundle.thumbprint, compatibleWith: nil)
@@ -92,20 +92,6 @@ public class Checkbox: Control, SimpleControl {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - SimpleControl Implementation
-
-    public func performAction() {
-        // Any non-checked state becomes checked, while checked becomes empty.
-        switch mark {
-        case .empty, .intermediate:
-            mark = .checked
-        case .checked:
-            mark = .empty
-        }
-
-        sendActions(for: .valueChanged)
-    }
-
     // MARK: - UIView Overrides
 
     public override func layoutSubviews() {
@@ -165,5 +151,21 @@ public class Checkbox: Control, SimpleControl {
         performAction()
 
         super.endTracking(touch, with: event)
+    }
+}
+
+// MARK: - SimpleControl Implementation
+
+extension Checkbox: SimpleControl {
+    public func performAction() {
+        // Any non-checked state becomes checked, while checked becomes empty.
+        switch mark {
+        case .empty, .intermediate:
+            mark = .checked
+        case .checked:
+            mark = .empty
+        }
+
+        sendActions(for: .valueChanged)
     }
 }

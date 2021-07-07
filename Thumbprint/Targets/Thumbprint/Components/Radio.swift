@@ -1,11 +1,5 @@
-import Combine
-import SnapKit
 import UIKit
-
-// MARK: - Protocols
-public protocol RadioStackDelegate: AnyObject {
-    func radioStack(_ radioStack: RadioStack, didSelectRadioAt index: Int?)
-}
+import SnapKit
 
 // MARK: - Radio
 /// A radio control, associated with a radio group, that affords a single selection among a group of options.
