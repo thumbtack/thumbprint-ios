@@ -31,11 +31,6 @@ class CheckboxTest: SnapshotTestCase {
         verifyCheckbox()
     }
 
-    func testCheckboxEmptyError() {
-        checkbox.hasError = true
-        verifyCheckbox()
-    }
-
     func testCheckboxEmptyLarge() {
         checkbox.checkBoxSize = 80
         verifyCheckbox()
@@ -55,12 +50,6 @@ class CheckboxTest: SnapshotTestCase {
     func testCheckboxCheckedDisabled() {
         checkbox.isSelected = true
         checkbox.isEnabled = false
-        verifyCheckbox()
-    }
-
-    func testCheckboxCheckedError() {
-        checkbox.isSelected = true
-        checkbox.hasError = true
         verifyCheckbox()
     }
 
@@ -84,12 +73,6 @@ class CheckboxTest: SnapshotTestCase {
     func testCheckboxIntermediateHighlighted() {
         checkbox.mark = .intermediate
         checkbox.isHighlighted = true
-        verifyCheckbox()
-    }
-
-    func testCheckboxIntermediateError() {
-        checkbox.mark = .intermediate
-        checkbox.hasError = true
         verifyCheckbox()
     }
 

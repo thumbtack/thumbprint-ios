@@ -2,7 +2,7 @@ import UIKit
 
 open class RadioTableViewCell: UITableViewCell, UIContentSizeCategoryAdjusting {
     public static let reuseIdentifier = "RadioTableViewCell"
-    public let radio: Radio
+    public let radio: LabeledRadio
     public var radioGroup: RadioTableViewCellGroup?
 
     open var adjustsFontForContentSizeCategory: Bool = true {
@@ -37,7 +37,7 @@ open class RadioTableViewCell: UITableViewCell, UIContentSizeCategoryAdjusting {
     }
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        self.radio = Radio(text: "", adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
+        self.radio = LabeledRadio(text: "", adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
 
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
 
@@ -50,7 +50,7 @@ open class RadioTableViewCell: UITableViewCell, UIContentSizeCategoryAdjusting {
         contentView.addSubview(radio)
         radio.snp.makeConstraints { make in
             // enforce a minimum cell height with larger bottom padding for single lines
-            make.height.greaterThanOrEqualTo(radio.radioImage.intrinsicContentSize.height + Space.two)
+            make.height.greaterThanOrEqualTo(radio.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height + Space.two)
             make.right.lessThanOrEqualToSuperview().inset(Space.four)
             make.top.equalToSuperview().inset(Space.three)
             make.left.equalToSuperview().inset(Space.four)

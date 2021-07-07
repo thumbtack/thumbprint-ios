@@ -10,10 +10,10 @@ public final class RadioGroup<Key> where Key: Hashable {
     public init() {}
 
     /// Relates `Radio` objects to their corresponding key for user selection management.
-    private var radioToKey = [Radio: Key]()
+    private var radioToKey = [Control: Key]()
 
     /// Relates a key to their radios.
-    private var keyToRadio = [Key: Radio]()
+    private var keyToRadio = [Key: Control]()
 
     /// Internal storage for the selected value and internal implementation for publisher behavior.
     private var selectionSubject = CurrentValueSubject<Key?, Never>(nil)
@@ -23,8 +23,10 @@ public final class RadioGroup<Key> where Key: Hashable {
 
      If the language ever allows, we should return `some Collection where Element = Radio`
      */
-    public var registeredRadios: AnyCollection<Radio> {
-        AnyCollection(radioToKey.keys)
+    public var registeredRadios: [LabeledRadio] {
+        radioToKey.keys.compactMap {
+            $0 as? LabeledRadio
+        }
     }
 
     /**
@@ -70,22 +72,37 @@ public final class RadioGroup<Key> where Key: Hashable {
      - Parameter key: The key to be associated with the given radio.
      */
     public func registerRadio(_ radio: Radio, forKey key: Key) {
+        registerControl(radio, forKey: key)
+    }
+
+    /**
+     Registers a `LabeledRadio` view for the given key.
+
+     The function will assert when attempting to register the same radio more than once or registering an already registered key.
+     - Parameter radio: The `Radio` view associated in the UI with the given key.
+     - Parameter key: The key to be associated with the given radio.
+     */
+    public func registerRadio(_ radio: LabeledRadio, forKey key: Key) {
+        registerControl(radio, forKey: key)
+    }
+
+    private func registerControl(_ control: Control & SimpleControl, forKey key: Key) {
         assert(
-            !radioToKey.keys.contains(radio),
-            "Attempted to register radio object \(radio) with key \(key) already registered for key \(String(describing: radioToKey[radio]))"
+            !radioToKey.keys.contains(control),
+            "Attempted to register radio object \(control) with key \(key) already registered for key \(String(describing: radioToKey[control]))"
         )
 
         guard !keyToRadio.keys.contains(key) else {
-            assertionFailure("Attempted to register key \(key) for radio \(radio) already registered for radio \(String(describing: keyToRadio[key]))")
+            assertionFailure("Attempted to register key \(key) for radio \(control) already registered for radio \(String(describing: keyToRadio[key]))")
             return
         }
 
-        radio.addTarget(self, action: #selector(selectRadio(_:)), for: .valueChanged)
-        radioToKey[radio] = key
-        keyToRadio[key] = radio
+        control.set(target: self, action: #selector(selectRadio(_:)))
+        radioToKey[control] = key
+        keyToRadio[key] = control
     }
 
-    @objc private func selectRadio(_ sender: Radio) {
+    @objc private func selectRadio(_ sender: Control) {
         guard let selectedKey = radioToKey[sender] else {
             assertionFailure("Attempted to select radio \(sender) not registered in radio group \(self)")
             return

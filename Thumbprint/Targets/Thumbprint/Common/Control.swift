@@ -28,4 +28,13 @@ open class Control: UIControl {
 public protocol SimpleControl: Control {
     /// Performs the control's action. Call to programmatically cause the control's action to be run.
     func performAction()
+
+    /**
+     Sets control's action, we only really care about one even if UIKit allows us to configure several.
+
+     This is a temporary property until we get `Thumbprint.Action` up and running. UIKit makes it too annoying to
+     have an getter for a singular action so we'll add it once the new action support is up.
+     - Todo: (Oscar) Replace with `Thumbprint.Action`
+     */
+    func set(target: Any?, action: Selector)
 }

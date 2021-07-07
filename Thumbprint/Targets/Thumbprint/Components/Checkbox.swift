@@ -6,29 +6,20 @@ import UIKit
  part of a LabeledCheckbox.
  */
 public final class Checkbox: Control {
-    private static let dashImage = UIImage(named: "Checkbox-Dash", in: Bundle.thumbprint, compatibleWith: nil)
-    private static let checkImage = UIImage(named: "Checkbox-Check", in: Bundle.thumbprint, compatibleWith: nil)
-    private static let borderImage = UIImage(named: "Checkbox-Border", in: Bundle.thumbprint, compatibleWith: nil)
-    private static let fillImage = UIImage(named: "Checkbox-BackgroundFill", in: Bundle.thumbprint, compatibleWith: nil)
-
     public enum Mark: String {
         case empty
         case intermediate
         case checked
     }
 
+    private static let dashImage = UIImage(named: "Checkbox-Dash", in: Bundle.thumbprint, compatibleWith: nil)
+    private static let checkImage = UIImage(named: "Checkbox-Check", in: Bundle.thumbprint, compatibleWith: nil)
+    private static let borderImage = UIImage(named: "Checkbox-Border", in: Bundle.thumbprint, compatibleWith: nil)
+    private static let fillImage = UIImage(named: "Checkbox-BackgroundFill", in: Bundle.thumbprint, compatibleWith: nil)
+
     private let backgroundImageView: UIImageView = .init(image: Checkbox.fillImage)
     private let borderImageView: UIImageView = .init(image: Checkbox.borderImage)
     private let markImageView: UIImageView = .init()
-
-    /// True if the checkbox is in an error state. If true, checkbox and optional label display in red.
-    public var hasError: Bool = false {
-        didSet {
-            if hasError != oldValue {
-                setNeedsLayout()
-            }
-        }
-    }
 
     /// If false, prevents user from interacting with the view and displays checkbox and optional label in gray.
     public override var isEnabled: Bool {
@@ -40,7 +31,6 @@ public final class Checkbox: Control {
     }
 
     /// If true, overrides default input state to display checkbox in blue.
-    /// Note: Checkbox will not appear selected if isEnabled == false, or hasError = true
     public override var isHighlighted: Bool {
         didSet {
             if isHighlighted != oldValue {
@@ -108,30 +98,20 @@ public final class Checkbox: Control {
             markImageView.image = nil
         }
 
-        switch (mark, hasError, isEnabled) {
-        case (_, _, false):
+        switch (mark, isEnabled) {
+        case (_, false):
             backgroundImageView.tintColor = Color.gray200
             borderImageView.tintColor = Color.gray300
             markImageView.tintColor = Color.gray
 
-        case (.empty, false, _):
+        case (.empty, _):
             backgroundImageView.tintColor = Color.white
             borderImageView.tintColor = Color.gray
             markImageView.tintColor = Color.white
 
-        case (.empty, true, _):
-            backgroundImageView.tintColor = Color.white
-            borderImageView.tintColor = Color.red
-            markImageView.tintColor = Color.red
-
-        case (_, false, _):
+        default:
             backgroundImageView.tintColor = Color.blue
             borderImageView.tintColor = Color.blue
-            markImageView.tintColor = Color.white
-
-        case (_, true, _):
-            backgroundImageView.tintColor = Color.red
-            borderImageView.tintColor = Color.red
             markImageView.tintColor = Color.white
         }
 
@@ -171,5 +151,9 @@ extension Checkbox: SimpleControl {
         }
 
         sendActions(for: .valueChanged)
+    }
+
+    public func set(target: Any?, action: Selector) {
+        addTarget(target, action: action, for: .valueChanged)
     }
 }

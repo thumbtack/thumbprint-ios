@@ -16,7 +16,7 @@ import UIKit
  - Exposes the label's content hugging and content compression resistance priorities so they can be adjusted if needed within a larger layout. The
  rest of the internal layout of the control is hardcoded.
  */
-public class LabeledControl<T>: Control, SimpleControl, UIContentSizeCategoryAdjusting where T: SimpleControl {
+public class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: SimpleControl {
     // MARK: - Types
 
     /// Controls the placement of the label respective to the root control.
@@ -269,13 +269,6 @@ public class LabeledControl<T>: Control, SimpleControl, UIContentSizeCategoryAdj
         rootControl.isHighlighted = tracking && point(inside: touch.location(in: self), with: event)
     }
 
-    // MARK: - SimpleControl Implementation
-
-    public func performAction() {
-        // Just redirect to rootControl
-        rootControl.performAction()
-    }
-
     // MARK: - UIContentSizeCategoryAdjusting Implementation
 
     public var adjustsFontForContentSizeCategory: Bool {
@@ -356,8 +349,7 @@ public class LabeledControl<T>: Control, SimpleControl, UIContentSizeCategoryAdj
 
         rootControl.isHighlighted = false
 
-        // Redirect to root control.
-        rootControl.performAction()
+        performAction()
     }
 
     /// Override takes over subviews to make the whole of self the touch area.
@@ -371,6 +363,19 @@ public class LabeledControl<T>: Control, SimpleControl, UIContentSizeCategoryAdj
         }
 
         return nil
+    }
+}
+
+// MARK: - SimpleControl Implementation
+
+extension LabeledControl: SimpleControl {
+    public func performAction() {
+        // Just redirect to rootControl
+        rootControl.performAction()
+    }
+
+    public func set(target: Any?, action: Selector) {
+        rootControl.set(target: target, action: action)
     }
 }
 
@@ -403,3 +408,5 @@ extension LabeledCheckbox {
         }
     }
 }
+
+public typealias LabeledRadio = LabeledControl<Radio>

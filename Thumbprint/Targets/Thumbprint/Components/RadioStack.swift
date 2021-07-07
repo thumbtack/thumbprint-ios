@@ -5,7 +5,7 @@ import UIKit
 /// A convenience class for displaying a group of text only radio views with consistent styling and spacing.
 public final class RadioStack: UIView, UIContentSizeCategoryAdjusting {
     /// The radios belonging to this stack
-    private let radioViews: [Radio]
+    private let radioViews: [LabeledRadio]
 
     public var spacing: CGFloat {
         get { stack.spacing }
@@ -41,7 +41,7 @@ public final class RadioStack: UIView, UIContentSizeCategoryAdjusting {
     ///   - adjustsFontForContentSizeCategory: Boolean indicating whether the radios in this stack should support Dynamic Type.
     public init(titles: [String], adjustsFontForContentSizeCategory: Bool = true) {
         self.radioGroup = RadioGroup()
-        self.radioViews = titles.map({ Radio(text: $0, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory) })
+        self.radioViews = titles.map({ LabeledRadio(text: $0, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory) })
         self.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
 
         self.stack = UIStackView(arrangedSubviews: radioViews)
