@@ -2,18 +2,17 @@ import UIKit
 
 // MARK: - RadioImage
 public final class Radio: Control {
-
     // MARK: - UIView Overrides
 
-    override public var intrinsicContentSize: CGSize {
+    public override var intrinsicContentSize: CGSize {
         Self.backgroundFillImage?.size ?? super.intrinsicContentSize
     }
 
-    override public func sizeThatFits(_ size: CGSize) -> CGSize {
+    public override func sizeThatFits(_ size: CGSize) -> CGSize {
         intrinsicContentSize
     }
 
-    override public var isSelected: Bool {
+    public override var isSelected: Bool {
         didSet {
             innerDot.isHidden = !isSelected
         }
@@ -110,7 +109,6 @@ extension Radio: SimpleControl {
 
         sendActions(for: .touchUpInside)
     }
-
 
     public func set(target: Any?, action: Selector) {
         addTarget(target, action: action, for: .touchUpInside)

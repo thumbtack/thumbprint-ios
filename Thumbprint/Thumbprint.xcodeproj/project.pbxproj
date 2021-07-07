@@ -103,6 +103,7 @@
 		7B7A49A6AABE9CD4F18A04F0 /* libPods-Thumbprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */; };
 		B98FE98D2668312400B52979 /* ButtonUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98FE98C2668312400B52979 /* ButtonUnitTest.swift */; };
 		CD5A0287B7D3129E8BDD06E5 /* libPods-TestsHostApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BB25065E7ACE32CDDE00D1 /* libPods-TestsHostApp.a */; };
+		FF1A3E3B269599A200561D28 /* LabeledRadioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1A3E3A269599A200561D28 /* LabeledRadioTest.swift */; };
 		FF2929B62642168D001A711A /* RadioStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B52642168D001A711A /* RadioStack.swift */; };
 		FF2929B82642306F001A711A /* RadioGroupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B72642306F001A711A /* RadioGroupTest.swift */; };
 		FF292A96264250CF001A711A /* RadioGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF292A95264250CF001A711A /* RadioGroup.swift */; };
@@ -286,6 +287,7 @@
 		D12EA88E3D1B084D408E2707 /* Pods-ThumbprintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThumbprintTests.release.xcconfig"; path = "Target Support Files/Pods-ThumbprintTests/Pods-ThumbprintTests.release.xcconfig"; sourceTree = "<group>"; };
 		E960F8432D6A9D65F3873172 /* Pods-TestsHostApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestsHostApp.release.xcconfig"; path = "Target Support Files/Pods-TestsHostApp/Pods-TestsHostApp.release.xcconfig"; sourceTree = "<group>"; };
 		F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Thumbprint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF1A3E3A269599A200561D28 /* LabeledRadioTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledRadioTest.swift; sourceTree = "<group>"; };
 		FF2929B52642168D001A711A /* RadioStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStack.swift; sourceTree = "<group>"; };
 		FF2929B72642306F001A711A /* RadioGroupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroupTest.swift; sourceTree = "<group>"; };
 		FF292A95264250CF001A711A /* RadioGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroup.swift; sourceTree = "<group>"; };
@@ -667,6 +669,7 @@
 				08C81CD725F5A6B60082FD2D /* IconButtonTest.swift */,
 				08C81A9A25F5A6B10082FD2D /* IconFloatingActionButtonTest.swift */,
 				FF33281526774AF6009D344B /* LabeledCheckboxTest.swift */,
+				FF1A3E3A269599A200561D28 /* LabeledRadioTest.swift */,
 				08C81CD925F5A6B60082FD2D /* LoaderDotsTest.swift */,
 				08C81A9825F5A6B10082FD2D /* NavigationBarTest.swift */,
 				08C81A9C25F5A6B10082FD2D /* PillTest.swift */,
@@ -1069,6 +1072,7 @@
 				FF2929B82642306F001A711A /* RadioGroupTest.swift in Sources */,
 				08C81CEB25F5A6B60082FD2D /* ButtonRowTest.swift in Sources */,
 				08C81CED25F5A6B60082FD2D /* ButtonStackTest.swift in Sources */,
+				FF1A3E3B269599A200561D28 /* LabeledRadioTest.swift in Sources */,
 				08C81CE925F5A6B60082FD2D /* AlertBannerTest.swift in Sources */,
 				08C81CEA25F5A6B60082FD2D /* IconFloatingActionButtonTest.swift in Sources */,
 				08C81F0E25F5A6B70082FD2D /* IconButtonTest.swift in Sources */,
