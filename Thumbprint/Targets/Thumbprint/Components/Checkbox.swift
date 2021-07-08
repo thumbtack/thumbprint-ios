@@ -6,7 +6,7 @@ import UIKit
  part of a LabeledCheckbox.
  */
 public final class Checkbox: Control {
-    public enum Mark: String {
+    public enum Mark: CaseIterable {
         case empty
         case intermediate
         case checked
