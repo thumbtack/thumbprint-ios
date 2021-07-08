@@ -398,7 +398,7 @@ extension LabeledCheckbox {
         }
     }
 
-    var mark: Checkbox.Mark {
+    public var mark: Checkbox.Mark {
         get {
             rootControl.mark
         }
