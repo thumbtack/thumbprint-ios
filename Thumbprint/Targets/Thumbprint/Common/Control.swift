@@ -33,7 +33,7 @@ public protocol SimpleControl: Control {
      Sets control's action, we only really care about one even if UIKit allows us to configure several.
 
      This is a temporary property until we get `Thumbprint.Action` up and running. UIKit makes it too annoying to
-     have an getter for a singular action so we'll add it once the new action support is up.
+     have a getter for a singular action but these controls semantics are that they only perform one action.
      - Todo: (Oscar) Replace with `Thumbprint.Action`
      */
     func set(target: Any?, action: Selector)

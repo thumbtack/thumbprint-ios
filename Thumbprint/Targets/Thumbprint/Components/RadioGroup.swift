@@ -65,7 +65,8 @@ public final class RadioGroup<Key> where Key: Hashable {
     }
 
     /**
-     Registers a `Radio` view for the given key.
+     Registers a standalone `Radio` for the given key. Don't use this to register a LabeledRadio even if you have
+     access to its internal control. The registered control must be the same one that sends actions when tapped.
 
      The function will assert when attempting to register the same radio more than once or registering an already registered key.
      - Parameter radio: The `Radio` view associated in the UI with the given key.
@@ -76,7 +77,7 @@ public final class RadioGroup<Key> where Key: Hashable {
     }
 
     /**
-     Registers a `LabeledRadio` view for the given key.
+     Registers a `LabeledRadio` for the given key.
 
      The function will assert when attempting to register the same radio more than once or registering an already registered key.
      - Parameter radio: The `Radio` view associated in the UI with the given key.

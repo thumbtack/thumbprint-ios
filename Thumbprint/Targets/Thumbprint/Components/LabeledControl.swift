@@ -382,11 +382,16 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
 
 extension LabeledControl: SimpleControl {
     public func performAction() {
-        // Just redirect to rootControl
+        // rootControl won't actually do anything since it doesn't have target/action set but it'll know to update its state.
         rootControl.performAction()
+
+        // We are the keepers of the target/action!
+        sendActions(for: .touchUpInside)
     }
 
     public func set(target: Any?, action: Selector) {
-        rootControl.set(target: target, action: action)
+        // We do the action sending ourselves as to be easily identified as the control performing it (important
+        // when groups of controls need identification).
+        addTarget(target, action: action, for: .touchUpInside)
     }
 }
