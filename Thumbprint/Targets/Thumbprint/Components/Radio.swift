@@ -1,6 +1,11 @@
 import UIKit
 
-// MARK: - RadioImage
+/**
+ A radio button.
+
+ This control *only* manages the radio button itself. You normally want to use `LabeledRadio` instead, but this is left public so custom radio button UIs
+ can be built on top.
+ */
 public final class Radio: Control {
     public init() {
         self.innerDot = UIImageView(image: Self.innerDotImage)

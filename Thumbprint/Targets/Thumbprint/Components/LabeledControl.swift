@@ -1,8 +1,8 @@
 import UIKit
 
 /**
- Base class for controls built off a tappable control (aka "root control") and a wrappable label next to it. Currently used as a base class for
- checkbox and radio button labeled controls but could be expanded into other use cases.
+ Generic class for controls built off a tappable control (aka "root control") and a wrappable label next to it. Currently used as a base class for
+ checkbox and radio button labeled controls but could be used for other simple controls with a similar layout even without subclassing.
 
  The control is supposed to offer a simple action (therefore compliance with `SimpleControl` and be graphical in nature which is why
  we are not requiring compliance with `UIContentSizeCategoryAdjusting`.
@@ -16,7 +16,7 @@ import UIKit
  - Exposes the label's content hugging and content compression resistance priorities so they can be adjusted if needed within a larger layout. The
  rest of the internal layout of the control is hardcoded.
  */
-public class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: SimpleControl {
+open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: SimpleControl {
     // MARK: - Types
 
     /// Typealias for the control being used so fancy Swift type stuff can be done elsewhere.
@@ -78,7 +78,7 @@ public class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T:
     }
 
     @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -197,7 +197,8 @@ public class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T:
         return stack
     }()
 
-    private let rootControl: T
+    /// Explicitly declared internal as we need access to it in module subclasses (See `LabeledCheckbox` and `LabeledRadio`).
+    internal let rootControl: T
 
     private let rootControlContainer = UIView()
 
@@ -381,35 +382,3 @@ extension LabeledControl: SimpleControl {
         rootControl.set(target: target, action: action)
     }
 }
-
-public typealias LabeledCheckbox = LabeledControl<Checkbox>
-
-extension LabeledCheckbox {
-    var checkBoxSize: CGFloat {
-        get {
-            rootControl.checkBoxSize
-        }
-
-        set {
-            // This may require a revision of the layout so we can't just redirect.
-            guard newValue != checkBoxSize else {
-                return
-            }
-
-            rootControl.checkBoxSize = newValue
-            setNeedsUpdateConstraints()
-        }
-    }
-
-    public var mark: Checkbox.Mark {
-        get {
-            rootControl.mark
-        }
-
-        set {
-            rootControl.mark = newValue
-        }
-    }
-}
-
-public typealias LabeledRadio = LabeledControl<Radio>
