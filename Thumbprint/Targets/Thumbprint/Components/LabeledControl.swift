@@ -19,6 +19,9 @@ import UIKit
 public class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: SimpleControl {
     // MARK: - Types
 
+    /// Typealias for the control being used so fancy Swift type stuff can be done elsewhere.
+    public typealias Control = T
+
     /// Controls the placement of the label respective to the root control.
     public enum LabelPlacement: String {
         case leading
