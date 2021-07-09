@@ -382,11 +382,13 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
 
 extension LabeledControl: SimpleControl {
     public func performAction() {
-        // rootControl won't actually do anything since it doesn't have target/action set but it'll know to update its state.
-        rootControl.performAction()
-
         // We are the keepers of the target/action!
         sendActions(for: .touchUpInside)
+
+        // rootControl won't actually do anything since it doesn't have target/action set but it'll know to update
+        // its state.
+        // This can hopefully become redundant once `Thumbprint.Action` manages the action state.
+        rootControl.performAction()
     }
 
     public func set(target: Any?, action: Selector) {
