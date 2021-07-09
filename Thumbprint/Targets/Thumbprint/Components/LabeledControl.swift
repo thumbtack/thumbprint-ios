@@ -23,7 +23,7 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
     public typealias Control = T
 
     /// Controls the placement of the label respective to the root control.
-    public enum LabelPlacement: String {
+    public enum LabelPlacement: CaseIterable {
         case leading
         case trailing
     }
