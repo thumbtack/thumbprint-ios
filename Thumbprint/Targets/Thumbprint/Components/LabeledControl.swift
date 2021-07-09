@@ -244,27 +244,35 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
     }
 
     private func updateLabelTextColor() {
-        if !isEnabled {
-            label.textColor = InputState.disabled.markableControlTextColor
-        } else {
-            var shouldSetLabelTextColor: Bool = true
-            if let attributedText = label.attributedText {
-                // If label.attributedText sets a foregroundColor for any of its segments, then don't override with InputState.markableControlTextColor.
-                attributedText.enumerateAttribute(
-                    .foregroundColor,
-                    in: NSRange(location: 0, length: attributedText.length),
-                    options: .longestEffectiveRangeNotRequired
-                ) { foregroundColorValue, _, stop in
-                    if foregroundColorValue != nil {
-                        shouldSetLabelTextColor = false
-                        stop.pointee = true
-                    }
+        // If the label contains styled text we leave it untouched, otherwise we use the defined thumbprint colors.
+        var containsStyledTextColor = false
+        if let attributedText = label.attributedText {
+            // If label.attributedText sets a foregroundColor for any of its segments, then don't override with InputState.markableControlTextColor.
+            let textColor = label.textColor
+            attributedText.enumerateAttribute(
+                .foregroundColor,
+                in: NSRange(location: 0, length: attributedText.length),
+                options: .longestEffectiveRangeNotRequired
+            ) { foregroundColorValue, _, stop in
+                if foregroundColorValue != nil, (foregroundColorValue as? UIColor) != textColor {
+                    containsStyledTextColor = true
+                    stop.pointee = true
                 }
             }
+        }
 
-            if shouldSetLabelTextColor {
-                label.textColor = InputState.default.markableControlTextColor
-            }
+        switch (containsStyledTextColor, isEnabled) {
+        case (true, _):
+            // There's styled text color. leave untouched.
+            break
+
+        case (false, true):
+            // Use enabled label text color.
+            label.textColor = InputState.default.markableControlTextColor
+
+        case (false, false):
+            // Use disabled label text color.
+            label.textColor = InputState.disabled.markableControlTextColor
         }
     }
 
