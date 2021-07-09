@@ -109,10 +109,6 @@ public final class RadioGroup<Key> where Key: Hashable {
             return
         }
 
-        guard sender.isSelected else {
-            return
-        }
-
         setSelection(selectedKey)
     }
 }
