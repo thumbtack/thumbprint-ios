@@ -9,7 +9,7 @@ import UIKit
  then this class can be removed and replaced with an extension and a `typealias`
  */
 public final class LabeledCheckbox: LabeledControl<Checkbox> {
-    var checkBoxSize: CGFloat {
+    public var checkBoxSize: CGFloat {
         get {
             rootControl.checkBoxSize
         }
