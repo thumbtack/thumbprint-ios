@@ -1,5 +1,3 @@
-import SnapKit
-// import ThumbprintResources
 import UIKit
 
 /**
@@ -15,8 +13,8 @@ open class Footer: UIView, UIScrollViewDelegate {
 
     private let shadowImageView: UIImageView
 
-    private var compactHorizontalConstraints: [Constraint] = []
-    private var regularHorizontalConstraints: [Constraint] = []
+    private var compactHorizontalConstraints: [NSLayoutConstraint] = []
+    private var regularHorizontalConstraints: [NSLayoutConstraint] = []
 
     private static let shadowImage =
         UIImage(named: "footer-shadow", in: Bundle.thumbprint, compatibleWith: nil)! // swiftlint:disable:this force_unwrapping
@@ -41,27 +39,26 @@ open class Footer: UIView, UIScrollViewDelegate {
         backgroundColor = Color.white
 
         shadowImageView.alpha = showShadowByDefault ? 1.0 : 0.0
+        shadowImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(shadowImageView)
-        shadowImageView.snp.makeConstraints { make in
-            make.bottom.equalTo(snp.top)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(Footer.shadowImage.size.height)
-        }
+        NSLayoutConstraint.activate([
+            shadowImageView.bottomAnchor.constraint(equalTo: topAnchor),
+        ])
+        shadowImageView.snapToSuperview(edges: .horizontal)
 
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentView)
-        contentView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(Space.three)
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(Space.three)
-        }
+        NSLayoutConstraint.activate([
+            contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: Space.three),
+        ])
+        contentView.snapToSuperview(edges: [.top], inset: Space.three)
 
-        self.compactHorizontalConstraints = contentView.snp.prepareConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(Space.three)
-        }
+        self.compactHorizontalConstraints = contentView.constraintsEqualToSuperview(edges: .horizontal, inset: Space.three)
 
-        self.regularHorizontalConstraints = contentView.snp.prepareConstraints { make in
-            make.width.equalToSuperview().multipliedBy(Footer.regularMaxContentWidthProportion)
-        }
+        self.regularHorizontalConstraints = [
+            contentView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: Footer.regularMaxContentWidthProportion),
+        ]
 
         setNeedsUpdateConstraints()
     }
@@ -107,13 +104,13 @@ open class Footer: UIView, UIScrollViewDelegate {
     public override func updateConstraints() {
         switch traitCollection.horizontalSizeClass {
         case .regular:
-            compactHorizontalConstraints.forEach { $0.deactivate() }
-            regularHorizontalConstraints.forEach { $0.activate() }
+            NSLayoutConstraint.deactivate(compactHorizontalConstraints)
+            NSLayoutConstraint.activate(regularHorizontalConstraints)
         case .compact, .unspecified:
             fallthrough
         @unknown default:
-            regularHorizontalConstraints.forEach { $0.deactivate() }
-            compactHorizontalConstraints.forEach { $0.activate() }
+            NSLayoutConstraint.deactivate(regularHorizontalConstraints)
+            NSLayoutConstraint.activate(compactHorizontalConstraints)
         }
 
         super.updateConstraints()
