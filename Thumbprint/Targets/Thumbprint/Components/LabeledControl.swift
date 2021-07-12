@@ -54,24 +54,31 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         label.translatesAutoresizingMaskIntoConstraints = false
         labelContainer.addSubview(label)
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: labelContainer.leadingAnchor),
             label.topAnchor.constraint(greaterThanOrEqualTo: labelContainer.topAnchor),
-            labelContainer.trailingAnchor.constraint(equalTo: label.trailingAnchor),
             labelContainer.bottomAnchor.constraint(greaterThanOrEqualTo: label.bottomAnchor),
         ])
+        label.snapToSuperview(edges: .horizontal)
 
         rootControl.isUserInteractionEnabled = false
         rootControl.translatesAutoresizingMaskIntoConstraints = false
         rootControlContainer.addSubview(rootControl)
         NSLayoutConstraint.activate([
-            rootControl.leadingAnchor.constraint(equalTo: rootControlContainer.leadingAnchor),
             rootControl.topAnchor.constraint(greaterThanOrEqualTo: rootControlContainer.topAnchor),
-            rootControlContainer.trailingAnchor.constraint(equalTo: rootControl.trailingAnchor),
             rootControlContainer.bottomAnchor.constraint(greaterThanOrEqualTo: rootControl.bottomAnchor),
         ])
+        rootControl.snapToSuperview(edges: .horizontal)
+
+        // We really don't want root control to be any other size than what it wants.
+        rootControl.setContentHuggingPriority(.required - 1.0, for: .horizontal)
+        rootControl.setContentHuggingPriority(.required - 1.0, for: .vertical)
+        rootControl.setContentCompressionResistancePriority(.required - 1.0, for: .horizontal)
+        rootControl.setContentCompressionResistancePriority(.required - 1.0, for: .vertical)
 
         // Will add to contentsStack the right way.
         apply(labelPlacement: labelPlacement)
+
+        // Turn on the shrink ray.
+        heightShrinkerConstraint.isActive = true
 
         // Initialize root control/label alignment.
         setNeedsUpdateConstraints()
@@ -174,6 +181,7 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
      */
     public func setLabelContentHuggingPriority(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
         label.setContentHuggingPriority(priority, for: axis)
+        setNeedsUpdateConstraints()
     }
 
     /**
@@ -186,6 +194,7 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
      */
     public func setLabelContentCompressionResistancePriority(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
         label.setContentCompressionResistancePriority(priority, for: axis)
+        setNeedsUpdateConstraints()
     }
 
     // MARK: - Private Implementation
@@ -205,6 +214,13 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
     private let label: Label
 
     private let labelContainer = UIView()
+
+    // Needed due to the implicit ambiguity of not knowing whether rootControl or the label determine contents top/bottom.
+    private lazy var heightShrinkerConstraint: NSLayoutConstraint = {
+        let constraint = contentsStack.heightAnchor.constraint(equalToConstant: 0.0)
+        constraint.priority = .defaultLow
+        return constraint
+    }()
 
     private lazy var leadingInsetConstraint: NSLayoutConstraint = {
         leadingAnchor.constraint(equalTo: contentsStack.leadingAnchor)
@@ -338,6 +354,15 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         }
 
         rootControlAlignmentConstraint.constant = constant
+
+        // Needs to be lower than the content compression resistance/hugging of the label so as not to interfere with them.
+        heightShrinkerConstraint.priority = max(
+            UILayoutPriority(rawValue: 1.0),
+            min(
+                label.contentCompressionResistancePriority(for: .vertical),
+                label.contentHuggingPriority(for: .vertical)
+            ) - 1.0
+        )
     }
 
     public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {

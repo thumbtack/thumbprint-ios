@@ -110,6 +110,7 @@
 		FF2929B82642306F001A711A /* RadioGroupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B72642306F001A711A /* RadioGroupTest.swift */; };
 		FF292A96264250CF001A711A /* RadioGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF292A95264250CF001A711A /* RadioGroup.swift */; };
 		FF33281626774AF6009D344B /* LabeledCheckboxTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33281526774AF6009D344B /* LabeledCheckboxTest.swift */; };
+		FF858A1F269C1FD0002E22D8 /* RadioStackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF858A1E269C1FD0002E22D8 /* RadioStackTest.swift */; };
 		FFD57F232681189B004F2BBB /* LabeledControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD57F222681189B004F2BBB /* LabeledControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -296,6 +297,7 @@
 		FF2929B72642306F001A711A /* RadioGroupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroupTest.swift; sourceTree = "<group>"; };
 		FF292A95264250CF001A711A /* RadioGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroup.swift; sourceTree = "<group>"; };
 		FF33281526774AF6009D344B /* LabeledCheckboxTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledCheckboxTest.swift; sourceTree = "<group>"; };
+		FF858A1E269C1FD0002E22D8 /* RadioStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStackTest.swift; sourceTree = "<group>"; };
 		FFD57F222681189B004F2BBB /* LabeledControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -679,6 +681,7 @@
 				08C81CD925F5A6B60082FD2D /* LoaderDotsTest.swift */,
 				08C81A9825F5A6B10082FD2D /* NavigationBarTest.swift */,
 				08C81A9C25F5A6B10082FD2D /* PillTest.swift */,
+				FF858A1E269C1FD0002E22D8 /* RadioStackTest.swift */,
 				08C81A9325F5A6B10082FD2D /* ShadowCardTest.swift */,
 				08C81A9025F5A6B10082FD2D /* ShadowTest.swift */,
 				08C81A8E25F5A6B10082FD2D /* TabBarTest.swift */,
@@ -1074,6 +1077,7 @@
 				08C81F2525F5A8020082FD2D /* TestCaseBehavior.swift in Sources */,
 				08C81CE725F5A6B60082FD2D /* DropdownTest.swift in Sources */,
 				08C81F3825F5AA1B0082FD2D /* UnitTestCase.swift in Sources */,
+				FF858A1F269C1FD0002E22D8 /* RadioStackTest.swift in Sources */,
 				08C81CEE25F5A6B60082FD2D /* ToggleChipTest.swift in Sources */,
 				08C81CE225F5A6B60082FD2D /* ButtonTest.swift in Sources */,
 				08C81A8225F5A66B0082FD2D /* UIView+StackViewTests.swift in Sources */,
