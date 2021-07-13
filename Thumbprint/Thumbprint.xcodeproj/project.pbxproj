@@ -112,6 +112,7 @@
 		FF33281626774AF6009D344B /* LabeledCheckboxTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33281526774AF6009D344B /* LabeledCheckboxTest.swift */; };
 		FF858A1F269C1FD0002E22D8 /* RadioStackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF858A1E269C1FD0002E22D8 /* RadioStackTest.swift */; };
 		FFD57F232681189B004F2BBB /* LabeledControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD57F222681189B004F2BBB /* LabeledControl.swift */; };
+		FFE53483269D838F00FDD9A5 /* LabeledControlTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE53482269D838F00FDD9A5 /* LabeledControlTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,6 +300,7 @@
 		FF33281526774AF6009D344B /* LabeledCheckboxTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledCheckboxTest.swift; sourceTree = "<group>"; };
 		FF858A1E269C1FD0002E22D8 /* RadioStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStackTest.swift; sourceTree = "<group>"; };
 		FFD57F222681189B004F2BBB /* LabeledControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledControl.swift; sourceTree = "<group>"; };
+		FFE53482269D838F00FDD9A5 /* LabeledControlTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledControlTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -677,6 +679,7 @@
 				08C81CD725F5A6B60082FD2D /* IconButtonTest.swift */,
 				08C81A9A25F5A6B10082FD2D /* IconFloatingActionButtonTest.swift */,
 				FF33281526774AF6009D344B /* LabeledCheckboxTest.swift */,
+				FFE53482269D838F00FDD9A5 /* LabeledControlTest.swift */,
 				FF1A3E3A269599A200561D28 /* LabeledRadioTest.swift */,
 				08C81CD925F5A6B60082FD2D /* LoaderDotsTest.swift */,
 				08C81A9825F5A6B10082FD2D /* NavigationBarTest.swift */,
@@ -1073,6 +1076,7 @@
 				FF33281626774AF6009D344B /* LabeledCheckboxTest.swift in Sources */,
 				08C81CE825F5A6B60082FD2D /* NavigationBarTest.swift in Sources */,
 				08C81CEC25F5A6B60082FD2D /* PillTest.swift in Sources */,
+				FFE53483269D838F00FDD9A5 /* LabeledControlTest.swift in Sources */,
 				08C81A8025F5A66B0082FD2D /* AlertBannerUnitTest.swift in Sources */,
 				08C81F2525F5A8020082FD2D /* TestCaseBehavior.swift in Sources */,
 				08C81CE725F5A6B60082FD2D /* DropdownTest.swift in Sources */,

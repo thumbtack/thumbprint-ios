@@ -22,8 +22,8 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
     /// Typealias for the control being used so fancy Swift type stuff can be done elsewhere.
     public typealias Control = T
 
-    /// Controls the placement of the label respective to the root control.
-    public enum LabelPlacement: CaseIterable {
+    /// Controls the placement of the label contents respective to the root control.
+    public enum ContentPlacement: CaseIterable {
         case leading
         case trailing
     }
@@ -31,17 +31,25 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
     // MARK: - Initializers
 
     /**
-     Creates and returns a new checkbox with the given parameters.
+     Creates and returns a new labeled control with the given parameters.
      - Parameter control: Optionally it can be initialized with an already created control. Defaults to a control created with no parameters, but can
      be used for testing purposes or with control types that are not directly supported by Thumbprint and where access to the root control may be needed.
-     - Parameter text: Initial text value of the label. Defaults to no content, which will be interpreted as an empty string.
+     - Parameter label: The main label of the labeled control, the one that `control` will align against.
+     - Parameter content: A view that must contain `label` and any other contents to display next to the control and be tappable. It must be able
+     to adjust to being thrown into a horizontal stack view. If nil (the default), `label` will be used as the whole content.
      - Parameter adjustsFontForContentSizeCategory: Boolean indicating whether the label should initially support Dynamic Type. Defaults
      to `true`
      */
-    public required init(control: T = T(), text: String? = nil, adjustsFontForContentSizeCategory: Bool = true) {
+    public init(
+        control: T = T(),
+        label: UILabel,
+        content: (UIView & UIContentSizeCategoryAdjusting)? = nil,
+        adjustsFontForContentSizeCategory: Bool = true
+    ) {
         self.rootControl = control
         self.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
-        self.label = Label(textStyle: .text1, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
+        self.content = content ?? label
+        self.label = label
 
         super.init(frame: .null)
 
@@ -49,15 +57,13 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         addSubview(contentsStack)
         NSLayoutConstraint.activate([leadingInsetConstraint, topInsetConstraint, trailingInsetConstraint, bottomInsetConstraint])
 
-        label.text = text
-        label.textAlignment = .natural
-        label.translatesAutoresizingMaskIntoConstraints = false
-        labelContainer.addSubview(label)
+        self.content.translatesAutoresizingMaskIntoConstraints = false
+        contentContainer.addSubview(self.content)
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(greaterThanOrEqualTo: labelContainer.topAnchor),
-            labelContainer.bottomAnchor.constraint(greaterThanOrEqualTo: label.bottomAnchor),
+            self.content.topAnchor.constraint(greaterThanOrEqualTo: contentContainer.topAnchor),
+            contentContainer.bottomAnchor.constraint(greaterThanOrEqualTo: self.content.bottomAnchor),
         ])
-        label.snapToSuperview(edges: .horizontal)
+        self.content.snapToSuperview(edges: .horizontal)
 
         rootControl.isUserInteractionEnabled = false
         rootControl.translatesAutoresizingMaskIntoConstraints = false
@@ -75,13 +81,23 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         rootControl.setContentCompressionResistancePriority(.required - 1.0, for: .vertical)
 
         // Will add to contentsStack the right way.
-        apply(labelPlacement: labelPlacement)
+        apply(contentPlacement: contentPlacement)
 
         // Turn on the shrink ray.
         heightShrinkerConstraint.isActive = true
 
         // Initialize root control/label alignment.
         setNeedsUpdateConstraints()
+    }
+
+    /**
+     Convenience initializer for labeled controls that just contain a standard label with provided static content.
+     */
+    public convenience init(text: String? = nil, adjustsFontForContentSizeCategory: Bool = true) {
+        let label = Label(textStyle: .text1, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
+        label.text = text
+        label.textAlignment = .natural
+        self.init(label: label, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
     }
 
     @available(*, unavailable)
@@ -118,17 +134,18 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
 
             label.attributedText = newValue
             updateLabelTextColor()
+            labelLayoutDidChange()
         }
     }
 
     /// Access of placement of the label relative to the graphical control. Defaults to displaying the label on the trailing side of the control.
-    public var labelPlacement: LabelPlacement = .trailing {
+    public var contentPlacement: ContentPlacement = .trailing {
         didSet {
-            guard labelPlacement != oldValue else {
+            guard contentPlacement != oldValue else {
                 return
             }
 
-            apply(labelPlacement: labelPlacement)
+            apply(contentPlacement: contentPlacement)
         }
     }
 
@@ -139,21 +156,6 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         }
         set {
             label.numberOfLines = newValue
-        }
-    }
-
-    /// Accesses the Thumbprint textStyle of the label.
-    public var textStyle: Font.TextStyle {
-        get {
-            label.textStyle
-        }
-        set {
-            guard newValue != label.textStyle else {
-                return
-            }
-
-            label.textStyle = newValue
-            setNeedsUpdateConstraints()
         }
     }
 
@@ -171,32 +173,6 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         }
     }
 
-    /**
-     Access to label's content hugging priority so it can be adjusted if the overall layout requires it. Both the root control and `contentInsets`
-     are laid out on `.required` priority. If your layout gets to the point where those break you deserve some exceptions in the logs.
-
-     The default value for these is the same as for UILabel (`.defaultLow`)
-     - Parameter priority: The new layout priority for the label's content hugging internal constraint for the given axis.
-     - Parameter axis: The axis to apply the new priority to.
-     */
-    public func setLabelContentHuggingPriority(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
-        label.setContentHuggingPriority(priority, for: axis)
-        setNeedsUpdateConstraints()
-    }
-
-    /**
-     Access to label's content compression resistance priority so it can be adjusted if the overall layout requires it. Both the root control and
-     `contentInsets` are laid out on `.required` priority. If your layout gets to the point where those break you deserve some exceptions in the logs.
-
-     The default value for these is the same as for UILabel (`.defaultHigh`)
-     - Parameter priority: The new layout priority for the label's content hugging internal constraint for the given axis.
-     - Parameter axis: The axis to apply the new priority to.
-     */
-    public func setLabelContentCompressionResistancePriority(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
-        label.setContentCompressionResistancePriority(priority, for: axis)
-        setNeedsUpdateConstraints()
-    }
-
     // MARK: - Private Implementation
 
     private let contentsStack: UIStackView = {
@@ -206,16 +182,34 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         return stack
     }()
 
+    /**
+     Direct access to the main label, the one that `rootControl` aligns against.
+
+     Remember to call `labelLayoutDidChange` if you make any changes on it that may affect its layout.
+     */
+    public let label: UILabel
+
+    /**
+     Since we give access to the labeled control's main label, there may be situations where the contents and formatting are changed such that the layout
+     is no longer valid for aligning the label and `rootControl`. There is no good way for `LabeledControl` to detect all such instances so if
+     configuration logic makes changes to a labeled control's label that may affect layout you should call this method.
+     */
+    public func labelLayoutDidChange() {
+        setNeedsUpdateConstraints()
+    }
+
     /// Explicitly declared internal as we need access to it in module subclasses (See `LabeledCheckbox` and `LabeledRadio`).
     internal let rootControl: T
 
     private let rootControlContainer = UIView()
 
-    private let label: Label
+    private let content: UIView & UIContentSizeCategoryAdjusting
 
-    private let labelContainer = UIView()
+    private let contentContainer = UIView()
 
-    // Needed due to the implicit ambiguity of not knowing whether rootControl or the label determine contents top/bottom.
+    /**
+     Needed due to the implicit ambiguity of not knowing whether rootControl or the content determine height and stack top/bottom.
+     */
     private lazy var heightShrinkerConstraint: NSLayoutConstraint = {
         let constraint = contentsStack.heightAnchor.constraint(equalToConstant: 0.0)
         constraint.priority = .defaultLow
@@ -242,20 +236,20 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         label.firstBaselineAnchor.constraint(equalTo: rootControl.centerYAnchor)
     }()
 
-    private func apply(labelPlacement: LabelPlacement) {
-        labelContainer.removeFromSuperview()
+    private func apply(contentPlacement: ContentPlacement) {
+        contentContainer.removeFromSuperview()
         rootControlContainer.removeFromSuperview()
-        switch labelPlacement {
+        switch contentPlacement {
         case .trailing:
             contentsStack.addArrangedSubview(rootControlContainer)
-            contentsStack.addArrangedSubview(labelContainer)
+            contentsStack.addArrangedSubview(contentContainer)
 
         case .leading:
-            contentsStack.addArrangedSubview(labelContainer)
+            contentsStack.addArrangedSubview(contentContainer)
             contentsStack.addArrangedSubview(rootControlContainer)
         }
 
-        // Reactivate vertical alignment (it deactivates when we remove label/root control from stack view).
+        // Reactivate vertical alignment (it deactivates when we remove content/root control from stack view).
         rootControlAlignmentConstraint.isActive = true
     }
 
@@ -303,7 +297,7 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         didSet {
             guard adjustsFontForContentSizeCategory != oldValue else { return }
 
-            label.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
+            content.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
 
             setNeedsUpdateConstraints()
         }
@@ -331,11 +325,11 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
     }
 
     public override var forFirstBaselineLayout: UIView {
-        label.forFirstBaselineLayout
+        content.forFirstBaselineLayout
     }
 
     public override var forLastBaselineLayout: UIView {
-        label.forLastBaselineLayout
+        content.forLastBaselineLayout
     }
 
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

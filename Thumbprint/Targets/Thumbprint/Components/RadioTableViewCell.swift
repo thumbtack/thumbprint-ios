@@ -26,16 +26,6 @@ open class RadioTableViewCell: UITableViewCell, UIContentSizeCategoryAdjusting {
         radio.isSelected = radioGroup?.shouldReusedCellBeSelected(cell: self) ?? false
     }
 
-    public var textStyle: Font.TextStyle {
-        get {
-            radio.textStyle
-        }
-
-        set {
-            radio.textStyle = newValue
-        }
-    }
-
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         self.radio = LabeledRadio(text: "", adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
 

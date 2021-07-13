@@ -81,7 +81,7 @@ class LabeledCheckboxTest: SnapshotTestCase {
 
     func testLabelCheckboxLeadingLabel() {
         verifyLabelCheckbox { labelCheckbox in
-            labelCheckbox.labelPlacement = .leading
+            labelCheckbox.contentPlacement = .leading
         }
     }
 
@@ -101,8 +101,33 @@ class LabeledCheckboxTest: SnapshotTestCase {
     func testLabelCheckboxExtraSpaceLeading() {
         verifyLabelCheckbox(limitedWidth: true) { labelCheckbox in
             labelCheckbox.text = "Checkbox!"
-            labelCheckbox.labelPlacement = .leading
+            labelCheckbox.contentPlacement = .leading
         }
+    }
+
+    func testMultilabel() {
+        verify(
+            viewFactory: {
+                let contents = MockMultilabel()
+                let labelCheckbox = LabeledCheckbox(label: contents.titleLabel, content: contents)
+                return labelCheckbox
+            },
+            sizes: [.defaultWidthIntrinsicHeight],
+            verifyLayoutAmbiguity: false
+        )
+    }
+
+    func testMultilabelLeading() {
+        verify(
+            viewFactory: {
+                let contents = MockMultilabel()
+                let labelCheckbox = LabeledCheckbox(label: contents.titleLabel, content: contents)
+                labelCheckbox.contentPlacement = .leading
+                return labelCheckbox
+            },
+            sizes: [.defaultWidthIntrinsicHeight],
+            verifyLayoutAmbiguity: false
+        )
     }
 
     // MARK: - Private

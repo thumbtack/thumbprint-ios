@@ -41,7 +41,7 @@ class LabeledRadioTest: SnapshotTestCase {
 
     func testLabeledRadioLeadingLabel() {
         verifyLabeledRadio { labeledRadio in
-            labeledRadio.labelPlacement = .leading
+            labeledRadio.contentPlacement = .leading
         }
     }
 
@@ -61,8 +61,33 @@ class LabeledRadioTest: SnapshotTestCase {
     func testLabeledRadioExtraSpaceLeading() {
         verifyLabeledRadio(limitedWidth: true) { labeledRadio in
             labeledRadio.text = "Radio!"
-            labeledRadio.labelPlacement = .leading
+            labeledRadio.contentPlacement = .leading
         }
+    }
+
+    func testMultilabel() {
+        verify(
+            viewFactory: {
+                let contents = MockMultilabel()
+                let radioCheckbox = LabeledRadio(label: contents.titleLabel, content: contents)
+                return radioCheckbox
+            },
+            sizes: [.defaultWidthIntrinsicHeight],
+            verifyLayoutAmbiguity: false
+        )
+    }
+
+    func testMultilabelLeading() {
+        verify(
+            viewFactory: {
+                let contents = MockMultilabel()
+                let radioCheckbox = LabeledRadio(label: contents.titleLabel, content: contents)
+                radioCheckbox.contentPlacement = .leading
+                return radioCheckbox
+            },
+            sizes: [.defaultWidthIntrinsicHeight],
+            verifyLayoutAmbiguity: false
+        )
     }
 
     // MARK: - Private
