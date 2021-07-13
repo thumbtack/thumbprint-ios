@@ -4,6 +4,7 @@ open class RadioTableViewCell: UITableViewCell, UIContentSizeCategoryAdjusting {
     public static let reuseIdentifier = "RadioTableViewCell"
     public let radio: LabeledRadio
     public var radioGroup: RadioTableViewCellGroup?
+    private let radioLabel = Label(textStyle: .text1)
 
     open var adjustsFontForContentSizeCategory: Bool = true {
         didSet {
@@ -26,8 +27,18 @@ open class RadioTableViewCell: UITableViewCell, UIContentSizeCategoryAdjusting {
         radio.isSelected = radioGroup?.shouldReusedCellBeSelected(cell: self) ?? false
     }
 
+    public var textStyle: Font.TextStyle {
+        get {
+            radioLabel.textStyle
+        }
+
+        set {
+            radioLabel.textStyle = newValue
+        }
+    }
+
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        self.radio = LabeledRadio(text: "", adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
+        self.radio = LabeledRadio(label: radioLabel, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
 
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
 
