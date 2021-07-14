@@ -50,12 +50,8 @@ open class RadioTableViewCell: UITableViewCell, UIContentSizeCategoryAdjusting {
 
         contentView.addSubview(radio)
         radio.snp.makeConstraints { make in
-            // enforce a minimum cell height with larger bottom padding for single lines
-            make.height.greaterThanOrEqualTo(radio.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height + Space.two)
-            make.right.lessThanOrEqualToSuperview().inset(Space.four)
-            make.top.equalToSuperview().inset(Space.three)
-            make.left.equalToSuperview().inset(Space.four)
-            make.bottom.lessThanOrEqualToSuperview().inset(Space.two)
+            make.leading.trailing.equalToSuperview().inset(Space.four)
+            make.top.bottom.equalToSuperview().inset(Space.three)
         }
     }
 
