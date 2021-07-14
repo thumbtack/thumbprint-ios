@@ -349,14 +349,9 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
 
         rootControlAlignmentConstraint.constant = constant
 
-        // Needs to be lower than the content compression resistance/hugging of the label so as not to interfere with them.
-        heightShrinkerConstraint.priority = max(
-            UILayoutPriority(rawValue: 1.0),
-            min(
-                label.contentCompressionResistancePriority(for: .vertical),
-                label.contentHuggingPriority(for: .vertical)
-            ) - 1.0
-        )
+        // We keep it high but low enough that it won't intefere with default content compression resistance
+        // priority and can still be played with.
+        heightShrinkerConstraint.priority = .defaultHigh - 50.0
     }
 
     public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
