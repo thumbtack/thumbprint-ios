@@ -34,10 +34,8 @@ public final class Radio: Control {
 
         backgroundColor = .clear
 
-        defer { // swiftlint:disable:this inert_defer
-            isSelected = false
-            inputState = .default
-        }
+        // Make sure all the UI is up to date.
+        updateUIState()
     }
 
     @available(*, unavailable)
@@ -57,42 +55,52 @@ public final class Radio: Control {
 
     public override var isSelected: Bool {
         didSet {
-            innerDot.isHidden = !isSelected
+            guard isSelected != oldValue else {
+                return
+            }
+
+            updateUIState()
         }
     }
 
-    var inputState: InputState = .default {
+    public override var isEnabled: Bool {
         didSet {
-            updateInnerCircleColor()
-            updateOuterCircleColor()
+            guard isEnabled != oldValue else {
+                return
+            }
+
+            updateUIState()
         }
     }
 
-    private func updateInnerCircleColor() {
-        switch inputState {
-        case .default, .highlighted:
+    public override var isHighlighted: Bool {
+        didSet {
+            guard isHighlighted != oldValue else {
+                return
+            }
+
+            updateUIState()
+        }
+    }
+
+    private func updateUIState() {
+        innerDot.isHidden = !isSelected
+
+        if isEnabled {
+            // Inner dot blue if it shows.
             innerDot.tintColor = Color.blue
-        case .disabled:
-            innerDot.tintColor = Color.gray
-        case .error:
-            innerDot.tintColor = Color.red
-        }
-    }
+            backgroundFill.tintColor = .clear
 
-    private func updateOuterCircleColor() {
-        switch inputState {
-        case .default:
-            outerRing.tintColor = isSelected ? Color.blue : Color.gray
-            backgroundFill.tintColor = .clear
-        case .disabled:
-            outerRing.tintColor = Color.gray300
+            if isSelected || isHighlighted {
+                outerRing.tintColor = Color.blue
+            } else {
+                outerRing.tintColor = Color.gray
+            }
+        } else {
+            // Disabled. Outer ring draws lighter than inner dot if selected.
+            innerDot.tintColor = Color.gray
+            outerRing.tintColor = isSelected ? Color.gray : Color.gray300
             backgroundFill.tintColor = Color.white
-        case .error:
-            outerRing.tintColor = Color.red
-            backgroundFill.tintColor = .clear
-        case .highlighted:
-            outerRing.tintColor = Color.blue
-            backgroundFill.tintColor = .clear
         }
     }
 

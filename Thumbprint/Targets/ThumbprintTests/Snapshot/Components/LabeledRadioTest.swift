@@ -7,32 +7,32 @@ class LabeledRadioTest: SnapshotTestCase {
         }
     }
 
-    func testLabeledRadioEmptyDisabled() {
+    func testLabeledRadioDisabled() {
         verifyLabeledRadio { labeledRadio in
             labeledRadio.isEnabled = false
         }
     }
 
-    func testLabeledRadioEmptyHighlighted() {
+    func testLabeledRadioHighlighted() {
         verifyLabeledRadio { labeledRadio in
             labeledRadio.isHighlighted = true
         }
     }
 
-    func testLabeledRadioChecked() {
+    func testLabeledRadioSelected() {
         verifyLabeledRadio { labeledRadio in
             labeledRadio.isSelected = true
         }
     }
 
-    func testLabeledRadioCheckedDisabled() {
+    func testLabeledRadioSelectedDisabled() {
         verifyLabeledRadio { labeledRadio in
             labeledRadio.isSelected = true
             labeledRadio.isEnabled = false
         }
     }
 
-    func testLabeledRadioCheckedHighlighted() {
+    func testLabeledRadioSelectedHighlighted() {
         verifyLabeledRadio { labeledRadio in
             labeledRadio.isSelected = true
             labeledRadio.isHighlighted = true
