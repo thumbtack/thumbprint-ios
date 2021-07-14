@@ -48,22 +48,27 @@ open class RadioTableViewCell: UITableViewCell, UIContentSizeCategoryAdjusting {
         radio.isUserInteractionEnabled = false
         radio.sizeToFit()
 
-        contentView.addSubview(radio)
+        let radioContainer = UIView()
+
+        radioContainer.addSubview(radio)
         radio.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(Space.four)
-            make.top.equalToSuperview().inset(Space.three)
-            make.bottom.lessThanOrEqualToSuperview().inset(Space.two)
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
         }
 
-        contentView.snp.makeConstraints { make in
+        contentView.addSubview(radioContainer)
+        radioContainer.snp.makeConstraints { make in
             make.height.greaterThanOrEqualTo(
                 radio.systemLayoutSizeFitting(
                     .init(
                         width: UIView.layoutFittingExpandedSize.width,
                         height: UIView.layoutFittingCompressedSize.height
                     )
-                ).height + 2.0 * Space.three
+                ).height + Space.two
             )
+            make.leading.trailing.equalToSuperview().inset(Space.four)
+            make.top.equalToSuperview().inset(Space.three)
+            make.bottom.equalToSuperview().inset(Space.two)
         }
     }
 
