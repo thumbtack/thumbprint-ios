@@ -2,8 +2,13 @@ import Combine
 import UIKit
 
 /**
- An object that manages a group of radio buttons and its selection. The class is generic meaning it can be instantiated with any type of key as long as it
- can be easily uniqued and compared. Updates of the selected radio in the group can be subscribed to using the `selection` publisher property.
+ An object that manages a group of controls —usually radio buttons although any control that supports a proper selected state could work— where only one of
+ them may be selected at a time.
+
+ The class is generic meaning it can be instantiated with any type of key as long as it can be easily uniqued and compared, making translation of the selection
+ to/from underlying model easier.
+
+ Updates of the selected radio in the group can be subscribed to using the `selection` publisher property.
  */
 public final class RadioGroup<Key> where Key: Hashable {
     /// Need to declare it to make it public.
@@ -65,29 +70,14 @@ public final class RadioGroup<Key> where Key: Hashable {
     }
 
     /**
-     Registers a standalone `Radio` for the given key. Don't use this to register a LabeledRadio even if you have
-     access to its internal control. The registered control must be the same one that sends actions when tapped.
-
-     The function will assert when attempting to register the same radio more than once or registering an already registered key.
-     - Parameter radio: The `Radio` view associated in the UI with the given key.
-     - Parameter key: The key to be associated with the given radio.
+     Registers a control (usually a `LabeledRadio`) for the given key.
+     - Parameter control: The control that is to become part of the radio group. It must be the same one that sends an action when selected by the
+     user (for example for a labeled control subtype send the `LabeledControl` instance instead of its `rootControl`). A control may only be associated
+     with a single `RadioGroup` at a time and only once with a single key.
+     - Parameter key: The key to associate with the control. When the control is tapped the given key will be selected, when the key is programmatically
+     selected the control will be set to its selected state and all others in the radio group will be unselected. Must be unique for the group.
      */
-    public func registerRadio(_ radio: Radio, forKey key: Key) {
-        registerControl(radio, forKey: key)
-    }
-
-    /**
-     Registers a `LabeledRadio` for the given key.
-
-     The function will assert when attempting to register the same radio more than once or registering an already registered key.
-     - Parameter radio: The `Radio` view associated in the UI with the given key.
-     - Parameter key: The key to be associated with the given radio.
-     */
-    public func registerRadio(_ radio: LabeledRadio, forKey key: Key) {
-        registerControl(radio, forKey: key)
-    }
-
-    private func registerControl(_ control: Control & SimpleControl, forKey key: Key) {
+    public func register(_ control: Control & SimpleControl, forKey key: Key) {
         assert(
             !radioToKey.keys.contains(control),
             "Attempted to register radio object \(control) with key \(key) already registered for key \(String(describing: radioToKey[control]))"

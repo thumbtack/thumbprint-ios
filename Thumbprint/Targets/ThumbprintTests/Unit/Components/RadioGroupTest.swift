@@ -15,7 +15,7 @@ class RadioGroupTest: UnitTestCase {
         ]
 
         radios.enumerated().forEach { index, radio in
-            radioGroup.registerRadio(radio, forKey: index + 1)
+            radioGroup.register(radio, forKey: index + 1)
         }
 
         var currentSelection: Int? = 1000
