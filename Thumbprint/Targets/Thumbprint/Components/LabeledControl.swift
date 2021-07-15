@@ -1,20 +1,24 @@
 import UIKit
 
 /**
- Generic class for controls built off a tappable control (aka "root control") and a wrappable label next to it. Currently used as a base class for
- checkbox and radio button labeled controls but could be used for other simple controls with a similar layout even without subclassing.
+ Generic class for controls built off a tappable button-style control (aka "root control") and a wrappable label
+ aligned next to it. Currently used as a base class for checkbox and radio button labeled controls (`LabeledCheckbox`
+ and `LabeledRadio` respectively) but can easily be used with other `SimpleControl` implementations with similar
+ layout requirements even without subclassing.
 
- The control is supposed to offer a simple action (therefore compliance with `SimpleControl` and be graphical in nature which is why
- we are not requiring compliance with `UIContentSizeCategoryAdjusting`.
+ The root control is supposed to be graphical in nature and thus isn't accounted for in the class' implementation of
+ `UIContentSizeCategoryAdjusting`.
 
  The facilities this class provides are the following:
- - Proxies the root control to the whole surface including the label.
- - Allows for enabled/error state to reflect on the label as well.
+ - Proxies the root control tappable area to the whole surface of the `LabeledControl` instance.
+ - Allows for enabled state to reflect on the label as well.
  - Allows for configuration of the label to appear on either the leading or trailing side of the control
- - Allows configuring the label to wrap text if desired.
- - Aligns the graphical control's vertical center to the top line of the label
- - Exposes the label's content hugging and content compression resistance priorities so they can be adjusted if needed within a larger layout. The
- rest of the internal layout of the control is hardcoded.
+ - Gives access to some of the label configuration options such as `numberOfLines`. If more thorough configuration
+ of the label is required you can intialize the control with a manually created label and keep a typed reference to
+ it.
+ - Aligns the graphical control's vertical center to the top line of the label. If the label is being configured
+ outside of `LabeledControl` use `labelLayoutDidChange()` to ensure the layout remains updated.
+ - Attempts to make the labeled control as short as possible at a priority of `.defaultHigh - 50`.
  */
 open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: SimpleControl {
     // MARK: - Types
@@ -32,13 +36,15 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
 
     /**
      Creates and returns a new labeled control with the given parameters.
-     - Parameter control: Optionally it can be initialized with an already created control. Defaults to a control created with no parameters, but can
-     be used for testing purposes or with control types that are not directly supported by Thumbprint and where access to the root control may be needed.
+     - Parameter control: Optionally it can be initialized with an already created control. Defaults to a control
+     created with no parameters, but can be used for testing purposes or with control types that are not directly
+     supported by Thumbprint and where access to the root control may be needed.
      - Parameter label: The main label of the labeled control, the one that `control` will align against.
-     - Parameter content: A view that must contain `label` and any other contents to display next to the control and be tappable. It must be able
-     to adjust to being thrown into a horizontal stack view. If nil (the default), `label` will be used as the whole content.
-     - Parameter adjustsFontForContentSizeCategory: Boolean indicating whether the label should initially support Dynamic Type. Defaults
-     to `true`
+     - Parameter content: If not nil, a view that must contain `label` and any other contents to display next to the
+     control. As part of the control all of its area will be tappable. It must be able to adjust to being thrown into
+     a horizontal stack view. If nil (the default), `label` will be used as the whole content.
+     - Parameter adjustsFontForContentSizeCategory: Boolean indicating whether the label should initially support
+     Dynamic Type. Defaults to `true`
      */
     public init(
         control: T = T(),
@@ -84,6 +90,10 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         apply(contentPlacement: contentPlacement)
 
         // Turn on the shrink ray.
+        // We keep it high but low enough that it won't intefere with default content compression resistance
+        // priority and can still be played with.
+        let heightShrinkerConstraint = contentsStack.heightAnchor.constraint(equalToConstant: 0.0)
+        heightShrinkerConstraint.priority = .defaultHigh - 50.0
         heightShrinkerConstraint.isActive = true
 
         // Initialize root control/label alignment.
@@ -91,7 +101,9 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
     }
 
     /**
-     Convenience initializer for labeled controls that just contain a standard label with provided static content.
+     Convenience initializer for labeled controls that just contain a standard label with the provided text.
+     - Parameter text: The text to display in the label with a standard `.text1` theme.
+     - Parameter adjustsFontForContentSizeCategory: Whether to adjust the label's font to dynamic font sizes.
      */
     public convenience init(text: String? = nil, adjustsFontForContentSizeCategory: Bool = true) {
         let label = Label(textStyle: .text1, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
@@ -159,28 +171,24 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         }
     }
 
-    /// Additional content insets around the root control and label. The additional area will be part of the tapping target.
-    public var contentInsets: NSDirectionalEdgeInsets = .zero {
-        didSet {
-            guard contentInsets != oldValue else {
-                return
-            }
+    /// Additional content insets around the root control and label. The inset area will still be tappable.
+    public var contentInsets: NSDirectionalEdgeInsets {
+        get {
+            .init(
+                top: topInsetConstraint.constant,
+                leading: leadingInsetConstraint.constant,
+                bottom: bottomInsetConstraint.constant,
+                trailing: trailingInsetConstraint.constant
+            )
+        }
 
-            leadingInsetConstraint.constant = -contentInsets.leading
-            topInsetConstraint.constant = -contentInsets.top
-            trailingInsetConstraint.constant = -contentInsets.trailing
-            bottomInsetConstraint.constant = -contentInsets.bottom
+        set {
+            leadingInsetConstraint.constant = -newValue.leading
+            topInsetConstraint.constant = -newValue.top
+            trailingInsetConstraint.constant = -newValue.trailing
+            bottomInsetConstraint.constant = -newValue.bottom
         }
     }
-
-    // MARK: - Private Implementation
-
-    private let contentsStack: UIStackView = {
-        let stack = UIStackView()
-        stack.spacing = Space.two
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
 
     /**
      Direct access to the main label, the one that `rootControl` aligns against.
@@ -198,6 +206,15 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         setNeedsUpdateConstraints()
     }
 
+    // MARK: - Private Implementation
+
+    private let contentsStack: UIStackView = {
+        let stack = UIStackView()
+        stack.spacing = Space.two
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+
     /// Explicitly declared internal as we need access to it in module subclasses (See `LabeledCheckbox` and `LabeledRadio`).
     internal let rootControl: T
 
@@ -206,15 +223,6 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
     private let content: UIView & UIContentSizeCategoryAdjusting
 
     private let contentContainer = UIView()
-
-    /**
-     Needed due to the implicit ambiguity of not knowing whether rootControl or the content determine height and stack top/bottom.
-     */
-    private lazy var heightShrinkerConstraint: NSLayoutConstraint = {
-        let constraint = contentsStack.heightAnchor.constraint(equalToConstant: 0.0)
-        constraint.priority = .defaultLow
-        return constraint
-    }()
 
     private lazy var leadingInsetConstraint: NSLayoutConstraint = {
         leadingAnchor.constraint(equalTo: contentsStack.leadingAnchor)
@@ -324,14 +332,6 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         }
     }
 
-    public override var forFirstBaselineLayout: UIView {
-        content.forFirstBaselineLayout
-    }
-
-    public override var forLastBaselineLayout: UIView {
-        content.forLastBaselineLayout
-    }
-
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if traitCollection.preferredContentSizeCategory != previousTraitCollection?.preferredContentSizeCategory {
@@ -348,10 +348,6 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         }
 
         rootControlAlignmentConstraint.constant = constant
-
-        // We keep it high but low enough that it won't intefere with default content compression resistance
-        // priority and can still be played with.
-        heightShrinkerConstraint.priority = .defaultHigh - 50.0
     }
 
     public override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -378,7 +374,8 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         performAction()
     }
 
-    /// Override takes over subviews to make the whole of self the touch area.
+    /// Override takes over subviews to make the whole of self the touch area. and disable tapping on any of the
+    /// content controls.
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         if let result = super.hitTest(point, with: event) {
             if result.isDescendant(of: self) {
