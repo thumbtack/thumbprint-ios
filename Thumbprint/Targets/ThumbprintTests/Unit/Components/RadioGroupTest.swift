@@ -7,15 +7,15 @@ class RadioGroupTest: UnitTestCase {
         let radioGroup = RadioGroup<Int>()
 
         let radios = [
-            Radio(text: "One"),
-            Radio(text: "Two"),
-            Radio(text: "Thre"),
-            Radio(text: "Four"),
-            Radio(text: "Five"),
+            LabeledRadio(text: "One"),
+            LabeledRadio(text: "Two"),
+            LabeledRadio(text: "Thre"),
+            LabeledRadio(text: "Four"),
+            LabeledRadio(text: "Five"),
         ]
 
         radios.enumerated().forEach { index, radio in
-            radioGroup.registerRadio(radio, forKey: index + 1)
+            radioGroup.register(radio, forKey: index + 1)
         }
 
         var currentSelection: Int? = 1000

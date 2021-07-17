@@ -82,7 +82,8 @@ open class SnapshotTestCase: XCTestCase {
         behavior = TestCaseBehavior()
     }
 
-    open override func tearDown() {
+    /// Override tearDownWithError as it gets called later by XCTestCase.
+    open override func tearDownWithError() throws {
         recordMode = false
 
         let localBehavior = behavior
@@ -92,7 +93,7 @@ open class SnapshotTestCase: XCTestCase {
             ensureCleanProperties: true
         )
 
-        super.tearDown()
+        try super.tearDownWithError()
     }
 
     static func verifyExpectedSnapshotTestDevice() {

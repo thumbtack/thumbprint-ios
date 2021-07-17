@@ -2,8 +2,9 @@ import UIKit
 
 open class RadioTableViewCell: UITableViewCell, UIContentSizeCategoryAdjusting {
     public static let reuseIdentifier = "RadioTableViewCell"
-    public let radio: Radio
+    public let radio: LabeledRadio
     public var radioGroup: RadioTableViewCellGroup?
+    private let radioLabel = Label(textStyle: .text1)
 
     open var adjustsFontForContentSizeCategory: Bool = true {
         didSet {
@@ -28,16 +29,16 @@ open class RadioTableViewCell: UITableViewCell, UIContentSizeCategoryAdjusting {
 
     public var textStyle: Font.TextStyle {
         get {
-            radio.textStyle
+            radioLabel.textStyle
         }
 
         set {
-            radio.textStyle = newValue
+            radioLabel.textStyle = newValue
         }
     }
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        self.radio = Radio(text: "", adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
+        self.radio = LabeledRadio(label: radioLabel, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
 
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
 
@@ -47,14 +48,27 @@ open class RadioTableViewCell: UITableViewCell, UIContentSizeCategoryAdjusting {
         radio.isUserInteractionEnabled = false
         radio.sizeToFit()
 
-        contentView.addSubview(radio)
+        let radioContainer = UIView()
+
+        radioContainer.addSubview(radio)
         radio.snp.makeConstraints { make in
-            // enforce a minimum cell height with larger bottom padding for single lines
-            make.height.greaterThanOrEqualTo(radio.radioImage.intrinsicContentSize.height + Space.two)
-            make.right.lessThanOrEqualToSuperview().inset(Space.four)
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
+        }
+
+        contentView.addSubview(radioContainer)
+        radioContainer.snp.makeConstraints { make in
+            make.height.greaterThanOrEqualTo(
+                radio.systemLayoutSizeFitting(
+                    .init(
+                        width: UIView.layoutFittingExpandedSize.width,
+                        height: UIView.layoutFittingCompressedSize.height
+                    )
+                ).height + Space.two
+            )
+            make.leading.trailing.equalToSuperview().inset(Space.four)
             make.top.equalToSuperview().inset(Space.three)
-            make.left.equalToSuperview().inset(Space.four)
-            make.bottom.lessThanOrEqualToSuperview().inset(Space.two)
+            make.bottom.equalToSuperview().inset(Space.two)
         }
     }
 
