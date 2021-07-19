@@ -8,9 +8,9 @@ class UIView_LayoutTests: UnitTestCase {
         let superviewSize = CGFloat(100.0)
         let superview = UIView(frame: CGRect(x: 0.0, y: 0.0, width: superviewSize, height: superviewSize))
         let view = UIView()
-        superview.addSubview(view)
+        superview.addManagedSubview(view)
 
-        view.snapToSuperview(edges: .all, inset: inset)
+        view.snapToSuperviewEdges(.all, inset: inset)
         superview.layoutIfNeeded()
 
         XCTAssertEqual(view.frame, CGRect(x: inset, y: inset, width: superviewSize - 2.0 * inset, height: superviewSize - 2.0 * inset))
@@ -23,10 +23,10 @@ class UIView_LayoutTests: UnitTestCase {
         let superviewSize = CGFloat(100.0)
         let superview = UIView(frame: CGRect(x: 0.0, y: 0.0, width: superviewSize, height: superviewSize))
         let view = UIView()
-        superview.addSubview(view)
+        superview.addManagedSubview(view)
         superview.semanticContentAttribute = .forceLeftToRight
 
-        view.snapToSuperview(edges: [.vertical, .leading], inset: inset)
+        view.snapToSuperviewEdges([.vertical, .leading], inset: inset)
         view.widthAnchor.constraint(equalToConstant: superviewSize * 0.5).isActive = true
         superview.layoutIfNeeded()
 
@@ -37,6 +37,54 @@ class UIView_LayoutTests: UnitTestCase {
         superview.layoutIfNeeded()
 
         XCTAssertEqual(view.frame, CGRect(x: superviewSize * 0.5 - inset, y: inset, width: superviewSize * 0.5, height: superviewSize - 2.0 * inset))
+    }
+
+    func testLayoutMargins() {
+        let inset = CGFloat(5.0)
+        let superviewSize = CGFloat(100.0)
+        let superview = UIView(frame: CGRect(x: 0.0, y: 0.0, width: superviewSize, height: superviewSize))
+        let view = UIView()
+        superview.addManagedSubview(view)
+
+        view.snapToSuperviewMargins(.all, inset: inset)
+        superview.layoutIfNeeded()
+
+        XCTAssertEqual(
+            view.frame,
+            CGRect(
+                x: inset + superview.layoutMargins.left,
+                y: inset + superview.layoutMargins.top,
+                width: superviewSize - 2.0 * inset - superview.layoutMargins.left - superview.layoutMargins.right,
+                height: superviewSize - 2.0 * inset - superview.layoutMargins.top - superview.layoutMargins.bottom
+            )
+        )
+    }
+
+    // Tests that centering works as expected.
+    func testCenterInSuperview() {
+        let superviewSize = CGFloat(100.0)
+        let superview = UIView(frame: CGRect(x: 0.0, y: 0.0, width: superviewSize, height: superviewSize))
+
+        let viewSize = CGFloat(50.0)
+        let view = UIView()
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: viewSize),
+            view.heightAnchor.constraint(equalToConstant: viewSize),
+        ])
+        superview.addManagedSubview(view)
+
+        view.centerInSuperview(along: .both)
+        superview.layoutIfNeeded()
+
+        XCTAssertEqual(
+            view.frame,
+            CGRect(
+                x: (superviewSize - viewSize) * 0.5,
+                y: (superviewSize - viewSize) * 0.5,
+                width: viewSize,
+                height: viewSize
+            )
+        )
     }
 
     //  Tests that a wide aspect ratio does as expected.

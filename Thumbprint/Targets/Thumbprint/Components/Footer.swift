@@ -39,22 +39,16 @@ open class Footer: UIView, UIScrollViewDelegate {
         backgroundColor = Color.white
 
         shadowImageView.alpha = showShadowByDefault ? 1.0 : 0.0
-        shadowImageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(shadowImageView)
-        NSLayoutConstraint.activate([
-            shadowImageView.bottomAnchor.constraint(equalTo: topAnchor),
-        ])
-        shadowImageView.snapToSuperview(edges: .horizontal)
+        addManagedSubview(shadowImageView)
+        shadowImageView.bottomAnchor.constraint(equalTo: topAnchor).isActive = true
+        shadowImageView.snapToSuperviewEdges(.horizontal)
 
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(contentView)
-        NSLayoutConstraint.activate([
-            contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: Space.three),
-        ])
-        contentView.snapToSuperview(edges: [.top], inset: Space.three)
+        addManagedSubview(contentView)
+        contentView.centerInSuperview(along: .horizontal)
+        safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: Space.three).isActive = true
+        contentView.snapToSuperviewEdges([.top], inset: Space.three)
 
-        self.compactHorizontalConstraints = contentView.constraintsEqualToSuperview(edges: .horizontal, inset: Space.three)
+        self.compactHorizontalConstraints = contentView.constraintsEqualToSuperviewEdges(.horizontal, inset: Space.three)
 
         self.regularHorizontalConstraints = [
             contentView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: Footer.regularMaxContentWidthProportion),

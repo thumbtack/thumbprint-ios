@@ -140,16 +140,12 @@ public final class Avatar: UIView {
     private func setupViews() {
         label.textAlignment = .center
         label.isAccessibilityElement = false
-        addSubview(label)
-        label.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-        }
+        addManagedSubview(label)
+        label.centerInSuperview(along: .both)
 
         imageView.contentMode = .scaleAspectFill
-        addSubview(imageView)
-        imageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        addManagedSubview(imageView)
+        imageView.snapToSuperviewEdges(.all)
     }
 
     private func updateSize() {
@@ -191,11 +187,7 @@ internal class OnlineBadgeView: UIView {
         fillView.backgroundColor = Color.green
         backgroundColor = Color.white
 
-        addSubview(fillView)
-        fillView.snp.makeConstraints { make in
-            let borderWidth = 2
-            make.center.equalToSuperview()
-            make.width.height.equalToSuperview().offset(-(borderWidth * 2))
-        }
+        addManagedSubview(fillView)
+        fillView.snapToSuperviewEdges(.all, inset: 2.0)
     }
 }

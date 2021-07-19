@@ -71,10 +71,8 @@ private class SheetWithSizeViewController: UIViewController {
 
         view.backgroundColor = .white
 
-        view.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.left.top.right.equalToSuperview().inset(Space.three)
-        }
+        view.addManagedSubview(label)
+        label.snapToSuperviewEdges([.leading, .top, .trailing], inset: Space.three)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -108,9 +106,7 @@ private class SheetWithoutSizeViewController: UIViewController {
 
         view.backgroundColor = .white
 
-        view.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(Space.three)
-        }
+        view.addManagedSubview(label)
+        label.snapToSuperviewEdges(.all, inset: Space.three)
     }
 }

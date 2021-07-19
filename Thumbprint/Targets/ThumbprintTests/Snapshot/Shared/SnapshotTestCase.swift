@@ -134,11 +134,8 @@ open class SnapshotTestCase: XCTestCase {
                     }
                 }
 
-                viewController.view.addSubview(view)
-
-                view.snp.makeConstraints { make in
-                    make.edges.equalToSuperview()
-                }
+                viewController.view.addManagedSubview(view)
+                view.snapToSuperviewEdges(.all)
 
                 return viewController
             },
@@ -184,11 +181,8 @@ open class SnapshotTestCase: XCTestCase {
             viewControllerFactory: {
                 let viewController = UIViewController()
                 viewController.view.backgroundColor = Color.primaryBackground
-                viewController.view.addSubview(view)
-
-                view.snp.makeConstraints { make in
-                    make.edges.equalToSuperview()
-                }
+                viewController.view.addManagedSubview(view)
+                view.snapToSuperviewEdges(.all)
 
                 return viewController
             },
@@ -324,10 +318,8 @@ open class SnapshotTestCase: XCTestCase {
                     viewControllerFactory: {
                         let viewController = UIViewController()
                         viewController.view = NoSafeAreaView()
-                        viewController.view.addSubview(scrollView)
-                        scrollView.snp.makeConstraints { make in
-                            make.edges.equalToSuperview()
-                        }
+                        viewController.view.addManagedSubview(scrollView)
+                        scrollView.snapToSuperviewEdges(.all)
                         return viewController
                     },
                     identifier: fullIdentifier,
@@ -518,10 +510,8 @@ public extension Snapshotting where Value: UIViewController, Format == UIImage {
                 let containerView = containerViewController.view!
                 containerView.backgroundColor = Color.primaryBackground
                 containerViewController.addChild(viewController)
-                containerView.addSubview(viewController.view)
-                viewController.view.snp.makeConstraints { make in
-                    make.edges.equalToSuperview().inset(padding)
-                }
+                containerView.addManagedSubview(viewController.view)
+                viewController.view.snapToSuperviewEdges(.all, inset: padding)
 
                 viewController.didMove(toParent: containerViewController)
 
@@ -531,34 +521,26 @@ public extension Snapshotting where Value: UIViewController, Format == UIImage {
 
                 rootViewController.addChild(containerViewController)
                 rootViewController.setOverrideTraitCollection(config.traits, forChild: containerViewController)
-                rootViewController.view.addSubview(containerView)
+                rootViewController.view.addManagedSubview(containerView)
 
                 // Now that we've set the container in place we add different constraints depending on the test
                 // configuration
                 if hasIntrinsicWidth {
-                    containerView.snp.makeConstraints { make in
-                        make.leading.equalToSuperview()
-                    }
+                    containerView.snapToSuperviewEdges(.leading)
 
                     containerView.setContentHuggingPriority(.required, for: .horizontal)
                     containerView.setContentCompressionResistancePriority(.required, for: .horizontal)
                 } else {
-                    containerView.snp.makeConstraints { make in
-                        make.leading.trailing.equalToSuperview()
-                    }
+                    containerView.snapToSuperviewEdges(.horizontal)
                 }
 
                 if hasIntrinsicHeight {
-                    containerView.snp.makeConstraints { make in
-                        make.top.equalToSuperview()
-                    }
+                    containerView.snapToSuperviewEdges(.top)
 
                     containerView.setContentHuggingPriority(.required, for: .vertical)
                     containerView.setContentCompressionResistancePriority(.required, for: .vertical)
                 } else {
-                    containerView.snp.makeConstraints { make in
-                        make.top.bottom.equalToSuperview()
-                    }
+                    containerView.snapToSuperviewEdges(.vertical)
                 }
 
                 containerViewController.didMove(toParent: rootViewController)

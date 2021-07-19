@@ -128,15 +128,9 @@ public class Chip: Control {
 
     private func setupView() {
         let pill = self.pill
-        pill.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(pill)
+        addManagedSubview(pill)
 
-        NSLayoutConstraint.activate([
-            pill.leadingAnchor.constraint(equalTo: leadingAnchor),
-            pill.topAnchor.constraint(equalTo: topAnchor),
-            trailingAnchor.constraint(equalTo: pill.trailingAnchor),
-            bottomAnchor.constraint(equalTo: pill.bottomAnchor),
-        ])
+        pill.snapToSuperviewEdges(.all)
 
         //  Set pill's sizing priorities to negligible values to avoid autolayout engine confusion.
         pill.setContentHuggingPriority(.fittingSizeLevel - 1.0, for: .horizontal)

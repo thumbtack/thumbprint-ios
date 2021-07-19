@@ -197,9 +197,9 @@ public final class TextArea: Control, UIContentSizeCategoryAdjusting, UITextInpu
         borderedContainer.layer.cornerRadius = 4
         borderedContainer.layer.borderWidth = 1
 
-        borderedContainer.addSubview(placeholderTextView)
-        borderedContainer.addSubview(textView)
-        addSubview(borderedContainer)
+        borderedContainer.addManagedSubview(placeholderTextView)
+        borderedContainer.addManagedSubview(textView)
+        addManagedSubview(borderedContainer)
 
         addSubviewConstraints()
 
@@ -215,18 +215,12 @@ public final class TextArea: Control, UIContentSizeCategoryAdjusting, UITextInpu
 // MARK: - Private functions
 private extension TextArea {
     func addSubviewConstraints() {
-        borderedContainer.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.height.equalTo(164)
-        }
+        borderedContainer.snapToSuperviewEdges(.all)
+        borderedContainer.heightAnchor.constraint(equalToConstant: 164.0).isActive = true
 
-        textView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(Space.three)
-        }
+        textView.snapToSuperviewEdges(.all, inset: Space.three)
 
-        placeholderTextView.snp.makeConstraints { make in
-            make.edges.equalTo(textView)
-        }
+        placeholderTextView.snapToSuperviewEdges(.all, inset: Space.three)
     }
 
     func updateState() {

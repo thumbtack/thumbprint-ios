@@ -17,32 +17,26 @@ class LoaderDotsTest: SnapshotTestCase {
 
     func testDefault() {
         let loaderDotsView = LoaderDots()
-        snapshotFrameView.addSubview(loaderDotsView)
-        loaderDotsView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        snapshotFrameView.addManagedSubview(loaderDotsView)
+        loaderDotsView.snapToSuperviewEdges(.all)
 
         verify(view: snapshotFrameView, contentSizeCategories: [.unspecified])
     }
 
     func testSmall() {
         let loaderDotsView = LoaderDots(size: .small)
-        snapshotFrameView.addSubview(loaderDotsView)
+        snapshotFrameView.addManagedSubview(loaderDotsView)
 
-        loaderDotsView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        loaderDotsView.snapToSuperviewEdges(.all)
 
         verify(view: snapshotFrameView, contentSizeCategories: [.unspecified])
     }
 
     func testMuted() {
         let loaderDotsView = LoaderDots(theme: .muted)
-        snapshotFrameView.addSubview(loaderDotsView)
+        snapshotFrameView.addManagedSubview(loaderDotsView)
 
-        loaderDotsView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        loaderDotsView.snapToSuperviewEdges(.all)
 
         verify(view: snapshotFrameView, contentSizeCategories: [.unspecified])
     }
@@ -50,24 +44,20 @@ class LoaderDotsTest: SnapshotTestCase {
     func testInverse() {
         snapshotFrameView.backgroundColor = Color.blue
         let loaderDotsView = LoaderDots(theme: .inverse)
-        snapshotFrameView.addSubview(loaderDotsView)
+        snapshotFrameView.addManagedSubview(loaderDotsView)
 
-        loaderDotsView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        loaderDotsView.snapToSuperviewEdges(.all)
 
         verify(view: snapshotFrameView, contentSizeCategories: [.unspecified])
     }
 
     func testConstrainedTooLarge() {
         let loaderDotsView = LoaderDots()
-        snapshotFrameView.addSubview(loaderDotsView)
-        loaderDotsView.snp.makeConstraints { make in
-            // Note, the constraints should always position the view, but never dictate its size,
-            // otherwise it will affect the spacing of the dots and cause it to diverge from the
-            // design specs
-            make.edges.equalToSuperview()
-        }
+        snapshotFrameView.addManagedSubview(loaderDotsView)
+        // Note, the constraints should always position the view, but never dictate its size,
+        // otherwise it will affect the spacing of the dots and cause it to diverge from the
+        // design specs
+        loaderDotsView.snapToSuperviewEdges(.all)
 
         verify(view: snapshotFrameView, contentSizeCategories: [.unspecified])
     }
@@ -75,10 +65,8 @@ class LoaderDotsTest: SnapshotTestCase {
     func testStoppedHidden() {
         let loaderDotsView = LoaderDots()
         loaderDotsView.hidesOnStop = true
-        snapshotFrameView.addSubview(loaderDotsView)
-        loaderDotsView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        snapshotFrameView.addManagedSubview(loaderDotsView)
+        loaderDotsView.snapToSuperviewEdges(.all)
 
         loaderDotsView.stop()
         verify(view: snapshotFrameView, contentSizeCategories: [.unspecified])
@@ -87,10 +75,8 @@ class LoaderDotsTest: SnapshotTestCase {
     func testStoppedVisible() {
         let loaderDotsView = LoaderDots()
         loaderDotsView.hidesOnStop = false
-        snapshotFrameView.addSubview(loaderDotsView)
-        loaderDotsView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        snapshotFrameView.addManagedSubview(loaderDotsView)
+        loaderDotsView.snapToSuperviewEdges(.all)
 
         loaderDotsView.stop()
         verify(view: snapshotFrameView, contentSizeCategories: [.unspecified])

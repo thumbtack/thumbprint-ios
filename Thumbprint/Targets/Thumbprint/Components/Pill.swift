@@ -222,11 +222,8 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
             make.width.equalTo(Icon.Size.tiny.dimension).priority(.high)
         }
 
-        addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-        }
+        addManagedSubview(stackView)
+        stackView.centerInSuperview(along: .both)
 
         //  Set extremely low compression resistance to the contents so it doesn't interfere with the general
         //  pill sizing/layout based on calculated intrinsicContentSize. Then make sure contents shrink if needed by

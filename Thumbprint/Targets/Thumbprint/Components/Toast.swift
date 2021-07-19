@@ -1,4 +1,4 @@
-import SnapKit
+import UIKit
 
 private protocol ToastViewDelegate: AnyObject {
     func actionDidFire()
@@ -32,7 +32,7 @@ public class Toast: UIView {
 
     private let onTimeout: (() -> Void)?
     private var didTriggerAction: Bool = false
-    private var hideToastConstraint: Constraint?
+    private var hideToastConstraint: NSLayoutConstraint?
     private let toastView: ToastView
 
     private lazy var slidingContainer = UIView()
@@ -49,22 +49,21 @@ public class Toast: UIView {
 
         toastView.delegate = self
 
-        slidingContainer.addSubview(toastView)
-        addSubview(slidingContainer)
+        slidingContainer.addManagedSubview(toastView)
+        addManagedSubview(slidingContainer)
 
         let leftRightPadding: CGFloat = 16
         let bottomOffset: CGFloat = 8
 
-        toastView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        toastView.snapToSuperviewEdges(.all)
 
-        slidingContainer.snp.makeConstraints { make in
-            hideToastConstraint = make.top.equalTo(self.snp.bottom).priority(.required).constraint
-            make.left.right.equalToSuperview().inset(leftRightPadding)
-            make.bottom.equalToSuperview().offset(-bottomOffset).priority(.low)
-            make.height.equalToSuperview().offset(-bottomOffset).priority(.medium)
-        }
+        slidingContainer.snapToSuperviewEdges(.horizontal, inset: leftRightPadding)
+        hideToastConstraint = slidingContainer.topAnchor.constraint(equalTo: bottomAnchor)
+        let bottomConstraint = slidingContainer.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -bottomOffset)
+        bottomConstraint.priority = .defaultLow
+        let heightConstraint = slidingContainer.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1.0, constant: -bottomOffset)
+        heightConstraint.priority = .sceneSizeStayPut
+        NSLayoutConstraint.activate([bottomConstraint, heightConstraint])
     }
 
     @available(*, unavailable)
@@ -84,7 +83,7 @@ public class Toast: UIView {
             options: [.curveEaseInOut],
             animations: { [weak self] in
                 guard let self = self else { return }
-                self.hideToastConstraint?.deactivate()
+                self.hideToastConstraint?.isActive = false
                 self.layoutIfNeeded()
             },
             completion: { _ in completion?() }
@@ -100,7 +99,7 @@ public class Toast: UIView {
             options: [.curveEaseInOut],
             animations: { [weak self] in
                 guard let self = self else { return }
-                self.hideToastConstraint?.activate()
+                self.hideToastConstraint?.isActive = true
                 self.alpha = 0
                 self.layoutIfNeeded()
             },
@@ -159,11 +158,9 @@ public class ToastView: UIView {
         clipsToBounds = true
         layer.cornerRadius = CornerRadius.base
 
-        addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(leftRightPadding)
-            make.top.bottom.equalToSuperview().inset(topBottomPadding)
-        }
+        addManagedSubview(stackView)
+        stackView.snapToSuperviewEdges(.horizontal, inset: leftRightPadding)
+        stackView.snapToSuperviewEdges(.vertical, inset: topBottomPadding)
     }
 
     @available(*, unavailable)

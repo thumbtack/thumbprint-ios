@@ -204,18 +204,17 @@ public final class Button: Control, UIContentSizeCategoryAdjusting {
 
         isAccessibilityElement = true
 
-        addSubview(backgroundImageView)
-        backgroundImageView.snapToSuperview(edges: .all)
+        addManagedSubview(backgroundImageView)
+        backgroundImageView.snapToSuperviewEdges(.all)
 
         // When adjustsFontForContentSizeCategory is true, also ensure text size remains
         // small enough that it fits in button's bounds (since the title is restricted
         // to a single line). Can be set back to false if desired with the mutable
         // Button.adjustsFontSizeToFitWidth property.
-        contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.axis = .horizontal
         contentView.alignment = .center
         contentView.isUserInteractionEnabled = false
-        addSubview(contentView)
+        addManagedSubview(contentView)
 
         //  Center and add content width less than button width in case of tight layout clipping.
         let widthConstraint = contentView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor)
@@ -366,9 +365,8 @@ private extension Button {
         }
         if let loaderTheme = theme.loaderTheme {
             let loaderDots = LoaderDots(theme: loaderTheme, size: .small)
-            loaderDots.translatesAutoresizingMaskIntoConstraints = false
             loaderDots.isHidden = !isLoading
-            addSubview(loaderDots)
+            addManagedSubview(loaderDots)
             NSLayoutConstraint.activate([
                 loaderDots.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
                 loaderDots.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

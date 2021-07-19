@@ -238,11 +238,8 @@ open class CalendarPickerView: UIView, UIContentSizeCategoryAdjusting {
         leftButton.addTarget(self, action: #selector(scrollToPreviousMonth), for: .touchUpInside)
         rightButton.addTarget(self, action: #selector(scrollToNextMonth), for: .touchUpInside)
 
-        addSubview(stack)
-
-        stack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        addManagedSubview(stack)
+        stack.snapToSuperviewEdges(.all)
 
         updateInsets()
         updateMonthHeader()

@@ -172,8 +172,7 @@ public final class LoaderDots: UIView {
     }
 
     private func setupView() {
-        addSubview(dotsContainerStackView)
-        dotsContainerStackView.translatesAutoresizingMaskIntoConstraints = false
+        addManagedSubview(dotsContainerStackView)
         dotsContainerStackView.alignment = .center
         dotsContainerStackView.spacing = size.spacing
 
@@ -186,8 +185,7 @@ public final class LoaderDots: UIView {
             dotsContainerStackView.addArrangedSubview(dotView)
         }
 
-        dotsContainerStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        dotsContainerStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        dotsContainerStackView.centerInSuperview(along: .both)
     }
 
     private func configureDotView(dotView: DotView) {

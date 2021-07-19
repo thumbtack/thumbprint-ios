@@ -55,11 +55,8 @@ public final class RadioStack: UIView, UIContentSizeCategoryAdjusting {
             radioGroup.register(radio, forKey: index)
         }
 
-        addSubview(stack)
-
-        stack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        addManagedSubview(stack)
+        stack.snapToSuperviewEdges(.all)
     }
 
     @available(*, unavailable)

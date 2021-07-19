@@ -60,25 +60,23 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
         super.init(frame: .null)
 
         //  Set up the contents stack.
-        addSubview(contentsStack)
+        addManagedSubview(contentsStack)
         NSLayoutConstraint.activate([leadingInsetConstraint, topInsetConstraint, trailingInsetConstraint, bottomInsetConstraint])
 
-        self.content.translatesAutoresizingMaskIntoConstraints = false
-        contentContainer.addSubview(self.content)
+        contentContainer.addManagedSubview(self.content)
         NSLayoutConstraint.activate([
             self.content.topAnchor.constraint(greaterThanOrEqualTo: contentContainer.topAnchor),
             contentContainer.bottomAnchor.constraint(greaterThanOrEqualTo: self.content.bottomAnchor),
         ])
-        self.content.snapToSuperview(edges: .horizontal)
+        self.content.snapToSuperviewEdges(.horizontal)
 
         rootControl.isUserInteractionEnabled = false
-        rootControl.translatesAutoresizingMaskIntoConstraints = false
-        rootControlContainer.addSubview(rootControl)
+        rootControlContainer.addManagedSubview(rootControl)
         NSLayoutConstraint.activate([
             rootControl.topAnchor.constraint(greaterThanOrEqualTo: rootControlContainer.topAnchor),
             rootControlContainer.bottomAnchor.constraint(greaterThanOrEqualTo: rootControl.bottomAnchor),
         ])
-        rootControl.snapToSuperview(edges: .horizontal)
+        rootControl.snapToSuperviewEdges(.horizontal)
 
         // We really don't want root control to be any other size than what it wants.
         rootControl.setContentHuggingPriority(.required - 1.0, for: .horizontal)
@@ -211,7 +209,6 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
     private let contentsStack: UIStackView = {
         let stack = UIStackView()
         stack.spacing = Space.two
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
 

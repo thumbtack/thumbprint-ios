@@ -19,14 +19,10 @@ class FooterTest: SnapshotTestCase {
             viewController.view.backgroundColor = Color.gray
 
             let footer = Footer()
-            viewController.view.addSubview(footer)
-            footer.snp.makeConstraints { make in
-                make.leading.bottom.trailing.equalToSuperview()
-            }
-            footer.contentView.addSubview(buttonRow)
-            buttonRow.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
+            viewController.view.addManagedSubview(footer)
+            footer.snapToSuperviewEdges([.leading, .bottom, .trailing])
+            footer.contentView.addManagedSubview(buttonRow)
+            buttonRow.snapToSuperviewEdges(.all)
 
             return viewController
         }
@@ -52,14 +48,10 @@ class FooterTest: SnapshotTestCase {
                 viewController.view.backgroundColor = Color.gray
 
                 let footer = Footer()
-                viewController.view.addSubview(footer)
-                footer.snp.makeConstraints { make in
-                    make.leading.bottom.trailing.equalToSuperview()
-                }
-                footer.contentView.addSubview(buttonRow)
-                buttonRow.snp.makeConstraints { make in
-                    make.edges.equalToSuperview()
-                }
+                viewController.view.addManagedSubview(footer)
+                footer.snapToSuperviewEdges([.leading, .bottom, .trailing])
+                footer.contentView.addManagedSubview(buttonRow)
+                buttonRow.snapToSuperviewEdges(.all)
 
                 return viewController
             },
@@ -79,7 +71,8 @@ class FooterTest: SnapshotTestCase {
 
                 let parentViewController = UIViewController(nibName: nil, bundle: nil)
                 parentViewController.addChild(viewController)
-                parentViewController.view.addSubview(viewController.view)
+                parentViewController.view.addManagedSubview(viewController.view)
+                viewController.view.snapToSuperviewEdges(.all)
                 viewController.didMove(toParent: parentViewController)
                 parentViewController.setOverrideTraitCollection(
                     UITraitCollection(horizontalSizeClass: .regular),
@@ -87,14 +80,10 @@ class FooterTest: SnapshotTestCase {
                 )
 
                 let footer = Footer()
-                viewController.view.addSubview(footer)
-                footer.snp.makeConstraints { make in
-                    make.leading.bottom.trailing.equalToSuperview()
-                }
-                footer.contentView.addSubview(buttonRow)
-                buttonRow.snp.makeConstraints { make in
-                    make.edges.equalToSuperview()
-                }
+                viewController.view.addManagedSubview(footer)
+                footer.snapToSuperviewEdges([.leading, .bottom, .trailing])
+                footer.contentView.addManagedSubview(buttonRow)
+                buttonRow.snapToSuperviewEdges(.all)
 
                 return parentViewController
             },
@@ -110,18 +99,14 @@ class FooterTest: SnapshotTestCase {
                 viewController.view.backgroundColor = Color.white
 
                 let footer = Footer(showShadowByDefault: true)
-                viewController.view.addSubview(footer)
-                footer.snp.makeConstraints { make in
-                    make.leading.bottom.trailing.equalToSuperview()
-                }
+                viewController.view.addManagedSubview(footer)
+                footer.snapToSuperviewEdges([.leading, .bottom, .trailing])
 
                 //  We need some content for the footer to hold its height.
                 let button = Button(adjustsFontForContentSizeCategory: true)
                 button.title = "Title"
-                footer.contentView.addSubview(button)
-                button.snp.makeConstraints { make in
-                    make.edges.equalToSuperview()
-                }
+                footer.contentView.addManagedSubview(button)
+                button.snapToSuperviewEdges(.all)
 
                 return viewController
             },

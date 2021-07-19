@@ -43,9 +43,7 @@ class AlertBannerTest: SnapshotTestCase {
             actionLink: "/link",
             delegate: self
         )
-        alertBanner.snp.makeConstraints { make in
-            make.height.lessThanOrEqualTo(200)
-        }
+        alertBanner.heightAnchor.constraint(lessThanOrEqualToConstant: 200.0).isActive = true
         verify(alertBanner: alertBanner)
     }
 

@@ -162,23 +162,17 @@ public class TextFloatingActionButton: Control {
         contentView.layer.cornerRadius = intrinsicContentSize.height / 2
         contentView.isUserInteractionEnabled = false
 
-        addSubview(shadowImageView)
-        shadowImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        addManagedSubview(shadowImageView)
+        shadowImageView.snapToSuperviewEdges(.all)
 
-        contentView.addSubview(contentStackView)
-        contentStackView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(theme.horizontalPadding)
-            make.centerY.equalToSuperview()
-        }
+        contentView.addManagedSubview(contentStackView)
+        contentStackView.snapToSuperviewEdges(.horizontal, inset: theme.horizontalPadding)
+        contentStackView.centerInSuperview(along: .vertical)
 
         contentStackView.addArrangedSubview(titleLabel)
 
-        addSubview(contentView)
-        contentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        addManagedSubview(contentView)
+        contentView.snapToSuperviewEdges(.all)
     }
 
     private func setupTheme() {
