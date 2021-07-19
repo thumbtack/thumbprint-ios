@@ -68,36 +68,37 @@ class CalendarPickerDateCell: UICollectionViewCell {
         dotIndicator.backgroundColor = Color.blue
         slashIndicator.backgroundColor = Color.black300
 
-        contentView.addSubview(todayIndicator)
-        contentView.addSubview(label)
-        contentView.addSubview(dotIndicator)
-        contentView.addSubview(slashIndicator)
+        contentView.addManagedSubview(todayIndicator)
+        contentView.addManagedSubview(label)
+        contentView.addManagedSubview(dotIndicator)
+        contentView.addManagedSubview(slashIndicator)
 
         contentView.layer.borderColor = Color.blue.cgColor
         backgroundColor = .white
 
-        label.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+        ])
 
-        slashIndicator.snp.makeConstraints { make in
-            make.height.equalToSuperview().dividedBy(24)
-            make.width.equalTo(todayIndicator).multipliedBy(1.3)
-            make.center.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            slashIndicator.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1.0 / 24.0),
+            slashIndicator.widthAnchor.constraint(equalTo: todayIndicator.widthAnchor, multiplier: 1.3),
+        ])
+        slashIndicator.centerInSuperview(along: .both)
 
-        dotIndicator.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(12)
-            make.height.equalTo(dotIndicator.snp.width)
-            make.bottom.equalToSuperview().multipliedBy(7.0 / 8.0)
-        }
+        NSLayoutConstraint.activate([
+            dotIndicator.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1.0 / 12.0),
+            .init(item: dotIndicator, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: CGFloat(7.0 / 8.0), constant: 0.0),
+        ])
+        dotIndicator.centerInSuperview(along: .horizontal)
+        dotIndicator.enforce(aspectRatio: 1.0)
 
-        todayIndicator.snp.makeConstraints { make in
-            make.width.equalToSuperview().dividedBy(2)
-            make.height.equalTo(todayIndicator.snp.width)
-            make.center.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            todayIndicator.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1.0 / 2.0),
+        ])
+        todayIndicator.centerInSuperview(along: .both)
+        todayIndicator.enforce(aspectRatio: 1.0)
 
         slashIndicator.transform = CGAffineTransform(rotationAngle: -.pi / 4.0)
     }

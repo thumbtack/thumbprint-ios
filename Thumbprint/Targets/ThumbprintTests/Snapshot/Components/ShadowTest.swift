@@ -24,17 +24,13 @@ class ShadowTest: SnapshotTestCase {
 
             let imageView = UIImageView(image: shadow)
 
-            view.addSubview(imageView)
-            view.addSubview(subview)
+            view.addManagedSubview(imageView)
+            view.addManagedSubview(subview)
 
-            imageView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-
-            subview.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-                make.size.equalTo(100)
-            }
+            imageView.snapToSuperviewEdges(.all)
+            subview.snapToSuperviewEdges(.all)
+            subview.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
+            subview.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
         }
 
         verify(view: stackView, contentSizeCategories: [.unspecified])
@@ -63,17 +59,13 @@ class ShadowTest: SnapshotTestCase {
 
             let imageView = UIImageView(image: shadow)
 
-            view.addSubview(imageView)
-            view.addSubview(subview)
+            view.addManagedSubview(imageView)
+            view.addManagedSubview(subview)
 
-            imageView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-
-            subview.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-                make.size.equalTo(100)
-            }
+            imageView.snapToSuperviewEdges(.all)
+            subview.snapToSuperviewEdges(.all)
+            subview.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
+            subview.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
         }
 
         verify(view: stackView, contentSizeCategories: [.unspecified])

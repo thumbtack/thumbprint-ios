@@ -116,22 +116,16 @@ public class IconFloatingActionButton: Control {
         contentView.layer.cornerRadius = intrinsicContentSize.height / 2
         contentView.isUserInteractionEnabled = false
 
-        addSubview(shadowImageView)
+        addManagedSubview(shadowImageView)
         shadowImageView.contentMode = .center
-        shadowImageView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        shadowImageView.centerInSuperview(along: .both)
 
-        contentView.addSubview(iconImageView)
+        contentView.addManagedSubview(iconImageView)
         iconImageView.contentMode = .center
-        iconImageView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        iconImageView.centerInSuperview(along: .both)
 
-        addSubview(contentView)
-        contentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        addManagedSubview(contentView)
+        contentView.snapToSuperviewEdges(.all)
     }
 
     private func setupTheme() {

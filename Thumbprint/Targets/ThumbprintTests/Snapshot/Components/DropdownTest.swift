@@ -50,11 +50,8 @@ class DropdownTest: SnapshotTestCase {
 
     private func verify() {
         let container = UIView()
-        container.addSubview(dropdown)
-
-        dropdown.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview().inset(Space.three)
-        }
+        container.addManagedSubview(dropdown)
+        dropdown.snapToSuperviewEdges([.top, .leading, .trailing], inset: Space.three)
 
         verify(view: container, sizes: .all, contentSizeCategories: .all)
     }

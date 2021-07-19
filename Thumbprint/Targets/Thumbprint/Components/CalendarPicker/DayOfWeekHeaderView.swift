@@ -26,11 +26,8 @@ class DayOfWeekHeaderView: UIView {
 
         super.init(frame: .null)
 
-        addSubview(stackView)
-
-        stackView.snp.makeConstraints { make in
-            make.edges.equalTo(self.snp.margins)
-        }
+        addManagedSubview(stackView)
+        stackView.snapToSuperviewMargins(.all)
     }
 
     @available(*, unavailable)

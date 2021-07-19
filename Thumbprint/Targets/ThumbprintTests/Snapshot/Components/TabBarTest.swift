@@ -17,10 +17,8 @@ class TabBarTest: SnapshotTestCase {
             viewControllerFactory: {
                 let viewController = UIViewController()
                 viewController.view.backgroundColor = Color.white
-                viewController.view.addSubview(tabBar)
-                tabBar.snp.makeConstraints { make in
-                    make.left.bottom.right.equalToSuperview()
-                }
+                viewController.view.addManagedSubview(tabBar)
+                tabBar.snapToSuperviewEdges([.leading, .bottom, .trailing])
                 return viewController
             },
             sizes: [.default],

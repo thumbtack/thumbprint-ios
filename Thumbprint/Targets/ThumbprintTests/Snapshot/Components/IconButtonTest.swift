@@ -19,10 +19,8 @@ class IconButtonTest: SnapshotTestCase {
                 accessibilityLabel: "Add",
                 theme: theme
             )
-            containerView.addSubview(iconButton)
-            iconButton.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
+            containerView.addManagedSubview(iconButton)
+            iconButton.snapToSuperviewEdges(.all)
 
             verify(view: containerView,
                    identifier: "\(themeIdentifier)_normal",
