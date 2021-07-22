@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         viewController.view.backgroundColor = .systemPink
 
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = viewController
+        window?.rootViewController = PlaygroundViewController()
         window?.makeKeyAndVisible()
     }
 

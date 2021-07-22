@@ -28,6 +28,9 @@ end
 target 'TestsHostApp' do
 end
 
+target 'Playground' do
+end
+
 PROJECT_ROOT_DIR = File.dirname(File.expand_path(__FILE__))
 PODS_DIR = File.join(PROJECT_ROOT_DIR, 'Pods')
 PODS_TARGET_SUPPORT_FILES_DIR = File.join(PODS_DIR, 'Target Support Files')
