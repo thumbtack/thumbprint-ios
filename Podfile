@@ -14,6 +14,9 @@ pod 'SwiftLint'
 pod 'SwiftFormat/CLI'
 pod 'ThumbprintTokens', '~> 12.1.0'
 pod 'TTCalendarPicker'
+pod 'RxCocoa'
+pod 'RxGesture'
+pod 'RxSwift'
 
 target 'Thumbprint' do
 end
