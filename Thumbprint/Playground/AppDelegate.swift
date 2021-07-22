@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Playground
-//
-//  Created by Prudhvi Gadiraju on 7/22/21.
-//
-
 import UIKit
 
 @main
