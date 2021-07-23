@@ -530,6 +530,7 @@
 			children = (
 				080E7C4F25F48A0E002DBE7B /* Thumbprint */,
 				080E6F8025FFD3C0006D8056 /* ThumbprintResources */,
+				A464D10D26AA21D500929BFD /* ThumbprintPublicResources */,
 				080E7C5A25F48A0E002DBE7B /* ThumbprintTests */,
 				0840CE6B25FD533E00C571AA /* TestsHostApp */,
 			);
@@ -553,7 +554,6 @@
 				A464D08826AA1B0E00929BFD /* Playground */,
 				A464D09F26AA1B1100929BFD /* PlaygroundTests */,
 				A464D0AA26AA1B1100929BFD /* PlaygroundUITests */,
-				A464D10D26AA21D500929BFD /* ThumbprintPublicResources */,
 				080E7C4E25F48A0E002DBE7B /* Products */,
 				F2F93856635967702332DDF5 /* Pods */,
 				907AF1253CE727D385CC6A5D /* Frameworks */,
@@ -2286,7 +2286,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = ThumbprintPublicResources/Config/Info.plist;
+				INFOPLIST_FILE = Targets/ThumbprintPublicResources/Config/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2363,7 +2363,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = ThumbprintPublicResources/Config/Info.plist;
+				INFOPLIST_FILE = Targets/ThumbprintPublicResources/Config/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
