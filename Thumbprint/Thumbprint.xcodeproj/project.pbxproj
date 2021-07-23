@@ -156,6 +156,7 @@
 		A464D18D26AA29D800929BFD /* TextArea+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D17326AA29D800929BFD /* TextArea+InspectableView.swift */; };
 		A464D18E26AA29D800929BFD /* EntityAvatar+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D17426AA29D800929BFD /* EntityAvatar+InspectableView.swift */; };
 		A479A65C26AA2AC700D49C83 /* ThumbprintResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 080E7C4D25F48A0E002DBE7B /* ThumbprintResources.bundle */; };
+		A479A68726AB382200D49C83 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A479A68626AB382200D49C83 /* main.swift */; };
 		B98FE98D2668312400B52979 /* ButtonUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98FE98C2668312400B52979 /* ButtonUnitTest.swift */; };
 		CD5A0287B7D3129E8BDD06E5 /* libPods-TestsHostApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BB25065E7ACE32CDDE00D1 /* libPods-TestsHostApp.a */; };
 		FF1A3E3B269599A200561D28 /* LabeledRadioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1A3E3A269599A200561D28 /* LabeledRadioTest.swift */; };
@@ -441,6 +442,8 @@
 		A464D17226AA29D800929BFD /* PlaygroundColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundColorView.swift; sourceTree = "<group>"; };
 		A464D17326AA29D800929BFD /* TextArea+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextArea+InspectableView.swift"; sourceTree = "<group>"; };
 		A464D17426AA29D800929BFD /* EntityAvatar+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EntityAvatar+InspectableView.swift"; sourceTree = "<group>"; };
+		A479A68526AB381D00D49C83 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A479A68626AB382200D49C83 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../../../../ios/TTKit/ThumbprintPlayground/Classes/main.swift; sourceTree = "<group>"; };
 		B98FE98C2668312400B52979 /* ButtonUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonUnitTest.swift; sourceTree = "<group>"; };
 		C54C542DED491DAB0804B642 /* Pods-TestsHostApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestsHostApp.debug.xcconfig"; path = "Target Support Files/Pods-TestsHostApp/Pods-TestsHostApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D12EA88E3D1B084D408E2707 /* Pods-ThumbprintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThumbprintTests.release.xcconfig"; path = "Target Support Files/Pods-ThumbprintTests/Pods-ThumbprintTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -929,17 +932,10 @@
 		A464D08826AA1B0E00929BFD /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				A464D14226AA299A00929BFD /* Inspectable */,
-				A464D08926AA1B0E00929BFD /* AppDelegate.swift */,
-				A464D08B26AA1B0E00929BFD /* SceneDelegate.swift */,
-				A464D09226AA1B1000929BFD /* Assets.xcassets */,
-				A464D09426AA1B1000929BFD /* LaunchScreen.storyboard */,
-				A464D09726AA1B1000929BFD /* Info.plist */,
-				A464D11826AA25D500929BFD /* ComponentsListViewController.swift */,
-				A464D11726AA25D500929BFD /* DraggableView.swift */,
-				A464D11626AA25D500929BFD /* InspectorViewController.swift */,
+				A479A68426AB381400D49C83 /* Classes */,
+				A479A68326AB380400D49C83 /* Config */,
+				A479A68226AB37E300D49C83 /* Assets */,
 				A464D11926AA25D500929BFD /* main.swift */,
-				A464D11526AA25D500929BFD /* PlaygroundViewController.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -1038,6 +1034,39 @@
 				A464D16826AA29D700929BFD /* UserAvatar+InspectableView.swift */,
 			);
 			path = InspectableViews;
+			sourceTree = "<group>";
+		};
+		A479A68226AB37E300D49C83 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A464D09226AA1B1000929BFD /* Assets.xcassets */,
+				A464D09426AA1B1000929BFD /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		A479A68326AB380400D49C83 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				A464D09726AA1B1000929BFD /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		A479A68426AB381400D49C83 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A479A68626AB382200D49C83 /* main.swift */,
+				A464D08926AA1B0E00929BFD /* AppDelegate.swift */,
+				A464D08B26AA1B0E00929BFD /* SceneDelegate.swift */,
+				A464D11826AA25D500929BFD /* ComponentsListViewController.swift */,
+				A464D11726AA25D500929BFD /* DraggableView.swift */,
+				A464D11626AA25D500929BFD /* InspectorViewController.swift */,
+				A479A68526AB381D00D49C83 /* main.swift */,
+				A464D11526AA25D500929BFD /* PlaygroundViewController.swift */,
+				A464D14226AA299A00929BFD /* Inspectable */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		F2F93856635967702332DDF5 /* Pods */ = {
@@ -1594,6 +1623,7 @@
 				A464D18A26AA29D800929BFD /* CalendarPicker+InspectableView.swift in Sources */,
 				A464D11C26AA25D600929BFD /* DraggableView.swift in Sources */,
 				A464D15626AA29C300929BFD /* DropdownInspectableProperty.swift in Sources */,
+				A479A68726AB382200D49C83 /* main.swift in Sources */,
 				A464D17826AA29D800929BFD /* ToggleChip+InspectableView.swift in Sources */,
 				A464D15826AA29C300929BFD /* BoolInspectableProperty.swift in Sources */,
 				A464D18D26AA29D800929BFD /* TextArea+InspectableView.swift in Sources */,
@@ -1849,7 +1879,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Playground/Info.plist;
+				INFOPLIST_FILE = Playground/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1919,7 +1949,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Playground/Info.plist;
+				INFOPLIST_FILE = Playground/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
