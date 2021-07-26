@@ -7,53 +7,22 @@ public struct AppEvent {
     /**
      Basic initializer.
      - Parameter identifier: The event identifier.
-     - Parameter environment: The environment where the event happened. Defaults to no environment information.
      - Parameter parameters: The event's parameters. Defaults to no parameters.
      */
-    public init(_ identifier: Identifier, environment: [EnvironmentElement] = [], parameters: Parameters = [:]) {
+    public init(_ identifier: Identifier, parameters: Parameters = [:]) {
         self.identifier = identifier
-        self.environment = environment
         self.parameters = parameters
     }
 
     // MARK: - Types
 
     /**
-     Identifier for an app event. Should be short and to the point, and err on the side of semantics over specifics —for example
-     a event triggered by the user pressing a close button should have an identifier of “close” or “dismiss” rather than “button press”,
-     with the fact that it happened due to a button pressed reflected in the event's `environment`.
+     Identifier for an app event.
 
      Identifiers should be declared as static instances of the type wherever appropriate.
-
-     In debug builds the framework will verify whether identifiers are unique by keeping track of all instantiated identifier strings and
-     asserting that they haven't been instantiated before.
      */
     public struct Identifier: RawRepresentable, Hashable {
         public init(rawValue: String) {
-            #if DEBUG
-                assert(!Self.registeredIdentifiers.contains(rawValue))
-                Self.registeredIdentifiers.insert(rawValue)
-            #endif
-
-            self.rawValue = rawValue
-        }
-
-        public var rawValue: String
-
-        #if DEBUG
-            public private(set) static var registeredIdentifiers = Set<RawValue>()
-        #endif
-    }
-
-    /**
-     Describes an environment element of the event. These should describe a part of where the event happened, like
-     within a particular app screen or what control triggered it.
-
-     Thumbprint doesn't currently enforce uniqueness of environment elements in any way. If an adoption may require so it will
-     need to be enforced externally.
-     */
-    public struct EnvironmentElement: RawRepresentable, Hashable {
-        public init(rawValue: String) {
             self.rawValue = rawValue
         }
 
@@ -61,29 +30,17 @@ public struct AppEvent {
     }
 
     /**
-     A key for an event's parameters dictionary. These should be as limited a set as possible so the same parameters always are
-     stored in the same keys.
+     A key for an event's parameters dictionary. These should be as limited a set as possible so the same parameters
+     always are stored in the same keys.
 
      Identifiers should be declared as static instances of the type wherever appropriate.
-
-     In debug builds the framework will verify whether keys are unique by keeping track of all instantiated parameter key strings and
-     asserting that they haven't been instantiated before.
      */
     public struct ParameterKey: RawRepresentable, Hashable {
         public init(rawValue: String) {
-            #if DEBUG
-                assert(!Self.registeredParameterKeys.contains(rawValue))
-                Self.registeredParameterKeys.insert(rawValue)
-            #endif
-
             self.rawValue = rawValue
         }
 
         public var rawValue: String
-
-        #if DEBUG
-            public private(set) static var registeredParameterKeys = Set<RawValue>()
-        #endif
     }
 
     /**
@@ -112,13 +69,6 @@ public struct AppEvent {
      The event identifier.
      */
     var identifier: Identifier
-
-    /**
-     This array should describe where and/or in what application state the event happened. For example when reporting that the user
-     pressed a close button in a subscription offer modal you would get something like `[“subscription modal”, ”dimiss button”]`.
-     The specifics for how this property is to be built up are usually to be agreed between engineering and analytics.
-     */
-    var environment: [EnvironmentElement]
 
     /**
      Additional parameters for the event. What these are depends on the event and on the reporting requirements.

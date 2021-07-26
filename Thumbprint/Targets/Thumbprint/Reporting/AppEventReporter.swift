@@ -16,7 +16,7 @@ import Foundation
  */
 public protocol AppEventReporter: AnyObject {
     /**
-     Reports an event with the given parameters and environment.
+     Reports an event.
      - Important: Implementations should have no side effects, and should know to disable themselves in the right
      runtime environment if warranted (i.e. debug, testing etc.).
      - Parameter event: The app event.
@@ -39,9 +39,11 @@ public extension AppEvent {
 
     /**
      Reports the given event. Convenience method to avoid having to build an AppEvent on the fly.
+     - Parameter identifier: The event's identifier.
+     - Parameter parameters: The event's parameters.
      */
-    static func report(_ identifier: AppEvent.Identifier, environment: [AppEvent.EnvironmentElement], parameters: [AppEvent.ParameterKey: AppEvent.ParameterValue]) {
-        report(.init(identifier, environment: environment, parameters: parameters))
+    static func report(_ identifier: AppEvent.Identifier, parameters: [AppEvent.ParameterKey: AppEvent.ParameterValue]) {
+        report(.init(identifier, parameters: parameters))
     }
 
     /**
@@ -110,7 +112,6 @@ extension GroupedAppEventReporter: AppEventReporter {
 private final class DebugEventReporter: AppEventReporter {
     func report(_ event: AppEvent) {
         print("*** Reported Event with identifier “\(event.identifier)”")
-        print("- Environment: \(event.environment)")
         print("- Parameters: \(event.parameters)")
     }
 }
