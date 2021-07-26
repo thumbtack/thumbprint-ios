@@ -113,6 +113,9 @@
 		FF858A1F269C1FD0002E22D8 /* RadioStackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF858A1E269C1FD0002E22D8 /* RadioStackTest.swift */; };
 		FFD57F232681189B004F2BBB /* LabeledControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD57F222681189B004F2BBB /* LabeledControl.swift */; };
 		FFE53483269D838F00FDD9A5 /* LabeledControlTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE53482269D838F00FDD9A5 /* LabeledControlTest.swift */; };
+		FFE536EE26A7AA6D00FDD9A5 /* AppEventReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE536ED26A7AA6D00FDD9A5 /* AppEventReporter.swift */; };
+		FFEB0CA026AE2C9500115A70 /* AppEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB0C9F26AE2C9500115A70 /* AppEvent.swift */; };
+		FFEB0CA326AE6ADB00115A70 /* TestEventReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB0CA226AE6ADB00115A70 /* TestEventReporter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,6 +304,9 @@
 		FF858A1E269C1FD0002E22D8 /* RadioStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStackTest.swift; sourceTree = "<group>"; };
 		FFD57F222681189B004F2BBB /* LabeledControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledControl.swift; sourceTree = "<group>"; };
 		FFE53482269D838F00FDD9A5 /* LabeledControlTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledControlTest.swift; sourceTree = "<group>"; };
+		FFE536ED26A7AA6D00FDD9A5 /* AppEventReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEventReporter.swift; sourceTree = "<group>"; };
+		FFEB0C9F26AE2C9500115A70 /* AppEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEvent.swift; sourceTree = "<group>"; };
+		FFEB0CA226AE6ADB00115A70 /* TestEventReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEventReporter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +394,7 @@
 				08C819C325F574460082FD2D /* Presentations */,
 				08C819A925F574460082FD2D /* Components */,
 				08C81A7925F594560082FD2D /* Layouts */,
+				FFEB0CA126AE6AA000115A70 /* Reporting */,
 				08C819A425F574460082FD2D /* Tokens */,
 				08C819D725F574470082FD2D /* Utilities */,
 				080E7D4A25F490DC002DBE7B /* Supporting Files */,
@@ -745,6 +752,16 @@
 			path = ../Pods;
 			sourceTree = "<group>";
 		};
+		FFEB0CA126AE6AA000115A70 /* Reporting */ = {
+			isa = PBXGroup;
+			children = (
+				FFE536ED26A7AA6D00FDD9A5 /* AppEventReporter.swift */,
+				FFEB0C9F26AE2C9500115A70 /* AppEvent.swift */,
+				FFEB0CA226AE6ADB00115A70 /* TestEventReporter.swift */,
+			);
+			path = Reporting;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1032,11 +1049,14 @@
 				080E6F7025FFD38D006D8056 /* ToggleChip.swift in Sources */,
 				FF1A3E3D2697F44A00561D28 /* LabeledCheckbox.swift in Sources */,
 				080E6F5625FFD38D006D8056 /* UIViewController+Presentations.swift in Sources */,
+				FFEB0CA026AE2C9500115A70 /* AppEvent.swift in Sources */,
+				FFEB0CA326AE6ADB00115A70 /* TestEventReporter.swift in Sources */,
 				080E6F5B25FFD38D006D8056 /* UIView+Layout.swift in Sources */,
 				080E6F6B25FFD38D006D8056 /* RadioTableViewCell.swift in Sources */,
 				08649463260156F300EB82E8 /* Bundle+Extensions.swift in Sources */,
 				080E6F4C25FFD38D006D8056 /* CalendarPicker.swift in Sources */,
 				FFD57F232681189B004F2BBB /* LabeledControl.swift in Sources */,
+				FFE536EE26A7AA6D00FDD9A5 /* AppEventReporter.swift in Sources */,
 				080E6F7225FFD38D006D8056 /* Control.swift in Sources */,
 				080E6F6E25FFD38D006D8056 /* UIView+StackView.swift in Sources */,
 				080E6F5425FFD38D006D8056 /* Label.swift in Sources */,
