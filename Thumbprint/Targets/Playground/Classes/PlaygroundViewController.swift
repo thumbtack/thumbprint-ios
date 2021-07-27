@@ -196,7 +196,7 @@ class PlaygroundViewController: UIViewController {
         let playgroundView = UIView()
 
         let mask = UIView()
-        mask.backgroundColor = .black // swiftlint:disable:this thumbprint_color_presets
+        mask.backgroundColor = .black
         playgroundView.mask = mask
 
         return playgroundView
