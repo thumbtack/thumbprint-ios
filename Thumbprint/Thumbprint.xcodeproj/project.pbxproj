@@ -533,6 +533,9 @@
 				A464D10D26AA21D500929BFD /* ThumbprintPublicResources */,
 				080E7C5A25F48A0E002DBE7B /* ThumbprintTests */,
 				0840CE6B25FD533E00C571AA /* TestsHostApp */,
+				A464D08826AA1B0E00929BFD /* Playground */,
+				A464D09F26AA1B1100929BFD /* PlaygroundTests */,
+				A464D0AA26AA1B1100929BFD /* PlaygroundUITests */,
 			);
 			path = Targets;
 			sourceTree = "<group>";
@@ -551,9 +554,6 @@
 			children = (
 				080E6F7B25FFD39F006D8056 /* Targets */,
 				080E7D3D25F49024002DBE7B /* Xcconfig */,
-				A464D08826AA1B0E00929BFD /* Playground */,
-				A464D09F26AA1B1100929BFD /* PlaygroundTests */,
-				A464D0AA26AA1B1100929BFD /* PlaygroundUITests */,
 				080E7C4E25F48A0E002DBE7B /* Products */,
 				F2F93856635967702332DDF5 /* Pods */,
 				907AF1253CE727D385CC6A5D /* Frameworks */,
@@ -1873,7 +1873,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Playground/Config/Info.plist;
+				INFOPLIST_FILE = Targets/Playground/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1943,7 +1943,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Playground/Config/Info.plist;
+				INFOPLIST_FILE = Targets/Playground/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2017,7 +2017,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = PlaygroundTests/Info.plist;
+				INFOPLIST_FILE = Targets/PlaygroundTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2087,7 +2087,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = PlaygroundTests/Info.plist;
+				INFOPLIST_FILE = Targets/PlaygroundTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2162,7 +2162,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = PlaygroundUITests/Info.plist;
+				INFOPLIST_FILE = TargetsPlaygroundUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2231,7 +2231,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = PlaygroundUITests/Info.plist;
+				INFOPLIST_FILE = TargetsPlaygroundUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
