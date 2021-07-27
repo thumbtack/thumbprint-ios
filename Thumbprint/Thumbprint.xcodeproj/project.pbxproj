@@ -116,7 +116,6 @@
 		A464D11B26AA25D600929BFD /* InspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D11626AA25D500929BFD /* InspectorViewController.swift */; };
 		A464D11C26AA25D600929BFD /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D11726AA25D500929BFD /* DraggableView.swift */; };
 		A464D11D26AA25D600929BFD /* ComponentsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D11826AA25D500929BFD /* ComponentsListViewController.swift */; };
-		A464D11E26AA25D600929BFD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D11926AA25D500929BFD /* main.swift */; };
 		A464D11F26AA271A00929BFD /* libThumbprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 080E6F2C25FFD333006D8056 /* libThumbprint.a */; };
 		A464D14726AA29B000929BFD /* InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D14326AA29B000929BFD /* InspectableView.swift */; };
 		A464D14826AA29B000929BFD /* InspectableBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D14426AA29B000929BFD /* InspectableBorderView.swift */; };
@@ -404,7 +403,6 @@
 		A464D11626AA25D500929BFD /* InspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectorViewController.swift; sourceTree = "<group>"; };
 		A464D11726AA25D500929BFD /* DraggableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
 		A464D11826AA25D500929BFD /* ComponentsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentsListViewController.swift; sourceTree = "<group>"; };
-		A464D11926AA25D500929BFD /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../../../ios/TTKit/ThumbprintPlayground/Classes/main.swift; sourceTree = "<group>"; };
 		A464D14326AA29B000929BFD /* InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectableView.swift; sourceTree = "<group>"; };
 		A464D14426AA29B000929BFD /* InspectableBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectableBorderView.swift; sourceTree = "<group>"; };
 		A464D14526AA29B000929BFD /* InspectablePropertyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectablePropertyView.swift; sourceTree = "<group>"; };
@@ -935,7 +933,6 @@
 				A479A68426AB381400D49C83 /* Classes */,
 				A479A68326AB380400D49C83 /* Config */,
 				A479A68226AB37E300D49C83 /* Assets */,
-				A464D11926AA25D500929BFD /* main.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -1631,7 +1628,6 @@
 				A464D17C26AA29D800929BFD /* TextInput+InspectableView.swift in Sources */,
 				A464D18426AA29D800929BFD /* ButtonStack+InspectableView.swift in Sources */,
 				A464D18926AA29D800929BFD /* Label+InspectableView.swift in Sources */,
-				A464D11E26AA25D600929BFD /* main.swift in Sources */,
 				A464D15326AA29C300929BFD /* ButtonActionInspectableProperty.swift in Sources */,
 				A464D11D26AA25D600929BFD /* ComponentsListViewController.swift in Sources */,
 				A464D18126AA29D800929BFD /* TextFloatingActionButton+InspectableView.swift in Sources */,
