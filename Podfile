@@ -14,9 +14,6 @@ pod 'SwiftLint'
 pod 'SwiftFormat/CLI'
 pod 'ThumbprintTokens', '~> 12.1.0'
 pod 'TTCalendarPicker'
-pod 'RxCocoa'
-pod 'RxGesture'
-pod 'RxSwift'
 
 target 'Thumbprint' do
 end
@@ -29,6 +26,9 @@ target 'TestsHostApp' do
 end
 
 target 'Playground' do
+  pod 'RxCocoa'
+  pod 'RxGesture'
+  pod 'RxSwift'
 end
 
 PROJECT_ROOT_DIR = File.dirname(File.expand_path(__FILE__))
