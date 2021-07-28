@@ -7,7 +7,7 @@ extension UserAvatar: InspectableView {
             image != nil
         }
         set {
-            image = newValue ? UIImage(named: "niccage") : nil
+            image = newValue ? UIImage(named: "cat") : nil
         }
     }
 

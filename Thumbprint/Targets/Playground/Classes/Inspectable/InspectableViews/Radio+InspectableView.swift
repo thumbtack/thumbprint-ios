@@ -46,7 +46,6 @@ extension LabeledRadio: InspectableView {
     }
 }
 
-// UILabel has an extension to suport InputStateConfigurable, but it's in TTCoreUI, so I'm faking it here
 private class StateInspectableLabel: Label, InputStateConfigurable {
     public func inputStateDidChange(to inputState: InputState) {
         textColor = inputState.markableControlTextColor
