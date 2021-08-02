@@ -170,7 +170,7 @@ open class PartialSheetPresentationController: UIPresentationController {
             grabberView.alpha = 1
         }
 
-        NotificationCenter.default.post(Notification.Name.PartialSheetDidPresentNotification)
+        NotificationCenter.default.post(name: Notification.Name.PartialSheetDidPresentNotification, object: nil)
     }
 
     @objc
@@ -236,7 +236,7 @@ open class PartialSheetPresentationController: UIPresentationController {
         if completed {
             partialSheetDelegate?.partialSheetPresentationControllerDidDismissSheet?(self)
 
-            NotificationCenter.default.post(Notification.Name.PartialSheetDidDismissNotification)
+            NotificationCenter.default.post(name: Notification.Name.PartialSheetDidDismissNotification, object: nil)
         }
     }
 
