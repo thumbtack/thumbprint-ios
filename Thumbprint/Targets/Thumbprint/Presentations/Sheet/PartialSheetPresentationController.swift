@@ -1,5 +1,10 @@
 import UIKit
 
+extension Notification.Name {
+    static let PartialSheetDidPresentNotification = Notification.Name("PartialSheetDidPresentNotification")
+    static let PartialSheetDidDismissNotification = Notification.Name("PartialSheetDidDismissNotification")
+}
+
 // TODO: (team) Much of what's included in this delegate has been added to UIAdaptivePresentationControllerDelegate
 // in iOS 13.  Once we're on a minimum target of iOS 13, we can get rid of PartialSheetPresentationControllerDelegate and
 // just use UIAdaptivePresentationControllerDelegate directly (for which UIPresentationController already has a delegate
@@ -164,6 +169,8 @@ open class PartialSheetPresentationController: UIPresentationController {
             dimmedView.alpha = 0.5
             grabberView.alpha = 1
         }
+
+        NotificationCenter.default.post(Notification.Name.PartialSheetDidPresentNotification)
     }
 
     @objc
@@ -228,6 +235,8 @@ open class PartialSheetPresentationController: UIPresentationController {
 
         if completed {
             partialSheetDelegate?.partialSheetPresentationControllerDidDismissSheet?(self)
+
+            NotificationCenter.default.post(Notification.Name.PartialSheetDidDismissNotification)
         }
     }
 
