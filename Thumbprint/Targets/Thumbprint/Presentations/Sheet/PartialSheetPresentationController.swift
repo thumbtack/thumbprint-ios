@@ -17,8 +17,8 @@ public protocol PartialSheetPresentationControllerDelegate: UIAdaptivePresentati
 }
 
 open class PartialSheetPresentationController: UIPresentationController {
-    static let PartialSheetDidPresentNotification = Notification.Name("PartialSheetDidPresentNotification")
-    static let PartialSheetDidDismissNotification = Notification.Name("PartialSheetDidDismissNotification")
+    static let partialSheetDidPresentNotification = Notification.Name("PartialSheetDidPresentNotification")
+    static let partialSheetDidDismissNotification = Notification.Name("PartialSheetDidDismissNotification")
     
     private class SizeTransitionCoordinator: NSObject, UIViewControllerTransitionCoordinator {
         var isAnimated: Bool { false }
@@ -168,7 +168,7 @@ open class PartialSheetPresentationController: UIPresentationController {
             grabberView.alpha = 1
         }
 
-        NotificationCenter.default.post(name: Notification.Name.PartialSheetDidPresentNotification, object: nil)
+        NotificationCenter.default.post(name: PartialSheetPresentationController.partialSheetDidPresentNotification, object: nil)
     }
 
     @objc
@@ -234,7 +234,7 @@ open class PartialSheetPresentationController: UIPresentationController {
         if completed {
             partialSheetDelegate?.partialSheetPresentationControllerDidDismissSheet?(self)
 
-            NotificationCenter.default.post(name: Notification.Name.PartialSheetDidDismissNotification, object: nil)
+            NotificationCenter.default.post(name: PartialSheetPresentationController.partialSheetDidDismissNotification, object: nil)
         }
     }
 
