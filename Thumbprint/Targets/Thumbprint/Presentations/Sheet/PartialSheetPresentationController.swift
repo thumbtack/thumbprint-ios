@@ -17,8 +17,8 @@ public protocol PartialSheetPresentationControllerDelegate: UIAdaptivePresentati
 }
 
 open class PartialSheetPresentationController: UIPresentationController {
-    static let partialSheetDidPresentNotification = Notification.Name("PartialSheetDidPresentNotification")
-    static let partialSheetDidDismissNotification = Notification.Name("PartialSheetDidDismissNotification")
+    public static let partialSheetDidPresentNotification = Notification.Name("PartialSheetDidPresentNotification")
+    public static let partialSheetDidDismissNotification = Notification.Name("PartialSheetDidDismissNotification")
     
     private class SizeTransitionCoordinator: NSObject, UIViewControllerTransitionCoordinator {
         var isAnimated: Bool { false }
