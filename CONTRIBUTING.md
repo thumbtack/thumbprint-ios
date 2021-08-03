@@ -15,25 +15,25 @@ If you're a Thumbtack employee, you can also post on [#design-systems](https://t
 There are two ways to contribute code back to Thumbprint:
 
 1. **Tackle open GitHub issues:** Issues labeled as “[good first issue](https://github.com/thumbtack/thumbprint-ios/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)” or “[help wanted](https://github.com/thumbtack/thumbprint-ios/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)” are perfect for contributors that want to tackle small tasks.
-2. **Propose and create a new component:** Creating a component allows contributors to dive-deep into component API design, testing, accessibility, and documentation. Please [create a GitHub issue](https://github.com/thumbtack/thumbprint-ios/issues) to propose a new component. If the component is a good candidate for Thumbprint, we’ll schedule a kick-off meeting to discuss next steps.
+2. **Propose and create a new component:** Creating a component allows contributors to dive-deep into component API design, testing, accessibility, and documentation. Please [create a GitHub issue](https://github.com/thumbtack/thumbprint-ios/issues) to propose a new component. If the component is a good candidate for Thumbprint, we’ll schedule a kick-off meeting to discuss next steps. Keep in mind that any new component will need to be added to the Playground in order to enable the component to be viewed in the Playground.
 
 ### Submitting a pull request
 
 Here are a few things to keep in mind when creating a pull request:
 
--   **Testing:** Run the Thumbrint scheme's test suite locally in Xcode to ensure that the build will pass. If any snapshot tests fail, set `recordMode = true` in the `setUp()` function of that test class, and re-run the test. Review the changes to the snapshots to ensure that they are intended and include them in the code review.
+- **Testing:** Run the Thumbrint scheme's test suite locally in Xcode to ensure that the build will pass. If any snapshot tests fail, set `recordMode = true` in the `setUp()` function of that test class, and re-run the test. Review the changes to the snapshots to ensure that they are intended and include them in the code review.
 
 ## Releasing a new version of Thumbprint
 
 This will be done by a member of the Thumbtack iOS team when code has been merged and is ready for release.
 
 1. **Go to release workflow:** In GitHub, go to the repo's Actions tab and select the [Release Thumbprint](https://github.com/thumbtack/thumbprint-ios/actions/workflows/release.yml) workflow.
-![Screenshot of Actions tab on GitHub](./.github/release-workflow-screenshot.png)
+   ![Screenshot of Actions tab on GitHub](./.github/release-workflow-screenshot.png)
 2. **Open dialog:** On the righthand side of the blue banner labeled "This workflow has a workflow_dispatch event trigger.", click "Run workflow."
-![Screenshot of the manual trigger dialog](./.github/release-dialog-screenshot.png)
+   ![Screenshot of the manual trigger dialog](./.github/release-dialog-screenshot.png)
 3. **Update version:** Enter a version number for the release (e.g. `1.2.3`). We follow [semantic versioning](https://semver.org/), so look at the changes that will be included in this release and increment it accordingly. Leave "Branch" as `main`.
 4. **Start action:** Click "Run workflow" to start the release process.
-5. **Manual step:** The script will create a PR that bumps the version in the podspec. *This PR must be merged manually,* as GitHub Actions do not have write access for the `main` branch.
+5. **Manual step:** The script will create a PR that bumps the version in the podspec. _This PR must be merged manually,_ as GitHub Actions do not have write access for the `main` branch.
 6. **Manual step:** Update the description of the [GitHub release](https://github.com/thumbtack/thumbprint-ios/releases) created by the action with the changes included in this version.
 
 This action
@@ -43,6 +43,7 @@ This action
 (d) publishes the new version of the CocoaPod
 
 ### Manual process (if GitHub Action is broken)
+
 1. **Update CocoaPod version:** Update `s.version` in `Thumbprint.podspec`. We follow [semantic versioning](https://semver.org/), so look at the changes that will be included in this release and increment it accordingly.
 2. **Run Pod linter:** In the root directory of the repo, run `pod lib lint`. If there are any errors, resolve them before continuing with the release.
 3. **Commit:** Commit the change you made in step 1 with the subject "Release <version>" (e.g., "Release 1.2.3"). Create and merge a pull request with this commit.
@@ -54,9 +55,11 @@ This action
 ### Common release issues
 
 `[!] Authentication token is invalid or unverified. Either verify it with the email that was sent or register a new session.`
+
 - Run `pod trunk register <email> '<name>'` (e.g., `pod trunk register kevinb@thumbtack.com 'Kevin Beaulieu'`) and click the link in the verification email you receive. Then try running `pod trunk push Thumbprint.podspec` again.
 
 `[!] You (<your-email>) are not allowed to push new versions for this pod. The owners of this pod are <owner-emails>.`
+
 - Ask one of the owners to [add you as a contributor](https://guides.cocoapods.org/making/getting-setup-with-trunk#adding-other-people-as-contributors) by running `pod trunk add-owner Thumbprint <your-email>`.
 
 ---

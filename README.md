@@ -12,6 +12,12 @@ Thumbprint is the design system at Thumbtack. Though its primary purpose to supp
 
 Thumbprint is documented at [thumbprint.design](https://thumbprint.design/).
 
+## Playground
+
+The Thumbprint repo includes a Target named `Playground` and it's a sandbox app where those interested can test out the different Thumbprint components. It can be a great place to get a sense for the components before using them.
+
+![Components Screenshot](/Screenshots/Components.png "Components Screenshot") ![Calendar Picker Screenshot](/Screenshots/CalendarPicker.png "Calendar Picker Screenshot")
+
 ## Contributing
 
 Thumbprint accepts issues and pull requests. Take at look at our [contribution guidelines](https://thumbprint.design/overview/contributing/) if you'd like to contribute. We also maintain a [CONTRIBUTING.md](CONTRIBUTING.md) file that contains developer-specific instructions.
