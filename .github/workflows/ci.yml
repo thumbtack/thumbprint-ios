@@ -27,8 +27,6 @@ jobs:
         with:
           path: Pods
           key: ${{ runner.os }}-pods-${{ hashFiles('Podfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pods-
 
       - name: 🗂 Install Pods
         run: bundle exec pod install || bundle exec pod install --repo-update
