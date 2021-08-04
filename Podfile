@@ -37,6 +37,7 @@ PODS_TARGET_SUPPORT_FILES_DIR = File.join(PODS_DIR, 'Target Support Files')
 
 post_install do |installer|
   apply_xcconfig_inheritance_workaround
+  set_deployment_target(installer)
 end
 
 # $(inherited) in an xcconfig setting does not inherit values from included files, instead it redefines the setting.
@@ -69,4 +70,27 @@ def apply_xcconfig_inheritance_workaround
       end
     end
   end
+end
+
+# Some of our depedencies may specify a version < 8.0 which causes a warning in Xcode. To avoid
+# these warnings, here we just set IPHONEOS_DEPLOYMENT_TARGET for all pods equal to the version
+# defined by the platform directive at the top of this file.
+def set_deployment_target(installer)
+  deployment_target = installer.podfile.root_target_definitions.first.platform.deployment_target.version
+
+  all_build_configurations(installer).each do |config|
+    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = deployment_target
+  end
+end
+
+def all_build_configurations(installer, &block)
+  configs = installer.generated_projects.map do |project|
+    if block && !block.call(project)
+      []
+    else
+      project.build_configurations.to_a + project.targets.map do |target|
+        target.build_configurations.to_a
+      end
+    end
+  end.flatten
 end
