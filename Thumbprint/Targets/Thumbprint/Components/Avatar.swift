@@ -10,7 +10,7 @@ public final class Avatar: UIView {
         public let dimension: CGFloat
         public let textFont: UIFont
         public let badgeSize: CGFloat
-        /// Top and right offsets for the badge.
+        /// Top and trailing offsets for the badge (dx: trailing offset, dy: top offset)
         public let badgeOffsets: CGVector
 
         public static let xSmall = Size(
