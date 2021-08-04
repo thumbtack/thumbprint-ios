@@ -12,6 +12,14 @@ extension UserAvatar: AvatarView {}
 extension EntityAvatar: AvatarView {}
 
 class AvatarTest: SnapshotTestCase {
+    private static let allSizes: [Avatar.Size] = [
+        .xSmall,
+        .small,
+        .medium,
+        .large,
+        .xLarge,
+    ]
+
     func testInitialsUser() {
         let initials = [
             "AYYYY",
@@ -35,7 +43,7 @@ class AvatarTest: SnapshotTestCase {
         let image = UIImage(named: "eric",
                             in: Bundle.testing,
                             compatibleWith: nil)
-        let views: [UserAvatar] = Avatar.Size.allSizes.map {
+        let views: [UserAvatar] = Self.allSizes.map {
             let avatar = UserAvatar(size: $0)
             avatar.image = image
             return avatar
@@ -67,7 +75,7 @@ class AvatarTest: SnapshotTestCase {
         let image = UIImage(named: "eric",
                             in: Bundle.testing,
                             compatibleWith: nil)
-        let views: [EntityAvatar] = Avatar.Size.allSizes.map {
+        let views: [EntityAvatar] = Self.allSizes.map {
             let avatar = EntityAvatar(size: $0)
             avatar.image = image
             return avatar
@@ -80,7 +88,7 @@ class AvatarTest: SnapshotTestCase {
         let image = UIImage(named: "eric",
                             in: Bundle.testing,
                             compatibleWith: nil)
-        let views: [EntityAvatar] = Avatar.Size.allSizes.map {
+        let views: [EntityAvatar] = Self.allSizes.map {
             let avatar = EntityAvatar(size: $0)
             avatar.image = image
             avatar.isOnline = true
@@ -94,7 +102,7 @@ class AvatarTest: SnapshotTestCase {
         let image = UIImage(named: "eric",
                             in: Bundle.testing,
                             compatibleWith: nil)
-        let views: [UserAvatar] = Avatar.Size.allSizes.map {
+        let views: [UserAvatar] = Self.allSizes.map {
             let avatar = UserAvatar(size: $0)
             avatar.image = image
             avatar.isOnline = true

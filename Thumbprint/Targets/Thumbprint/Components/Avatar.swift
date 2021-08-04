@@ -8,9 +8,10 @@ import UIKit
 public final class Avatar: UIView {
     public struct Size: Equatable {
         public let dimension: CGFloat
-        let textFont: UIFont
-        public let name: String
-        let badgeSize: CGFloat
+        public let textFont: UIFont
+        public let badgeSize: CGFloat
+        /// Top and trailing offsets for the badge (dx: trailing offset, dy: top offset)
+        public let badgeOffsets: CGVector
 
         public static let xSmall = Size(
             dimension: 32.0,
@@ -19,8 +20,8 @@ public final class Avatar: UIView {
                 size: 10,
                 uiFontTextStyle: .body
             ).uiFont,
-            name: "xSmall",
-            badgeSize: 12
+            badgeSize: 12,
+            badgeOffsets: CGVector(dx: 2.0, dy: 0.0)
         )
         public static let small = Size(
             dimension: 48.0,
@@ -29,8 +30,8 @@ public final class Avatar: UIView {
                 size: 16,
                 uiFontTextStyle: .body
             ).uiFont,
-            name: "small",
-            badgeSize: 12
+            badgeSize: 12,
+            badgeOffsets: CGVector(dx: 2.0, dy: 1.0)
         )
         public static let medium = Size(
             dimension: 72.0,
@@ -39,8 +40,8 @@ public final class Avatar: UIView {
                 size: 20,
                 uiFontTextStyle: .body
             ).uiFont,
-            name: "medium",
-            badgeSize: 14
+            badgeSize: 14,
+            badgeOffsets: CGVector(dx: -2.0, dy: 2.0)
         )
         public static let large = Size(
             dimension: 100.0,
@@ -49,8 +50,8 @@ public final class Avatar: UIView {
                 size: 24,
                 uiFontTextStyle: .body
             ).uiFont,
-            name: "large",
-            badgeSize: 18
+            badgeSize: 18,
+            badgeOffsets: CGVector(dx: -5.0, dy: 4.0)
         )
         public static let xLarge = Size(
             dimension: 140.0,
@@ -59,17 +60,19 @@ public final class Avatar: UIView {
                 size: 32,
                 uiFontTextStyle: .body
             ).uiFont,
-            name: "xLarge",
-            badgeSize: 24
+            badgeSize: 24,
+            badgeOffsets: CGVector(dx: -14.0, dy: 0.0)
         )
 
-        public static let allSizes = [
-            Size.xSmall,
-            Size.small,
-            Size.medium,
-            Size.large,
-            Size.xLarge,
-        ]
+        public init(dimension: CGFloat,
+                    textFont: UIFont,
+                    badgeSize: CGFloat,
+                    badgeOffsets: CGVector) {
+            self.dimension = dimension
+            self.textFont = textFont
+            self.badgeSize = badgeSize
+            self.badgeOffsets = badgeOffsets
+        }
     }
 
     // Internal
