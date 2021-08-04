@@ -107,15 +107,6 @@ public final class UserAvatar: UIView {
     private let badgeView: OnlineBadgeView
     private var avatarHeightConstraint: Constraint?
 
-    // Hardcoded top and right offsets for the online now badge.
-    let badgeEdges = [
-        "xSmall": (0.0, 2.0),
-        "small": (1.0, 2.0),
-        "medium": (2.0, -2.0),
-        "large": (4.0, -5.0),
-        "xLarge": (0.0, -14.0),
-    ]
-
     private func setupViews() {
         avatar.label.text = initials
         avatar.clipsToBounds = true
@@ -136,9 +127,8 @@ public final class UserAvatar: UIView {
 
         avatarHeightConstraint?.update(offset: size.dimension)
         badgeView.snp.remakeConstraints { make in
-            let (top, right) = badgeEdges[size.name] ?? (0.0, 0.0)
-            make.top.equalToSuperview().offset(top)
-            make.right.equalToSuperview().offset(right)
+            make.top.equalToSuperview().offset(size.badgeOffsets.top)
+            make.right.equalToSuperview().offset(size.badgeOffsets.right)
             make.height.equalTo(size.badgeSize)
             make.width.equalTo(badgeView.snp.height)
         }

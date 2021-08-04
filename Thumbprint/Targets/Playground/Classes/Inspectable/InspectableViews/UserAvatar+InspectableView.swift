@@ -24,13 +24,10 @@ extension UserAvatar: InspectableView {
         initialsProperty.title = "Initials"
         initialsProperty.property = \UserAvatar.initials
 
-        let sizes: [(Avatar.Size, String)] = Avatar.Size.allSizes.map {
-            ($0, $0.name)
-        }
         let sizeProperty = DropdownInspectableProperty(
             inspectedView: self,
             property: \UserAvatar.size,
-            values: sizes
+            values: Self.allSizes
         )
 
         return [
@@ -46,4 +43,12 @@ extension UserAvatar: InspectableView {
         avatar.initials = "AA"
         return avatar
     }
+
+    private static let allSizes = [
+        (Avatar.Size.xSmall, "xSmall"),
+        (Avatar.Size.small, "small"),
+        (Avatar.Size.medium, "medium"),
+        (Avatar.Size.large, "large"),
+        (Avatar.Size.xLarge, "xLarge"),
+    ]
 }
