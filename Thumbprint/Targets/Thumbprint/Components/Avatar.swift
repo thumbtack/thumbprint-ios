@@ -7,21 +7,11 @@ import UIKit
 
 public final class Avatar: UIView {
     public struct Size: Equatable {
-        public struct BadgeOffset: Equatable {
-            public let top: CGFloat
-            public let right: CGFloat
-
-            public init(top: CGFloat, right: CGFloat) {
-                self.top = top
-                self.right = right
-            }
-        }
-
         public let dimension: CGFloat
         public let textFont: UIFont
         public let badgeSize: CGFloat
         /// Top and right offsets for the badge.
-        public let badgeOffsets: BadgeOffset
+        public let badgeOffsets: CGVector
 
         public static let xSmall = Size(
             dimension: 32.0,
@@ -31,7 +21,7 @@ public final class Avatar: UIView {
                 uiFontTextStyle: .body
             ).uiFont,
             badgeSize: 12,
-            badgeOffsets: BadgeOffset(top: 0.0, right: 2.0)
+            badgeOffsets: CGVector(dx: 2.0, dy: 0.0)
         )
         public static let small = Size(
             dimension: 48.0,
@@ -41,7 +31,7 @@ public final class Avatar: UIView {
                 uiFontTextStyle: .body
             ).uiFont,
             badgeSize: 12,
-            badgeOffsets: BadgeOffset(top: 1.0, right: 2.0)
+            badgeOffsets: CGVector(dx: 2.0, dy: 1.0)
         )
         public static let medium = Size(
             dimension: 72.0,
@@ -51,7 +41,7 @@ public final class Avatar: UIView {
                 uiFontTextStyle: .body
             ).uiFont,
             badgeSize: 14,
-            badgeOffsets: BadgeOffset(top: 2.0, right: -2.0)
+            badgeOffsets: CGVector(dx: -2.0, dy: 2.0)
         )
         public static let large = Size(
             dimension: 100.0,
@@ -61,7 +51,7 @@ public final class Avatar: UIView {
                 uiFontTextStyle: .body
             ).uiFont,
             badgeSize: 18,
-            badgeOffsets: BadgeOffset(top: 4.0, right: -5.0)
+            badgeOffsets: CGVector(dx: -5.0, dy: 4.0)
         )
         public static let xLarge = Size(
             dimension: 140.0,
@@ -71,13 +61,13 @@ public final class Avatar: UIView {
                 uiFontTextStyle: .body
             ).uiFont,
             badgeSize: 24,
-            badgeOffsets: BadgeOffset(top: 0.0, right: -14.0)
+            badgeOffsets: CGVector(dx: -14.0, dy: 0.0)
         )
 
         public init(dimension: CGFloat,
                     textFont: UIFont,
                     badgeSize: CGFloat,
-                    badgeOffsets: BadgeOffset) {
+                    badgeOffsets: CGVector) {
             self.dimension = dimension
             self.textFont = textFont
             self.badgeSize = badgeSize

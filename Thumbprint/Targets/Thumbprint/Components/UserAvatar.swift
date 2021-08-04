@@ -127,8 +127,8 @@ public final class UserAvatar: UIView {
 
         avatarHeightConstraint?.update(offset: size.dimension)
         badgeView.snp.remakeConstraints { make in
-            make.top.equalToSuperview().offset(size.badgeOffsets.top)
-            make.right.equalToSuperview().offset(size.badgeOffsets.right)
+            make.top.equalToSuperview().offset(size.badgeOffsets.dy)
+            make.right.equalToSuperview().offset(size.badgeOffsets.dx)
             make.height.equalTo(size.badgeSize)
             make.width.equalTo(badgeView.snp.height)
         }
