@@ -28,5 +28,6 @@ Thumbprint is licensed under the terms of the [Apache License 2.0](LICENSE).
 
 ## Assets
 
-Cat photo in `/Thumbprint/Targets/Playground/Assets/Assets.xcassets` Photographed by Manja Vitolic from Unsplash. [LICENSE](https://unsplash.com/license)
-Assets `/Thumbprint/Targets/ThumbprintPublicResources/Assets.xcassets` from [FeatherIcons](https://feathericons.com/). [LICENSE](https://github.com/feathericons/feather/blob/master/LICENSE)
+Cat photo in `/Thumbprint/Targets/Playground/Assets/Assets.xcassets` from [Unsplash](https://unsplash.com), photographed by Manja Vitolic ([LICENSE](https://unsplash.com/license)).
+
+Assets `/Thumbprint/Targets/ThumbprintPublicResources/Assets.xcassets` from [FeatherIcons](https://feathericons.com/) ([LICENSE](https://github.com/feathericons/feather/blob/master/LICENSE)).
