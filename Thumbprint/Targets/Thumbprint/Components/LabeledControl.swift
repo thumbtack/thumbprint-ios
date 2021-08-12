@@ -367,11 +367,10 @@ open class LabeledControl<T>: Control, UIContentSizeCategoryAdjusting where T: S
     }
 
     public override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        // Super takes care of everything (including sending actions). The only thing we need to do here is update UI.
         super.endTracking(touch, with: event)
 
         rootControl.isHighlighted = false
-
-        performAction()
     }
 
     /// Override takes over subviews to make the whole of self the touch area. and disable tapping on any of the
