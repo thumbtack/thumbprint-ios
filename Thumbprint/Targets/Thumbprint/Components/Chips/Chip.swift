@@ -215,7 +215,7 @@ open class ChipPill: Pill {
         return .title8
     }
 
-    private static let baseBorderWidth: CGFloat = 2.0
+    private static let baseBorderWidth: CGFloat = 1.0
 
     // MARK: - Border management.
 
