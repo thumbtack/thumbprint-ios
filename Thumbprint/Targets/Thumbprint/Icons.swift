@@ -97,6 +97,7 @@ public enum Icon {
     public static let contentModifierCircleCheckMedium = Self.requiredIcon(named: "circle-check--medium")
     public static let contentModifierCircleCheckSmall = Self.requiredIcon(named: "circle-check--small")
     public static let contentModifierCircleCheckFilledMedium = Self.requiredIcon(named: "circle-check-filled--medium")
+    public static let contentModifierCircleCheckFilledSmall = Self.requiredIcon(named: "circle-check-filled--small")
     public static let contentModifierCreditCardMedium = Self.requiredIcon(named: "credit-card--medium")
     public static let contentModifierCreditCardSmall = Self.requiredIcon(named: "credit-card--small")
     public static let contentModifierDataMedium = Self.requiredIcon(named: "data--medium")
