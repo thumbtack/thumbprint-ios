@@ -15,8 +15,7 @@ open class UnitTestCase: XCTestCase {
         behavior = TestCaseBehavior()
     }
 
-    /// Override tearDownWithError as it gets called later by XCTestCase.
-    open override func tearDownWithError() throws {
+    open override func tearDown() {
         let localBehavior = behavior
         behavior = nil
         localBehavior?.tearDown(
@@ -24,6 +23,6 @@ open class UnitTestCase: XCTestCase {
             ensureCleanProperties: true
         )
 
-        try super.tearDownWithError()
+        super.tearDown()
     }
 }

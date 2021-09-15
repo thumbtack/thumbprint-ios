@@ -136,8 +136,6 @@
 		A464D17A26AA29D800929BFD /* Dropdown+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D16026AA29D600929BFD /* Dropdown+InspectableView.swift */; };
 		A464D17B26AA29D800929BFD /* ShadowCard+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D16126AA29D600929BFD /* ShadowCard+InspectableView.swift */; };
 		A464D17C26AA29D800929BFD /* TextInput+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D16226AA29D600929BFD /* TextInput+InspectableView.swift */; };
-		A464D17D26AA29D800929BFD /* Radio+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D16326AA29D600929BFD /* Radio+InspectableView.swift */; };
-		A464D17E26AA29D800929BFD /* Checkbox+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D16426AA29D600929BFD /* Checkbox+InspectableView.swift */; };
 		A464D17F26AA29D800929BFD /* IconButton+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D16526AA29D700929BFD /* IconButton+InspectableView.swift */; };
 		A464D18026AA29D800929BFD /* IconFloatingActionButton+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D16626AA29D700929BFD /* IconFloatingActionButton+InspectableView.swift */; };
 		A464D18126AA29D800929BFD /* TextFloatingActionButton+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D16726AA29D700929BFD /* TextFloatingActionButton+InspectableView.swift */; };
@@ -158,16 +156,11 @@
 		A479A75E26B0AC2600D49C83 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A479A68526AB381D00D49C83 /* main.swift */; };
 		B98FE98D2668312400B52979 /* ButtonUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98FE98C2668312400B52979 /* ButtonUnitTest.swift */; };
 		CD5A0287B7D3129E8BDD06E5 /* libPods-TestsHostApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BB25065E7ACE32CDDE00D1 /* libPods-TestsHostApp.a */; };
-		FF1A3E3B269599A200561D28 /* LabeledRadioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1A3E3A269599A200561D28 /* LabeledRadioTest.swift */; };
-		FF1A3E3D2697F44A00561D28 /* LabeledCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1A3E3C2697F44A00561D28 /* LabeledCheckbox.swift */; };
-		FF1A3E3F2697F57800561D28 /* LabeledRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1A3E3E2697F57800561D28 /* LabeledRadio.swift */; };
+		E054328226F265D9004485B9 /* LabelCheckbox+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E054328126F265D9004485B9 /* LabelCheckbox+InspectableView.swift */; };
+		E054328426F26611004485B9 /* Radio+InspectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E054328326F26611004485B9 /* Radio+InspectableView.swift */; };
 		FF2929B62642168D001A711A /* RadioStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B52642168D001A711A /* RadioStack.swift */; };
 		FF2929B82642306F001A711A /* RadioGroupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2929B72642306F001A711A /* RadioGroupTest.swift */; };
 		FF292A96264250CF001A711A /* RadioGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF292A95264250CF001A711A /* RadioGroup.swift */; };
-		FF33281626774AF6009D344B /* LabeledCheckboxTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33281526774AF6009D344B /* LabeledCheckboxTest.swift */; };
-		FF858A1F269C1FD0002E22D8 /* RadioStackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF858A1E269C1FD0002E22D8 /* RadioStackTest.swift */; };
-		FFD57F232681189B004F2BBB /* LabeledControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD57F222681189B004F2BBB /* LabeledControl.swift */; };
-		FFE53483269D838F00FDD9A5 /* LabeledControlTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE53482269D838F00FDD9A5 /* LabeledControlTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -422,8 +415,6 @@
 		A464D16026AA29D600929BFD /* Dropdown+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dropdown+InspectableView.swift"; sourceTree = "<group>"; };
 		A464D16126AA29D600929BFD /* ShadowCard+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShadowCard+InspectableView.swift"; sourceTree = "<group>"; };
 		A464D16226AA29D600929BFD /* TextInput+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInput+InspectableView.swift"; sourceTree = "<group>"; };
-		A464D16326AA29D600929BFD /* Radio+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Radio+InspectableView.swift"; sourceTree = "<group>"; };
-		A464D16426AA29D600929BFD /* Checkbox+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Checkbox+InspectableView.swift"; sourceTree = "<group>"; };
 		A464D16526AA29D700929BFD /* IconButton+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IconButton+InspectableView.swift"; sourceTree = "<group>"; };
 		A464D16626AA29D700929BFD /* IconFloatingActionButton+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IconFloatingActionButton+InspectableView.swift"; sourceTree = "<group>"; };
 		A464D16726AA29D700929BFD /* TextFloatingActionButton+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextFloatingActionButton+InspectableView.swift"; sourceTree = "<group>"; };
@@ -444,18 +435,13 @@
 		B98FE98C2668312400B52979 /* ButtonUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonUnitTest.swift; sourceTree = "<group>"; };
 		C54C542DED491DAB0804B642 /* Pods-TestsHostApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestsHostApp.debug.xcconfig"; path = "Target Support Files/Pods-TestsHostApp/Pods-TestsHostApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D12EA88E3D1B084D408E2707 /* Pods-ThumbprintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThumbprintTests.release.xcconfig"; path = "Target Support Files/Pods-ThumbprintTests/Pods-ThumbprintTests.release.xcconfig"; sourceTree = "<group>"; };
+		E054328126F265D9004485B9 /* LabelCheckbox+InspectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LabelCheckbox+InspectableView.swift"; sourceTree = "<group>"; };
+		E054328326F26611004485B9 /* Radio+InspectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Radio+InspectableView.swift"; sourceTree = "<group>"; };
 		E960F8432D6A9D65F3873172 /* Pods-TestsHostApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestsHostApp.release.xcconfig"; path = "Target Support Files/Pods-TestsHostApp/Pods-TestsHostApp.release.xcconfig"; sourceTree = "<group>"; };
 		F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Thumbprint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF1A3E3A269599A200561D28 /* LabeledRadioTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledRadioTest.swift; sourceTree = "<group>"; };
-		FF1A3E3C2697F44A00561D28 /* LabeledCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledCheckbox.swift; sourceTree = "<group>"; };
-		FF1A3E3E2697F57800561D28 /* LabeledRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledRadio.swift; sourceTree = "<group>"; };
 		FF2929B52642168D001A711A /* RadioStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStack.swift; sourceTree = "<group>"; };
 		FF2929B72642306F001A711A /* RadioGroupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroupTest.swift; sourceTree = "<group>"; };
 		FF292A95264250CF001A711A /* RadioGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroup.swift; sourceTree = "<group>"; };
-		FF33281526774AF6009D344B /* LabeledCheckboxTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledCheckboxTest.swift; sourceTree = "<group>"; };
-		FF858A1E269C1FD0002E22D8 /* RadioStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStackTest.swift; sourceTree = "<group>"; };
-		FFD57F222681189B004F2BBB /* LabeledControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledControl.swift; sourceTree = "<group>"; };
-		FFE53482269D838F00FDD9A5 /* LabeledControlTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledControlTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -689,6 +675,9 @@
 		08C819A925F574460082FD2D /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				08C819CB25F574460082FD2D /* CalendarPicker */,
+				08C819B825F574460082FD2D /* Chips */,
+				08C819AF25F574460082FD2D /* FloatingActionButton */,
 				08C819B225F574460082FD2D /* AlertBanner.swift */,
 				08C819B625F574460082FD2D /* Avatar.swift */,
 				08C819C125F574460082FD2D /* Button.Model.swift */,
@@ -702,9 +691,6 @@
 				08C819B725F574460082FD2D /* Footer.swift */,
 				08C819BD25F574460082FD2D /* IconButton.swift */,
 				08C819AB25F574460082FD2D /* Label.swift */,
-				FF1A3E3C2697F44A00561D28 /* LabeledCheckbox.swift */,
-				FFD57F222681189B004F2BBB /* LabeledControl.swift */,
-				FF1A3E3E2697F57800561D28 /* LabeledRadio.swift */,
 				08C819C925F574460082FD2D /* LoaderDots.swift */,
 				08C819BC25F574460082FD2D /* NavigationBar.swift */,
 				08C819CA25F574460082FD2D /* Pill.swift */,
@@ -719,9 +705,6 @@
 				08C819C025F574460082FD2D /* TextInput.swift */,
 				08C819D525F574470082FD2D /* Toast.swift */,
 				08C819B325F574460082FD2D /* UserAvatar.swift */,
-				08C819CB25F574460082FD2D /* CalendarPicker */,
-				08C819B825F574460082FD2D /* Chips */,
-				08C819AF25F574460082FD2D /* FloatingActionButton */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -872,13 +855,9 @@
 				08C81CDA25F5A6B60082FD2D /* FooterTest.swift */,
 				08C81CD725F5A6B60082FD2D /* IconButtonTest.swift */,
 				08C81A9A25F5A6B10082FD2D /* IconFloatingActionButtonTest.swift */,
-				FF33281526774AF6009D344B /* LabeledCheckboxTest.swift */,
-				FFE53482269D838F00FDD9A5 /* LabeledControlTest.swift */,
-				FF1A3E3A269599A200561D28 /* LabeledRadioTest.swift */,
 				08C81CD925F5A6B60082FD2D /* LoaderDotsTest.swift */,
 				08C81A9825F5A6B10082FD2D /* NavigationBarTest.swift */,
 				08C81A9C25F5A6B10082FD2D /* PillTest.swift */,
-				FF858A1E269C1FD0002E22D8 /* RadioStackTest.swift */,
 				08C81A9325F5A6B10082FD2D /* ShadowCardTest.swift */,
 				08C81A9025F5A6B10082FD2D /* ShadowTest.swift */,
 				08C81A8E25F5A6B10082FD2D /* TabBarTest.swift */,
@@ -1006,7 +985,6 @@
 				A464D15B26AA29D600929BFD /* ButtonRow+InspectableView.swift */,
 				A464D16A26AA29D700929BFD /* ButtonStack+InspectableView.swift */,
 				A464D17026AA29D800929BFD /* CalendarPicker+InspectableView.swift */,
-				A464D16426AA29D600929BFD /* Checkbox+InspectableView.swift */,
 				A464D16026AA29D600929BFD /* Dropdown+InspectableView.swift */,
 				A464D17426AA29D800929BFD /* EntityAvatar+InspectableView.swift */,
 				A464D17126AA29D800929BFD /* FilterChip+InspectableView.swift */,
@@ -1017,7 +995,6 @@
 				A464D16926AA29D700929BFD /* LoaderDots+InspectableView.swift */,
 				A464D15F26AA29D600929BFD /* Pill+InspectableView.swift */,
 				A464D17226AA29D800929BFD /* PlaygroundColorView.swift */,
-				A464D16326AA29D600929BFD /* Radio+InspectableView.swift */,
 				A464D16C26AA29D700929BFD /* RadioStack + InspectableView.swift */,
 				A464D15D26AA29D600929BFD /* RadioTableViewCell+InspectableView.swift */,
 				A464D16126AA29D600929BFD /* ShadowCard+InspectableView.swift */,
@@ -1028,6 +1005,8 @@
 				A464D16D26AA29D700929BFD /* ToastWrapper+InspectableView.swift */,
 				A464D15E26AA29D600929BFD /* ToggleChip+InspectableView.swift */,
 				A464D16826AA29D700929BFD /* UserAvatar+InspectableView.swift */,
+				E054328126F265D9004485B9 /* LabelCheckbox+InspectableView.swift */,
+				E054328326F26611004485B9 /* Radio+InspectableView.swift */,
 			);
 			path = InspectableViews;
 			sourceTree = "<group>";
@@ -1520,18 +1499,15 @@
 				080E6F6225FFD38D006D8056 /* Dropdown.swift in Sources */,
 				080E6F5925FFD38D006D8056 /* UserAvatar.swift in Sources */,
 				080E6F7025FFD38D006D8056 /* ToggleChip.swift in Sources */,
-				FF1A3E3D2697F44A00561D28 /* LabeledCheckbox.swift in Sources */,
 				080E6F5625FFD38D006D8056 /* UIViewController+Presentations.swift in Sources */,
 				080E6F5B25FFD38D006D8056 /* UIView+Layout.swift in Sources */,
 				080E6F6B25FFD38D006D8056 /* RadioTableViewCell.swift in Sources */,
 				08649463260156F300EB82E8 /* Bundle+Extensions.swift in Sources */,
 				080E6F4C25FFD38D006D8056 /* CalendarPicker.swift in Sources */,
-				FFD57F232681189B004F2BBB /* LabeledControl.swift in Sources */,
 				080E6F7225FFD38D006D8056 /* Control.swift in Sources */,
 				080E6F6E25FFD38D006D8056 /* UIView+StackView.swift in Sources */,
 				080E6F5425FFD38D006D8056 /* Label.swift in Sources */,
 				080E6F4A25FFD38D006D8056 /* Avatar.swift in Sources */,
-				FF1A3E3F2697F57800561D28 /* LabeledRadio.swift in Sources */,
 				080E6F6025FFD38D006D8056 /* CalendarPickerDateCell.swift in Sources */,
 				080E6F4D25FFD38D006D8056 /* CarouselLayout.swift in Sources */,
 				FF292A96264250CF001A711A /* RadioGroup.swift in Sources */,
@@ -1563,22 +1539,18 @@
 				B98FE98D2668312400B52979 /* ButtonUnitTest.swift in Sources */,
 				08C81CDE25F5A6B60082FD2D /* TabBarTest.swift in Sources */,
 				08C81CE425F5A6B60082FD2D /* CalendarPickerTest.swift in Sources */,
-				FF33281626774AF6009D344B /* LabeledCheckboxTest.swift in Sources */,
 				08C81CE825F5A6B60082FD2D /* NavigationBarTest.swift in Sources */,
 				08C81CEC25F5A6B60082FD2D /* PillTest.swift in Sources */,
-				FFE53483269D838F00FDD9A5 /* LabeledControlTest.swift in Sources */,
 				08C81A8025F5A66B0082FD2D /* AlertBannerUnitTest.swift in Sources */,
 				08C81F2525F5A8020082FD2D /* TestCaseBehavior.swift in Sources */,
 				08C81CE725F5A6B60082FD2D /* DropdownTest.swift in Sources */,
 				08C81F3825F5AA1B0082FD2D /* UnitTestCase.swift in Sources */,
-				FF858A1F269C1FD0002E22D8 /* RadioStackTest.swift in Sources */,
 				08C81CEE25F5A6B60082FD2D /* ToggleChipTest.swift in Sources */,
 				08C81CE225F5A6B60082FD2D /* ButtonTest.swift in Sources */,
 				08C81A8225F5A66B0082FD2D /* UIView+StackViewTests.swift in Sources */,
 				FF2929B82642306F001A711A /* RadioGroupTest.swift in Sources */,
 				08C81CEB25F5A6B60082FD2D /* ButtonRowTest.swift in Sources */,
 				08C81CED25F5A6B60082FD2D /* ButtonStackTest.swift in Sources */,
-				FF1A3E3B269599A200561D28 /* LabeledRadioTest.swift in Sources */,
 				08C81CE925F5A6B60082FD2D /* AlertBannerTest.swift in Sources */,
 				08C81CEA25F5A6B60082FD2D /* IconFloatingActionButtonTest.swift in Sources */,
 				08C81F0E25F5A6B70082FD2D /* IconButtonTest.swift in Sources */,
@@ -1613,12 +1585,14 @@
 				A464D15726AA29C300929BFD /* StringInspectableProperty.swift in Sources */,
 				A464D14A26AA29B000929BFD /* InspectableProperty.swift in Sources */,
 				A464D18E26AA29D800929BFD /* EntityAvatar+InspectableView.swift in Sources */,
+				E054328226F265D9004485B9 /* LabelCheckbox+InspectableView.swift in Sources */,
 				A464D17B26AA29D800929BFD /* ShadowCard+InspectableView.swift in Sources */,
 				A464D14926AA29B000929BFD /* InspectablePropertyView.swift in Sources */,
 				A464D18A26AA29D800929BFD /* CalendarPicker+InspectableView.swift in Sources */,
 				A464D11C26AA25D600929BFD /* DraggableView.swift in Sources */,
 				A464D15626AA29C300929BFD /* DropdownInspectableProperty.swift in Sources */,
 				A464D17826AA29D800929BFD /* ToggleChip+InspectableView.swift in Sources */,
+				E054328426F26611004485B9 /* Radio+InspectableView.swift in Sources */,
 				A464D15826AA29C300929BFD /* BoolInspectableProperty.swift in Sources */,
 				A464D18D26AA29D800929BFD /* TextArea+InspectableView.swift in Sources */,
 				A464D11B26AA25D600929BFD /* InspectorViewController.swift in Sources */,
@@ -1629,9 +1603,7 @@
 				A464D15326AA29C300929BFD /* ButtonActionInspectableProperty.swift in Sources */,
 				A464D11D26AA25D600929BFD /* ComponentsListViewController.swift in Sources */,
 				A464D18126AA29D800929BFD /* TextFloatingActionButton+InspectableView.swift in Sources */,
-				A464D17D26AA29D800929BFD /* Radio+InspectableView.swift in Sources */,
 				A464D18626AA29D800929BFD /* RadioStack + InspectableView.swift in Sources */,
-				A464D17E26AA29D800929BFD /* Checkbox+InspectableView.swift in Sources */,
 				A464D18B26AA29D800929BFD /* FilterChip+InspectableView.swift in Sources */,
 				A464D18226AA29D800929BFD /* UserAvatar+InspectableView.swift in Sources */,
 				A464D15526AA29C300929BFD /* DateInspectableProperty.swift in Sources */,

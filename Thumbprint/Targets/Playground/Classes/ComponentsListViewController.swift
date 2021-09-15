@@ -112,7 +112,7 @@ class ComponentsListViewController: UIViewController {
         IconButton.self,
         Label.self,
         LoaderDots.self,
-        LabeledRadio.self,
+        Radio.self,
         RadioStack.self,
         RadioTableViewCell.self,
         ShadowCard.self,
