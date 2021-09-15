@@ -1,25 +1,29 @@
 import RxSwift
 import Thumbprint
 
-extension LabeledCheckbox: InspectableView {
+extension LabelCheckbox: InspectableView {
     static let marks: [Checkbox.Mark] = [.empty, .checked, .intermediate]
-    static let contentPlacements: [LabeledCheckbox.ContentPlacement] = [.leading, .trailing]
+    static let contentPlacements: [LabelCheckbox.ContentPlacement] = [.left, .right]
 
     static var buttonIndex: Int = 0
 
     var inspectableProperties: [InspectableProperty] {
         let enabledProperty = BoolInspectableProperty(inspectedView: self)
         enabledProperty.title = "isEnabled"
-        enabledProperty.property = \LabeledCheckbox.isEnabled
+        enabledProperty.property = \LabelCheckbox.isEnabled
+
+        let hasErrorProperty = BoolInspectableProperty(inspectedView: self)
+        hasErrorProperty.title = "hasError"
+        hasErrorProperty.property = \LabelCheckbox.hasError
 
         let isHighlightedProperty = BoolInspectableProperty(inspectedView: self)
         isHighlightedProperty.title = "isHighlighted"
-        isHighlightedProperty.property = \LabeledCheckbox.isHighlighted
+        isHighlightedProperty.property = \LabelCheckbox.isHighlighted
 
         let markInspectableProperty = DropdownInspectableProperty(
             inspectedView: self,
-            property: \LabeledCheckbox.mark,
-            values: Checkbox.Mark.allCases.map({ ($0, String(describing: $0)) })
+            property: \LabelCheckbox.mark,
+            values: LabelCheckbox.marks.map({ ($0, $0.rawValue) })
         )
         markInspectableProperty.title = "Mark"
 
@@ -29,13 +33,14 @@ extension LabeledCheckbox: InspectableView {
 
         let contentPlacementInspectableProperty = DropdownInspectableProperty(
             inspectedView: self,
-            property: \LabeledCheckbox.contentPlacement,
-            values: LabeledCheckbox.ContentPlacement.allCases.map({ ($0, String(describing: $0)) })
+            property: \LabelCheckbox.contentPlacement,
+            values: LabelCheckbox.contentPlacements.map({ ($0, $0.rawValue) })
         )
         contentPlacementInspectableProperty.title = "Content placement"
 
         return [
             enabledProperty,
+            hasErrorProperty,
             isHighlightedProperty,
             markInspectableProperty,
             hideBorderProperty,
@@ -57,18 +62,18 @@ extension LabeledCheckbox: InspectableView {
 
         let contentPlacement = Bool.random()
         if contentPlacement {
-            checkBox.contentPlacement = .trailing
+            checkBox.contentPlacement = .right
         } else {
-            checkBox.contentPlacement = .leading
+            checkBox.contentPlacement = .left
         }
 
         return checkBox
     }
 
-    static func makeTextCheckbox() -> LabeledCheckbox {
-        let text = "Checkbox #\(LabeledCheckbox.buttonIndex)"
-        LabeledCheckbox.buttonIndex += 1
+    static func makeTextCheckbox() -> LabelCheckbox {
+        let text = "Checkbox #\(LabelCheckbox.buttonIndex)"
+        LabelCheckbox.buttonIndex += 1
 
-        return LabeledCheckbox(text: text)
+        return LabelCheckbox(text: text)
     }
 }

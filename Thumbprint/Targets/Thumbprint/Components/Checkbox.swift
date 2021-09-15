@@ -1,4 +1,3 @@
-// import ThumbprintResources
 import UIKit
 
 public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
@@ -235,23 +234,7 @@ public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
         } else if hasError {
             label.textColor = InputState.error.markableControlTextColor
         } else {
-            var shouldSetLabelTextColor: Bool = true
-            if let attributedText = label.attributedText {
-                // If label.attributedText sets a foregroundColor for any of its segments, then don't override with InputState.markableControlTextColor.
-                attributedText.enumerateAttribute(
-                    .foregroundColor,
-                    in: NSRange(location: 0, length: attributedText.length),
-                    options: .longestEffectiveRangeNotRequired
-                ) { foregroundColorValue, _, stop in
-                    if foregroundColorValue != nil {
-                        shouldSetLabelTextColor = false
-                        stop.pointee = true
-                    }
-                }
-            }
-            if shouldSetLabelTextColor {
-                label.textColor = InputState.default.markableControlTextColor
-            }
+            label.textColor = InputState.default.markableControlTextColor
         }
 
         super.layoutSubviews()
@@ -406,26 +389,31 @@ public class Checkbox: Control {
         }
 
         switch (mark, hasError, isEnabled) {
+        // Disabled state
         case (_, _, false):
             backgroundImageView.tintColor = Color.gray200
             borderImageView.tintColor = Color.gray300
             markImageView.tintColor = Color.gray
 
+        // Empty checkbox, no error
         case (.empty, false, _):
             backgroundImageView.tintColor = Color.white
-            borderImageView.tintColor = Color.gray
+            borderImageView.tintColor = isHighlighted ? Color.blue : Color.gray
             markImageView.tintColor = Color.white
 
+        // Empty checkbox, error
         case (.empty, true, _):
             backgroundImageView.tintColor = Color.white
             borderImageView.tintColor = Color.red
             markImageView.tintColor = Color.red
 
+        // Non-Empty, no error
         case (_, false, _):
             backgroundImageView.tintColor = Color.blue
             borderImageView.tintColor = Color.blue
             markImageView.tintColor = Color.white
 
+        // Non-empty, error
         case (_, true, _):
             backgroundImageView.tintColor = Color.red
             borderImageView.tintColor = Color.red
