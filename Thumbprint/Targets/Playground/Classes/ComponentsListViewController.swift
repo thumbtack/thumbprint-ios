@@ -107,7 +107,7 @@ class ComponentsListViewController: UIViewController {
         ButtonRow.self,
         ButtonStack.self,
         Dropdown.self,
-        LabelCheckbox.self,
+        LabeledCheckbox.self,
         Footer.self,
         IconButton.self,
         Label.self,

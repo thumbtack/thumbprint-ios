@@ -1,6 +1,6 @@
 import UIKit
 
-public final class LabelCheckbox: Control, UIContentSizeCategoryAdjusting {
+public final class LabeledCheckbox: Control, UIContentSizeCategoryAdjusting {
     public enum ContentPlacement: String {
         case left
         case right
