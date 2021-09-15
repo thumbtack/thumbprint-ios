@@ -98,22 +98,21 @@ public final class Checkbox: Control {
             markImageView.image = nil
         }
 
-        if isEnabled {
-            markImageView.tintColor = Color.white
-            switch mark {
-            case .empty:
-                backgroundImageView.tintColor = Color.white
-                borderImageView.tintColor = isHighlighted ? Color.blue : Color.gray
-
-            default:
-                backgroundImageView.tintColor = Color.blue
-                borderImageView.tintColor = Color.blue
-            }
-        } else {
-            // All gray, can't be highlighted either.
+        switch (mark, isEnabled) {
+        case (_, false):
             backgroundImageView.tintColor = Color.gray200
             borderImageView.tintColor = Color.gray300
             markImageView.tintColor = Color.gray
+
+        case (.empty, _):
+            backgroundImageView.tintColor = Color.white
+            borderImageView.tintColor = Color.gray
+            markImageView.tintColor = Color.white
+
+        default:
+            backgroundImageView.tintColor = Color.blue
+            borderImageView.tintColor = Color.blue
+            markImageView.tintColor = Color.white
         }
 
         super.layoutSubviews()
