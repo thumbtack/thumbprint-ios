@@ -63,6 +63,13 @@ public final class UserAvatar: UIView {
             accessibilityLabel = newValue
         }
     }
+    
+    /**
+     Background color used when initials are displayed
+     */
+    public var avatarBackgroundColor: UIColor? {
+        return avatar.backgroundColor
+    }
 
     /**
      Initializes a UserAvatar used for displaying user accounts, or customers.
