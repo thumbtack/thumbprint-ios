@@ -65,6 +65,13 @@ public final class UserAvatar: UIView {
     }
 
     /**
+     Background color used when initials are displayed
+     */
+    public var avatarBackgroundColor: UIColor? {
+        return avatar.backgroundColor
+    }
+
+    /**
      Initializes a UserAvatar used for displaying user accounts, or customers.
 
      - parameters:

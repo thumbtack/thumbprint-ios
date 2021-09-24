@@ -65,6 +65,13 @@ public final class EntityAvatar: UIView {
     }
 
     /**
+     Background color used when initials are displayed
+     */
+    public var avatarBackgroundColor: UIColor? {
+        return avatar.backgroundColor
+    }
+
+    /**
      Initializes an EntityAvatar used for displaying businesses, or service profiles.
 
      - parameters:
