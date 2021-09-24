@@ -63,7 +63,7 @@ public final class UserAvatar: UIView {
             accessibilityLabel = newValue
         }
     }
-    
+
     /**
      Background color used when initials are displayed
      */
