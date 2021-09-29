@@ -248,5 +248,6 @@ extension TextArea: UITextViewDelegate {
     public func textViewDidChange(_ textView: UITextView) {
         placeholderTextView.isHidden = !textView.text.isEmpty
         updateState()
+        sendActions(for: .editingChanged)
     }
 }
