@@ -4,6 +4,7 @@ import UIKit
 class NavigationBarTest: SnapshotTestCase {
     private let appearances: [String: NavigationBar.Appearance] = [
         "default": .default,
+        "scrollEdgeShadowless": .scrollEdgeShadowless,
         "shadowless": .shadowless,
         "transparent": .transparent,
     ]
