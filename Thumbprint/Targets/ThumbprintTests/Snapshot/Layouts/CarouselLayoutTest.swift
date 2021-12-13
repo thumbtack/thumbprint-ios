@@ -9,6 +9,7 @@ class CarouselLayoutTest: SnapshotTestCase {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: carouselLayout)
         collectionView.register(CarouselTestCell.self, forCellWithReuseIdentifier: "CarouselTest")
         collectionView.dataSource = self
+        collectionView.backgroundColor = .black
 
         verify(
             view: collectionView,
