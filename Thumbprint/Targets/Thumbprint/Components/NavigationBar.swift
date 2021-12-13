@@ -9,7 +9,8 @@ public enum NavigationBar {
         var isTranslucent: Bool
         var backgroundImage: UIImage?
         var barTintColor: UIColor?
-        var shadowImage: UIImage?
+        var showShadow: Bool
+        var scrollEdgeShowShadow: Bool
 
         /// If set to nil, will default to the content style's foreground color.
         /// Set to .some(nil) to disable this default and actually set the
@@ -28,16 +29,18 @@ public enum NavigationBar {
                     backgroundImage: UIImage?,
                     barTintColor: UIColor?,
                     tintColor: UIColor??,
-                    shadowImage: UIImage?,
+                    showShadow: Bool,
+                    scrollEdgeShowShadow: Bool,
                     titleTextAttributes: [NSAttributedString.Key: Any]?,
                     largeTitleTextAttributes: [NSAttributedString.Key: Any]?) {
             self.isTranslucent = isTranslucent
             self.backgroundImage = backgroundImage
             self.barTintColor = barTintColor
             self.tintColor = tintColor
-            self.shadowImage = shadowImage
+            self.showShadow = showShadow
             self.titleTextAttributes = titleTextAttributes
             self.largeTitleTextAttributes = largeTitleTextAttributes
+            self.scrollEdgeShowShadow = scrollEdgeShowShadow
         }
 
         /// Default navigation bar appearance.
@@ -46,7 +49,27 @@ public enum NavigationBar {
             backgroundImage: UIImage(),
             barTintColor: Color.white,
             tintColor: Color.black,
-            shadowImage: nil,
+            showShadow: true,
+            scrollEdgeShowShadow: true,
+            titleTextAttributes: [
+                .font: Self.titleFont,
+                .foregroundColor: Color.black,
+            ],
+            largeTitleTextAttributes: [
+                .font: Self.largeTitleFont,
+                .foregroundColor: Color.black,
+            ]
+        )
+
+        /// Navigation bar appearance that has a shadow, but the shadow does not appear
+        /// when at the scroll edge of a scroll view, i.e. does not appear until scrolled up
+        public static let scrollEdgeShadowless = NavigationBar.Appearance(
+            isTranslucent: false,
+            backgroundImage: UIImage(),
+            barTintColor: Color.white,
+            tintColor: Color.black,
+            showShadow: true,
+            scrollEdgeShowShadow: false,
             titleTextAttributes: [
                 .font: Self.titleFont,
                 .foregroundColor: Color.black,
@@ -63,7 +86,8 @@ public enum NavigationBar {
             backgroundImage: UIImage(),
             barTintColor: Color.white,
             tintColor: Color.black,
-            shadowImage: UIImage(),
+            showShadow: false,
+            scrollEdgeShowShadow: false,
             titleTextAttributes: [
                 .font: Self.titleFont,
                 .foregroundColor: Color.black,
@@ -80,7 +104,8 @@ public enum NavigationBar {
             backgroundImage: UIImage(),
             barTintColor: .clear,
             tintColor: nil,
-            shadowImage: UIImage(),
+            showShadow: false,
+            scrollEdgeShowShadow: false,
             titleTextAttributes: [
                 .font: Self.titleFont,
             ],
@@ -127,18 +152,62 @@ public enum NavigationBar {
     public static func configure(_ navigationBar: UINavigationBar,
                                  appearance: Appearance = .default,
                                  content: ContentStyle = .default) {
-        navigationBar.isTranslucent = appearance.isTranslucent
-        navigationBar.setBackgroundImage(appearance.backgroundImage, for: .default)
-        navigationBar.barTintColor = appearance.barTintColor
-        navigationBar.tintColor = appearance.tintColor ?? content.foregroundColor
-        navigationBar.shadowImage = appearance.shadowImage
-
         var titleTextAttributes = appearance.titleTextAttributes ?? [:]
         titleTextAttributes[.foregroundColor] = titleTextAttributes[.foregroundColor] ?? content.foregroundColor
-        navigationBar.titleTextAttributes = titleTextAttributes
 
         var largeTitleTextAttributes = appearance.largeTitleTextAttributes ?? [:]
         largeTitleTextAttributes[.foregroundColor] = largeTitleTextAttributes[.foregroundColor] ?? content.foregroundColor
-        navigationBar.largeTitleTextAttributes = largeTitleTextAttributes
+
+        navigationBar.tintColor = appearance.tintColor ?? content.foregroundColor
+        // Still set in iOS 15 due to the behavior of moving content under "translucent" nav bars, even if overridden by the nav bar appearance
+        navigationBar.isTranslucent = appearance.isTranslucent
+
+        if #available(iOS 15, *) {
+            let barAppearance = UINavigationBarAppearance()
+            let scrollEdgeAppearance = UINavigationBarAppearance()
+            if appearance.isTranslucent {
+                scrollEdgeAppearance.configureWithTransparentBackground()
+                barAppearance.configureWithTransparentBackground()
+            } else {
+                scrollEdgeAppearance.configureWithOpaqueBackground()
+                barAppearance.configureWithOpaqueBackground()
+            }
+
+            barAppearance.titleTextAttributes = titleTextAttributes
+            scrollEdgeAppearance.titleTextAttributes = titleTextAttributes
+
+            barAppearance.largeTitleTextAttributes = largeTitleTextAttributes
+            scrollEdgeAppearance.largeTitleTextAttributes = largeTitleTextAttributes
+
+            barAppearance.backgroundImage = appearance.backgroundImage
+            scrollEdgeAppearance.backgroundImage = appearance.backgroundImage
+
+            if !appearance.showShadow {
+                barAppearance.shadowImage = UIImage()
+                barAppearance.shadowColor = .clear
+            }
+
+            if !appearance.scrollEdgeShowShadow {
+                scrollEdgeAppearance.shadowImage = UIImage()
+                scrollEdgeAppearance.shadowColor = .clear
+            }
+
+            barAppearance.backgroundColor = appearance.barTintColor
+            scrollEdgeAppearance.backgroundColor = appearance.barTintColor
+
+            navigationBar.standardAppearance = barAppearance
+            navigationBar.compactAppearance = barAppearance
+            navigationBar.scrollEdgeAppearance = scrollEdgeAppearance
+            navigationBar.compactScrollEdgeAppearance = scrollEdgeAppearance
+        } else {
+            navigationBar.setBackgroundImage(appearance.backgroundImage, for: .default)
+            navigationBar.barTintColor = appearance.barTintColor
+            if !appearance.showShadow {
+                navigationBar.shadowImage = UIImage()
+            }
+
+            navigationBar.titleTextAttributes = titleTextAttributes
+            navigationBar.largeTitleTextAttributes = largeTitleTextAttributes
+        }
     }
 }
