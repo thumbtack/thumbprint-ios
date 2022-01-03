@@ -19,6 +19,13 @@ public final class RadioStack: UIView, UIContentSizeCategoryAdjusting {
         }
     }
 
+    /// Sets the textStyle of each `Radio` in the stack
+    public var textStyle: TextStyle {
+        didSet {
+            radioViews.forEach { $0.textStyle = textStyle }
+        }
+    }
+
     public var adjustsFontForContentSizeCategory: Bool {
         didSet {
             guard adjustsFontForContentSizeCategory != oldValue else { return }
