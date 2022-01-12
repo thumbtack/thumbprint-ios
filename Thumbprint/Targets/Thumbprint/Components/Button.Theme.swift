@@ -304,7 +304,7 @@ public extension Button {
         }
     }
 
-    static func applyColorMode(forTheme originalTheme: Button.Theme, mode: ColorMode) -> Button.Theme {
+    static func applyColorMode(toTheme originalTheme: Button.Theme, mode: ColorMode) -> Button.Theme {
         if originalTheme == .primary {
             return mode == .light ? originalTheme : .primaryDark
         } else if originalTheme == .secondary {
