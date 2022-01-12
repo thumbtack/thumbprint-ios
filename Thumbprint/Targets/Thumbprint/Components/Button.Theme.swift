@@ -306,19 +306,19 @@ public extension Button {
 
     static func applyColorMode(forTheme originalTheme: Button.Theme, mode: ColorMode) -> Button.Theme {
         if originalTheme == .primary {
-            return mode == .Light ? originalTheme : .primaryDark
+            return mode == .light ? originalTheme : .primaryDark
         } else if originalTheme == .secondary {
-            return mode == .Light ? originalTheme : .secondaryDark
+            return mode == .light ? originalTheme : .secondaryDark
         } else if originalTheme == .tertiary {
-            return mode == .Light ? originalTheme : .tertiaryDark
+            return mode == .light ? originalTheme : .tertiaryDark
         } else if originalTheme == .caution {
-            return mode == .Light ? originalTheme : .cautionDark
-        }  else if originalTheme == .solid {
-            return mode == .Light ? originalTheme : .solidDark
-        }  else if originalTheme == .text {
-            return mode == .Light ? originalTheme : .textDark
-        }  else if originalTheme == .linkDark {
-            return mode == .Light ? originalTheme : .linkDark
+            return mode == .light ? originalTheme : .cautionDark
+        } else if originalTheme == .solid {
+            return mode == .light ? originalTheme : .solidDark
+        } else if originalTheme == .text {
+            return mode == .light ? originalTheme : .textDark
+        } else if originalTheme == .linkDark {
+            return mode == .light ? originalTheme : .linkDark
         } else {
             return originalTheme
         }
