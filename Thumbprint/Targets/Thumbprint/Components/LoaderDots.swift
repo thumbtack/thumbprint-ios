@@ -8,12 +8,14 @@ public final class LoaderDots: UIView {
         case brand
         case inverse
         case muted
+        case dark
 
         public var color: UIColor {
             switch self {
             case .brand: return Color.blue
             case .muted: return Color.black300
             case .inverse: return Color.white
+            case .dark: return Color.black
             }
         }
     }

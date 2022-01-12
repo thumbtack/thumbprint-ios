@@ -58,6 +58,20 @@ public extension Button {
             loaderTheme: .inverse,
             supportsHapticFeedback: true
         )
+        
+        public static let primaryDark = Button.Theme(
+            titleColor: Color.white,
+            activeTitleColor: Color.white,
+            disabledTitleColor: Color.white,
+            backgroundColor: Color.blue,
+            activeBackgroundColor: Color.blue500,
+            disabledBackgroundColor: Color.blue300,
+            borderColor: nil,
+            activeBorderColor: nil,
+            disabledBorderColor: nil,
+            loaderTheme: .dark,
+            supportsHapticFeedback: true
+        )
 
         /// Secondary button theme.
         public static let secondary = Button.Theme(
@@ -73,6 +87,20 @@ public extension Button {
             loaderTheme: .brand,
             supportsHapticFeedback: true
         )
+        
+        public static let secondaryDark = Button.Theme(
+            titleColor: Color.blue,
+            activeTitleColor: Color.blue,
+            disabledTitleColor: Color.blue300,
+            backgroundColor: Color.black,
+            activeBackgroundColor: Color.black,
+            disabledBackgroundColor: Color.black,
+            borderColor: Color.black300,
+            activeBorderColor: Color.blue,
+            disabledBorderColor: Color.black300,
+            loaderTheme: .muted,
+            supportsHapticFeedback: true
+        )
 
         /// Tertiary button theme.
         public static let tertiary = Button.Theme(
@@ -85,6 +113,20 @@ public extension Button {
             borderColor: Color.gray,
             activeBorderColor: Color.black300,
             disabledBorderColor: Color.gray300,
+            loaderTheme: .muted,
+            supportsHapticFeedback: false
+        )
+        
+        public static let tertiaryDark = Button.Theme(
+            titleColor: Color.gray200,
+            activeTitleColor: Color.gray200,
+            disabledTitleColor: Color.gray,
+            backgroundColor: Color.black,
+            activeBackgroundColor: Color.black,
+            disabledBackgroundColor: Color.black,
+            borderColor: Color.black300,
+            activeBorderColor: Color.black300,
+            disabledBorderColor: Color.black300,
             loaderTheme: .muted,
             supportsHapticFeedback: false
         )
@@ -104,6 +146,20 @@ public extension Button {
             supportsHapticFeedback: false
         )
 
+        public static let cautionDark = Button.Theme(
+            titleColor: Color.red,
+            activeTitleColor: Color.red,
+            disabledTitleColor: Color.red300,
+            backgroundColor: Color.black,
+            activeBackgroundColor: Color.black,
+            disabledBackgroundColor: Color.black,
+            borderColor: Color.black300,
+            activeBorderColor: Color.red,
+            disabledBorderColor: Color.black300,
+            loaderTheme: .muted,
+            supportsHapticFeedback: false
+        )
+
         /// Solid white button theme. Only use on top of photos or "base colors" such as blue or indigo.
         public static let solid = Button.Theme(
             titleColor: Color.black,
@@ -112,6 +168,20 @@ public extension Button {
             backgroundColor: Color.white,
             activeBackgroundColor: Color.white,
             disabledBackgroundColor: Color.white,
+            borderColor: nil,
+            activeBorderColor: Color.black,
+            disabledBorderColor: nil,
+            loaderTheme: nil,
+            supportsHapticFeedback: false
+        )
+        
+        public static let solidDark = Button.Theme(
+            titleColor: Color.gray200,
+            activeTitleColor: Color.gray200,
+            disabledTitleColor: Color.gray,
+            backgroundColor: Color.black,
+            activeBackgroundColor: Color.black,
+            disabledBackgroundColor: Color.black,
             borderColor: nil,
             activeBorderColor: Color.black,
             disabledBorderColor: nil,
@@ -133,9 +203,37 @@ public extension Button {
             loaderTheme: nil,
             supportsHapticFeedback: false
         )
+        
+        public static let textDark = Button.Theme(
+            titleColor: Color.white,
+            activeTitleColor: Color.gray,
+            disabledTitleColor: Color.gray300,
+            backgroundColor: nil,
+            activeBackgroundColor: nil,
+            disabledBackgroundColor: nil,
+            borderColor: nil,
+            activeBorderColor: nil,
+            disabledBorderColor: nil,
+            loaderTheme: nil,
+            supportsHapticFeedback: false
+        )
 
         /// Text-only button theme that appears as a link.
         public static let link = Button.Theme(
+            titleColor: Color.blue,
+            activeTitleColor: Color.blue300,
+            disabledTitleColor: Color.gray,
+            backgroundColor: nil,
+            activeBackgroundColor: nil,
+            disabledBackgroundColor: nil,
+            borderColor: nil,
+            activeBorderColor: nil,
+            disabledBorderColor: nil,
+            loaderTheme: nil,
+            supportsHapticFeedback: false
+        )
+        
+        public static let linkDark = Button.Theme(
             titleColor: Color.blue,
             activeTitleColor: Color.blue300,
             disabledTitleColor: Color.gray,
@@ -203,6 +301,26 @@ public extension Button {
 
         public static func height(for size: Size) -> CGFloat {
             size.textStyle.dynamicFont.lineHeight + size.contentPadding.height * 2.0
+        }
+    }
+
+    func applyColorMode(forTheme originalTheme: Button.Theme, mode: ColorMode) -> Button.Theme {
+        if originalTheme == .primary {
+            return mode == .Light ? originalTheme : .primaryDark
+        } else if originalTheme == .secondary {
+            return mode == .Light ? originalTheme : .secondaryDark
+        } else if originalTheme == .tertiary {
+            return mode == .Light ? originalTheme : .tertiaryDark
+        } else if originalTheme == .caution {
+            return mode == .Light ? originalTheme : .cautionDark
+        }  else if originalTheme == .solid {
+            return mode == .Light ? originalTheme : .solidDark
+        }  else if originalTheme == .text {
+            return mode == .Light ? originalTheme : .textDark
+        }  else if originalTheme == .linkDark {
+            return mode == .Light ? originalTheme : .linkDark
+        } else {
+            return originalTheme
         }
     }
 }
