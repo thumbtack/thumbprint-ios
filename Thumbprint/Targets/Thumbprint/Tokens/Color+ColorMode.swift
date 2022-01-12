@@ -6,7 +6,7 @@ public enum ColorMode {
 }
 
 public extension Color {
-    private static func applyColorMode(toColor originalColor: UIColor, mode: ColorMode) -> UIColor {
+    static func applyColorMode(toColor originalColor: UIColor, mode: ColorMode) -> UIColor {
         switch originalColor {
         case Color.white:
             return mode == .Light ? originalColor : Color.black
