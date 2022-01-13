@@ -303,24 +303,4 @@ public extension Button {
             size.textStyle.dynamicFont.lineHeight + size.contentPadding.height * 2.0
         }
     }
-
-    static func applyColorMode(toTheme originalTheme: Button.Theme, mode: ColorMode) -> Button.Theme {
-        if originalTheme == .primary {
-            return mode == .light ? originalTheme : .primaryDark
-        } else if originalTheme == .secondary {
-            return mode == .light ? originalTheme : .secondaryDark
-        } else if originalTheme == .tertiary {
-            return mode == .light ? originalTheme : .tertiaryDark
-        } else if originalTheme == .caution {
-            return mode == .light ? originalTheme : .cautionDark
-        } else if originalTheme == .solid {
-            return mode == .light ? originalTheme : .solidDark
-        } else if originalTheme == .text {
-            return mode == .light ? originalTheme : .textDark
-        } else if originalTheme == .linkDark {
-            return mode == .light ? originalTheme : .linkDark
-        } else {
-            return originalTheme
-        }
-    }
 }

@@ -102,7 +102,7 @@
 		08DC57BD26003E2E00B95596 /* libPods-ThumbprintTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08DC57BC26003E2E00B95596 /* libPods-ThumbprintTests.a */; };
 		318A6C982FB8AA496CC8F3D7 /* libPods-Playground.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 102FC8E790A218C6A3C24993 /* libPods-Playground.a */; };
 		7B7A49A6AABE9CD4F18A04F0 /* libPods-Thumbprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */; };
-		9BA08036278E467E009CC444 /* Color+ColorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA08035278E467D009CC444 /* Color+ColorMode.swift */; };
+		9B4538AB27909DD000AEABFB /* ColorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4538AA27909DD000AEABFB /* ColorMode.swift */; };
 		A464D08A26AA1B0E00929BFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D08926AA1B0E00929BFD /* AppDelegate.swift */; };
 		A464D08C26AA1B0E00929BFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D08B26AA1B0E00929BFD /* SceneDelegate.swift */; };
 		A464D09326AA1B1000929BFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A464D09226AA1B1000929BFD /* Assets.xcassets */; };
@@ -377,7 +377,7 @@
 		7F9C8BBA2599C336FF37A86E /* Pods-ThumbprintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThumbprintTests.debug.xcconfig"; path = "Target Support Files/Pods-ThumbprintTests/Pods-ThumbprintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		82BB25065E7ACE32CDDE00D1 /* libPods-TestsHostApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestsHostApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D662BAB622080BBA7DEF81C /* Pods-Thumbprint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbprint.release.xcconfig"; path = "Target Support Files/Pods-Thumbprint/Pods-Thumbprint.release.xcconfig"; sourceTree = "<group>"; };
-		9BA08035278E467D009CC444 /* Color+ColorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+ColorMode.swift"; sourceTree = "<group>"; };
+		9B4538AA27909DD000AEABFB /* ColorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMode.swift; sourceTree = "<group>"; };
 		A464D08726AA1B0E00929BFD /* Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A464D08926AA1B0E00929BFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A464D08B26AA1B0E00929BFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -660,7 +660,6 @@
 				08C819A025F574460082FD2D /* Shadows.swift */,
 				08C819A525F574460082FD2D /* Tokens.swift */,
 				08C81A1325F575930082FD2D /* Color+Semantic.swift */,
-				9BA08035278E467D009CC444 /* Color+ColorMode.swift */,
 			);
 			path = Tokens;
 			sourceTree = "<group>";
@@ -763,6 +762,7 @@
 		08C819D725F574470082FD2D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				9B4538AA27909DD000AEABFB /* ColorMode.swift */,
 				08C819D825F574470082FD2D /* UIView+Layout.swift */,
 				08C819DA25F574470082FD2D /* UIView+StackView.swift */,
 			);
@@ -1480,6 +1480,7 @@
 				080E6F5225FFD38D006D8056 /* Button.swift in Sources */,
 				080E6F5725FFD38D006D8056 /* FilterChip.swift in Sources */,
 				080E6F4F25FFD38D006D8056 /* EntityAvatar.swift in Sources */,
+				9B4538AB27909DD000AEABFB /* ColorMode.swift in Sources */,
 				080E6F5125FFD38D006D8056 /* Button.Model.swift in Sources */,
 				080E6F6D25FFD38D006D8056 /* Chip.swift in Sources */,
 				080E6F6A25FFD38D006D8056 /* Footer.swift in Sources */,
@@ -1493,7 +1494,6 @@
 				080E6F5525FFD38D006D8056 /* AlertBanner.swift in Sources */,
 				080E6F6425FFD38D006D8056 /* TextInput.swift in Sources */,
 				080E6F7125FFD38D006D8056 /* TextArea.swift in Sources */,
-				9BA08036278E467E009CC444 /* Color+ColorMode.swift in Sources */,
 				080E6F4325FFD38D006D8056 /* Font.swift in Sources */,
 				080E6F4625FFD38D006D8056 /* PartialSheetPresentation.swift in Sources */,
 				080E6F5325FFD38D006D8056 /* ButtonRow.swift in Sources */,
