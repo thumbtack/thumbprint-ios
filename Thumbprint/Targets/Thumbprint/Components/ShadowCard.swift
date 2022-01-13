@@ -12,23 +12,36 @@ public final class ShadowCard: UIView {
 
     public var isHighlighted: Bool {
         didSet {
-            mainView.backgroundColor = isHighlighted ? Color.gray300 : Color.white
+            mainView.backgroundColor = isHighlighted ? Color.applyColorMode(toColor:Color.gray300, mode: colorMode) : Color.applyColorMode(toColor: Color.white, mode: colorMode)
         }
     }
 
-    public init(shadowImage: UIImage = Shadow.roundedShadow300) {
+    public var colorMode: ColorMode
+
+    public init(shadowImage: UIImage = Shadow.roundedShadow300, colorMode: ColorMode = .light) {
         self.shadowImageView = UIImageView(image: shadowImage)
         self.mainView = UIView()
         self.isHighlighted = false
+        self.colorMode = colorMode
 
         super.init(frame: .null)
+
+        mainView.backgroundColor = Color.applyColorMode(toColor: Color.white, mode: colorMode)
 
         super.addSubview(shadowImageView)
         shadowImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        shadowImageView.isHidden = colorMode == .dark
+        
+        if colorMode == .dark {
+            mainView.layer.borderColor = Color.black300.cgColor
+            mainView.layer.borderWidth = 0.5
+        } else {
+            mainView.layer.borderWidth = 0
+        }
 
-        mainView.backgroundColor = Color.white
+        mainView.backgroundColor = Color.applyColorMode(toColor: Color.white, mode: colorMode)
         mainView.layer.cornerRadius = 4
         mainView.clipsToBounds = true
         super.addSubview(mainView)
