@@ -18,9 +18,19 @@ public final class ShadowCard: UIView {
 
     public var colorMode: ColorMode {
         didSet {
-            shadowImageView.isHidden = colorMode == .dark
-            refreshBackgroundColor()
-            refreshHighight()
+            refreshForColorMode()
+        }
+    }
+
+    private  func refreshForColorMode() {
+        shadowImageView.isHidden = colorMode == .dark
+        refreshBackgroundColor()
+        refreshHighight()
+        if colorMode == .dark {
+            mainView.layer.borderColor = Color.black300.cgColor
+            mainView.layer.borderWidth = 0.5
+        } else {
+            mainView.layer.borderWidth = 0
         }
     }
 
@@ -40,20 +50,13 @@ public final class ShadowCard: UIView {
 
         super.init(frame: .null)
 
+        refreshForColorMode()
+
         super.addSubview(shadowImageView)
         shadowImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        shadowImageView.isHidden = colorMode == .dark
-        
-        if colorMode == .dark {
-            mainView.layer.borderColor = Color.black300.cgColor
-            mainView.layer.borderWidth = 0.5
-        } else {
-            mainView.layer.borderWidth = 0
-        }
 
-        refreshBackgroundColor()
         mainView.layer.cornerRadius = 4
         mainView.clipsToBounds = true
         super.addSubview(mainView)
