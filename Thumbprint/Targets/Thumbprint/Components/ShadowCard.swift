@@ -16,7 +16,7 @@ public final class ShadowCard: UIView {
         }
     }
 
-    public var colorMode: ColorMode {
+    public var colorMode: ColorMode = .light {
         didSet {
             refreshForColorMode()
         }
@@ -42,11 +42,10 @@ public final class ShadowCard: UIView {
         mainView.backgroundColor = Color.applyColorMode(toColor: Color.white, mode: colorMode)
     }
 
-    public init(shadowImage: UIImage = Shadow.roundedShadow300, colorMode: ColorMode = .light) {
+    public init(shadowImage: UIImage = Shadow.roundedShadow300) {
         self.shadowImageView = UIImageView(image: shadowImage)
         self.mainView = UIView()
         self.isHighlighted = false
-        self.colorMode = colorMode
 
         super.init(frame: .null)
 
