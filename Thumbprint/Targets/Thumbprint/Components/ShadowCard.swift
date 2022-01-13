@@ -22,7 +22,7 @@ public final class ShadowCard: UIView {
         }
     }
 
-    private  func refreshForColorMode() {
+    private func refreshForColorMode() {
         shadowImageView.isHidden = colorMode == .dark
         refreshBackgroundColor()
         refreshHighight()
