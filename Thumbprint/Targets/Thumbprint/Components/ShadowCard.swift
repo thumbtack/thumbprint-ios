@@ -12,11 +12,25 @@ public final class ShadowCard: UIView {
 
     public var isHighlighted: Bool {
         didSet {
-            mainView.backgroundColor = isHighlighted ? Color.applyColorMode(toColor:Color.gray300, mode: colorMode) : Color.applyColorMode(toColor: Color.white, mode: colorMode)
+            refreshHighight()
         }
     }
 
-    public var colorMode: ColorMode
+    public var colorMode: ColorMode {
+        didSet {
+            shadowImageView.isHidden = colorMode == .dark
+            refreshBackgroundColor()
+            refreshHighight()
+        }
+    }
+
+    private func refreshHighight() {
+        mainView.backgroundColor = isHighlighted ? Color.applyColorMode(toColor:Color.gray300, mode: colorMode) : Color.applyColorMode(toColor: Color.white, mode: colorMode)
+    }
+
+    private func refreshBackgroundColor() {
+        mainView.backgroundColor = Color.applyColorMode(toColor: Color.white, mode: colorMode)
+    }
 
     public init(shadowImage: UIImage = Shadow.roundedShadow300, colorMode: ColorMode = .light) {
         self.shadowImageView = UIImageView(image: shadowImage)
@@ -25,8 +39,6 @@ public final class ShadowCard: UIView {
         self.colorMode = colorMode
 
         super.init(frame: .null)
-
-        mainView.backgroundColor = Color.applyColorMode(toColor: Color.white, mode: colorMode)
 
         super.addSubview(shadowImageView)
         shadowImageView.snp.makeConstraints { make in
@@ -41,7 +53,7 @@ public final class ShadowCard: UIView {
             mainView.layer.borderWidth = 0
         }
 
-        mainView.backgroundColor = Color.applyColorMode(toColor: Color.white, mode: colorMode)
+        refreshBackgroundColor()
         mainView.layer.cornerRadius = 4
         mainView.clipsToBounds = true
         super.addSubview(mainView)
