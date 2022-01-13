@@ -1,6 +1,6 @@
 import UIKit
 
-public final class ShadowCard: UIView {
+public final class ShadowCard: UIView, ColorModeAdjusting {
     /// Main content view of the card.
     ///
     /// If subviews should inherit the rounded corners of the card,
@@ -13,24 +13,6 @@ public final class ShadowCard: UIView {
     public var isHighlighted: Bool {
         didSet {
             refreshHighight()
-        }
-    }
-
-    public var colorMode: ColorMode = .light {
-        didSet {
-            refreshForColorMode()
-        }
-    }
-
-    private func refreshForColorMode() {
-        shadowImageView.isHidden = colorMode == .dark
-        refreshBackgroundColor()
-        refreshHighight()
-        if colorMode == .dark {
-            mainView.layer.borderColor = Color.black300.cgColor
-            mainView.layer.borderWidth = 0.5
-        } else {
-            mainView.layer.borderWidth = 0
         }
     }
 
@@ -49,7 +31,7 @@ public final class ShadowCard: UIView {
 
         super.init(frame: .null)
 
-        refreshForColorMode()
+        refreshColorMode()
 
         super.addSubview(shadowImageView)
         shadowImageView.snp.makeConstraints { make in
@@ -72,5 +54,24 @@ public final class ShadowCard: UIView {
     public override func addSubview(_ view: UIView) {
         // Add subviews to mainView so that square corners are clipped.
         mainView.addSubview(view)
+    }
+    
+    // MARK: - ColorModeAdjusting
+    public var colorMode: ColorMode = .light {
+        didSet {
+            refreshColorMode()
+        }
+    }
+
+    public func refreshColorMode() {
+        shadowImageView.isHidden = colorMode == .dark
+        refreshBackgroundColor()
+        refreshHighight()
+        if colorMode == .dark {
+            mainView.layer.borderColor = Color.black300.cgColor
+            mainView.layer.borderWidth = 0.5
+        } else {
+            mainView.layer.borderWidth = 0
+        }
     }
 }

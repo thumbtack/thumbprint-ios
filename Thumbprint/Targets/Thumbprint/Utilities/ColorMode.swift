@@ -1,5 +1,10 @@
 import ThumbprintTokens
 
+public protocol ColorModeAdjusting {
+    var colorMode: ColorMode { get set }
+    func refreshColorMode()
+}
+
 public enum ColorMode {
     case light
     case dark
