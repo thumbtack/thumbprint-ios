@@ -32,14 +32,14 @@ public enum TabBar {
     ///
     /// - Parameters:
     ///     - tabBar: The tab bar to configure.
-    public static func configure(tabBar: UITabBar) {
+    public static func configure(tabBar: UITabBar, colorMode: ColorMode = .light) {
         if #available(iOS 15.0, *) {
             let tabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithOpaqueBackground()
-            tabBarAppearance.backgroundColor = Color.white
+            tabBarAppearance.backgroundColor = Color.applyColorMode(toColor: Color.white, mode: colorMode)
 
             tabBarAppearance.stackedLayoutAppearance.selected.iconColor = Color.blue
-            tabBarAppearance.stackedLayoutAppearance.normal.iconColor = Color.black300
+            tabBarAppearance.stackedLayoutAppearance.normal.iconColor = Color.applyColorMode(toColor: Color.black300, mode: colorMode)
             tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = selectedTitleTextAttributes
             tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = normalTitleTextAttributes
             tabBarAppearance.stackedLayoutAppearance.normal.badgeBackgroundColor = Color.red
@@ -48,7 +48,7 @@ public enum TabBar {
             tabBarAppearance.stackedLayoutAppearance.selected.badgeTextAttributes = badgeTextAttributes
 
             tabBarAppearance.inlineLayoutAppearance.selected.iconColor = Color.blue
-            tabBarAppearance.inlineLayoutAppearance.normal.iconColor = Color.black300
+            tabBarAppearance.inlineLayoutAppearance.normal.iconColor = Color.applyColorMode(toColor: Color.black300, mode: colorMode)
             tabBarAppearance.inlineLayoutAppearance.selected.titleTextAttributes = selectedTitleTextAttributes
             tabBarAppearance.inlineLayoutAppearance.normal.titleTextAttributes = normalTitleTextAttributes
             tabBarAppearance.inlineLayoutAppearance.normal.badgeBackgroundColor = Color.red
@@ -57,7 +57,7 @@ public enum TabBar {
             tabBarAppearance.inlineLayoutAppearance.selected.badgeTextAttributes = badgeTextAttributes
 
             tabBarAppearance.compactInlineLayoutAppearance.selected.iconColor = Color.blue
-            tabBarAppearance.compactInlineLayoutAppearance.normal.iconColor = Color.black300
+            tabBarAppearance.compactInlineLayoutAppearance.normal.iconColor = Color.applyColorMode(toColor: Color.black300, mode: colorMode)
             tabBarAppearance.compactInlineLayoutAppearance.selected.titleTextAttributes = selectedTitleTextAttributes
             tabBarAppearance.compactInlineLayoutAppearance.normal.titleTextAttributes = normalTitleTextAttributes
             tabBarAppearance.compactInlineLayoutAppearance.normal.badgeBackgroundColor = Color.red
