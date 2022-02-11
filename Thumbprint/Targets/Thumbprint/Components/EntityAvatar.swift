@@ -43,12 +43,13 @@ public final class EntityAvatar: UIView {
      */
     public var initials: String? {
         didSet {
+            guard oldValue != initials else { return }
             if let initials = initials {
                 avatar.label.text = String(initials.uppercased().prefix(1))
             } else {
                 avatar.label.text = nil
             }
-            avatar.emptyTheme = Avatar.backgroundColor(initials: initials)
+            updateEmptyTheme()
         }
     }
 
@@ -87,6 +88,7 @@ public final class EntityAvatar: UIView {
 
         setupViews()
         updateSize()
+        updateEmptyTheme()
     }
 
     @available(*, unavailable)
@@ -97,7 +99,6 @@ public final class EntityAvatar: UIView {
     // Enity Avatar - private
     private let avatar: Avatar
     private let badgeView: OnlineBadgeView
-    private var avatarHeightConstraint: Constraint?
 
     public override var intrinsicContentSize: CGSize {
         CGSize(width: size.dimension, height: size.dimension)
@@ -106,24 +107,24 @@ public final class EntityAvatar: UIView {
     private func setupViews() {
         avatar.layer.cornerRadius = 4.0
         avatar.clipsToBounds = true
-        avatar.emptyTheme = Avatar.backgroundColor(initials: initials)
         avatar.label.text = initials
 
         addSubview(avatar)
         avatar.snp.makeConstraints { make in
-            make.top.left.equalToSuperview()
-            avatarHeightConstraint = make.height.equalTo(size.dimension).constraint
-            make.width.equalTo(avatar.snp.height)
+            make.edges.equalToSuperview()
         }
 
         badgeView.isHidden = !isOnline
         addSubview(badgeView)
     }
 
+    private func updateEmptyTheme() {
+        avatar.emptyTheme = Avatar.backgroundColor(initials: initials)
+    }
+
     private func updateSize() {
         avatar.size = size
 
-        avatarHeightConstraint?.update(offset: size.dimension)
         badgeView.snp.remakeConstraints { make in
             let offset = ceil(size.badgeSize / 3)
             make.top.equalToSuperview().offset(-offset)

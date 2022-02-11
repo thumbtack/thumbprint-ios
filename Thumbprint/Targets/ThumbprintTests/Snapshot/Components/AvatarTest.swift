@@ -112,6 +112,12 @@ class AvatarTest: SnapshotTestCase {
         verifyViews(views: views)
     }
 
+    func testInitialization() {
+        let userAvatar = UserAvatar(size: .medium, initials: "DR", name: "Daniel Roth", isOnline: false)
+        let entityAvatar = EntityAvatar(size: .medium, initials: "DR", name: "Daniel Roth", isOnline: true)
+        verifyViews(views: [userAvatar, entityAvatar])
+    }
+
     func verifyViews(views: [AvatarView]) {
         let stackView = UIStackView()
         stackView.axis = .vertical

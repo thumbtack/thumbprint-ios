@@ -157,6 +157,11 @@ public final class Avatar: UIView {
 
     private func updateSize() {
         label.font = size.textFont
+        invalidateIntrinsicContentSize()
+    }
+
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: size.dimension, height: size.dimension)
     }
 
     private func updateStyle() {
