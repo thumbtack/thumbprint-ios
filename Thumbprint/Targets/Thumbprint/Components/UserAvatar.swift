@@ -43,12 +43,13 @@ public final class UserAvatar: UIView {
      */
     public var initials: String? {
         didSet {
+            guard oldValue != initials else { return }
             if let initials = initials {
                 avatar.label.text = String(initials.uppercased().prefix(2))
             } else {
                 avatar.label.text = nil
             }
-            avatar.emptyTheme = Avatar.backgroundColor(initials: initials)
+            updateEmptyTheme()
         }
     }
 
@@ -89,6 +90,7 @@ public final class UserAvatar: UIView {
 
         setupViews()
         updateSize()
+        updateEmptyTheme()
     }
 
     @available(*, unavailable)
@@ -105,7 +107,6 @@ public final class UserAvatar: UIView {
     }
 
     private let badgeView: OnlineBadgeView
-    private var avatarHeightConstraint: Constraint?
 
     private func setupViews() {
         avatar.label.text = initials
@@ -113,9 +114,7 @@ public final class UserAvatar: UIView {
 
         addSubview(avatar)
         avatar.snp.makeConstraints { make in
-            make.top.left.equalToSuperview()
-            avatarHeightConstraint = make.height.equalTo(size.dimension).constraint
-            make.width.equalTo(avatar.snp.height)
+            make.edges.equalToSuperview()
         }
 
         badgeView.isHidden = !isOnline
@@ -125,10 +124,9 @@ public final class UserAvatar: UIView {
     private func updateSize() {
         avatar.size = size
 
-        avatarHeightConstraint?.update(offset: size.dimension)
         badgeView.snp.remakeConstraints { make in
             make.top.equalToSuperview().offset(size.badgeOffsets.dy)
-            make.right.equalToSuperview().offset(size.badgeOffsets.dx)
+            make.trailing.equalToSuperview().offset(size.badgeOffsets.dx)
             make.height.equalTo(size.badgeSize)
             make.width.equalTo(badgeView.snp.height)
         }
@@ -136,6 +134,10 @@ public final class UserAvatar: UIView {
         invalidateIntrinsicContentSize()
 
         setNeedsLayout()
+    }
+
+    private func updateEmptyTheme() {
+        avatar.emptyTheme = Avatar.backgroundColor(initials: initials)
     }
 
     public override func layoutSubviews() {
