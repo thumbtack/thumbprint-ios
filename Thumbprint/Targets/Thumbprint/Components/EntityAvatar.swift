@@ -86,6 +86,11 @@ public final class EntityAvatar: UIView {
         self.initials = initials
         self.name = name
 
+        setContentHuggingPriority(.init(rawValue: 800), for: .vertical)
+        setContentHuggingPriority(.init(rawValue: 800), for: .horizontal)
+        setContentCompressionResistancePriority(.init(rawValue: 800), for: .vertical)
+        setContentCompressionResistancePriority(.init(rawValue: 800), for: .horizontal)
+
         setupViews()
         updateSize()
         updateEmptyTheme()

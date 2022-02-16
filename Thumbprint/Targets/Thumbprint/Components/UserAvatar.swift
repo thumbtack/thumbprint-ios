@@ -88,6 +88,11 @@ public final class UserAvatar: UIView {
 
         accessibilityLabel = self.name
 
+        setContentHuggingPriority(.init(rawValue: 800), for: .vertical)
+        setContentHuggingPriority(.init(rawValue: 800), for: .horizontal)
+        setContentCompressionResistancePriority(.init(rawValue: 800), for: .vertical)
+        setContentCompressionResistancePriority(.init(rawValue: 800), for: .horizontal)
+
         setupViews()
         updateSize()
         updateEmptyTheme()
