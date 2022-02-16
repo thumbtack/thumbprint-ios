@@ -86,11 +86,6 @@ public final class EntityAvatar: UIView {
         self.initials = initials
         self.name = name
 
-        setContentHuggingPriority(.init(rawValue: 800), for: .vertical)
-        setContentHuggingPriority(.init(rawValue: 800), for: .horizontal)
-        setContentCompressionResistancePriority(.init(rawValue: 800), for: .vertical)
-        setContentCompressionResistancePriority(.init(rawValue: 800), for: .horizontal)
-
         setupViews()
         updateSize()
         updateEmptyTheme()
@@ -104,6 +99,7 @@ public final class EntityAvatar: UIView {
     // Enity Avatar - private
     private let avatar: Avatar
     private let badgeView: OnlineBadgeView
+    private var avatarHeightConstraint: Constraint?
 
     public override var intrinsicContentSize: CGSize {
         CGSize(width: size.dimension, height: size.dimension)
@@ -116,7 +112,9 @@ public final class EntityAvatar: UIView {
 
         addSubview(avatar)
         avatar.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.left.equalToSuperview()
+            avatarHeightConstraint = make.height.equalTo(size.dimension).constraint
+            make.width.equalTo(avatar.snp.height)
         }
 
         badgeView.isHidden = !isOnline
@@ -130,6 +128,7 @@ public final class EntityAvatar: UIView {
     private func updateSize() {
         avatar.size = size
 
+        avatarHeightConstraint?.update(offset: size.dimension)
         badgeView.snp.remakeConstraints { make in
             let offset = ceil(size.badgeSize / 3)
             make.top.equalToSuperview().offset(-offset)
