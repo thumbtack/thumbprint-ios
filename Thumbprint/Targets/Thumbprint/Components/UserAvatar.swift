@@ -88,11 +88,6 @@ public final class UserAvatar: UIView {
 
         accessibilityLabel = self.name
 
-        setContentHuggingPriority(.init(rawValue: 800), for: .vertical)
-        setContentHuggingPriority(.init(rawValue: 800), for: .horizontal)
-        setContentCompressionResistancePriority(.init(rawValue: 800), for: .vertical)
-        setContentCompressionResistancePriority(.init(rawValue: 800), for: .horizontal)
-
         setupViews()
         updateSize()
         updateEmptyTheme()
@@ -112,6 +107,7 @@ public final class UserAvatar: UIView {
     }
 
     private let badgeView: OnlineBadgeView
+    private var avatarHeightConstraint: Constraint?
 
     private func setupViews() {
         avatar.label.text = initials
@@ -120,6 +116,8 @@ public final class UserAvatar: UIView {
         addSubview(avatar)
         avatar.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+            avatarHeightConstraint = make.height.equalTo(size.dimension).constraint
+            make.width.equalTo(avatar.snp.height)
         }
 
         badgeView.isHidden = !isOnline
@@ -129,9 +127,10 @@ public final class UserAvatar: UIView {
     private func updateSize() {
         avatar.size = size
 
+        avatarHeightConstraint?.update(offset: size.dimension)
         badgeView.snp.remakeConstraints { make in
             make.top.equalToSuperview().offset(size.badgeOffsets.dy)
-            make.trailing.equalToSuperview().offset(size.badgeOffsets.dx)
+            make.right.equalToSuperview().offset(size.badgeOffsets.dx)
             make.height.equalTo(size.badgeSize)
             make.width.equalTo(badgeView.snp.height)
         }
