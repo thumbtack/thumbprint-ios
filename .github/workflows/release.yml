@@ -8,10 +8,10 @@ on:
 jobs:
   release:
     name: Publish CocoaPod
-    runs-on: macos-11
+    runs-on: macos-12
     strategy:
       matrix:
-        xcode: ["/Applications/Xcode_13.1.app"]
+        xcode: ["/Applications/Xcode_13.3.app"]
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v2
