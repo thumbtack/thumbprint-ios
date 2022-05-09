@@ -243,6 +243,7 @@ private extension TextArea {
 extension TextArea: UITextViewDelegate {
     public func textViewDidBeginEditing(_ textView: UITextView) {
         updateState()
+        sendActions(for: .editingDidBegin)
     }
 
     public func textViewDidChange(_ textView: UITextView) {
