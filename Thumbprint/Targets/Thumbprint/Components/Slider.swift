@@ -1,12 +1,12 @@
 import UIKit
 
-public class Slider: UISlider {
-    override init(frame: CGRect) {
+open class Slider: UISlider {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         addThumbprintStyle()
     }
 
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         addThumbprintStyle()
     }
