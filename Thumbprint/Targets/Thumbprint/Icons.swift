@@ -130,6 +130,7 @@ public enum Icon {
     public static let contentModifierLightningTiny = Self.requiredIcon(named: "lightning--tiny")
     public static let contentModifierListMedium = Self.requiredIcon(named: "list--medium")
     public static let contentModifierListSmall = Self.requiredIcon(named: "list--small")
+    public static let contentModifierListTiny = Self.requiredIcon(named: "list--tiny")
     public static let contentModifierLocationMedium = Self.requiredIcon(named: "location--medium")
     public static let contentModifierLocationSmall = Self.requiredIcon(named: "location--small")
     public static let contentModifierLockedMedium = Self.requiredIcon(named: "locked--medium")
