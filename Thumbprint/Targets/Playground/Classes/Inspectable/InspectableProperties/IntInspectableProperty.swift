@@ -44,7 +44,7 @@ private class IntInspector: UIView, UITextFieldDelegate {
         textField.layer.borderColor = Color.gray.cgColor
         textField.text = String("\(0)")
         textField.addTarget(self, action: #selector(valueChanged(sender:)), for: .editingChanged)
-        
+
         addSubview(textField)
         textField.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -63,10 +63,10 @@ private class IntInspector: UIView, UITextFieldDelegate {
 
         return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
     }
-    
+
     @objc private func valueChanged(sender: AnyObject) {
-        if let text = self.textField.text, let i = Int(text) {
-            self.valueSubject.value = i
+        if let text = textField.text, let i = Int(text) {
+            valueSubject.value = i
         }
     }
 }

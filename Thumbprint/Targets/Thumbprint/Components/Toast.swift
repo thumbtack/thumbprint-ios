@@ -203,7 +203,7 @@ private extension ToastView {
         stackView.setContentHuggingPriority(.required, for: .vertical)
 
         stackView.addArrangedSubview(messageLabel)
-        if let linkButton = self.linkButton { stackView.addArrangedSubview(linkButton) }
+        if let linkButton = linkButton { stackView.addArrangedSubview(linkButton) }
 
         return stackView
     }

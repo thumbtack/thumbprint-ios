@@ -1,5 +1,5 @@
-import UIKit
 import Thumbprint
+import UIKit
 
 extension LabeledCheckbox: InspectableView {
     static let marks: [Checkbox.Mark] = [.empty, .checked, .intermediate]

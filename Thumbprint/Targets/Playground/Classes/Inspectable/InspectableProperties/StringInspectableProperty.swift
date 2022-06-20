@@ -22,11 +22,11 @@ class StringInspectableProperty<T>: InspectableProperty {
     init(inspectedView: T) {
         self.inspectedView = inspectedView
         self.textField = TextInput()
-        self.textField.addTarget(self, action: #selector(textChanged(sender:)), for: .editingChanged)
+        textField.addTarget(self, action: #selector(textChanged(sender:)), for: .editingChanged)
     }
-    
+
     @objc private func textChanged(sender: AnyObject) {
-        guard let property = self.property else { return }
-        self.inspectedView[keyPath: property] = self.textField.text
+        guard let property = property else { return }
+        inspectedView[keyPath: property] = textField.text
     }
 }

@@ -59,9 +59,9 @@ class DateInspectableProperty<T>: InspectableProperty {
                 self.inspectedView[keyPath: property] = self.datePicker.date
             }.store(in: &subscriptions)
     }
-    
+
     @objc private func valueChanged(sender: AnyObject) {
-        self.textInput.text = self.dateFormatter.string(from: self.datePicker.date)
-        self.dateSubject.send(self.datePicker.date)
+        textInput.text = dateFormatter.string(from: datePicker.date)
+        dateSubject.send(datePicker.date)
     }
 }

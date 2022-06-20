@@ -1,5 +1,5 @@
-import UIKit
 import Thumbprint
+import UIKit
 
 extension Radio: InspectableView {
     static var buttonIndex: Int = 0

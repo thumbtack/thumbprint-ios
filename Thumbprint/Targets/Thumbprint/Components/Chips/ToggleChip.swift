@@ -13,7 +13,7 @@ public final class ToggleChip: Chip {
 
     override func buildAccessibilityLabel() -> String {
         var result = isSelected ? "remove selection" : "select"
-        if let text = self.text {
+        if let text = text {
             result += " for: \(text)"
         }
         return result

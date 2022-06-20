@@ -29,8 +29,8 @@ class ComponentsListViewController: UIViewController {
     // MARK: - Private
     private class Cell: UITableViewCell {
         static let reuseIdentifier = "\(Cell.self)"
-        
-        var buttonCallback: (()->Void)? = nil
+
+        var buttonCallback: (() -> Void)?
 
         let button: Button = {
             let button = Button(theme: .secondary)
@@ -47,7 +47,7 @@ class ComponentsListViewController: UIViewController {
             button.snp.makeConstraints { make in
                 make.edges.equalToSuperview().inset(Space.three)
             }
-            
+
             button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         }
 
@@ -55,7 +55,7 @@ class ComponentsListViewController: UIViewController {
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-        
+
         @objc private func buttonAction() {
             buttonCallback?()
         }
@@ -155,7 +155,7 @@ extension ComponentsListViewController: UITableViewDataSource {
         let inspectableType = Self.componentTypes[indexPath.row]
         cell.button.title = inspectableType.name
         cell.button.theme = .secondary
-        
+
         cell.buttonCallback = { [weak self] in
             guard let self = self else { return }
             self.delegate?.componentsListViewController(self, addViewForComponent: inspectableType)

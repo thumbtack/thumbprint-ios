@@ -64,12 +64,12 @@ private class IntInspector: UIView, UITextFieldDelegate {
 
         return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
     }
-    
+
     @objc private func valueChanged(sender: AnyObject) {
-        guard let text = self.textField.text, let i = Int(text) else {
-            self.valueSubject.value = nil
+        guard let text = textField.text, let i = Int(text) else {
+            valueSubject.value = nil
             return
         }
-        self.valueSubject.value = i
+        valueSubject.value = i
     }
 }

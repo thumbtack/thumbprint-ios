@@ -24,9 +24,9 @@ class BoolInspectableProperty<T>: InspectableProperty {
         self.switch = UISwitch()
         self.switch.addTarget(self, action: #selector(switchValueChanged(sender:)), for: .valueChanged)
     }
-    
+
     @objc private func switchValueChanged(sender: AnyObject) {
-        guard let property = self.property else { return }
-        self.inspectedView[keyPath: property] = self.switch.isOn
+        guard let property = property else { return }
+        inspectedView[keyPath: property] = self.switch.isOn
     }
 }

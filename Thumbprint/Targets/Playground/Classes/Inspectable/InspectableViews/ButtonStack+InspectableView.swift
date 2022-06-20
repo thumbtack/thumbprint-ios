@@ -1,5 +1,5 @@
-import UIKit
 import Thumbprint
+import UIKit
 
 extension ButtonStack: InspectableView {
     var inspectableProperties: [InspectableProperty] {

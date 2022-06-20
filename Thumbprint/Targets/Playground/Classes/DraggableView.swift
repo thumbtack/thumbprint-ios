@@ -14,18 +14,18 @@ private extension UIView {
     @objc func handlePanGesture(recognizer: UIPanGestureRecognizer) {
         // Bring view to front
         if recognizer.state == .recognized {
-            self.superview?.bringSubviewToFront(self)
+            superview?.bringSubviewToFront(self)
         }
-        
+
         // Drag view in superview
-        guard let container = self.superview,
-                recognizer.state == .began || recognizer.state == .changed || recognizer.state == .ended else {
+        guard let container = superview,
+              recognizer.state == .began || recognizer.state == .changed || recognizer.state == .ended else {
             return
         }
-        
+
         let translation = recognizer.translation(in: container)
 
-        self.snp.updateConstraints { make in
+        snp.updateConstraints { make in
             make.centerX.equalTo(self.center.x + translation.x)
             make.centerY.equalTo(self.center.y + translation.y)
         }

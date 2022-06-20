@@ -97,7 +97,7 @@ class PlaygroundViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)))
         tapGesture.cancelsTouchesInView = false
         playgroundBackgroundView.addGestureRecognizer(tapGesture)
-        
+
         showComponentsListButton.addAction(UIAction(handler: { [weak self] _ in
             self?.showComponentsList(animated: true)
         }), for: .touchUpInside)
@@ -207,10 +207,10 @@ class PlaygroundViewController: UIViewController {
     }()
 
     private var isIPhoneMaskVisible: Bool = false
-    
+
     @objc func iPhoneMaskSwitchValueChanged(sender: AnyObject) {
-        self.isIPhoneMaskVisible = iPhoneMaskSwitch.isOn
-        
+        isIPhoneMaskVisible = iPhoneMaskSwitch.isOn
+
         UIView.animate(withDuration: Duration.five, delay: 0, options: .curveEaseInOut, animations: {
             self.iPhoneMaskSwitchLabel.textColor = self.isIPhoneMaskVisible ? Color.white : Color.black
             self.layoutIPhoneMask()
@@ -413,25 +413,25 @@ class PlaygroundViewController: UIViewController {
             self.iPhoneMaskSwitchContainer.transform = .identity
         }, completion: nil)
     }
-    
+
     /// Gesture Recognizer
     @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
         guard recognizer.state == .recognized else { return }
-        self.selectedView = nil
-        self.hideInspector()
-        self.view.endEditing(true)
+        selectedView = nil
+        hideInspector()
+        view.endEditing(true)
     }
-    
+
     @objc func handleLongPressGesture(recognizer: UILongPressGestureRecognizer) {
         guard recognizer.state == .began else { return }
-        
-        self.impactFeedbackGenerator.impactOccurred()
 
-        self.playgroundBackgroundView.backgroundColor = Color.white
-        self.showComponentsList(animated: true)
-        self.hideInspector()
+        impactFeedbackGenerator.impactOccurred()
 
-        self.inspectableViews.forEach { inspectableView in
+        playgroundBackgroundView.backgroundColor = Color.white
+        showComponentsList(animated: true)
+        hideInspector()
+
+        inspectableViews.forEach { inspectableView in
             if let view = inspectableView as? UIView {
                 view.gestureRecognizers?.forEach({ recognizer in
                     view.removeGestureRecognizer(recognizer)
@@ -439,19 +439,19 @@ class PlaygroundViewController: UIViewController {
                 view.removeFromSuperview()
             }
         }
-        self.inspectableViews = []
+        inspectableViews = []
     }
-    
+
     @objc func handleInspectableViewTapGesture(recognizer: UITapGestureRecognizer) {
         guard let inspectableView = recognizer.view as? (UIView & InspectableView),
               recognizer.state == .recognized,
               self.selectedView == nil || (self.selectedView !== inspectableView)
         else { return }
 
-        self.selectedView = inspectableView
+        selectedView = inspectableView
 
         if inspectableView.inspectableProperties.isEmpty {
-            self.hideInspector()
+            hideInspector()
         } else {
             inspectorViewController.inspectedView = inspectableView
             inspectorViewController.title = type(of: inspectableView).name

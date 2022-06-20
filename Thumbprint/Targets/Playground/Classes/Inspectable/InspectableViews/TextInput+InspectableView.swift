@@ -1,5 +1,5 @@
-import UIKit
 import Thumbprint
+import UIKit
 
 extension TextInput: InspectableView {
     var inspectableProperties: [InspectableProperty] {
