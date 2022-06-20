@@ -1,4 +1,4 @@
-import RxSwift
+import Combine
 import Thumbprint
 import UIKit
 
@@ -31,7 +31,8 @@ class DateInspectableProperty<T>: InspectableProperty {
 
     private let datePicker = UIDatePicker()
     private let textInput: TextInput
-    private let disposeBag = DisposeBag()
+    private let dateSubject: CurrentValueSubject<Date, Never> = CurrentValueSubject(Date())
+    private var subscriptions: Set<AnyCancellable> = Set()
 
     init(inspectedView: T) {
         self.inspectedView = inspectedView
@@ -47,20 +48,20 @@ class DateInspectableProperty<T>: InspectableProperty {
         self.dateFormatter = DateFormatter()
         dateFormatter.calendar = Calendar.current
         dateFormatter.dateFormat = "MMM d, yyyy"
+        datePicker.addTarget(self, action: #selector(valueChanged(sender:)), for: .valueChanged)
 
-        datePicker.rx.controlEvent([.valueChanged])
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.textInput.text = self.dateFormatter.string(from: self.datePicker.date)
-            })
-            .disposed(by: disposeBag)
-
-        datePicker.rx.controlEvent([.valueChanged])
-            .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .bind { [weak self] in
+        dateSubject
+            .dropFirst()
+            .throttle(for: 1.0, scheduler: DispatchQueue.main, latest: true)
+            .eraseToAnyPublisher()
+            .sink { [weak self] date in
                 guard let self = self, let property = self.property else { return }
                 self.inspectedView[keyPath: property] = self.datePicker.date
-            }
-            .disposed(by: disposeBag)
+            }.store(in: &subscriptions)
+    }
+    
+    @objc private func valueChanged(sender: AnyObject) {
+        self.textInput.text = self.dateFormatter.string(from: self.datePicker.date)
+        self.dateSubject.send(self.datePicker.date)
     }
 }

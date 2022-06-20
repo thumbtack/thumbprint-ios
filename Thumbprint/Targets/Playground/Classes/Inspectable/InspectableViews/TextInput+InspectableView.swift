@@ -1,4 +1,4 @@
-import RxSwift
+import UIKit
 import Thumbprint
 
 extension TextInput: InspectableView {
@@ -43,7 +43,7 @@ extension TextInput: InspectableView {
         )
         leftViewModeProperty.title = "leftViewMode"
 
-        let innerLeftIcon = UIImageView(image: Icon.contentModifierLocationSmall.withRenderingMode(.alwaysOriginal))
+        let innerLeftIcon = UIImageView(image: Icon.contentActionsAddSmall.withRenderingMode(.alwaysOriginal))
         innerLeftIcon.contentMode = .center
         let innerLeftLabel = Label(textStyle: .title8, adjustsFontForContentSizeCategory: false)
         innerLeftLabel.text = "Label"
@@ -73,7 +73,7 @@ extension TextInput: InspectableView {
         )
         rightViewModeProperty.title = "rightViewMode"
 
-        let innerRightIcon = UIImageView(image: Icon.contentModifierLocationSmall.withRenderingMode(.alwaysOriginal))
+        let innerRightIcon = UIImageView(image: Icon.contentActionsAddSmall.withRenderingMode(.alwaysOriginal))
         innerRightIcon.contentMode = .center
         let innerRightLabel = Label(textStyle: .title8, adjustsFontForContentSizeCategory: false)
         innerRightLabel.text = "Label"

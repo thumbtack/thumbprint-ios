@@ -1,5 +1,3 @@
-import RxCocoa
-import RxSwift
 import Thumbprint
 import UIKit
 
@@ -31,15 +29,14 @@ class ComponentsListViewController: UIViewController {
     // MARK: - Private
     private class Cell: UITableViewCell {
         static let reuseIdentifier = "\(Cell.self)"
+        
+        var buttonCallback: (()->Void)? = nil
 
         let button: Button = {
             let button = Button(theme: .secondary)
             button.isHapticFeedbackEnabled = true
             return button
         }()
-
-        /// Dispose bag that disposes on cell reuse.
-        private(set) var reuseDisposeBag = DisposeBag()
 
         override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,17 +47,17 @@ class ComponentsListViewController: UIViewController {
             button.snp.makeConstraints { make in
                 make.edges.equalToSuperview().inset(Space.three)
             }
+            
+            button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         }
 
         @available(*, unavailable)
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-
-        override func prepareForReuse() {
-            super.prepareForReuse()
-
-            reuseDisposeBag = DisposeBag()
+        
+        @objc private func buttonAction() {
+            buttonCallback?()
         }
     }
 
@@ -158,12 +155,11 @@ extension ComponentsListViewController: UITableViewDataSource {
         let inspectableType = Self.componentTypes[indexPath.row]
         cell.button.title = inspectableType.name
         cell.button.theme = .secondary
-
-        cell.button.rx.controlEvent(.touchUpInside).subscribe(onNext: { [weak self] in
+        
+        cell.buttonCallback = { [weak self] in
             guard let self = self else { return }
-
             self.delegate?.componentsListViewController(self, addViewForComponent: inspectableType)
-        }).disposed(by: cell.reuseDisposeBag)
+        }
 
         return cell
     }

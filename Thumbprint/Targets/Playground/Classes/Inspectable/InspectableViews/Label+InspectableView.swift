@@ -1,4 +1,3 @@
-import RxSwift
 import Thumbprint
 import UIKit
 
@@ -57,6 +56,7 @@ extension Label: InspectableView {
         label.text = "This is a label"
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.setContentHuggingPriority(.required, for: .horizontal)
+        label.isUserInteractionEnabled = true
 
         return label
     }

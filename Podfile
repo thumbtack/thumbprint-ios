@@ -26,9 +26,6 @@ target 'TestsHostApp' do
 end
 
 target 'Playground' do
-  pod 'RxCocoa'
-  pod 'RxGesture'
-  pod 'RxSwift'
 end
 
 PROJECT_ROOT_DIR = File.dirname(File.expand_path(__FILE__))

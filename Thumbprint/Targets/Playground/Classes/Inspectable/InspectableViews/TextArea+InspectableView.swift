@@ -1,4 +1,4 @@
-import RxSwift
+import UIKit
 import Thumbprint
 
 extension TextArea: InspectableView {

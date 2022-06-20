@@ -1,4 +1,3 @@
-import RxSwift
 import Thumbprint
 import UIKit
 
@@ -19,18 +18,15 @@ class BoolInspectableProperty<T>: InspectableProperty {
     }
 
     private let `switch`: UISwitch
-    private let disposeBag = DisposeBag()
 
     init(inspectedView: T) {
         self.inspectedView = inspectedView
         self.switch = UISwitch()
-
-        self.switch.rx.value
-            .subscribe(onNext: { [weak self] in
-                guard let self = self, let property = self.property else { return }
-
-                self.inspectedView[keyPath: property] = $0
-            })
-            .disposed(by: disposeBag)
+        self.switch.addTarget(self, action: #selector(switchValueChanged(sender:)), for: .valueChanged)
+    }
+    
+    @objc private func switchValueChanged(sender: AnyObject) {
+        guard let property = self.property else { return }
+        self.inspectedView[keyPath: property] = self.switch.isOn
     }
 }
