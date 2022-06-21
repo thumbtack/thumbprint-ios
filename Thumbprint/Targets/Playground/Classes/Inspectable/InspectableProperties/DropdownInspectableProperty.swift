@@ -1,5 +1,3 @@
-import RxCocoa
-import RxSwift
 import Thumbprint
 import UIKit
 
@@ -14,25 +12,24 @@ class DropdownInspectableProperty<ViewType, PropertyType: Equatable>: Inspectabl
         dropdown
     }
 
+    private let property: WritableKeyPath<ViewType, PropertyType>
+    private let values: [(PropertyType, String)]
     private let dropdown: Dropdown
-    private let disposeBag = DisposeBag()
 
     init(inspectedView: ViewType,
          property: WritableKeyPath<ViewType, PropertyType>,
          values: [(PropertyType, String)]) {
         self.inspectedView = inspectedView
+        self.property = property
+        self.values = values
         self.dropdown = Dropdown(optionTitles: values.map({ $0.1 }))
-
-        dropdown.rx.controlEvent(.valueChanged)
-            .subscribe(onNext: { [weak self] in
-                guard let self = self,
-                      let selectedIndex = self.dropdown.selectedIndex
-                else { return }
-
-                self.inspectedView[keyPath: property] = values[selectedIndex].0
-            })
-            .disposed(by: disposeBag)
+        dropdown.addTarget(self, action: #selector(valueChanged(sender:)), for: .valueChanged)
 
         dropdown.selectedIndex = values.map({ $0.0 }).firstIndex(of: inspectedView[keyPath: property])
+    }
+
+    @objc private func valueChanged(sender: AnyObject) {
+        guard let selectedIndex = dropdown.selectedIndex else { return }
+        inspectedView[keyPath: property] = values[selectedIndex].0
     }
 }

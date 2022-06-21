@@ -53,7 +53,7 @@ public final class Dropdown: Control, UIContentSizeCategoryAdjusting {
     public var selectedIndex: Int? {
         didSet {
             if oldValue != selectedIndex { sendActions(for: .valueChanged) }
-            guard let selectedIndex = self.selectedIndex else {
+            guard let selectedIndex = selectedIndex else {
                 label.text = placeholder
                 return
             }

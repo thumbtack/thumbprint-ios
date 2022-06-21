@@ -1,5 +1,5 @@
-import RxSwift
 import Thumbprint
+import UIKit
 
 extension TextArea: InspectableView {
     var inspectableProperties: [InspectableProperty] {

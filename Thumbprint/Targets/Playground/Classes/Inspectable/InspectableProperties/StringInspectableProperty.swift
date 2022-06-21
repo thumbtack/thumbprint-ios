@@ -1,4 +1,3 @@
-import RxSwift
 import Thumbprint
 import UIKit
 
@@ -19,18 +18,15 @@ class StringInspectableProperty<T>: InspectableProperty {
     }
 
     private let textField: TextInput
-    private let disposeBag = DisposeBag()
 
     init(inspectedView: T) {
         self.inspectedView = inspectedView
         self.textField = TextInput()
+        textField.addTarget(self, action: #selector(textChanged(sender:)), for: .editingChanged)
+    }
 
-        textField.rx.text
-            .subscribe(onNext: { [weak self] in
-                guard let self = self, let property = self.property else { return }
-
-                self.inspectedView[keyPath: property] = $0
-            })
-            .disposed(by: disposeBag)
+    @objc private func textChanged(sender: AnyObject) {
+        guard let property = property else { return }
+        inspectedView[keyPath: property] = textField.text
     }
 }

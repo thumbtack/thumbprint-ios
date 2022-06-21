@@ -1,4 +1,3 @@
-import RxSwift
 import UIKit
 
 /// Protocol indicating that a view supports being configured
@@ -17,7 +16,6 @@ protocol InspectableView: AnyObject {
     static func makeInspectable() -> UIView & InspectableView
 
     // MARK: - Generic Properties
-    var disposeBag: DisposeBag { get }
     var inspectableBorderView: InspectableBorderView { get }
 }
 
@@ -35,16 +33,6 @@ extension InspectableView {
     }
 
     var disableDrag: Bool { false }
-
-    var disposeBag: DisposeBag {
-        guard let associatedDisposeBag = objc_getAssociatedObject(self, &AssociatedObjectKeys.disposeBag) as? DisposeBag else {
-            let disposeBag = DisposeBag()
-            objc_setAssociatedObject(self, &AssociatedObjectKeys.disposeBag, disposeBag, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            return disposeBag
-        }
-
-        return associatedDisposeBag
-    }
 }
 
 extension InspectableView where Self: UIView {
@@ -65,6 +53,5 @@ extension InspectableView where Self: UIView {
 }
 
 private enum AssociatedObjectKeys {
-    static var disposeBag = "InspectableViewDisposeBagAssociatedKey"
     static var inspectableBorderView = "InspectableViewInspectableBorderViewKey"
 }

@@ -39,7 +39,7 @@ public extension UIView {
      - Returns: An array containing all the layout constraints that enforce the given parameters.
      */
     func constraintsEqualToSuperview(edges: SnapEdges, inset: CGFloat = 0.0) -> [NSLayoutConstraint] {
-        guard let superview = self.superview else {
+        guard let superview = superview else {
             preconditionFailure("Cannot create constraints against superview if there is no superview")
         }
 

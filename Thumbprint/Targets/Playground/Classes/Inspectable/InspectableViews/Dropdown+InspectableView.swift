@@ -1,4 +1,3 @@
-import RxSwift
 import SnapKit
 import Thumbprint
 

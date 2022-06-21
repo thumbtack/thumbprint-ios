@@ -1,4 +1,4 @@
-import RxSwift
+import Combine
 import Thumbprint
 import UIKit
 
@@ -17,24 +17,25 @@ class OptionalIntInspectableProperty<T>: InspectableProperty {
 
     var controlView: UIView { intInspector }
     private let intInspector: IntInspector
-    private let disposeBag = DisposeBag()
+    private var subscriptions: Set<AnyCancellable> = Set()
 
     init(inspectedView: T) {
         self.inspectedView = inspectedView
         self.intInspector = IntInspector()
-
-        intInspector.valueSubject.subscribe(onNext: { [weak self] value in
-            guard let self = self, let property = self.property else { return }
-
-            self.inspectedView[keyPath: property] = value
-        }).disposed(by: disposeBag)
+        intInspector.valueSubject
+            .eraseToAnyPublisher()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] value in
+                guard let self = self, let property = self.property else { return }
+                self.inspectedView[keyPath: property] = value
+            })
+            .store(in: &subscriptions)
     }
 }
 
 private class IntInspector: UIView, UITextFieldDelegate {
     public let textField = UITextField()
-    public var valueSubject = BehaviorSubject<Int?>(value: 0)
-    private let disposeBag = DisposeBag()
+    public var valueSubject = CurrentValueSubject<Int?, Never>(0)
 
     init() {
         super.init(frame: .null)
@@ -43,15 +44,7 @@ private class IntInspector: UIView, UITextFieldDelegate {
         textField.keyboardType = .numberPad
         textField.layer.borderWidth = 1
         textField.layer.borderColor = Color.gray.cgColor
-        textField.rx.controlEvent([.editingChanged])
-            .asObservable()
-            .subscribe { [weak self] _ in
-                guard let text = self?.textField.text, let i = Int(text) else {
-                    self?.valueSubject.onNext(nil)
-                    return
-                }
-                self?.valueSubject.onNext(i)
-            }.disposed(by: disposeBag)
+        textField.addTarget(self, action: #selector(valueChanged(sender:)), for: .editingChanged)
 
         addSubview(textField)
         textField.snp.makeConstraints { make in
@@ -70,5 +63,13 @@ private class IntInspector: UIView, UITextFieldDelegate {
         }
 
         return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
+    }
+
+    @objc private func valueChanged(sender: AnyObject) {
+        guard let text = textField.text, let i = Int(text) else {
+            valueSubject.value = nil
+            return
+        }
+        valueSubject.value = i
     }
 }

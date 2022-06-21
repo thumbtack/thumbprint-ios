@@ -1,4 +1,3 @@
-import RxSwift
 import Thumbprint
 import UIKit
 

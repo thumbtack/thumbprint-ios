@@ -1,35 +1,35 @@
+import SnapKit
 import UIKit
 
 /// Helper extension to make UIViews draggable.
 extension InspectableView where Self: UIView {
     func makeDraggable(in container: UIView) {
-        rx.panGesture(configuration: { recognizer, _ in
-            recognizer.cancelsTouchesInView = false
-        })
-            .when(.began, .changed, .ended)
-            .subscribe(onNext: { [weak self] recognizer in
-                guard let self = self else { return }
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(recognizer:)))
+        panGesture.cancelsTouchesInView = false
+        addGestureRecognizer(panGesture)
+    }
+}
 
-                let translation = recognizer.translation(in: container)
+private extension UIView {
+    @objc func handlePanGesture(recognizer: UIPanGestureRecognizer) {
+        // Bring view to front
+        if recognizer.state == .recognized {
+            superview?.bringSubviewToFront(self)
+        }
 
-                self.snp.updateConstraints { make in
-                    make.centerX.equalTo(self.center.x + translation.x)
-                    make.centerY.equalTo(self.center.y + translation.y)
-                }
+        // Drag view in superview
+        guard let container = superview,
+              recognizer.state == .began || recognizer.state == .changed || recognizer.state == .ended else {
+            return
+        }
 
-                recognizer.setTranslation(.zero, in: container)
-            })
-            .disposed(by: disposeBag)
+        let translation = recognizer.translation(in: container)
 
-        rx.touchDownGesture(configuration: { recognizer, _ in
-            recognizer.cancelsTouchesInView = false
-        })
-            .when(.recognized)
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
+        snp.updateConstraints { make in
+            make.centerX.equalTo(self.center.x + translation.x)
+            make.centerY.equalTo(self.center.y + translation.y)
+        }
 
-                container.bringSubviewToFront(self)
-            })
-            .disposed(by: disposeBag)
+        recognizer.setTranslation(.zero, in: container)
     }
 }
