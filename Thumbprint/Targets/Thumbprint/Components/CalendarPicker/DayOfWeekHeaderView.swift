@@ -18,7 +18,7 @@ class DayOfWeekHeaderView: UIView {
             return label
         })
 
-        self.stackView = UIStackView(arrangedSubviews: labels)
+        stackView = UIStackView(arrangedSubviews: labels)
         stackView.axis = .horizontal
         stackView.spacing = .zero
         stackView.alignment = .fill

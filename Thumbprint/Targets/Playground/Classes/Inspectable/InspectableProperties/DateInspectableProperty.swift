@@ -56,7 +56,7 @@ class DateInspectableProperty<T>: InspectableProperty {
             .eraseToAnyPublisher()
             .sink { [weak self] date in
                 guard let self = self, let property = self.property else { return }
-                self.inspectedView[keyPath: property] = self.datePicker.date
+                self.inspectedView[keyPath: property] = date
             }.store(in: &subscriptions)
     }
 
