@@ -765,5 +765,4 @@ public enum Icon {
     public static let socialPinterestSmall = Self.requiredIcon(named: Self.Name.socialPinterestSmall.rawValue)
     public static let socialTwitterMedium = Self.requiredIcon(named: Self.Name.socialTwitterMedium.rawValue)
     public static let socialTwitterSmall = Self.requiredIcon(named: Self.Name.socialTwitterSmall.rawValue)
-
 }
