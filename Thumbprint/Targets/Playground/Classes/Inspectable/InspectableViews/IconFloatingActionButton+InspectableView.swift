@@ -17,7 +17,7 @@ extension IconFloatingActionButton: InspectableView {
 
     static func makeInspectable() -> UIView & InspectableView {
         IconFloatingActionButton(
-            icon: Icon.contentActionsAddMedium,
+            icon: Icon.contentActionsAddMedium.image,
             accessibilityLabel: "Add new items"
         )
     }

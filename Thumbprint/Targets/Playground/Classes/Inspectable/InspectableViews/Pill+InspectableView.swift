@@ -26,8 +26,8 @@ extension Pill: InspectableView {
             property: \Pill.image,
             values: [
                 (nil, "No icon"),
-                (Icon.inputsThumbsUpTiny, "Thumbs Up icon"),
-                (Icon.contentModifierLightningTiny, "Lightning icon"),
+                (Icon.inputsThumbsUpTiny.image, "Thumbs Up icon"),
+                (Icon.contentModifierLightningTiny.image, "Lightning icon"),
             ]
         )
         showIconProperty.title = "Image"

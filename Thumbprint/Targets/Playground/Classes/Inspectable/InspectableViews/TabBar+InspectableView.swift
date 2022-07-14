@@ -14,13 +14,13 @@ extension UITabBar: InspectableView {
         let tabBar = UITabBar()
         TabBar.configure(tabBar: tabBar)
 
-        let exploreItem = UITabBarItem(title: "Explore", image: Icon.featureExploreMedium, selectedImage: nil)
+        let exploreItem = UITabBarItem(title: "Explore", image: Icon.featureExploreMedium.image, selectedImage: nil)
         TabBar.configure(tabBarItem: exploreItem)
 
-        let inboxItem = UITabBarItem(title: "Inbox", image: Icon.featureInboxMedium, selectedImage: nil)
+        let inboxItem = UITabBarItem(title: "Inbox", image: Icon.featureInboxMedium.image, selectedImage: nil)
         TabBar.configure(tabBarItem: inboxItem)
 
-        let notificationsItem = UITabBarItem(title: "Notifications", image: Icon.notificationAlertsNotificationMedium, selectedImage: nil)
+        let notificationsItem = UITabBarItem(title: "Notifications", image: Icon.notificationAlertsNotificationMedium.image, selectedImage: nil)
         notificationsItem.badgeValue = "4"
         TabBar.configure(tabBarItem: notificationsItem)
 

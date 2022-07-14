@@ -145,8 +145,7 @@ public final class Dropdown: Control, UIContentSizeCategoryAdjusting {
 
     private let label: Label
 
-    private let arrow =
-        UIImageView(image: Icon.navigationCaretDownMedium)
+    private let arrow = UIImageView(image: Icon.navigationCaretDownMedium.image)
 
     private func addTapToPresentPickerGesture() {
         let tapGesture = UITapGestureRecognizer()

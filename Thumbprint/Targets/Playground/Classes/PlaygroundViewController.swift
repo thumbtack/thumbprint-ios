@@ -32,7 +32,7 @@ class PlaygroundViewController: UIViewController {
         NavigationBar.configure(componentsListNavigationController.navigationBar)
         componentsListNavigationController.navigationBar.prefersLargeTitles = true
 
-        let dismissComponentsListBarButtonItem = UIBarButtonItem(image: Icon.navigationCloseMedium, style: .plain, target: self, action: #selector(hideComponentsList(_:)))
+        let dismissComponentsListBarButtonItem = UIBarButtonItem(image: Icon.navigationCloseMedium.image, style: .plain, target: self, action: #selector(hideComponentsList(_:)))
         dismissComponentsListBarButtonItem.accessibilityLabel = "Close"
         componentsListViewController.navigationItem.rightBarButtonItem = dismissComponentsListBarButtonItem
 
@@ -171,7 +171,7 @@ class PlaygroundViewController: UIViewController {
     }()
 
     private let showComponentsListButton: IconButton = {
-        let showComponentsListButton = IconButton(icon: Icon.contentActionsAddMedium, accessibilityLabel: "Add")
+        let showComponentsListButton = IconButton(icon: Icon.contentActionsAddMedium.image, accessibilityLabel: "Add")
         showComponentsListButton.accessibilityHint = "Add a component to the playground"
         showComponentsListButton.alpha = 0
         return showComponentsListButton

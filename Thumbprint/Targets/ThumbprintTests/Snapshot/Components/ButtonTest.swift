@@ -20,8 +20,8 @@ class ButtonTest: SnapshotTestCase {
 
     private let icons: [String: Button.Icon?] = [
         "no icon": nil,
-        "leading": Button.Icon(.leading, image: Icon.notificationAlertsInfoFilledMedium),
-        "trailing": Button.Icon(.trailing, image: Icon.navigationCaretRightMedium),
+        "leading": Button.Icon(.leading, image: Icon.notificationAlertsInfoFilledMedium.image),
+        "trailing": Button.Icon(.trailing, image: Icon.navigationCaretRightMedium.image),
     ]
 
     private var button: Button!
@@ -104,7 +104,7 @@ class ButtonTest: SnapshotTestCase {
     func testStretchWidth() {
         button = Button(adjustsFontForContentSizeCategory: true)
         button.title = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium ornare magna et tristique."
-        button.icon = .init(.leading, image: Icon.notificationAlertsInfoFilledMedium)
+        button.icon = .init(.leading, image: Icon.notificationAlertsInfoFilledMedium.image)
 
         verify(
             view: button

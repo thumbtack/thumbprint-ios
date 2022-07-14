@@ -20,7 +20,7 @@ extension TextFloatingActionButton: InspectableView {
             text: "Floating action button",
             accessibilityLabel: "Floating action button"
         )
-        let imageView = UIImageView(image: Icon.contentActionsAddMedium)
+        let imageView = UIImageView(image: Icon.contentActionsAddMedium.image)
         textFloatingActionButton.setLeftView(imageView, largeContentImage: imageView.image)
         return textFloatingActionButton
     }
