@@ -165,10 +165,10 @@ open class CalendarPickerView: UIView, UIContentSizeCategoryAdjusting {
     private let dayOfWeekHeaderView: DayOfWeekHeaderView
     private let monthHeader: Label
 
-    private let leftButton = IconButton(icon: Icon.navigationCaretLeftMedium,
+    private let leftButton = IconButton(icon: Icon.navigationCaretLeftMedium.image,
                                         accessibilityLabel: "Previous Month")
 
-    private let rightButton = IconButton(icon: Icon.navigationCaretRightMedium,
+    private let rightButton = IconButton(icon: Icon.navigationCaretRightMedium.image,
                                          accessibilityLabel: "Next Month")
 
     private lazy var monthFormatter: DateFormatter = {

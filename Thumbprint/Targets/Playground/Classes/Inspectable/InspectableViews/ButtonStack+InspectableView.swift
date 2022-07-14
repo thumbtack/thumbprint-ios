@@ -27,8 +27,8 @@ extension ButtonStack: InspectableView {
             property: \Button.icon,
             values: [
                 (nil, "No icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall), "Filter icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall), "Add icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall.image), "Filter icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall.image), "Add icon"),
             ]
         )
         button0ShowIconProperty.title = "Button 0 icon"
@@ -69,8 +69,8 @@ extension ButtonStack: InspectableView {
             property: \Button.icon,
             values: [
                 (nil, "No icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall), "Filter icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall), "Add icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall.image), "Filter icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall.image), "Add icon"),
             ]
         )
         button1ShowIconProperty.title = "Button 1 icon"
@@ -111,8 +111,8 @@ extension ButtonStack: InspectableView {
             property: \Button.icon,
             values: [
                 (nil, "No icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall), "Filter icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall), "Add icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall.image), "Filter icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall.image), "Add icon"),
             ]
         )
         button2ShowIconProperty.title = "Button 2 icon"

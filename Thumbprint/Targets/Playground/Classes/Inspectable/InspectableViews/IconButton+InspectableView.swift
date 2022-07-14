@@ -18,7 +18,7 @@ extension IconButton: InspectableView {
     }
 
     static func makeInspectable() -> UIView & InspectableView {
-        let button = IconButton(icon: Icon.contentActionsFilterMedium, accessibilityLabel: "Demo icon button")
+        let button = IconButton(icon: Icon.contentActionsFilterMedium.image, accessibilityLabel: "Demo icon button")
         return button
     }
 }

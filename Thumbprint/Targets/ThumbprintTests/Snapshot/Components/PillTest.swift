@@ -51,13 +51,13 @@ class PillTest: SnapshotTestCase {
     func testPillsWithIconAndText() {
         let defaultPill = Pill()
         defaultPill.text = "Default"
-        defaultPill.image = Icon.notificationAlertsInfoFilledMedium
+        defaultPill.image = Icon.notificationAlertsInfoFilledMedium.image
         stackView.addArrangedSubview(defaultPill)
 
         for theme in Pill.Theme.allPredefined {
             let pill = Pill()
             pill.theme = theme
-            pill.image = Icon.notificationAlertsInfoFilledMedium
+            pill.image = Icon.notificationAlertsInfoFilledMedium.image
             pill.text = "\(theme.name ?? "Wrong")"
             stackView.addArrangedSubview(pill)
         }
@@ -70,14 +70,14 @@ class PillTest: SnapshotTestCase {
         stackView.alignment = .fill
         let defaultPill = Pill()
         defaultPill.text = "Default"
-        defaultPill.image = Icon.notificationAlertsInfoFilledMedium
+        defaultPill.image = Icon.notificationAlertsInfoFilledMedium.image
         defaultPill.setContentHuggingPriority(.defaultLow, for: .horizontal)
         stackView.addArrangedSubview(defaultPill)
 
         for theme in Pill.Theme.allPredefined {
             let pill = Pill()
             pill.theme = theme
-            pill.image = Icon.notificationAlertsInfoFilledMedium
+            pill.image = Icon.notificationAlertsInfoFilledMedium.image
             pill.text = "\(theme.name ?? "Wrong")"
             pill.setContentHuggingPriority(.defaultLow, for: .horizontal)
             stackView.addArrangedSubview(pill)
@@ -92,13 +92,13 @@ class PillTest: SnapshotTestCase {
     func testPillsCompressed() {
         let defaultPill = Pill()
         defaultPill.text = "Default"
-        defaultPill.image = Icon.notificationAlertsInfoFilledMedium
+        defaultPill.image = Icon.notificationAlertsInfoFilledMedium.image
         stackView.addArrangedSubview(defaultPill)
 
         for theme in Pill.Theme.allPredefined {
             let pill = Pill()
             pill.theme = theme
-            pill.image = Icon.notificationAlertsInfoFilledMedium
+            pill.image = Icon.notificationAlertsInfoFilledMedium.image
             pill.text = "\(theme.name ?? "Wrong")"
             stackView.addArrangedSubview(pill)
         }
@@ -115,13 +115,13 @@ class PillTest: SnapshotTestCase {
      */
     func testDocumentationPills() {
         let documentationPills: [(title: String, icon: UIImage, theme: Pill.Theme)] = [
-            ("Green", Icon.notificationAlertsInfoFilledMedium, .green),
-            ("Red", Icon.notificationAlertsInfoFilledMedium, .red),
-            ("Indigo", Icon.notificationAlertsInfoFilledMedium, .indigo),
-            ("Gray", Icon.notificationAlertsInfoFilledMedium, .gray),
-            ("Blue", Icon.notificationAlertsInfoFilledMedium, .blue),
-            ("Yellow", Icon.notificationAlertsInfoFilledMedium, .yellow),
-            ("Purple", Icon.notificationAlertsInfoFilledMedium, .purple),
+            ("Green", Icon.notificationAlertsInfoFilledMedium.image, .green),
+            ("Red", Icon.notificationAlertsInfoFilledMedium.image, .red),
+            ("Indigo", Icon.notificationAlertsInfoFilledMedium.image, .indigo),
+            ("Gray", Icon.notificationAlertsInfoFilledMedium.image, .gray),
+            ("Blue", Icon.notificationAlertsInfoFilledMedium.image, .blue),
+            ("Yellow", Icon.notificationAlertsInfoFilledMedium.image, .yellow),
+            ("Purple", Icon.notificationAlertsInfoFilledMedium.image, .purple),
         ]
 
         documentationPills.forEach { pillSpec in

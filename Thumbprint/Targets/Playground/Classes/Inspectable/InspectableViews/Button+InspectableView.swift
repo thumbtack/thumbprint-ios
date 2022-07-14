@@ -38,10 +38,10 @@ extension Button: InspectableView {
             property: \Button.icon,
             values: [
                 (nil, "No icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall), "Leading filter icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall), "Leading add icon"),
-                (Button.Icon(.trailing, image: Thumbprint.Icon.navigationCaretRightSmall), "Trailing caret icon"),
-                (Button.Icon(.trailing, image: Thumbprint.Icon.contentActionsAddSmall), "Trailing add icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall.image), "Leading filter icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall.image), "Leading add icon"),
+                (Button.Icon(.trailing, image: Thumbprint.Icon.navigationCaretRightSmall.image), "Trailing caret icon"),
+                (Button.Icon(.trailing, image: Thumbprint.Icon.contentActionsAddSmall.image), "Trailing add icon"),
             ]
         )
         showIconProperty.title = "Icon"

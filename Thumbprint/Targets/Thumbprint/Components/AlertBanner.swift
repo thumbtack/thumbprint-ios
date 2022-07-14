@@ -23,17 +23,17 @@ public final class AlertBanner: UIView {
         public let backgroundColor: UIColor
 
         public static let info = Theme(
-            icon: Icon.notificationAlertsInfoFilledMedium,
+            icon: Icon.notificationAlertsInfoFilledMedium.image,
             textColor: Color.blue600,
             backgroundColor: Color.blue100
         )
         public static let warning = Theme(
-            icon: Icon.notificationAlertsBlockedFilledMedium,
+            icon: Icon.notificationAlertsBlockedFilledMedium.image,
             textColor: Color.red600,
             backgroundColor: Color.red100
         )
         public static let caution = Theme(
-            icon: Icon.notificationAlertsWarningFilledMedium,
+            icon: Icon.notificationAlertsWarningFilledMedium.image,
             textColor: Color.yellow600,
             backgroundColor: Color.yellow100
         )

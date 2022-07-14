@@ -38,8 +38,8 @@ extension ButtonRow: InspectableView {
             property: \Button.icon,
             values: [
                 (nil, "No icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall), "Filter icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall), "Add icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall.image), "Filter icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall.image), "Add icon"),
             ]
         )
         leftButtonShowIconProperty.title = "Left button icon"
@@ -80,8 +80,8 @@ extension ButtonRow: InspectableView {
             property: \Button.icon,
             values: [
                 (nil, "No icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall), "Filter icon"),
-                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall), "Add icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsFilterSmall.image), "Filter icon"),
+                (Button.Icon(.leading, image: Thumbprint.Icon.contentActionsAddSmall.image), "Add icon"),
             ]
         )
         rightButtonShowIconProperty.title = "Right button icon"
