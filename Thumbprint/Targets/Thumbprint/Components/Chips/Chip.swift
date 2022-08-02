@@ -203,15 +203,15 @@ extension Chip: UIContentSizeCategoryAdjusting {
 open class ChipPill: Pill {
     // MARK: - Class configuration
 
-    open override class var defaultHeight: CGFloat {
+    public override class var defaultHeight: CGFloat {
         return 32.0
     }
 
-    override class var defaultPadding: CGFloat {
+    public override class var defaultPadding: CGFloat {
         return 16.0
     }
 
-    open override class var textStyle: Font.TextStyle {
+    public override class var textStyle: Font.TextStyle {
         return .title8
     }
 
