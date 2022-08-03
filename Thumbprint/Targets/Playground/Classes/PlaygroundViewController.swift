@@ -473,6 +473,7 @@ extension PlaygroundViewController: ComponentsListViewControllerDelegate {
         }
 
         let inspectableViewToAdd = componentType.makeInspectable()
+        inspectableViewToAdd.isUserInteractionEnabled = true
         inspectableViews.append(inspectableViewToAdd)
 
         if let footer = inspectableViewToAdd as? Footer {
