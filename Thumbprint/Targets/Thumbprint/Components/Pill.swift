@@ -11,15 +11,15 @@ import UIKit
 open class Pill: UIView, UIContentSizeCategoryAdjusting {
     // MARK: - Class configuration
 
-    public class var defaultHeight: CGFloat {
+    open class var defaultHeight: CGFloat {
         return 24.0
     }
 
-    public class var defaultPadding: CGFloat {
+    open class var defaultPadding: CGFloat {
         return 12.0
     }
 
-    public class var textStyle: Font.TextStyle {
+    open class var textStyle: Font.TextStyle {
         return .title7
     }
 
