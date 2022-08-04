@@ -10,16 +10,16 @@ import UIKit
  */
 open class Pill: UIView, UIContentSizeCategoryAdjusting {
     // MARK: - Class configuration
-    
+
     public struct Config {
         public static var defaultHeight: CGFloat = 24.0
         public static var defaultPadding: CGFloat = 12.0
         public static var defaultTextStyle: Font.TextStyle = .title7
-        
+
         var height: CGFloat
         var padding: CGFloat
         var textStyle: Font.TextStyle
-        
+
         public init(height: CGFloat = defaultHeight,
                     padding: CGFloat = defaultPadding,
                     textStyle: Font.TextStyle = defaultTextStyle) {
@@ -201,8 +201,8 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
             setNeedsLayout()
         }
     }
-    
-    public var config: Config = Config()  {
+
+    public var config = Config() {
         didSet {
             label.textStyle = config.textStyle
             setNeedsLayout()
