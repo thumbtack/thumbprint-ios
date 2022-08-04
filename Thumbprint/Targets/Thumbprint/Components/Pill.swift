@@ -11,16 +11,22 @@ import UIKit
 open class Pill: UIView, UIContentSizeCategoryAdjusting {
     // MARK: - Class configuration
 
-    public class var defaultHeight: CGFloat {
-        return 24.0
-    }
+    public struct Config {
+        public static var defaultHeight: CGFloat = 24.0
+        public static var defaultPadding: CGFloat = 12.0
+        public static var defaultTextStyle: Font.TextStyle = .title7
 
-    public class var defaultPadding: CGFloat {
-        return 12.0
-    }
+        var height: CGFloat
+        var padding: CGFloat
+        var textStyle: Font.TextStyle
 
-    public class var textStyle: Font.TextStyle {
-        return .title7
+        public init(height: CGFloat = defaultHeight,
+                    padding: CGFloat = defaultPadding,
+                    textStyle: Font.TextStyle = defaultTextStyle) {
+            self.height = height
+            self.padding = padding
+            self.textStyle = textStyle
+        }
     }
 
     // MARK: - Implementation Views
@@ -53,17 +59,17 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
 
     var contentHeight: CGFloat {
         if adjustsFontForContentSizeCategory {
-            return Font.scaledValue(Self.defaultHeight, for: label.textStyle)
+            return Font.scaledValue(config.height, for: label.textStyle)
         } else {
-            return Self.defaultHeight
+            return config.height
         }
     }
 
     var sidePadding: CGFloat {
         if adjustsFontForContentSizeCategory {
-            return Font.scaledValue(Self.defaultPadding, for: label.textStyle)
+            return Font.scaledValue(config.padding, for: label.textStyle)
         } else {
-            return Self.defaultPadding
+            return config.padding
         }
     }
 
@@ -196,6 +202,13 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
         }
     }
 
+    public var config = Config() {
+        didSet {
+            label.textStyle = config.textStyle
+            setNeedsLayout()
+        }
+    }
+
     public override var forFirstBaselineLayout: UIView {
         label
     }
@@ -206,7 +219,7 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
 
     public init(adjustsFontForContentSizeCategory: Bool = true) {
         self.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
-        self.label = Label(textStyle: Self.textStyle, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
+        self.label = Label(textStyle: config.textStyle, adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
 
         super.init(frame: .null)
 

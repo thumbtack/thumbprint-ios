@@ -202,19 +202,8 @@ extension Chip: UIContentSizeCategoryAdjusting {
  */
 open class ChipPill: Pill {
     // MARK: - Class configuration
-
-    public override class var defaultHeight: CGFloat {
-        return 32.0
-    }
-
-    public override class var defaultPadding: CGFloat {
-        return 16.0
-    }
-
-    public override class var textStyle: Font.TextStyle {
-        return .title8
-    }
-
+    private static let defaultHeight: CGFloat = 32.0
+    private static let defaultPadding: CGFloat = 16.0
     private static let baseBorderWidth: CGFloat = 1.0
 
     // MARK: - Border management.
@@ -247,6 +236,11 @@ open class ChipPill: Pill {
 
             setNeedsLayout()
         }
+    }
+
+    public override init(adjustsFontForContentSizeCategory: Bool = true) {
+        super.init(adjustsFontForContentSizeCategory: adjustsFontForContentSizeCategory)
+        config = Config(height: Self.defaultHeight, padding: Self.defaultPadding, textStyle: .title8)
     }
 
     open override func layoutSubviews() {
