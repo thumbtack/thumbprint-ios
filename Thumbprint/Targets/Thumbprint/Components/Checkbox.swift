@@ -123,8 +123,11 @@ public final class LabeledCheckbox: Control, UIContentSizeCategoryAdjusting {
     }
 
     public override var isSelected: Bool {
-        didSet {
-            checkbox.isSelected = isSelected
+        get {
+            checkbox.isSelected
+        }
+        set {
+            checkbox.isSelected = newValue
         }
     }
 
