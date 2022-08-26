@@ -15,17 +15,21 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
         public static var defaultHeight: CGFloat = 24.0
         public static var defaultPadding: CGFloat = 12.0
         public static var defaultTextStyle: Font.TextStyle = .title7
+        public static var defaultIconSize = Icon.Size.tiny
 
         var height: CGFloat
         var padding: CGFloat
         var textStyle: Font.TextStyle
+        var iconSize: Icon.Size
 
         public init(height: CGFloat = defaultHeight,
                     padding: CGFloat = defaultPadding,
-                    textStyle: Font.TextStyle = defaultTextStyle) {
+                    textStyle: Font.TextStyle = defaultTextStyle,
+                    iconSize: Icon.Size = defaultIconSize) {
             self.height = height
             self.padding = padding
             self.textStyle = textStyle
+            self.iconSize = iconSize
         }
     }
 
@@ -231,8 +235,8 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
         stackView.addArrangedSubview(label)
 
         iconImageView.snp.makeConstraints { make in
-            make.height.equalTo(Icon.Size.tiny.dimension)
-            make.width.equalTo(Icon.Size.tiny.dimension).priority(.high)
+            make.height.equalTo(config.iconSize.dimension)
+            make.width.equalTo(config.iconSize.dimension).priority(.high)
         }
 
         addSubview(stackView)
