@@ -30,7 +30,7 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
             self.padding = padding
             self.textStyle = textStyle
             self.iconSize = iconSize
-    }
+        }
     }
 
     // MARK: - Implementation Views
