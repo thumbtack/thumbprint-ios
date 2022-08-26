@@ -15,7 +15,7 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
         public static var defaultHeight: CGFloat = 24.0
         public static var defaultPadding: CGFloat = 12.0
         public static var defaultTextStyle: Font.TextStyle = .title7
-        public static var defaultIconSize: Icon.Size = Icon.Size.tiny
+        public static var defaultIconSize = Icon.Size.tiny
 
         var height: CGFloat
         var padding: CGFloat
