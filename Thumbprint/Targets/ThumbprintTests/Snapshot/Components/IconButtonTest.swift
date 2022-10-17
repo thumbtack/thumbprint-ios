@@ -72,4 +72,18 @@ class IconButtonTest: SnapshotTestCase {
         iconButton.contentEdgeInsets = UIEdgeInsets(top: Space.two, left: Space.two, bottom: Space.two, right: Space.two)
         verify(view: iconButton, contentSizeCategories: [.unspecified])
     }
+
+    func testChangeIconAndTheme() {
+        let iconButton = IconButton(
+            icon: Icon.notificationAlertsInfoFilledMedium.image,
+            accessibilityLabel: "Add",
+            theme: .dark
+        )
+        iconButton.setIcon(
+            Icon.notificationAlertsWarningFilledMedium.image,
+            accessibilityLabel: "Warning",
+            theme: .default
+        )
+        verify(view: iconButton, contentSizeCategories: [.unspecified])
+    }
 }
