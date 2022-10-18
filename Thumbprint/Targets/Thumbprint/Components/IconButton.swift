@@ -58,26 +58,27 @@ public final class IconButton: Control {
         }
         updateIconImageViewConstraints()
         invalidateIntrinsicContentSize()
+        updateTintColor()
         setNeedsLayout()
     }
 
     public override var isSelected: Bool {
         didSet {
-            updateState()
+            updateTintColor()
             updateAccessibilityTraits()
         }
     }
 
     public override var isEnabled: Bool {
         didSet {
-            updateState()
+            updateTintColor()
             updateAccessibilityTraits()
         }
     }
 
     public override var isHighlighted: Bool {
         didSet {
-            updateState()
+            updateTintColor()
         }
     }
 
@@ -115,7 +116,7 @@ public final class IconButton: Control {
         addSubview(iconImageView)
 
         updateIconImageViewConstraints()
-        updateState()
+        updateTintColor()
         updateAccessibilityTraits()
     }
 
@@ -127,7 +128,7 @@ public final class IconButton: Control {
     // MARK: - Private
     private let iconImageView: UIImageView
 
-    private func updateState() {
+    private func updateTintColor() {
         if !isEnabled {
             iconImageView.tintColor = theme.disabledTintColor
         } else if isHighlighted || isSelected {
