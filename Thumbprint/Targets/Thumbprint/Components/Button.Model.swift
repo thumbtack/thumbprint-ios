@@ -12,6 +12,7 @@ public extension Button {
         public enum Position: Equatable {
             case leading
             case trailing
+            case exclusive
         }
 
         /**

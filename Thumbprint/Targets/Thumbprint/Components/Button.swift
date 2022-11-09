@@ -408,6 +408,10 @@ private extension Button {
 
             case .trailing:
                 contentView.addArrangedSubview(imageView)
+
+            case .exclusive:
+                contentView.addArrangedSubview(imageView)
+                titleLabel.showsInStackView = false
             }
         } else {
             iconImageView = nil
