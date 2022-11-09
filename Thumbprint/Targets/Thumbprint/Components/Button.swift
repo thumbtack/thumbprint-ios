@@ -405,10 +405,10 @@ private extension Button {
             switch icon.position {
             case .leading:
                 contentView.insertArrangedSubview(imageView, at: 0)
-
+                titleLabel.showsInStackView = true
             case .trailing:
                 contentView.addArrangedSubview(imageView)
-
+                titleLabel.showsInStackView = true
             case .exclusive:
                 contentView.addArrangedSubview(imageView)
                 titleLabel.showsInStackView = false
