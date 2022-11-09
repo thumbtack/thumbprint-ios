@@ -22,6 +22,7 @@ class ButtonTest: SnapshotTestCase {
         "no icon": nil,
         "leading": Button.Icon(.leading, image: Icon.notificationAlertsInfoFilledMedium.image),
         "trailing": Button.Icon(.trailing, image: Icon.navigationCaretRightMedium.image),
+        "exclusive": Button.Icon(.exclusive, image: Icon.navigationCaretRightMedium.image),
     ]
 
     private var button: Button!
