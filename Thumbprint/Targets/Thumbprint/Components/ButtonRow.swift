@@ -27,6 +27,22 @@ public final class ButtonRow: UIView, UIContentSizeCategoryAdjusting {
         }
     }
 
+    public enum Alignment {
+        /// Left & right buttons each use 50% of the total space.
+        case horizontal
+
+        /// Left button is given enough space to fit its content, and
+        /// right button takes up the remaining space.
+        case vertical
+
+    }
+
+    public var alignment: Alignment {
+        didSet {
+            updateAlignment()
+        }
+    }
+
     public var adjustsFontForContentSizeCategory: Bool {
         didSet {
             // Since the buttons' `adjustsFontForContentSizeCategory` properties
@@ -42,10 +58,11 @@ public final class ButtonRow: UIView, UIContentSizeCategoryAdjusting {
     /// Creates and returns a new button row with the specified buttons.
     /// Right should generally have the "primary" button style.
     /// Secondary button should typically have either a "secondary" or "tertiary" button style.
-    public init(leftButton: Button, rightButton: Button, distribution: Distribution = .emphasis) {
+    public init(leftButton: Button, rightButton: Button, distribution: Distribution = .emphasis, alignment: Alignment = .horizontal) {
         self.leftButton = leftButton
         self.rightButton = rightButton
         self.distribution = distribution
+        self.alignment = alignment
         self.adjustsFontForContentSizeCategory = (leftButton.adjustsFontForContentSizeCategory && rightButton.adjustsFontForContentSizeCategory)
 
         super.init(frame: .null)
@@ -53,7 +70,7 @@ public final class ButtonRow: UIView, UIContentSizeCategoryAdjusting {
         addSubview(leftButton)
         addSubview(rightButton)
 
-        updateDistribution()
+        updateAlignment()
     }
 
     @available(*, unavailable)
@@ -105,6 +122,25 @@ public final class ButtonRow: UIView, UIContentSizeCategoryAdjusting {
                 make.leading.greaterThanOrEqualTo(leftButton.snp.trailing).offset(Space.three)
                 make.width.greaterThanOrEqualTo(leftButton)
             }
+        }
+    }
+
+    private func updateAlignment() {
+        switch alignment {
+        case .vertical:
+            rightButton.snp.removeConstraints()
+            rightButton.snp.remakeConstraints { make in
+                make.leading.top.trailing.equalToSuperview()
+            }
+
+            leftButton.snp.removeConstraints()
+            leftButton.snp.remakeConstraints { make in
+                make.leading.bottom.trailing.equalToSuperview()
+                make.top.equalTo(rightButton.snp.bottom).offset(Space.two)
+                make.height.equalTo(rightButton.snp.height)
+            }
+        case .horizontal:
+            updateDistribution()
         }
     }
 }
