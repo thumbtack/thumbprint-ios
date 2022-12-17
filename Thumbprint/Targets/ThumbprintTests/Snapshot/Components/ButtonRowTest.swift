@@ -33,4 +33,44 @@ class ButtonRowTest: SnapshotTestCase {
             }
         }
     }
+
+    func testAllVertical() {
+        let buttonRow = ButtonRow(
+            leftButton: Button(theme: .tertiary, adjustsFontForContentSizeCategory: false),
+            rightButton: Button(adjustsFontForContentSizeCategory: false),
+            alignment: .vertical
+        )
+
+        buttonTitles.forEach {
+            let (buttonTitleIdentifier, (primaryTitle, secondaryTitle)) = $0
+
+            buttonRow.rightButton.title = primaryTitle
+            buttonRow.leftButton.title = secondaryTitle
+
+            verify(
+                view: buttonRow,
+                identifier: "\(buttonTitleIdentifier)",
+                sizes: .allWithIntrinsicHeight + [.size(width: 1024, height: .intrinsic)],
+                contentSizeCategories: [.unspecified]
+            )
+        }
+    }
+
+    func testAllHorizontalVertical() {
+        let buttonRow = ButtonRow(
+            leftButton: Button(theme: .tertiary, adjustsFontForContentSizeCategory: false),
+            rightButton: Button(adjustsFontForContentSizeCategory: false),
+            distribution: .equal
+        )
+
+        buttonRow.alignment = .vertical
+        buttonRow.rightButton.title = "Next"
+        buttonRow.leftButton.title = "Skip"
+
+        verify(
+            view: buttonRow,
+            sizes: .allWithIntrinsicHeight + [.size(width: 1024, height: .intrinsic)],
+            contentSizeCategories: [.unspecified]
+        )
+    }
 }
