@@ -16,14 +16,13 @@ DEPENDENCIES:
   - TTCalendarPicker
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - SnapKit
     - SnapshotTesting
-    - ThumbprintTokens
-    - TTCalendarPicker
-  trunk:
     - SwiftFormat
     - SwiftLint
+    - ThumbprintTokens
+    - TTCalendarPicker
 
 SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
