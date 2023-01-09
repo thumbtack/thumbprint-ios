@@ -355,6 +355,7 @@ public enum Icon: String, CaseIterable {
     case navigationSettingsSmall = "navigation_settings--small"
     case navigationShrinkMedium = "navigation_shrink--medium"
     case navigationShrinkSmall = "navigation_shrink--small"
+    case navigationSyncSmall = "navigation_sync--small"
     case navigationSyncTiny = "navigation_sync--tiny"
     case notificationAlertsBlockedMedium = "notificationAlerts_blocked--medium"
     case notificationAlertsBlockedSmall = "notificationAlerts_blocked--small"
