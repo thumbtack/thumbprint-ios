@@ -109,6 +109,7 @@ public enum Icon: String, CaseIterable {
     case contentModifierCreditCardSmall = "contentModifier_credit-card--small"
     case contentModifierDataMedium = "contentModifier_data--medium"
     case contentModifierDataSmall = "contentModifier_data--small"
+    case contentModifierDataTiny = "contentModifier_data--tiny"
     case contentModifierDatePlaceholderMedium = "contentModifier_date-placeholder--medium"
     case contentModifierDatePlaceholderSmall = "contentModifier_date-placeholder--small"
     case contentModifierDatePlaceholderTiny = "contentModifier_date-placeholder--tiny"
