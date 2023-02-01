@@ -180,6 +180,7 @@ public enum Icon: String, CaseIterable {
     case contentModifierServicesFilledMedium = "contentModifier_services-filled--medium"
     case contentModifierTimeMedium = "contentModifier_time--medium"
     case contentModifierTimeSmall = "contentModifier_time--small"
+    case contentModifierTimeTiny = "contentModifier_time--tiny"
     case contentModifierTrophyMedium = "contentModifier_trophy--medium"
     case contentModifierTrophySmall = "contentModifier_trophy--small"
     case contentModifierTrophyTiny = "contentModifier_trophy--tiny"
