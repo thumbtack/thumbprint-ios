@@ -16,7 +16,14 @@ public final class ShadowCard: UIView {
         }
     }
 
+    public var shadowImage: UIImage {
+        didSet {
+            shadowImageView.image = shadowImage
+        }
+    }
+
     public init(shadowImage: UIImage = Shadow.roundedShadow300) {
+        self.shadowImage = shadowImage
         self.shadowImageView = UIImageView(image: shadowImage)
         self.mainView = UIView()
         self.isHighlighted = false
