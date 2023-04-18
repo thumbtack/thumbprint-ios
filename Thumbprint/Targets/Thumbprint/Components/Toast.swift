@@ -1,4 +1,5 @@
 import SnapKit
+import UIKit
 
 private protocol ToastViewDelegate: AnyObject {
     func actionDidFire()

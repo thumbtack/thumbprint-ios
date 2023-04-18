@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -101,6 +101,9 @@
 		08C81F3825F5AA1B0082FD2D /* UnitTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C81F3725F5AA1B0082FD2D /* UnitTestCase.swift */; };
 		08DC57BD26003E2E00B95596 /* libPods-ThumbprintTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08DC57BC26003E2E00B95596 /* libPods-ThumbprintTests.a */; };
 		318A6C982FB8AA496CC8F3D7 /* libPods-Playground.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 102FC8E790A218C6A3C24993 /* libPods-Playground.a */; };
+		4E3C581B29EF4EF500DAE906 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3C581A29EF4EF500DAE906 /* SnapKit */; };
+		4E3C581E29EF4F3300DAE906 /* TTCalendarPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3C581D29EF4F3300DAE906 /* TTCalendarPicker */; };
+		4E3C582929EF55FA00DAE906 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3C582829EF55FA00DAE906 /* SnapshotTesting */; };
 		7B7A49A6AABE9CD4F18A04F0 /* libPods-Thumbprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */; };
 		A464D08A26AA1B0E00929BFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D08926AA1B0E00929BFD /* AppDelegate.swift */; };
 		A464D08C26AA1B0E00929BFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D08B26AA1B0E00929BFD /* SceneDelegate.swift */; };
@@ -359,13 +362,9 @@
 		08C81F2E25F5A95C0082FD2D /* UIView+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Testing.swift"; sourceTree = "<group>"; };
 		08C81F3225F5A9DF0082FD2D /* Bundle+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Testing.swift"; sourceTree = "<group>"; };
 		08C81F3725F5AA1B0082FD2D /* UnitTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestCase.swift; sourceTree = "<group>"; };
-		08DC57B426003E0E00B95596 /* libSnapKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSnapKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DC57B626003E0E00B95596 /* libThumbprintTokens.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThumbprintTokens.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		08DC57B826003E0E00B95596 /* libTTCalendarPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTTCalendarPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DC57BA26003E2300B95596 /* libPods-ThumbprintTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ThumbprintTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DC57BC26003E2E00B95596 /* libPods-ThumbprintTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ThumbprintTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		08DC57C226003E7E00B95596 /* libSnapKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSnapKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		08DC57C426003E7E00B95596 /* libSnapshotTesting.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSnapshotTesting.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DC57C626003E7E00B95596 /* libThumbprintTokens.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThumbprintTokens.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DC57C826003E7E00B95596 /* libTTCalendarPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTTCalendarPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		102FC8E790A218C6A3C24993 /* libPods-Playground.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Playground.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -450,6 +449,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B7A49A6AABE9CD4F18A04F0 /* libPods-Thumbprint.a in Frameworks */,
+				4E3C581E29EF4F3300DAE906 /* TTCalendarPicker in Frameworks */,
+				4E3C581B29EF4EF500DAE906 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08DC57BD26003E2E00B95596 /* libPods-ThumbprintTests.a in Frameworks */,
+				4E3C582929EF55FA00DAE906 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,15 +890,11 @@
 		907AF1253CE727D385CC6A5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				08DC57C226003E7E00B95596 /* libSnapKit.a */,
-				08DC57C426003E7E00B95596 /* libSnapshotTesting.a */,
 				08DC57C626003E7E00B95596 /* libThumbprintTokens.a */,
 				08DC57C826003E7E00B95596 /* libTTCalendarPicker.a */,
 				08DC57BC26003E2E00B95596 /* libPods-ThumbprintTests.a */,
 				08DC57BA26003E2300B95596 /* libPods-ThumbprintTests.a */,
-				08DC57B426003E0E00B95596 /* libSnapKit.a */,
 				08DC57B626003E0E00B95596 /* libThumbprintTokens.a */,
-				08DC57B826003E0E00B95596 /* libTTCalendarPicker.a */,
 				82BB25065E7ACE32CDDE00D1 /* libPods-TestsHostApp.a */,
 				429EDB041A948C5C1965C980 /* libPods-ThumbprintTests.a */,
 				F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */,
@@ -1095,6 +1093,10 @@
 				080E6F9E25FFD534006D8056 /* PBXTargetDependency */,
 			);
 			name = Thumbprint;
+			packageProductDependencies = (
+				4E3C581A29EF4EF500DAE906 /* SnapKit */,
+				4E3C581D29EF4F3300DAE906 /* TTCalendarPicker */,
+			);
 			productName = ThumbprintStaticLibrary;
 			productReference = 080E6F2C25FFD333006D8056 /* libThumbprint.a */;
 			productType = "com.apple.product-type.library.static";
@@ -1133,6 +1135,9 @@
 				0840CE8225FD536600C571AA /* PBXTargetDependency */,
 			);
 			name = ThumbprintTests;
+			packageProductDependencies = (
+				4E3C582829EF55FA00DAE906 /* SnapshotTesting */,
+			);
 			productName = ThumbprintTests;
 			productReference = 080E7C5625F48A0E002DBE7B /* ThumbprintTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1281,6 +1286,11 @@
 				Base,
 			);
 			mainGroup = 080E7C4325F48A0E002DBE7B;
+			packageReferences = (
+				4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker" */,
+				4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 080E7C4E25F48A0E002DBE7B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2469,6 +2479,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.6.0;
+			};
+		};
+		4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thumbtack/TTCalendarPicker.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.2.0;
+			};
+		};
+		4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4E3C581A29EF4EF500DAE906 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		4E3C581D29EF4F3300DAE906 /* TTCalendarPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker" */;
+			productName = TTCalendarPicker;
+		};
+		4E3C582829EF55FA00DAE906 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 080E7C4425F48A0E002DBE7B /* Project object */;
 }
