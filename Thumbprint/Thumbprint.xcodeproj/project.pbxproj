@@ -61,7 +61,6 @@
 		0840CE7325FD533F00C571AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0840CE7225FD533F00C571AA /* Assets.xcassets */; };
 		0840CE7625FD533F00C571AA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0840CE7525FD533F00C571AA /* Preview Assets.xcassets */; };
 		0840CE7925FD533F00C571AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0840CE7725FD533F00C571AA /* LaunchScreen.storyboard */; };
-		086492A4260040ED00EB82E8 /* libThumbprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 080E6F2C25FFD333006D8056 /* libThumbprint.a */; };
 		0864945A260156AF00EB82E8 /* ThumbprintResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 080E7C4D25F48A0E002DBE7B /* ThumbprintResources.bundle */; };
 		08649463260156F300EB82E8 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080E6DEB25FF2D95006D8056 /* Bundle+Extensions.swift */; };
 		086494792601585100EB82E8 /* ThumbprintResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 080E7C4D25F48A0E002DBE7B /* ThumbprintResources.bundle */; };
@@ -104,7 +103,6 @@
 		4E3C581B29EF4EF500DAE906 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3C581A29EF4EF500DAE906 /* SnapKit */; };
 		4E3C581E29EF4F3300DAE906 /* TTCalendarPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3C581D29EF4F3300DAE906 /* TTCalendarPicker */; };
 		4E3C582929EF55FA00DAE906 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3C582829EF55FA00DAE906 /* SnapshotTesting */; };
-		4EF81ADC29EF5BD9003241F5 /* libThumbprintTokens.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF81ADB29EF5BD9003241F5 /* libThumbprintTokens.a */; };
 		72649A423617F84FF4065031 /* libPods-TestsHostApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C32FE50E4B849E57F7E7405 /* libPods-TestsHostApp.a */; };
 		7B7A49A6AABE9CD4F18A04F0 /* libPods-Thumbprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */; };
 		A464D08A26AA1B0E00929BFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D08926AA1B0E00929BFD /* AppDelegate.swift */; };
@@ -366,14 +364,11 @@
 		08DC57B626003E0E00B95596 /* libThumbprintTokens.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThumbprintTokens.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DC57BA26003E2300B95596 /* libPods-ThumbprintTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ThumbprintTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DC57BC26003E2E00B95596 /* libPods-ThumbprintTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ThumbprintTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		08DC57C626003E7E00B95596 /* libThumbprintTokens.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThumbprintTokens.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		102FC8E790A218C6A3C24993 /* libPods-Playground.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Playground.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C32FE50E4B849E57F7E7405 /* libPods-TestsHostApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestsHostApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A6240C116073F3EB45A0F0 /* Pods-Playground.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playground.debug.xcconfig"; path = "Target Support Files/Pods-Playground/Pods-Playground.debug.xcconfig"; sourceTree = "<group>"; };
 		2C0FE887E31FE10F4AB65A6B /* Pods-Playground.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playground.release.xcconfig"; path = "Target Support Files/Pods-Playground/Pods-Playground.release.xcconfig"; sourceTree = "<group>"; };
 		429EDB041A948C5C1965C980 /* libPods-ThumbprintTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ThumbprintTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4EF81AD929EF5B50003241F5 /* libThumbprintTokens.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThumbprintTokens.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4EF81ADB29EF5BD9003241F5 /* libThumbprintTokens.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThumbprintTokens.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		70062AC702F206E990C19393 /* Pods-Thumbprint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbprint.debug.xcconfig"; path = "Target Support Files/Pods-Thumbprint/Pods-Thumbprint.debug.xcconfig"; sourceTree = "<group>"; };
 		7F9C8BBA2599C336FF37A86E /* Pods-ThumbprintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThumbprintTests.debug.xcconfig"; path = "Target Support Files/Pods-ThumbprintTests/Pods-ThumbprintTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8D662BAB622080BBA7DEF81C /* Pods-Thumbprint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbprint.release.xcconfig"; path = "Target Support Files/Pods-Thumbprint/Pods-Thumbprint.release.xcconfig"; sourceTree = "<group>"; };
@@ -476,8 +471,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EF81ADC29EF5BD9003241F5 /* libThumbprintTokens.a in Frameworks */,
-				086492A4260040ED00EB82E8 /* libThumbprint.a in Frameworks */,
 				72649A423617F84FF4065031 /* libPods-TestsHostApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -893,9 +886,6 @@
 		907AF1253CE727D385CC6A5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4EF81ADB29EF5BD9003241F5 /* libThumbprintTokens.a */,
-				4EF81AD929EF5B50003241F5 /* libThumbprintTokens.a */,
-				08DC57C626003E7E00B95596 /* libThumbprintTokens.a */,
 				08DC57BC26003E2E00B95596 /* libPods-ThumbprintTests.a */,
 				08DC57BA26003E2300B95596 /* libPods-ThumbprintTests.a */,
 				08DC57B626003E0E00B95596 /* libThumbprintTokens.a */,
@@ -1291,9 +1281,9 @@
 			);
 			mainGroup = 080E7C4325F48A0E002DBE7B;
 			packageReferences = (
-				4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit.git" */,
-				4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker.git" */,
-				4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */,
+				4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker" */,
+				4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 080E7C4E25F48A0E002DBE7B /* Products */;
 			projectDirPath = "";
@@ -2485,7 +2475,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
+		4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -2493,7 +2483,7 @@
 				version = 5.6.0;
 			};
 		};
-		4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker.git" */ = {
+		4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/thumbtack/TTCalendarPicker.git";
 			requirement = {
@@ -2501,7 +2491,7 @@
 				version = 0.2.0;
 			};
 		};
-		4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */ = {
+		4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
 			requirement = {
@@ -2514,17 +2504,17 @@
 /* Begin XCSwiftPackageProductDependency section */
 		4E3C581A29EF4EF500DAE906 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = 4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 		4E3C581D29EF4F3300DAE906 /* TTCalendarPicker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker.git" */;
+			package = 4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker" */;
 			productName = TTCalendarPicker;
 		};
 		4E3C582829EF55FA00DAE906 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */;
+			package = 4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
