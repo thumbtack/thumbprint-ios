@@ -98,12 +98,9 @@
 		08C81F2B25F5A9010082FD2D /* WaitHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C81F2A25F5A9010082FD2D /* WaitHelpers.swift */; };
 		08C81F2F25F5A95C0082FD2D /* UIView+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C81F2E25F5A95C0082FD2D /* UIView+Testing.swift */; };
 		08C81F3825F5AA1B0082FD2D /* UnitTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C81F3725F5AA1B0082FD2D /* UnitTestCase.swift */; };
-		08DC57BD26003E2E00B95596 /* libPods-ThumbprintTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08DC57BC26003E2E00B95596 /* libPods-ThumbprintTests.a */; };
-		318A6C982FB8AA496CC8F3D7 /* libPods-Playground.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 102FC8E790A218C6A3C24993 /* libPods-Playground.a */; };
 		4E3C581B29EF4EF500DAE906 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3C581A29EF4EF500DAE906 /* SnapKit */; };
 		4E3C581E29EF4F3300DAE906 /* TTCalendarPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3C581D29EF4F3300DAE906 /* TTCalendarPicker */; };
 		4E3C582929EF55FA00DAE906 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3C582829EF55FA00DAE906 /* SnapshotTesting */; };
-		72649A423617F84FF4065031 /* libPods-TestsHostApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C32FE50E4B849E57F7E7405 /* libPods-TestsHostApp.a */; };
 		7B7A49A6AABE9CD4F18A04F0 /* libPods-Thumbprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */; };
 		A464D08A26AA1B0E00929BFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D08926AA1B0E00929BFD /* AppDelegate.swift */; };
 		A464D08C26AA1B0E00929BFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D08B26AA1B0E00929BFD /* SceneDelegate.swift */; };
@@ -363,11 +360,6 @@
 		08C81F3725F5AA1B0082FD2D /* UnitTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestCase.swift; sourceTree = "<group>"; };
 		08DC57B626003E0E00B95596 /* libThumbprintTokens.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThumbprintTokens.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DC57BA26003E2300B95596 /* libPods-ThumbprintTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ThumbprintTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		08DC57BC26003E2E00B95596 /* libPods-ThumbprintTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ThumbprintTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		102FC8E790A218C6A3C24993 /* libPods-Playground.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Playground.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C32FE50E4B849E57F7E7405 /* libPods-TestsHostApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestsHostApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		24A6240C116073F3EB45A0F0 /* Pods-Playground.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playground.debug.xcconfig"; path = "Target Support Files/Pods-Playground/Pods-Playground.debug.xcconfig"; sourceTree = "<group>"; };
-		2C0FE887E31FE10F4AB65A6B /* Pods-Playground.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playground.release.xcconfig"; path = "Target Support Files/Pods-Playground/Pods-Playground.release.xcconfig"; sourceTree = "<group>"; };
 		429EDB041A948C5C1965C980 /* libPods-ThumbprintTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ThumbprintTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70062AC702F206E990C19393 /* Pods-Thumbprint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbprint.debug.xcconfig"; path = "Target Support Files/Pods-Thumbprint/Pods-Thumbprint.debug.xcconfig"; sourceTree = "<group>"; };
 		7F9C8BBA2599C336FF37A86E /* Pods-ThumbprintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThumbprintTests.debug.xcconfig"; path = "Target Support Files/Pods-ThumbprintTests/Pods-ThumbprintTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -462,7 +454,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08DC57BD26003E2E00B95596 /* libPods-ThumbprintTests.a in Frameworks */,
 				4E3C582929EF55FA00DAE906 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,7 +462,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72649A423617F84FF4065031 /* libPods-TestsHostApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,7 +471,6 @@
 			files = (
 				A464D11F26AA271A00929BFD /* libThumbprint.a in Frameworks */,
 				A464D10426AA217800929BFD /* ThumbprintPublicResources.framework in Frameworks */,
-				318A6C982FB8AA496CC8F3D7 /* libPods-Playground.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -886,13 +875,9 @@
 		907AF1253CE727D385CC6A5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				08DC57BC26003E2E00B95596 /* libPods-ThumbprintTests.a */,
-				08DC57BA26003E2300B95596 /* libPods-ThumbprintTests.a */,
 				08DC57B626003E0E00B95596 /* libThumbprintTokens.a */,
 				429EDB041A948C5C1965C980 /* libPods-ThumbprintTests.a */,
 				F0A99A127B8BB41E56278E96 /* libPods-Thumbprint.a */,
-				102FC8E790A218C6A3C24993 /* libPods-Playground.a */,
-				1C32FE50E4B849E57F7E7405 /* libPods-TestsHostApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1044,8 +1029,6 @@
 				E960F8432D6A9D65F3873172 /* Pods-TestsHostApp.release.xcconfig */,
 				7F9C8BBA2599C336FF37A86E /* Pods-ThumbprintTests.debug.xcconfig */,
 				D12EA88E3D1B084D408E2707 /* Pods-ThumbprintTests.release.xcconfig */,
-				24A6240C116073F3EB45A0F0 /* Pods-Playground.debug.xcconfig */,
-				2C0FE887E31FE10F4AB65A6B /* Pods-Playground.release.xcconfig */,
 			);
 			name = Pods;
 			path = ../Pods;
@@ -1117,7 +1100,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 080E7C6425F48A0E002DBE7B /* Build configuration list for PBXNativeTarget "ThumbprintTests" */;
 			buildPhases = (
-				26B06F717FB0349032FA3C6A /* [CP] Check Pods Manifest.lock */,
 				080E7C5225F48A0E002DBE7B /* Sources */,
 				080E7C5325F48A0E002DBE7B /* Frameworks */,
 				080E7C5425F48A0E002DBE7B /* Resources */,
@@ -1140,7 +1122,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0840CE7D25FD533F00C571AA /* Build configuration list for PBXNativeTarget "TestsHostApp" */;
 			buildPhases = (
-				E1EC20E4681E949EE40A2DB4 /* [CP] Check Pods Manifest.lock */,
 				0840CE6625FD533E00C571AA /* Sources */,
 				0840CE6725FD533E00C571AA /* Frameworks */,
 				0840CE6825FD533E00C571AA /* Resources */,
@@ -1160,7 +1141,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A464D0B426AA1B1100929BFD /* Build configuration list for PBXNativeTarget "Playground" */;
 			buildPhases = (
-				249C2E1ABAB482E176615589 /* [CP] Check Pods Manifest.lock */,
 				A464D08326AA1B0E00929BFD /* Sources */,
 				A464D08426AA1B0E00929BFD /* Frameworks */,
 				A464D08526AA1B0E00929BFD /* Resources */,
@@ -1281,9 +1261,9 @@
 			);
 			mainGroup = 080E7C4325F48A0E002DBE7B;
 			packageReferences = (
-				4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker" */,
-				4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit.git" */,
+				4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker.git" */,
+				4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */,
 			);
 			productRefGroup = 080E7C4E25F48A0E002DBE7B /* Products */;
 			projectDirPath = "";
@@ -1388,72 +1368,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Thumbprint-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		249C2E1ABAB482E176615589 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Playground-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		26B06F717FB0349032FA3C6A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ThumbprintTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E1EC20E4681E949EE40A2DB4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TestsHostApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1794,7 +1708,6 @@
 		};
 		A464D0AE26AA1B1100929BFD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24A6240C116073F3EB45A0F0 /* Pods-Playground.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1870,7 +1783,6 @@
 		};
 		A464D0AF26AA1B1100929BFD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C0FE887E31FE10F4AB65A6B /* Pods-Playground.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2475,7 +2387,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -2483,7 +2395,7 @@
 				version = 5.6.0;
 			};
 		};
-		4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker" */ = {
+		4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/thumbtack/TTCalendarPicker.git";
 			requirement = {
@@ -2491,7 +2403,7 @@
 				version = 0.2.0;
 			};
 		};
-		4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+		4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
 			requirement = {
@@ -2504,17 +2416,17 @@
 /* Begin XCSwiftPackageProductDependency section */
 		4E3C581A29EF4EF500DAE906 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
 			productName = SnapKit;
 		};
 		4E3C581D29EF4F3300DAE906 /* TTCalendarPicker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker" */;
+			package = 4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker.git" */;
 			productName = TTCalendarPicker;
 		};
 		4E3C582829EF55FA00DAE906 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			package = 4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
