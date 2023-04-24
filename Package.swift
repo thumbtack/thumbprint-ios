@@ -27,12 +27,17 @@ let package = Package(
                 "SnapKit",
                 "TTCalendarPicker",
             ]),
-//        .testTarget(
-//            name: "ThumbprintTests",
-//            dependencies: [
-//                "Thumbprint",
-//                "SnapKit",
-//            ]),
+        .binaryTarget(
+            name: "ThumbprintTokens",
+            url: "https://unpkg.com/@thumbtack/thumbprint-tokens@12.1.0/dist/ios.zip",
+            checksum: "dd4daf5b0a4e44d381e2279f98aa919453ad9f80f4a53866180b516fb2f27dd2"
+        ),
+        .testTarget(
+            name: "ThumbprintTests",
+            dependencies: [
+                "Thumbprint",
+                "SnapKit",
+            ]),
     ],
     swiftLanguageVersions: [
         .v5
