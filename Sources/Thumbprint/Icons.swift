@@ -401,7 +401,7 @@ public enum Icon: String, CaseIterable {
 
     public var image: UIImage {
         guard let icon = UIImage(named: rawValue, in: Self.bundle, compatibleWith: nil) else {
-            assertionFailure("Expected bundle at path \(Self.bundle?.bundlePath ?? "<missing>") to contain icon with name \(rawValue).")
+            assertionFailure("Expected bundle at path \(Self.bundle.bundlePath) to contain icon with name \(rawValue).")
             return UIImage()
         }
 
@@ -426,5 +426,5 @@ public enum Icon: String, CaseIterable {
     }
 
     // MARK: - Private
-    private static var bundle: Bundle! // swiftlint:disable:this implicitly_unwrapped_optional
+    private static var bundle: Bundle = Bundle.module
 }

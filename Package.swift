@@ -29,7 +29,11 @@ let package = Package(
                 "SnapKit",
                 "TTCalendarPicker",
                 .product(name: "ThumbprintTokens", package: "thumbprint-tokens"),
-            ]),
+            ],
+        resources: [
+            .process("Resources")
+        ]
+        ),
         .testTarget(
             name: "ThumbprintTests",
             dependencies: [
@@ -38,7 +42,11 @@ let package = Package(
                 "TTCalendarPicker",
                 .product(name: "ThumbprintTokens", package: "thumbprint-tokens"),
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
-            ]),
+            ],
+            resources: [
+                .process("Resources")
+            ]
+        ),
     ],
     swiftLanguageVersions: [
         .v5
