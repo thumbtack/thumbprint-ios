@@ -17,6 +17,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.6.0")),
         .package(url: "https://github.com/thumbtack/TTCalendarPicker.git", from: "0.2.0"),
+        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.11.0"),
+        .package(url: "https://github.com/thumbtack/thumbprint-tokens.git", from: "13.0.1"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -26,17 +28,16 @@ let package = Package(
             dependencies: [
                 "SnapKit",
                 "TTCalendarPicker",
+                .product(name: "ThumbprintTokens", package: "thumbprint-tokens"),
             ]),
-        .binaryTarget(
-            name: "ThumbprintTokens",
-            url: "https://unpkg.com/@thumbtack/thumbprint-tokens@12.1.0/dist/ios.zip",
-            checksum: "dd4daf5b0a4e44d381e2279f98aa919453ad9f80f4a53866180b516fb2f27dd2"
-        ),
         .testTarget(
             name: "ThumbprintTests",
             dependencies: [
                 "Thumbprint",
                 "SnapKit",
+                "TTCalendarPicker",
+                .product(name: "ThumbprintTokens", package: "thumbprint-tokens"),
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
             ]),
     ],
     swiftLanguageVersions: [

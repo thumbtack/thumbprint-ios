@@ -15,8 +15,7 @@
 		0840CE7925FD533F00C571AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0840CE7725FD533F00C571AA /* LaunchScreen.storyboard */; };
 		08C813DA25FF089D001F9DFE /* Bundle+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C81F3225F5A9DF0082FD2D /* Bundle+Testing.swift */; };
 		08C813E125FF08A2001F9DFE /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0840CEA125FD590D00C571AA /* Icons.xcassets */; };
-		4E3C582929EF55FA00DAE906 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 4E3C582829EF55FA00DAE906 /* SnapshotTesting */; };
-		4E45396729F73C100008E9BC /* Thumbprint in Frameworks */ = {isa = PBXBuildFile; productRef = 4E45396629F73C100008E9BC /* Thumbprint */; };
+		4ECFB0A629FC5B31009D8AAB /* thumbprint-ios in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E45396529F73AFD0008E9BC /* thumbprint-ios */; };
 		A464D08A26AA1B0E00929BFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D08926AA1B0E00929BFD /* AppDelegate.swift */; };
 		A464D08C26AA1B0E00929BFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464D08B26AA1B0E00929BFD /* SceneDelegate.swift */; };
 		A464D09326AA1B1000929BFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A464D09226AA1B1000929BFD /* Assets.xcassets */; };
@@ -117,7 +116,7 @@
 /* Begin PBXFileReference section */
 		080E6F8125FFD421006D8056 /* ThumbprintResources-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "ThumbprintResources-Release.xcconfig"; sourceTree = "<group>"; };
 		080E6F8225FFD421006D8056 /* ThumbprintResources-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "ThumbprintResources-Debug.xcconfig"; sourceTree = "<group>"; };
-		080E7C5625F48A0E002DBE7B /* ThumbprintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThumbprintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		080E7C5625F48A0E002DBE7B /* ThumbprintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ThumbprintTests.xctest; path = .xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		080E7D3E25F49024002DBE7B /* Thumbprint-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Thumbprint-Release.xcconfig"; sourceTree = "<group>"; };
 		080E7D3F25F49024002DBE7B /* Thumbprint-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Thumbprint-Debug.xcconfig"; sourceTree = "<group>"; };
 		080E7D5825F491F8002DBE7B /* ThumbprintTests-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ThumbprintTests-Debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,9 +135,6 @@
 		08C81A2E25F578CC0082FD2D /* ThumbprintTests-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "ThumbprintTests-Release.xcconfig"; sourceTree = "<group>"; };
 		08C81F3225F5A9DF0082FD2D /* Bundle+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Testing.swift"; sourceTree = "<group>"; };
 		4E45396529F73AFD0008E9BC /* thumbprint-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "thumbprint-ios"; path = ..; sourceTree = "<group>"; };
-		70062AC702F206E990C19393 /* Pods-Thumbprint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbprint.debug.xcconfig"; path = "Target Support Files/Pods-Thumbprint/Pods-Thumbprint.debug.xcconfig"; sourceTree = "<group>"; };
-		7F9C8BBA2599C336FF37A86E /* Pods-ThumbprintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThumbprintTests.debug.xcconfig"; path = "Target Support Files/Pods-ThumbprintTests/Pods-ThumbprintTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8D662BAB622080BBA7DEF81C /* Pods-Thumbprint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbprint.release.xcconfig"; path = "Target Support Files/Pods-Thumbprint/Pods-Thumbprint.release.xcconfig"; sourceTree = "<group>"; };
 		A464D08726AA1B0E00929BFD /* Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A464D08926AA1B0E00929BFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A464D08B26AA1B0E00929BFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,11 +188,8 @@
 		A464D17326AA29D800929BFD /* TextArea+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextArea+InspectableView.swift"; sourceTree = "<group>"; };
 		A464D17426AA29D800929BFD /* EntityAvatar+InspectableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EntityAvatar+InspectableView.swift"; sourceTree = "<group>"; };
 		A479A68526AB381D00D49C83 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		C54C542DED491DAB0804B642 /* Pods-TestsHostApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestsHostApp.debug.xcconfig"; path = "Target Support Files/Pods-TestsHostApp/Pods-TestsHostApp.debug.xcconfig"; sourceTree = "<group>"; };
-		D12EA88E3D1B084D408E2707 /* Pods-ThumbprintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThumbprintTests.release.xcconfig"; path = "Target Support Files/Pods-ThumbprintTests/Pods-ThumbprintTests.release.xcconfig"; sourceTree = "<group>"; };
 		E054328126F265D9004485B9 /* LabelCheckbox+InspectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LabelCheckbox+InspectableView.swift"; sourceTree = "<group>"; };
 		E054328326F26611004485B9 /* Radio+InspectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Radio+InspectableView.swift"; sourceTree = "<group>"; };
-		E960F8432D6A9D65F3873172 /* Pods-TestsHostApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestsHostApp.release.xcconfig"; path = "Target Support Files/Pods-TestsHostApp/Pods-TestsHostApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,7 +197,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E3C582929EF55FA00DAE906 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E45396729F73C100008E9BC /* Thumbprint in Frameworks */,
+				4ECFB0A629FC5B31009D8AAB /* thumbprint-ios in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +257,6 @@
 				080E6F7B25FFD39F006D8056 /* Targets */,
 				080E7D3D25F49024002DBE7B /* Xcconfig */,
 				080E7C4E25F48A0E002DBE7B /* Products */,
-				F2F93856635967702332DDF5 /* Pods */,
 				907AF1253CE727D385CC6A5D /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -459,20 +450,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		F2F93856635967702332DDF5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				70062AC702F206E990C19393 /* Pods-Thumbprint.debug.xcconfig */,
-				8D662BAB622080BBA7DEF81C /* Pods-Thumbprint.release.xcconfig */,
-				C54C542DED491DAB0804B642 /* Pods-TestsHostApp.debug.xcconfig */,
-				E960F8432D6A9D65F3873172 /* Pods-TestsHostApp.release.xcconfig */,
-				7F9C8BBA2599C336FF37A86E /* Pods-ThumbprintTests.debug.xcconfig */,
-				D12EA88E3D1B084D408E2707 /* Pods-ThumbprintTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -501,7 +478,6 @@
 			);
 			name = ThumbprintTests;
 			packageProductDependencies = (
-				4E3C582829EF55FA00DAE906 /* SnapshotTesting */,
 			);
 			productName = ThumbprintTests;
 			productReference = 080E7C5625F48A0E002DBE7B /* ThumbprintTests.xctest */;
@@ -521,7 +497,6 @@
 			);
 			name = TestsHostApp;
 			packageProductDependencies = (
-				4E45396629F73C100008E9BC /* Thumbprint */,
 			);
 			productName = TestsHostApp;
 			productReference = 0840CE6A25FD533E00C571AA /* TestsHostApp.app */;
@@ -645,7 +620,6 @@
 			packageReferences = (
 				4E3C581929EF4EF500DAE906 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				4E3C581C29EF4F3300DAE906 /* XCRemoteSwiftPackageReference "TTCalendarPicker" */,
-				4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 080E7C4E25F48A0E002DBE7B /* Products */;
 			projectDirPath = "";
@@ -1567,27 +1541,7 @@
 				version = 0.2.0;
 			};
 		};
-		4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
-			requirement = {
-				kind = exactVersion;
-				version = 1.9.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		4E3C582829EF55FA00DAE906 /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4E3C582729EF55FA00DAE906 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = SnapshotTesting;
-		};
-		4E45396629F73C100008E9BC /* Thumbprint */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Thumbprint;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 080E7C4425F48A0E002DBE7B /* Project object */;
 }
