@@ -44,7 +44,6 @@ let package = Package(
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
             ],
             resources: [
-                .copy("Resources/Assets.xcassets"),
                 .copy("Resources/Icons.xcassets")
             ]
         ),

@@ -5,6 +5,11 @@ import UIKit
 /// option to add a view to the left of it
 
 public class TextFloatingActionButton: Control {
+
+    public struct Defaults {
+        public static var module = Bundle.module
+    }
+
     public struct Theme: Equatable {
         let backgroundColor: UIColor
         let borderColor: UIColor
@@ -39,7 +44,7 @@ public class TextFloatingActionButton: Control {
                     highlightedBackgroundColor: UIColor,
                     highlightedBorderColor: UIColor,
                     textStyle: Font.TextStyle = .title6,
-                    shadowImage: UIImage? = UIImage(named: "textFabShadow", in: Bundle.thumbprint, compatibleWith: nil),
+                    shadowImage: UIImage? = UIImage(named: "textFabShadow", in: Defaults.module, compatibleWith: nil),
                     height: CGFloat = 44,
                     horizontalPadding: CGFloat = Space.three,
                     iconTextSpacing: CGFloat = Space.two) {

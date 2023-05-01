@@ -39,30 +39,30 @@ public enum Shadow {
     // swiftlint:disable force_unwrapping
 
     /// Shadow with blur radius: 3pt, opacity: 10%, vertical alignment offset 1pt, cornerRadius: 0
-    public static let shadow100 = UIImage(named: "shadow100", in: Bundle.thumbprint, compatibleWith: nil)!
+    public static let shadow100 = UIImage(named: "shadow100", in: Bundle.module, compatibleWith: nil)!
 
     /// Shadow with blur radius: 4pt, opacity: 15%, vertical alignment offset 2pt, cornerRadius: 0
-    public static let shadow200 = UIImage(named: "shadow200", in: Bundle.thumbprint, compatibleWith: nil)!
+    public static let shadow200 = UIImage(named: "shadow200", in: Bundle.module, compatibleWith: nil)!
 
     /// Shadow with blur radius: 7pt, opacity: 15%, vertical alignment offset 2pt, cornerRadius: 0
-    public static let shadow300 = UIImage(named: "shadow300", in: Bundle.thumbprint, compatibleWith: nil)!
+    public static let shadow300 = UIImage(named: "shadow300", in: Bundle.module, compatibleWith: nil)!
 
     /// Shadow with blur radius: 10pt, opacity: 20%, vertical alignment offset 2pt, cornerRadius: 0
-    public static let shadow400 = UIImage(named: "shadow400", in: Bundle.thumbprint, compatibleWith: nil)!
+    public static let shadow400 = UIImage(named: "shadow400", in: Bundle.module, compatibleWith: nil)!
 
     // MARK: - Rounded shadows (4pt)
 
     /// Shadow with blur radius: 3pt, opacity: 10%, vertical alignment offset 1pt, cornerRadius: 4
-    public static let roundedShadow100 = UIImage(named: "roundedShadow100", in: Bundle.thumbprint, compatibleWith: nil)!
+    public static let roundedShadow100 = UIImage(named: "roundedShadow100", in: Bundle.module, compatibleWith: nil)!
 
     /// Shadow with blur radius: 4pt, opacity: 15%, vertical alignment offset 2pt, cornerRadius: 4
-    public static let roundedShadow200 = UIImage(named: "roundedShadow200", in: Bundle.thumbprint, compatibleWith: nil)!
+    public static let roundedShadow200 = UIImage(named: "roundedShadow200", in: Bundle.module, compatibleWith: nil)!
 
     /// Shadow with blur radius: 7pt, opacity: 15%, vertical alignment offset 2pt, cornerRadius: 4
-    public static let roundedShadow300 = UIImage(named: "roundedShadow300", in: Bundle.thumbprint, compatibleWith: nil)!
+    public static let roundedShadow300 = UIImage(named: "roundedShadow300", in: Bundle.module, compatibleWith: nil)!
 
     /// Shadow with blur radius: 10pt, opacity: 20%, vertical alignment offset 2pt, cornerRadius: 4
-    public static let roundedShadow400 = UIImage(named: "roundedShadow400", in: Bundle.thumbprint, compatibleWith: nil)!
+    public static let roundedShadow400 = UIImage(named: "roundedShadow400", in: Bundle.module, compatibleWith: nil)!
 
     // swiftlint:enable force_unwrapping
 }

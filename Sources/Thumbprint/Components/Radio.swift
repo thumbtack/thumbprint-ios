@@ -269,9 +269,9 @@ internal class RadioImage: UIView {
     private let outerRing: UIImageView
     private let backgroundFill: UIImageView
 
-    private static let innerDotImage = UIImage(named: "Radio-InnerDot", in: Bundle.thumbprint, compatibleWith: nil)
-    private static let outerRingImage = UIImage(named: "Radio-OuterRing", in: Bundle.thumbprint, compatibleWith: nil)
-    private static let backgroundFillImage = UIImage(named: "Radio-BackgroundFill", in: Bundle.thumbprint, compatibleWith: nil)
+    private static let innerDotImage = UIImage(named: "Radio-InnerDot", in: Bundle.module, compatibleWith: nil)
+    private static let outerRingImage = UIImage(named: "Radio-OuterRing", in: Bundle.module, compatibleWith: nil)
+    private static let backgroundFillImage = UIImage(named: "Radio-BackgroundFill", in: Bundle.module, compatibleWith: nil)
 
     init() {
         assert(RadioImage.innerDotImage != nil, "InnerDotImage should not be nil")

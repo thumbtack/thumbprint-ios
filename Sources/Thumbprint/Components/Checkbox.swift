@@ -288,10 +288,10 @@ public final class LabeledCheckbox: Control, UIContentSizeCategoryAdjusting {
 }
 
 public class Checkbox: Control {
-    private static let dashImage = UIImage(named: "Checkbox-Dash", in: Bundle.thumbprint, compatibleWith: nil)
-    private static let checkImage = UIImage(named: "Checkbox-Check", in: Bundle.thumbprint, compatibleWith: nil)
-    private static let borderImage = UIImage(named: "Checkbox-Border", in: Bundle.thumbprint, compatibleWith: nil)
-    private static let fillImage = UIImage(named: "Checkbox-BackgroundFill", in: Bundle.thumbprint, compatibleWith: nil)
+    private static let dashImage = UIImage(named: "Checkbox-Dash", in: Bundle.module, compatibleWith: nil)
+    private static let checkImage = UIImage(named: "Checkbox-Check", in: Bundle.module, compatibleWith: nil)
+    private static let borderImage = UIImage(named: "Checkbox-Border", in: Bundle.module, compatibleWith: nil)
+    private static let fillImage = UIImage(named: "Checkbox-BackgroundFill", in: Bundle.module, compatibleWith: nil)
 
     public enum Mark: String {
         case empty
