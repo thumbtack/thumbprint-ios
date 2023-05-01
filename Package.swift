@@ -30,9 +30,9 @@ let package = Package(
                 "TTCalendarPicker",
                 .product(name: "ThumbprintTokens", package: "thumbprint-tokens"),
             ],
-        resources: [
-            .process("Resources")
-        ]
+            resources: [
+                .process("Resources/Assets.xcassets")
+            ]
         ),
         .testTarget(
             name: "ThumbprintTests",
@@ -44,7 +44,8 @@ let package = Package(
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
             ],
             resources: [
-                .process("Resources")
+                .copy("Resources/Assets.xcassets"),
+                .copy("Resources/Icons.xcassets")
             ]
         ),
     ],
