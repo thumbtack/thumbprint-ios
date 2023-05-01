@@ -2,6 +2,8 @@
 import UIKit
 import XCTest
 
+// Sheets are not presented for some reason maybe because it's testing in SPM
+
 class PartialSheetTest: SnapshotTestCase {
     func testSheetWithSize() {
         verify(
