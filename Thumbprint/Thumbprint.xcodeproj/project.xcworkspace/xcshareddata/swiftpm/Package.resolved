@@ -10,6 +10,24 @@
       }
     },
     {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing.git",
+      "state" : {
+        "revision" : "cef5b3f6f11781dd4591bdd1dd0a3d22bd609334",
+        "version" : "1.11.0"
+      }
+    },
+    {
+      "identity" : "thumbprint-tokens",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/thumbtack/thumbprint-tokens.git",
+      "state" : {
+        "revision" : "a91f2295af6fe22bba47807ec384c241aa734985",
+        "version" : "13.0.1"
+      }
+    },
+    {
       "identity" : "ttcalendarpicker",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/thumbtack/TTCalendarPicker.git",
