@@ -2,6 +2,20 @@ import Foundation
 // import ThumbprintResources
 import UIKit
 
+/**
+ * A collection of Thumbprint-compliant shadow images.
+ *
+ * These images already have their cap insets and alignment rect insets
+ * pre-configured.  To use these, put one of the shadow images inside a
+ * UIImageView, ensure the UIImageView is behind the view you're shadowing,
+ * and configure the UIImageView's layout constraints to exactly match the
+ * shadowed view.
+ *
+ * If you are using manual layout (e.g. setting frames directly in layoutSubviews()),
+ * use the `UIView.alignmentRect(forFrame:)` method to correctly calculate the
+ * target frame for the UIImageView.
+ */
+
 public enum Shadow {
     /**
      * A collection of Thumbprint-compliant shadow tokens.
@@ -19,20 +33,6 @@ public enum Shadow {
     public static let shadow200Token: Token = (0.15, 4, CGSize(width: 0, height: 2))
     public static let shadow300Token: Token = (0.15, 7, CGSize(width: 0, height: 2))
     public static let shadow400Token: Token = (0.2, 10, CGSize(width: 0, height: 2))
-
-    /**
-     * A collection of Thumbprint-compliant shadow images.
-     *
-     * These images already have their cap insets and alignment rect insets
-     * pre-configured.  To use these, put one of the shadow images inside a
-     * UIImageView, ensure the UIImageView is behind the view you're shadowing,
-     * and configure the UIImageView's layout constraints to exactly match the
-     * shadowed view.
-     *
-     * If you are using manual layout (e.g. setting frames directly in layoutSubviews()),
-     * use the `UIView.alignmentRect(forFrame:)` method to correctly calculate the
-     * target frame for the UIImageView.
-     */
 
     // MARK: - Regular shadows
 

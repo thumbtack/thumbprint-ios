@@ -57,6 +57,7 @@ opt_in_rules:
   - redundant_nil_coalescing
   - redundant_set_access_control
   - unneeded_parentheses_in_closure_argument
+  - weak_delegate
 
 analyzer_rules:
   - unused_import
