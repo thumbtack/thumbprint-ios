@@ -149,7 +149,7 @@ public final class Radio: Control, UIContentSizeCategoryAdjusting {
                 make.left.equalToSuperview()
                 make.size.equalTo(radioImage.intrinsicContentSize)
                 if let label = contentView as? UILabel {
-                    radioImageCenterYConstraint = make.centerY.equalTo(label.snp.firstBaseline).offset(-label.font.capHeight / 2.0).constraint
+                    self.radioImageCenterYConstraint = make.centerY.equalTo(label.snp.firstBaseline).offset(-label.font.capHeight / 2.0).constraint
                     make.top.equalToSuperview().priority(.low)
                     make.top.greaterThanOrEqualToSuperview()
                 } else {

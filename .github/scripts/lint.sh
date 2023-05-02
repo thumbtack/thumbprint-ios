@@ -2,5 +2,5 @@
 
 set -e -u -o pipefail
 
-./Pods/SwiftLint/swiftlint lint --strict --quiet --path .
-./Pods/SwiftFormat/CommandLineTool/swiftformat --lint .
+swift package plugin --allow-writing-to-package-directory swiftlint lint --strict --quiet --path .
+swift package plugin --allow-writing-to-package-directory swiftformat --lint .

@@ -426,5 +426,5 @@ public enum Icon: String, CaseIterable {
     }
 
     // MARK: - Private
-    private static var bundle: Bundle = Bundle.module
+    private static var bundle: Bundle = .module
 }

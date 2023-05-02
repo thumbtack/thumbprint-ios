@@ -89,7 +89,7 @@ public final class AlertBanner: UIView {
         imageView.snp.makeConstraints { make in
             make.size.equalTo(theme.icon.size)
             make.left.equalToSuperview().inset(Thumbprint.Space.three)
-            imageConstraint = make.right.equalTo(textView.snp.left).offset(-Thumbprint.Space.three).constraint
+            self.imageConstraint = make.right.equalTo(textView.snp.left).offset(-Thumbprint.Space.three).constraint
             make.centerY.equalToSuperview()
         }
 
@@ -98,7 +98,7 @@ public final class AlertBanner: UIView {
             make.top.bottom.equalToSuperview().inset(Thumbprint.Space.four)
         }
         textView.snp.prepareConstraints { make in
-            noImageConstraint = make.left.equalTo(imageView.snp.right).inset(Thumbprint.Space.three).constraint
+            self.noImageConstraint = make.left.equalTo(imageView.snp.right).inset(Thumbprint.Space.three).constraint
         }
     }
 

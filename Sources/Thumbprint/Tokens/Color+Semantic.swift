@@ -20,39 +20,21 @@ public extension Color {
         }
     }
 
-    static let primaryBackground: UIColor = {
-        themedColor(light: Color.white, dark: .black)
-    }()
+    static let primaryBackground: UIColor = themedColor(light: Color.white, dark: .black)
 
-    static let primaryText: UIColor = {
-        themedColor(light: Color.black, dark: Color.white)
-    }()
+    static let primaryText: UIColor = themedColor(light: Color.black, dark: Color.white)
 
-    static let secondaryText: UIColor = {
-        themedColor(light: Color.black300, dark: Color.gray)
-    }()
+    static let secondaryText: UIColor = themedColor(light: Color.black300, dark: Color.gray)
 
-    static let secondaryControlBorder: UIColor = {
-        themedColor(light: Color.gray, dark: Color.black300)
-    }()
+    static let secondaryControlBorder: UIColor = themedColor(light: Color.gray, dark: Color.black300)
 
-    static let primaryControlText: UIColor = {
-        themedColor(light: Color.white, dark: Color.gray200)
-    }()
+    static let primaryControlText: UIColor = themedColor(light: Color.white, dark: Color.gray200)
 
-    static let secondaryControlText: UIColor = {
-        themedColor(light: Color.blue, dark: UIColor(red: 0.87, green: 0.89, blue: 0.90, alpha: 1.0))
-    }()
+    static let secondaryControlText: UIColor = themedColor(light: Color.blue, dark: UIColor(red: 0.87, green: 0.89, blue: 0.90, alpha: 1.0))
 
-    static let defaultNavigationBarTint: UIColor = {
-        themedColor(light: Color.white, dark: Color.black)
-    }()
+    static let defaultNavigationBarTint: UIColor = themedColor(light: Color.white, dark: Color.black)
 
-    static let defaultNavigationControlTint: UIColor = {
-        themedColor(light: Color.black, dark: Color.white)
-    }()
+    static let defaultNavigationControlTint: UIColor = themedColor(light: Color.black, dark: Color.white)
 
-    static let signupButtonContent: UIColor = {
-        themedColor(light: .black, dark: .white)
-    }()
+    static let signupButtonContent: UIColor = themedColor(light: .black, dark: .white)
 }

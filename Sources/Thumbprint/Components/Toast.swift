@@ -61,7 +61,7 @@ public class Toast: UIView {
         }
 
         slidingContainer.snp.makeConstraints { make in
-            hideToastConstraint = make.top.equalTo(self.snp.bottom).priority(.required).constraint
+            self.hideToastConstraint = make.top.equalTo(self.snp.bottom).priority(.required).constraint
             make.left.right.equalToSuperview().inset(leftRightPadding)
             make.bottom.equalToSuperview().offset(-bottomOffset).priority(.low)
             make.height.equalToSuperview().offset(-bottomOffset).priority(.medium)

@@ -49,7 +49,7 @@ open class Label: UILabel {
     }
 
     public override var debugDescription: String {
-        var debugDescription: String = "<Label: \(Unmanaged.passUnretained(self).toOpaque())"
+        var debugDescription = "<Label: \(Unmanaged.passUnretained(self).toOpaque())"
         debugDescription += "; frame: \(frame)"
         debugDescription += "; textStyle: \(textStyle)"
         debugDescription += "; adjustsFontForContentSizeCategory: \(adjustsFontForContentSizeCategory)"

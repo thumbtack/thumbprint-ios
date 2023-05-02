@@ -5,8 +5,7 @@ import UIKit
 /// option to add a view to the left of it
 
 public class TextFloatingActionButton: Control {
-
-    public struct Defaults {
+    public enum Defaults {
         public static var module = Bundle.module
     }
 
