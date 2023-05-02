@@ -6,7 +6,8 @@ import PackageDescription
 let package = Package(
     name: "Thumbprint",
     platforms: [
-            .iOS(.v13)
+            .iOS(.v13),
+            .macOS(.v12) // Required for running swiftformat in CI
         ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
