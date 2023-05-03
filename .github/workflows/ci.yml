@@ -10,26 +10,11 @@ jobs:
         # on all combinations of them (e.g., if there are 2 destinations and 2 schemes, the
         # test suite will get run 4 times).
         destination: ["platform=iOS Simulator,OS=16.1,name=iPhone 8"]
-        scheme: ["Thumbprint", "Playground"]
+        scheme: ["Thumbprint"]
         xcode: ["/Applications/Xcode_14.1.app"]
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v2
-
-      - name: 💎 Install gems
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true # Runs `bundle install` and caches gems automatically.
-
-      - name: 🍫 Restore cached Pods
-        id: restore-pods
-        uses: actions/cache@v2
-        with:
-          path: Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('Podfile.lock') }}
-
-      - name: 🗂 Install Pods
-        run: bundle exec pod install || bundle exec pod install --repo-update
 
       - name: 📋 Build and test
         run: sh .github/scripts/run_tests.sh

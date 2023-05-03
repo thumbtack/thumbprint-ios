@@ -3,8 +3,8 @@
 set -e -u -o pipefail
 
 xcodebuild \
-    -workspace 'Thumbprint.xcworkspace' \
     -scheme "$scheme" \
     -destination "$destination" \
+    -skipPackagePluginValidation \
     clean test
 
