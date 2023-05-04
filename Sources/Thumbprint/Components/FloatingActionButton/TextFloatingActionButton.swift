@@ -1,4 +1,4 @@
-// import ThumbprintResources
+import ThumbprintTokens
 import UIKit
 
 /// A floating action button with text and the

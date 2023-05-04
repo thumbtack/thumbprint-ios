@@ -7,7 +7,7 @@ on:
         required: true
 jobs:
   release:
-    name: Publish CocoaPod
+    name: Publish SPM
     runs-on: macos-12
     strategy:
       matrix:
@@ -18,15 +18,6 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_PERSONAL_ACCESS_TOKEN }}
           persist-credentials: false
-
-      - name: 🍫 Bump version in podspec
-        run: sh .github/scripts/commit_release.sh "${{ github.event.inputs.version }}"
-        env:
-          # When the default secrets.GITHUB_TOKEN is used to push the version bump branch,
-          # GitHub will not trigger the `push` event that triggers CI to run on that branch.
-          # To ensure that CI is still triggered, use a separate personal access token with
-          # [public_repo] scope.
-          GITHUB_TOKEN: ${{ secrets.RELEASE_PERSONAL_ACCESS_TOKEN }}
 
       - name: 🏷 Create release tag
         run: sh .github/scripts/tag_release.sh "${{ github.event.inputs.version }}"
@@ -39,8 +30,3 @@ jobs:
           tag_name: "${{ github.event.inputs.version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_PERSONAL_ACCESS_TOKEN }}
-
-      - name: 🚀 Publish pod
-        run: pod trunk push Thumbprint.podspec --allow-warnings
-        env:
-          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
