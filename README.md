@@ -1,5 +1,4 @@
 [![Build Status](https://github.com/thumbtack/thumbprint-ios/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/thumbtack/thumbprint-ios/actions/workflows/ci.yml)
-[![CocoaPod Latest Version](https://shields.io/cocoapods/v/Thumbprint?color=informational)](https://github.com/thumbtack/thumbprint-ios/releases)
 [![License](https://img.shields.io/github/license/thumbtack/thumbprint-ios?color=important)](https://github.com/thumbtack/thumbprint-ios/blob/main/LICENSE)
 
 ![Thumbprint iOS header](./.github/thumbprint-header.png)
@@ -30,4 +29,4 @@ Thumbprint is licensed under the terms of the [Apache License 2.0](LICENSE).
 
 Cat photo in `/Thumbprint/Targets/Playground/Assets/Assets.xcassets` from [Unsplash](https://unsplash.com), photographed by Manja Vitolic ([LICENSE](https://unsplash.com/license)).
 
-Assets `/Thumbprint/Targets/ThumbprintPublicResources/Assets.xcassets` from [FeatherIcons](https://feathericons.com/) ([LICENSE](https://github.com/feathericons/feather/blob/master/LICENSE)).
+Assets `/Sources/Thumbprint/Resources/Assets.xcassets` from [FeatherIcons](https://feathericons.com/) ([LICENSE](https://github.com/feathericons/feather/blob/master/LICENSE)).
