@@ -1,5 +1,5 @@
-import UIKit
 import ThumbprintTokens
+import UIKit
 
 public extension Button {
     /**

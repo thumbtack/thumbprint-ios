@@ -445,7 +445,7 @@ class PlaygroundViewController: UIViewController {
     @objc func handleInspectableViewTapGesture(recognizer: UITapGestureRecognizer) {
         guard let inspectableView = recognizer.view as? (UIView & InspectableView),
               recognizer.state == .recognized,
-              self.selectedView == nil || (self.selectedView !== inspectableView)
+              selectedView == nil || (selectedView !== inspectableView)
         else { return }
 
         selectedView = inspectableView

@@ -1,6 +1,6 @@
+import ThumbprintTokens
 // import ThumbprintResources
 import UIKit
-import ThumbprintTokens
 
 /// A floating action button with text and the
 /// option to add a view to the left of it

@@ -6,14 +6,15 @@ import PackageDescription
 let package = Package(
     name: "Thumbprint",
     platforms: [
-            .iOS(.v13),
-            .macOS(.v12) // Required for running swiftformat in CI
-        ],
+        .iOS(.v13),
+        .macOS(.v12), // Required for running swiftformat in CI
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "Thumbprint",
-            targets: ["Thumbprint"]),
+            targets: ["Thumbprint"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.6.0")),
@@ -34,11 +35,11 @@ let package = Package(
                 .product(name: "ThumbprintTokens", package: "thumbprint-tokens"),
             ],
             resources: [
-                .copy("Resources/Assets.xcassets")
+                .copy("Resources/Assets.xcassets"),
             ],
             plugins: [
                 .plugin(name: "SwiftLintPlugin", package: "SwiftLint"),
-                .plugin(name: "SwiftFormat", package: "SwiftFormat")
+                .plugin(name: "SwiftFormat", package: "SwiftFormat"),
             ]
         ),
         .testTarget(
@@ -54,6 +55,6 @@ let package = Package(
         ),
     ],
     swiftLanguageVersions: [
-        .v5
+        .v5,
     ]
 )
