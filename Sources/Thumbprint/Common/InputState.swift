@@ -1,4 +1,3 @@
-// import ThumbprintResources
 import UIKit
 
 /// Views that conform to InputStateChangeAware will receive InputState change notifications when their parent view's

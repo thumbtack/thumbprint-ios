@@ -1,4 +1,3 @@
-// import ThumbprintResources
 import UIKit
 
 /// An icon only floating action button
