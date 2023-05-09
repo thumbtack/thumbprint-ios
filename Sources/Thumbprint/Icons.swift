@@ -155,6 +155,7 @@ public enum Icon: String, CaseIterable {
     case contentModifierMessageDeclinedMedium = "contentModifier_message-declined--medium"
     case contentModifierMessageDeclinedSmall = "contentModifier_message-declined--small"
     case contentModifierMoldMedium = "contentModifier_mold--medium"
+    case contentModifierMoldSmall = "contentModifier_mold--small"
     case contentModifierMoldTiny = "contentModifier_mold--tiny"
     case contentModifierMoneyMedium = "contentModifier_money--medium"
     case contentModifierMoneySmall = "contentModifier_money--small"
