@@ -21,7 +21,7 @@ let package = Package(
         .package(url: "https://github.com/thumbtack/TTCalendarPicker.git", from: "0.2.0"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.11.0"),
         .package(url: "https://github.com/thumbtack/thumbprint-tokens.git", from: "13.0.1"),
-        .package(url: "https://github.com/lukepistrol/SwiftLintPlugin", from: "0.2.6"),
+        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.52.2"),
         .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.51.9"),
     ],
     targets: [
@@ -38,7 +38,7 @@ let package = Package(
                 .copy("Resources/Assets.xcassets"),
             ],
             plugins: [
-                .plugin(name: "SwiftLint", package: "SwiftLintPlugin"),
+                .plugin(name: "SwiftLintPlugin", package: "SwiftLint"),
                 .plugin(name: "SwiftFormat", package: "SwiftFormat"),
             ]
         ),
