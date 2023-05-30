@@ -17,12 +17,12 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/SnapKit/SnapKit.git", from: "5.6.0"),
-        .package(url: "https://github.com/thumbtack/TTCalendarPicker.git", from: "0.2.0"),
-        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.11.0"),
-        .package(url: "https://github.com/thumbtack/thumbprint-tokens.git", from: "13.0.1"),
-        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.52.2"),
-        .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.51.9"),
+        .package(url: "https://github.com/SnapKit/SnapKit.git", exact: "5.6.0"),
+        .package(url: "https://github.com/thumbtack/TTCalendarPicker.git", exact: "0.2.0"),
+        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", exact: "1.11.0"),
+        .package(url: "https://github.com/thumbtack/thumbprint-tokens.git", exact: "13.0.1"),
+        .package(url: "https://github.com/realm/SwiftLint.git", exact: "0.52.2"),
+        .package(url: "https://github.com/nicklockwood/SwiftFormat", exact: "0.51.10"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
