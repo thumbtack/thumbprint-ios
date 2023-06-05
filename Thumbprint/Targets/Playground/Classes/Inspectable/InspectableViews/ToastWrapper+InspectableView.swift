@@ -10,6 +10,23 @@ extension Toast: InspectableView {
         let actionNameProperty = StringInspectableProperty(inspectedView: self)
         actionNameProperty.title = "Action"
         actionNameProperty.property = \Toast.actionName
+        
+        let themeProperty = DropdownInspectableProperty(inspectedView: self, property: \Toast.theme, values: [
+            (.default, "default"),
+            (.alert, "alert"),
+            (.caution, "caution"),
+            (.info, "info"),
+            (.success, "success")
+        ])
+        themeProperty.title = "Theme"
+        
+        let iconProperty = DropdownInspectableProperty(inspectedView: self, property: \Toast.iconType, values: [
+            (.custom(nil), "None"),
+            (.custom(.notificationAlertsInfoFilledMedium), "Info"),
+            (.custom(.notificationAlertsWarningFilledMedium), "Warning"),
+            (.custom(.notificationAlertsBlockedFilledMedium), "Blocked"),
+        ])
+        iconProperty.title = "Icon"
 
         let showProperty = ButtionActionInspectableProperty(buttonTitle: "Show Toast") { [weak self] in
             self?.showToast()
@@ -19,11 +36,11 @@ extension Toast: InspectableView {
             self?.hideToast()
         }
 
-        return [messageProperty, actionNameProperty, showProperty, hideProperty]
+        return [messageProperty, actionNameProperty, themeProperty, iconProperty, showProperty, hideProperty]
     }
 
     static func makeInspectable() -> UIView & InspectableView {
-        let toastWrapper = Toast(message: "Cheers!", action: Toast.Action(text: "Clink", handler: {}), presentationDuration: 2)
+        let toastWrapper = Toast(message: "Cheers!", iconType: .custom(nil), action: Toast.Action(text: "Clink", handler: {}), presentationDuration: 2)
         toastWrapper.snp.makeConstraints { make in
             make.width.equalTo(UIScreen.main.bounds.width)
         }
