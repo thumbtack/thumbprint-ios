@@ -5,7 +5,7 @@ import XCTest
 // Sheets are not presented for some reason maybe because it's testing in SPM
 
 class PartialSheetTest: SnapshotTestCase {
-// TODO: (mkaissi) https://thumbtack.atlassian.net/browse/MINF-1952 fix this test case which broke as part of the move to SPM
+    // TODO: (mkaissi) https://thumbtack.atlassian.net/browse/MINF-1952 fix this test case which broke as part of the move to SPM
 //    func testSheetWithSize() {
 //        verify(
 //            modalViewControllerFactory: {
