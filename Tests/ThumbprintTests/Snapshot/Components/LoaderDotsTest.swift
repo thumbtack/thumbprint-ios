@@ -3,6 +3,7 @@ import UIKit
 
 class LoaderDotsTest: SnapshotTestCase {
     // TODO: (mkaissi) Fix and re-enable. Seemed to be broken during the change to SPM.
+    // https://thumbtack.atlassian.net/browse/MINF-1955
 //    private var snapshotFrameView: UIView!
 //    override func setUp() {
 //        super.setUp()
