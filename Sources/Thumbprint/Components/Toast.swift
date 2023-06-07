@@ -246,6 +246,7 @@ public class ToastView: UIView {
     private lazy var stackView: UIStackView = makeStackView()
     private lazy var messageLabel: UILabel = makeMessageLabel()
     private lazy var iconView: UIImageView = makeIconView()
+    private lazy var iconContainerView: UIView = UIView()
     fileprivate lazy var linkButton: UIButton = makeActionButton()
 
     private func updateLinkButton() {
@@ -266,7 +267,7 @@ public class ToastView: UIView {
     }
 
     private func updateIconView() {
-        iconView.showsInStackView = resolvedIcon != nil
+        iconContainerView.showsInStackView = resolvedIcon != nil
         iconView.image = resolvedIcon?.image
     }
 
@@ -285,6 +286,11 @@ public class ToastView: UIView {
         clipsToBounds = true
         layer.cornerRadius = CornerRadius.base
 
+        iconContainerView.addSubview(iconView)
+        iconView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
+        }
         addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(leftRightPadding)
@@ -338,7 +344,12 @@ private extension ToastView {
         stackView.alignment = .center
         stackView.setContentHuggingPriority(.required, for: .vertical)
 
-        stackView.addArrangedSubview(iconView)
+
+        stackView.addArrangedSubview(iconContainerView)
+        iconContainerView.snp.makeConstraints { make in
+            make.height.equalToSuperview()
+        }
+
         stackView.addArrangedSubview(messageLabel)
         stackView.addArrangedSubview(linkButton)
 

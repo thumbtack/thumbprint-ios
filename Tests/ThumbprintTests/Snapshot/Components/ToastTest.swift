@@ -34,7 +34,7 @@ class ToastTest: SnapshotTestCase {
     }
 
     func testLongText() {
-        let toast = Toast(message: "This is a very long message that should probably wrap to fit multiple lines, except on iPad.", theme: .success, iconType: .custom(.contentActionsAddMedium), action: Toast.Action(text: "This is a long Action", handler: {}))
+        let toast = Toast(message: "This is a very long message that should probably wrap to fit multiple lines, except on iPad.", theme: .success, iconType: .custom(.contentActionsAddMedium), action: Toast.Action(text: "Hyperlink Text", handler: {}))
         verify(toast: toast)
     }
 
