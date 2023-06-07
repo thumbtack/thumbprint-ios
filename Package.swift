@@ -50,8 +50,7 @@ let package = Package(
                 "TTCalendarPicker",
                 .product(name: "ThumbprintTokens", package: "thumbprint-tokens"),
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
-            ],
-            exclude: ["Snapshot"]
+            ]
         ),
     ],
     swiftLanguageVersions: [
