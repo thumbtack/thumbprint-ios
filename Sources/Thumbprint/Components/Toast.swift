@@ -9,73 +9,37 @@ private protocol ToastViewDelegate: AnyObject {
  * A wrapper around ToastView to handle the toast presentation and dismissal animations
  */
 public class Toast: UIView {
-    public enum IconType: Equatable {
-        case defaultForTheme
-        case custom(Icon?)
+    public struct Theme: Equatable {
+        public let backgroundColor: UIColor
+        public let textColor: UIColor
+        public let iconColor: UIColor
+        public let icon: Icon?
 
-        func resolvedIcon(for theme: Toast.Theme) -> Icon? {
-            switch self {
-            case let .custom(icon):
-                return icon
-            case .defaultForTheme:
-                return theme.defaultIcon
-            }
-        }
-    }
-
-    public enum Theme {
-        case `default`
-        case alert
-        case success
-        case info
-        case caution
-
-        var backgroundColor: UIColor {
-            switch self {
-            case .default:
-                return Color.black
-            case .alert:
-                return Color.red500
-            case .success:
-                return Color.green500
-            case .info:
-                return Color.blue500
-            case .caution:
-                return Color.yellow300
-            }
+        private init(backgroundColor: UIColor, textColor: UIColor, iconColor: UIColor, icon: Icon?) {
+            self.backgroundColor = backgroundColor
+            self.textColor = textColor
+            self.iconColor = iconColor
+            self.icon = icon
         }
 
-        var textColor: UIColor {
-            switch self {
-            case .default, .alert, .success, .info:
-                return Color.white
-            case .caution:
-                return Color.black
-            }
+        public static func `default`(_ icon: Icon? = nil) -> Theme {
+            return Theme(backgroundColor: Color.black, textColor: Color.white, iconColor: Color.white, icon: icon)
         }
 
-        var iconColor: UIColor {
-            switch self {
-            case .default, .alert, .success, .info:
-                return Color.white
-            case .caution:
-                return Color.black
-            }
+        public static func alert(_ icon: Icon? = Icon.notificationAlertsBlockedFilledMedium) -> Theme {
+            return Theme(backgroundColor: Color.red500, textColor: Color.white, iconColor: Color.white, icon: icon)
         }
 
-        var defaultIcon: Icon? {
-            switch self {
-            case .default:
-                return nil
-            case .alert:
-                return Icon.notificationAlertsBlockedFilledMedium
-            case .caution:
-                return Icon.notificationAlertsWarningFilledMedium
-            case .info:
-                return Icon.notificationAlertsInfoFilledMedium
-            case .success:
-                return Icon.contentModifierCircleCheckFilledMedium
-            }
+        public static func success(_ icon: Icon? = Icon.contentModifierCircleCheckFilledMedium) -> Theme {
+            return Theme(backgroundColor: Color.green500, textColor: Color.white, iconColor: Color.white, icon: icon)
+        }
+
+        public static func info(_ icon: Icon? = Icon.notificationAlertsInfoFilledMedium) -> Theme {
+            return Theme(backgroundColor: Color.blue500, textColor: Color.white, iconColor: Color.white, icon: icon)
+        }
+
+        public static func caution(_ icon: Icon? = Icon.notificationAlertsWarningFilledMedium) -> Theme {
+            return Theme(backgroundColor: Color.yellow300, textColor: Color.black, iconColor: Color.black, icon: icon)
         }
     }
 
@@ -101,11 +65,6 @@ public class Toast: UIView {
         set { toastView.action = newValue }
     }
 
-    public var iconType: Toast.IconType {
-        get { toastView.iconType }
-        set { toastView.iconType = newValue }
-    }
-
     public var theme: Toast.Theme {
         get { toastView.theme }
         set { toastView.theme = newValue }
@@ -119,13 +78,12 @@ public class Toast: UIView {
     private lazy var slidingContainer = UIView()
 
     public init(message: String,
-                theme: Toast.Theme = .default,
-                iconType: Toast.IconType = .defaultForTheme,
+                theme: Toast.Theme = Toast.Theme.default(),
                 action: Toast.Action? = nil,
                 presentationDuration: TimeInterval = 5.0,
                 onTimeout: (() -> Void)? = nil) {
         self.presentationDuration = presentationDuration
-        self.toastView = ToastView(message: message, theme: theme, iconType: iconType, action: action)
+        self.toastView = ToastView(message: message, theme: theme, action: action)
         self.onTimeout = onTimeout
 
         super.init(frame: .null)
@@ -231,16 +189,6 @@ public class ToastView: UIView {
         }
     }
 
-    var resolvedIcon: Icon? {
-        return iconType.resolvedIcon(for: theme)
-    }
-
-    public var iconType: Toast.IconType {
-        didSet {
-            updateIconView()
-        }
-    }
-
     fileprivate weak var delegate: ToastViewDelegate?
 
     private lazy var stackView: UIStackView = makeStackView()
@@ -267,15 +215,14 @@ public class ToastView: UIView {
     }
 
     private func updateIconView() {
-        iconContainerView.showsInStackView = resolvedIcon != nil
-        iconView.image = resolvedIcon?.image
+        iconContainerView.showsInStackView = theme.icon != nil
+        iconView.image = theme.icon?.image
     }
 
-    public init(message: String, theme: Toast.Theme, iconType: Toast.IconType, action: Toast.Action? = nil) {
+    public init(message: String, theme: Toast.Theme, action: Toast.Action? = nil) {
         self.message = message
         self.action = action
         self.theme = theme
-        self.iconType = iconType
 
         super.init(frame: .null)
 
