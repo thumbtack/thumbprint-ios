@@ -10,13 +10,13 @@ extension Toast: InspectableView {
         let actionNameProperty = StringInspectableProperty(inspectedView: self)
         actionNameProperty.title = "Action"
         actionNameProperty.property = \Toast.actionName
-        
+
         let themeProperty = DropdownInspectableProperty(inspectedView: self, property: \Toast.theme, values: [
             (Toast.Theme.default(), "default"),
             (Toast.Theme.alert(), "alert"),
             (Toast.Theme.caution(), "caution"),
             (Toast.Theme.info(), "info"),
-            (Toast.Theme.success(nil), "success (no icon)") // The icon is simply not bundled with the playground app. It does have an icon by default
+            (Toast.Theme.success(nil), "success (no icon)"), // The icon is simply not bundled with the playground app. It does have an icon by default
         ])
         themeProperty.title = "Theme"
 

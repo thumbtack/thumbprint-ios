@@ -18,7 +18,7 @@ extension UIView {
         guard !(isHidden && ((superview as? UIStackView)?.arrangedSubviews.contains(self)) ?? false) else {
             return .unambiguous
         }
-        
+
         if hasAmbiguousLayout {
             return .ambiguous(view: self)
         } else {

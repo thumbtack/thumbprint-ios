@@ -194,7 +194,7 @@ public class ToastView: UIView {
     private lazy var stackView: UIStackView = makeStackView()
     private lazy var messageLabel: UILabel = makeMessageLabel()
     private lazy var iconView: UIImageView = makeIconView()
-    private lazy var iconContainerView: UIView = UIView()
+    private lazy var iconContainerView: UIView = .init()
     fileprivate lazy var linkButton: UIButton = makeActionButton()
 
     private func updateLinkButton() {
@@ -290,7 +290,6 @@ private extension ToastView {
         stackView.spacing = Space.two
         stackView.alignment = .center
         stackView.setContentHuggingPriority(.required, for: .vertical)
-
 
         stackView.addArrangedSubview(iconContainerView)
         iconContainerView.snp.makeConstraints { make in
