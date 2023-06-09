@@ -2,6 +2,8 @@
 
 set -e -u -o pipefail
 
-# swiflint is executed during the build phase via plugin
-# It's not the case with swiftformat which needs to be triggered manually
-swift package -c release --allow-writing-to-package-directory swiftformat --lint
+swift build -c release --product swiftformat
+./.build/release/swiftformat --lint .
+
+swift build -c release --product swiftlint
+./.build/release/swiftlint lint --strict --quiet .

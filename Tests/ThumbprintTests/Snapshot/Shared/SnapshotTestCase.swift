@@ -2,6 +2,7 @@ import Foundation
 import SnapKit
 import SnapshotTesting
 @testable import Thumbprint
+import ThumbprintTokens
 import XCTest
 
 open class SnapshotTestCase: XCTestCase {
