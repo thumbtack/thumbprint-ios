@@ -9,6 +9,40 @@ private protocol ToastViewDelegate: AnyObject {
  * A wrapper around ToastView to handle the toast presentation and dismissal animations
  */
 public class Toast: UIView {
+    public struct Theme: Equatable {
+        public let backgroundColor: UIColor
+        public let textColor: UIColor
+        public let iconColor: UIColor
+        public let icon: Icon?
+
+        private init(backgroundColor: UIColor, textColor: UIColor, iconColor: UIColor, icon: Icon?) {
+            self.backgroundColor = backgroundColor
+            self.textColor = textColor
+            self.iconColor = iconColor
+            self.icon = icon
+        }
+
+        public static func `default`(_ icon: Icon? = nil) -> Theme {
+            return Theme(backgroundColor: Color.black, textColor: Color.white, iconColor: Color.white, icon: icon)
+        }
+
+        public static func alert(_ icon: Icon? = Icon.notificationAlertsBlockedFilledMedium) -> Theme {
+            return Theme(backgroundColor: Color.red500, textColor: Color.white, iconColor: Color.white, icon: icon)
+        }
+
+        public static func success(_ icon: Icon? = Icon.contentModifierCircleCheckFilledMedium) -> Theme {
+            return Theme(backgroundColor: Color.green500, textColor: Color.white, iconColor: Color.white, icon: icon)
+        }
+
+        public static func info(_ icon: Icon? = Icon.notificationAlertsInfoFilledMedium) -> Theme {
+            return Theme(backgroundColor: Color.blue500, textColor: Color.white, iconColor: Color.white, icon: icon)
+        }
+
+        public static func caution(_ icon: Icon? = Icon.notificationAlertsWarningFilledMedium) -> Theme {
+            return Theme(backgroundColor: Color.yellow300, textColor: Color.black, iconColor: Color.black, icon: icon)
+        }
+    }
+
     public struct Action {
         public let text: String
         public let handler: () -> Void
@@ -31,6 +65,11 @@ public class Toast: UIView {
         set { toastView.action = newValue }
     }
 
+    public var theme: Toast.Theme {
+        get { toastView.theme }
+        set { toastView.theme = newValue }
+    }
+
     private let onTimeout: (() -> Void)?
     private var didTriggerAction: Bool = false
     private var hideToastConstraint: Constraint?
@@ -39,11 +78,12 @@ public class Toast: UIView {
     private lazy var slidingContainer = UIView()
 
     public init(message: String,
+                theme: Toast.Theme = Toast.Theme.default(),
                 action: Toast.Action? = nil,
                 presentationDuration: TimeInterval = 5.0,
                 onTimeout: (() -> Void)? = nil) {
         self.presentationDuration = presentationDuration
-        self.toastView = ToastView(message: message, action: action)
+        self.toastView = ToastView(message: message, theme: theme, action: action)
         self.onTimeout = onTimeout
 
         super.init(frame: .null)
@@ -119,7 +159,7 @@ public class Toast: UIView {
 extension Toast: ToastViewDelegate {
     func actionDidFire() {
         didTriggerAction = true
-        toastView.linkButton?.isEnabled = false
+        toastView.linkButton.isEnabled = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.hideToast(animated: true)
         }
@@ -135,9 +175,17 @@ public class ToastView: UIView {
 
     public var action: Toast.Action? {
         didSet {
-            if let action = action {
-                linkButton?.title = action.text
-            }
+            updateLinkButton()
+        }
+    }
+
+    public var theme: Toast.Theme {
+        didSet {
+            messageLabel.textColor = theme.textColor
+            backgroundColor = theme.backgroundColor
+            iconView.tintColor = theme.iconColor
+            updateLinkButton()
+            updateIconView()
         }
     }
 
@@ -145,26 +193,58 @@ public class ToastView: UIView {
 
     private lazy var stackView: UIStackView = makeStackView()
     private lazy var messageLabel: UILabel = makeMessageLabel()
-    fileprivate lazy var linkButton: Button? = makeActionButton()
+    private lazy var iconView: UIImageView = makeIconView()
+    private lazy var iconContainerView: UIView = .init()
+    fileprivate lazy var linkButton: UIButton = makeActionButton()
 
-    public init(message: String, action: Toast.Action? = nil) {
+    private func updateLinkButton() {
+        guard let action else {
+            linkButton.showsInStackView = false
+            return
+        }
+        linkButton.showsInStackView = true
+        let textStyle = Font.TextStyle.title6
+
+        let attributedTitle = NSAttributedString(string: action.text, attributes: [
+            .foregroundColor: theme.textColor,
+            .font: textStyle.scaledFont(compatibleWith: .current),
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+        ])
+
+        linkButton.setAttributedTitle(attributedTitle, for: .normal)
+    }
+
+    private func updateIconView() {
+        iconContainerView.showsInStackView = theme.icon != nil
+        iconView.image = theme.icon?.image
+    }
+
+    public init(message: String, theme: Toast.Theme, action: Toast.Action? = nil) {
         self.message = message
         self.action = action
+        self.theme = theme
 
         super.init(frame: .null)
 
-        let topBottomPadding: CGFloat = 8
-        let leftRightPadding: CGFloat = 16
+        let topBottomPadding: CGFloat = Space.three
+        let leftRightPadding: CGFloat = Space.three
 
-        backgroundColor = Color.black
+        backgroundColor = theme.backgroundColor
         clipsToBounds = true
         layer.cornerRadius = CornerRadius.base
 
+        iconContainerView.addSubview(iconView)
+        iconView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
+        }
         addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(leftRightPadding)
             make.top.bottom.equalToSuperview().inset(topBottomPadding)
         }
+        updateLinkButton()
+        updateIconView()
     }
 
     @available(*, unavailable)
@@ -177,34 +257,49 @@ public class ToastView: UIView {
 private extension ToastView {
     func makeMessageLabel() -> UILabel {
         let label = Label(textStyle: .text1, adjustsFontForContentSizeCategory: false)
-        label.textColor = Color.white
+        label.textColor = theme.textColor
         label.text = message
         label.textAlignment = .left
         label.numberOfLines = 0
         label.setContentHuggingPriority(.required, for: .vertical)
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }
 
-    func makeActionButton() -> Button? {
-        guard let actionText = action?.text else { return nil }
-        let button = Button(theme: .link, size: .text)
+    func makeIconView() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
+        imageView.setContentCompressionResistancePriority(.required, for: .vertical)
+        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        imageView.tintColor = theme.iconColor
+        return imageView
+    }
+
+    func makeActionButton() -> UIButton {
+        let button = UIButton()
         button.contentHorizontalAlignment = .right
-        button.title = actionText
         button.addTarget(self, action: #selector(didTapActionButton), for: .touchUpInside)
-        button.setContentHuggingPriority(.required, for: .vertical)
         button.setContentHuggingPriority(.required, for: .horizontal)
+        button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return button
     }
 
     func makeStackView() -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 8
+        stackView.spacing = Space.two
         stackView.alignment = .center
         stackView.setContentHuggingPriority(.required, for: .vertical)
 
+        stackView.addArrangedSubview(iconContainerView)
+        iconContainerView.snp.makeConstraints { make in
+            make.height.equalToSuperview()
+        }
+
         stackView.addArrangedSubview(messageLabel)
-        if let linkButton = linkButton { stackView.addArrangedSubview(linkButton) }
+        stackView.addArrangedSubview(linkButton)
+
+        stackView.setCustomSpacing(Space.three, after: messageLabel)
 
         return stackView
     }
