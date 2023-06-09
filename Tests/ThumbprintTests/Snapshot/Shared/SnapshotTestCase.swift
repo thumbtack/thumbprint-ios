@@ -3,6 +3,7 @@ import SnapKit
 import SnapshotTesting
 @testable import Thumbprint
 import XCTest
+import ThumbprintTokens
 
 open class SnapshotTestCase: XCTestCase {
     public enum WindowSize {

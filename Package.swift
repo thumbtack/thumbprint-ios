@@ -36,10 +36,6 @@ let package = Package(
             ],
             resources: [
                 .copy("Resources/Assets.xcassets"),
-            ],
-            plugins: [
-                .plugin(name: "SwiftLintPlugin", package: "SwiftLint"),
-                .plugin(name: "SwiftFormat", package: "SwiftFormat"),
             ]
         ),
         .testTarget(
