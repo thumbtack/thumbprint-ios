@@ -2,5 +2,8 @@
 
 set -e -u -o pipefail
 
-swift package -c release swiftformat --lint .
-swift package -c release swiftlint lint --strict --quiet --path .
+swift build -c release --product swiftformat
+./.build/release/swiftformat --lint .
+
+swift build -c release --product swiftlint
+./.build/release/swiftlint lint --strict --quiet .
