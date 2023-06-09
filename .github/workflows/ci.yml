@@ -16,12 +16,12 @@ jobs:
       - name: 📥 Checkout
         uses: actions/checkout@v2
 
+      - name: 🔎 Run lint checks
+        run: sh .github/scripts/lint.sh
+
       - name: 📋 Build and test
         run: sh .github/scripts/run_tests.sh
         env:
           scheme: ${{ matrix.scheme }}
           destination: ${{ matrix.destination }}
           DEVELOPER_DIR: ${{ matrix.xcode }}
-
-      - name: 🔎 Run lint checks
-        run: sh .github/scripts/lint.sh
