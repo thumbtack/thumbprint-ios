@@ -173,6 +173,7 @@ public enum Icon: String, CaseIterable {
     case contentModifierScheduleMeetingMedium = "contentModifier_schedule-meeting--medium"
     case contentModifierScheduleMeetingSmall = "contentModifier_schedule-meeting--small"
     case contentModifierSecurityMedium = "contentModifier_security--medium"
+    case contentModifierSecuritySmall = "contentModifier_security--small"
     case contentModifierSecurityTiny = "contentModifier_security--tiny"
     case contentModifierSentMedium = "contentModifier_sent--medium"
     case contentModifierSentSmall = "contentModifier_sent--small"
