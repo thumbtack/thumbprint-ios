@@ -378,6 +378,7 @@ public enum Icon: String, CaseIterable {
     case notificationAlertsInfoFilledSmall = "notificationAlerts_info-filled--small"
     case notificationAlertsNotificationMedium = "notificationAlerts_notification--medium"
     case notificationAlertsNotificationSmall = "notificationAlerts_notification--small"
+    case notificationAlertsNotificationTiny = "notificationAlerts_notification--tiny"
     case notificationAlertsNotificationFilledMedium = "notificationAlerts_notification-filled--medium"
     case notificationAlertsWarningMedium = "notificationAlerts_warning--medium"
     case notificationAlertsWarningSmall = "notificationAlerts_warning--small"
