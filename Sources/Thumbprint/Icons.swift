@@ -194,6 +194,7 @@ public enum Icon: String, CaseIterable {
     case contentModifierWaterDropsMedium = "contentModifier_water-drops--medium"
     case contentModifierWaterDropsSmall = "contentModifier_water-drops--small"
     case contentModifierWavesMedium = "contentModifier_waves--medium"
+    case contentModifierWavesSmall = "contentModifier_waves--small"
     case contentModifierWavesTiny = "contentModifier_waves--tiny"
     case contentModifierWebsiteMedium = "contentModifier_website--medium"
     case contentModifierWebsiteSmall = "contentModifier_website--small"
