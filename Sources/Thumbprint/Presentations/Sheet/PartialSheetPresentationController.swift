@@ -172,7 +172,7 @@ open class PartialSheetPresentationController: UIPresentationController {
     }
 
     @objc
-    private func backgroundTapGestureRecognizerHandler(sender: UITapGestureRecognizer) {
+   public func backgroundTapGestureRecognizerHandler(sender: UITapGestureRecognizer) {
         guard let shouldDismissSheetMethod = partialSheetDelegate?.partialSheetPresentationControllerShouldDismissSheet else {
             presentingViewController.dismiss(animated: true, completion: nil)
             return
@@ -184,7 +184,7 @@ open class PartialSheetPresentationController: UIPresentationController {
     }
 
     @objc
-    private func panGestureRecognizerHandler(sender: UIPanGestureRecognizer) {
+    public func panGestureRecognizerHandler(sender: UIPanGestureRecognizer) {
         guard sender.state == .began else {
             return
         }
