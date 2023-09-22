@@ -407,6 +407,12 @@ public enum Icon: String, CaseIterable {
     case socialPinterestSmall = "social_pinterest--small"
     case socialTwitterMedium = "social_twitter--medium"
     case socialTwitterSmall = "social_twitter--small"
+    case socialVenmoMedium = "social_venmo--medium"
+    case socialVenmoSmall = "social_venmo--small"
+    case socialVenmoTiny = "social_venmo--tiny"
+    case socialJobberMedium = "social_jobber--medium"
+    case socialJobberSmall = "social_jobber--small"
+    case socialJobberTiny = "social_jobber--tiny"
 
     public var image: UIImage {
         guard let icon = UIImage(named: rawValue, in: Self.bundle, compatibleWith: nil) else {
