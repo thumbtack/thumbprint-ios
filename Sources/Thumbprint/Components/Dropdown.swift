@@ -53,7 +53,7 @@ public final class Dropdown: Control, UIContentSizeCategoryAdjusting {
     public var selectedIndex: Int? {
         didSet {
             if oldValue != selectedIndex { sendActions(for: .valueChanged) }
-            guard let selectedIndex = selectedIndex else {
+            guard let selectedIndex else {
                 label.text = placeholder
                 return
             }
@@ -189,7 +189,11 @@ public final class Dropdown: Control, UIContentSizeCategoryAdjusting {
     @objc
     private func pickerViewDidShow(notification: Notification) {
         if isFirstResponder, selectedIndex == nil {
-            selectedIndex = pickerView.selectedRow(inComponent: 0)
+            let numberOfRowsInPicker = pickerView.numberOfRows(inComponent: 0)
+            let selectedRow = pickerView.selectedRow(inComponent: 0)
+            if (0 ..< numberOfRowsInPicker).contains(selectedRow) {
+                selectedIndex = selectedRow
+            }
         }
     }
 
