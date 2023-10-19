@@ -191,7 +191,7 @@ public final class Dropdown: Control, UIContentSizeCategoryAdjusting {
         if isFirstResponder, selectedIndex == nil {
             let numberOfRowsInPicker = pickerView.numberOfRows(inComponent: 0)
             let selectedRow = pickerView.selectedRow(inComponent: 0)
-            if (0..<numberOfRowsInPicker).contains(selectedRow) {
+            if (0 ..< numberOfRowsInPicker).contains(selectedRow) {
                 selectedIndex = selectedRow
             }
         }
