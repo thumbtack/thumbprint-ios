@@ -188,8 +188,12 @@ public final class Dropdown: Control, UIContentSizeCategoryAdjusting {
 
     @objc
     private func pickerViewDidShow(notification: Notification) {
-        if isFirstResponder, selectedIndex == nil, pickerView.selectedRow(inComponent: 0) >= 0 {
-            selectedIndex = pickerView.selectedRow(inComponent: 0)
+        if isFirstResponder, selectedIndex == nil {
+            let numberOfRowsInPicker = pickerView.numberOfRows(inComponent: 0)
+            let selectedRow = pickerView.selectedRow(inComponent: 0)
+            if selectedRow < numberOfRowsInPicker, selectedRow >= 0 {
+                selectedIndex = selectedRow
+            }
         }
     }
 
