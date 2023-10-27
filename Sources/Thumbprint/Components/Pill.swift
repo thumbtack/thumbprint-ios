@@ -247,7 +247,7 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
         //  Label should clip before icon so it gets an even lower content compression priority.
         label.setContentCompressionResistancePriority(.fittingSizeLevel + 1.0, for: .horizontal)
         iconImageView.setContentCompressionResistancePriority(.fittingSizeLevel + 2.0, for: .horizontal)
-        stackView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor).isActive = true
+        stackView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, constant: -24).isActive = true
 
         //  Default to high hugging/compression resistance since this is meant to strongly size with its contents.
         setContentHuggingPriority(.defaultHigh, for: .vertical)
