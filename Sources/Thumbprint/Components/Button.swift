@@ -260,6 +260,11 @@ public final class Button: Control, UIContentSizeCategoryAdjusting {
         setContentHuggingPriority(.defaultLow, for: .horizontal)
         setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         setContentHuggingPriority(.defaultHigh, for: .vertical)
+
+        // Intercept tap gestures within the bounds of the button Control
+        let tap = UITapGestureRecognizer(target: nil, action: nil)
+        tap.cancelsTouchesInView = false
+        addGestureRecognizer(tap)
     }
 
     @available(*, unavailable)
