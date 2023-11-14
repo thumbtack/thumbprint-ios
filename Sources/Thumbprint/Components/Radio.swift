@@ -91,7 +91,7 @@ public final class Radio: Control, UIContentSizeCategoryAdjusting {
     }
 
     // MARK: - Internal Implementation
-    internal let radioImage = RadioImage()
+    let radioImage = RadioImage()
 
     // MARK: - Private Implementation
     private let containerView = UIView()
@@ -215,7 +215,7 @@ public final class Radio: Control, UIContentSizeCategoryAdjusting {
 }
 
 // MARK: - RadioImage
-internal class RadioImage: UIView {
+class RadioImage: UIView {
     override var intrinsicContentSize: CGSize {
         Self.backgroundFillImage?.size ?? super.intrinsicContentSize
     }

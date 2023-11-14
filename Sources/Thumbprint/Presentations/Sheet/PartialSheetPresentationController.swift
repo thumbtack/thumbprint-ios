@@ -90,8 +90,8 @@ open class PartialSheetPresentationController: UIPresentationController {
 
     private var currentTransitionCoordinator: UIViewControllerTransitionCoordinator?
 
-    internal let backgroundTapGestureRecognizer = UITapGestureRecognizer()
-    internal let panGestureRecognizer = UIPanGestureRecognizer()
+    let backgroundTapGestureRecognizer = UITapGestureRecognizer()
+    let panGestureRecognizer = UIPanGestureRecognizer()
 
     public var partialSheetDelegate: PartialSheetPresentationControllerDelegate? {
         get {

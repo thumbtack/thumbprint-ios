@@ -143,7 +143,7 @@ public class CalendarPickerInspectableView: UIView, InspectableView, CalendarPic
 }
 
 class TodayAdjustableCalendarPicker: CalendarPickerView {
-    var _today = Date() {
+    var _today = Date() { // swiftlint:disable:this identifier_name
         didSet {
             reloadData()
         }

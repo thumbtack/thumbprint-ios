@@ -41,7 +41,7 @@ extension Toast: InspectableView {
     }
 }
 
-internal extension Toast {
+extension Toast {
     var optionalMessage: String? {
         get {
             return message
