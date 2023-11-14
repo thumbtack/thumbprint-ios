@@ -77,12 +77,12 @@ public final class Avatar: UIView {
 
     // Internal
 
-    internal struct EmptyTheme {
+    struct EmptyTheme {
         let textColor: UIColor
         let backgroundColor: UIColor
     }
 
-    internal static let styles = [
+    static let styles = [
         EmptyTheme(textColor: Color.indigo600, backgroundColor: Color.indigo100),
         EmptyTheme(textColor: Color.green600, backgroundColor: Color.green100),
         EmptyTheme(textColor: Color.yellow600, backgroundColor: Color.yellow100),
@@ -91,7 +91,7 @@ public final class Avatar: UIView {
         EmptyTheme(textColor: Color.blue600, backgroundColor: Color.blue100),
     ]
 
-    internal static func backgroundColor(initials: String?) -> EmptyTheme {
+    static func backgroundColor(initials: String?) -> EmptyTheme {
         guard let initialCharacter = initials?.first,
               let charValue = initialCharacter.asciiValue else {
             return EmptyTheme(textColor: Color.black, backgroundColor: Color.gray200)
@@ -99,19 +99,19 @@ public final class Avatar: UIView {
         return Avatar.styles[Int(charValue) % styles.count]
     }
 
-    internal var size: Avatar.Size {
+    var size: Avatar.Size {
         didSet {
             updateSize()
         }
     }
 
-    internal var emptyTheme: Avatar.EmptyTheme {
+    var emptyTheme: Avatar.EmptyTheme {
         didSet {
             updateStyle()
         }
     }
 
-    internal var image: UIImage? {
+    var image: UIImage? {
         get {
             imageView.image
         }
@@ -121,7 +121,7 @@ public final class Avatar: UIView {
         }
     }
 
-    internal init(size: Size) {
+    init(size: Size) {
         self.size = size
         self.emptyTheme = Avatar.backgroundColor(initials: "")
 
@@ -137,7 +137,7 @@ public final class Avatar: UIView {
     }
 
     // Avatar - private
-    internal let label = UILabel()
+    let label = UILabel()
     private let imageView = UIImageView()
 
     private func setupViews() {
@@ -168,7 +168,7 @@ public final class Avatar: UIView {
     }
 }
 
-internal class OnlineBadgeView: UIView {
+class OnlineBadgeView: UIView {
     let fillView = UIView()
 
     override init(frame: CGRect) {

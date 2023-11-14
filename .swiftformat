@@ -49,7 +49,7 @@
     --self init-only
 --enable redundantVoidReturnType
 --enable semicolons
---enable sortedImports
+--enable sortImports
 --enable spaceAroundBraces
 --enable spaceAroundBrackets
 --enable spaceAroundComments
