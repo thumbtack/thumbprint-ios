@@ -25,9 +25,11 @@ class TextAreaTest: SnapshotTestCase {
     }
 
     func testFirstResponderEmpty() {
-        verify {
+        verify(setUp: {
+            self.textArea.setNeedsLayout()
+            self.textArea.layoutIfNeeded()
             self.textArea.becomeFirstResponder()
-        }
+        })
     }
 
     func testFirstResponderFilled() {
