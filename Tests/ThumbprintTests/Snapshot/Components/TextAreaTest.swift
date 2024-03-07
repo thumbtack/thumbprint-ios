@@ -25,6 +25,7 @@ class TextAreaTest: SnapshotTestCase {
     }
 
     // Disabled because hangs frequently under github actions
+    // https://thumbtack.atlassian.net/browse/MINF-2392
     func testFirstResponderEmpty() {
         verify {
             self.textArea.becomeFirstResponder()
@@ -32,6 +33,7 @@ class TextAreaTest: SnapshotTestCase {
     }
 
     // Disabled because hangs frequently under github actions
+    // https://thumbtack.atlassian.net/browse/MINF-2392
     func testFirstResponderFilled() {
         textArea.text = "Test."
 
