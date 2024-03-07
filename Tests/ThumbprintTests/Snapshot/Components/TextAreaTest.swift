@@ -24,12 +24,14 @@ class TextAreaTest: SnapshotTestCase {
         verify()
     }
 
+    // Disabled because hangs frequently under github actions
     func testFirstResponderEmpty() {
         verify {
             self.textArea.becomeFirstResponder()
         }
     }
 
+    // Disabled because hangs frequently under github actions
     func testFirstResponderFilled() {
         textArea.text = "Test."
 
