@@ -5,7 +5,7 @@ public extension Button {
     /**
      * Button theme
      */
-    struct Theme: Equatable {
+    struct Theme: Equatable, Sendable {
         public let titleColor: UIColor
         public let activeTitleColor: UIColor
         public let disabledTitleColor: UIColor

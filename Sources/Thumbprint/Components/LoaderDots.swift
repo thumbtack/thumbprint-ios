@@ -4,7 +4,7 @@ import UIKit
  * Loading indicator for use within components such as buttons.
  */
 public final class LoaderDots: UIView {
-    public enum Theme {
+    public enum Theme: Sendable {
         case brand
         case inverse
         case muted
