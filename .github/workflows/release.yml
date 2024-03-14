@@ -8,7 +8,7 @@ on:
 jobs:
   release:
     name: Publish SPM
-    runs-on: macos-13
+    runs-on: macos-14
     strategy:
       matrix:
         xcode: ["/Applications/Xcode_15.2.app"]
