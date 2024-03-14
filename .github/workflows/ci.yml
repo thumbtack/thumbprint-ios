@@ -3,15 +3,15 @@ on: push
 jobs:
   test:
     name: Run tests
-    runs-on: macos-13
+    runs-on: macos-14
     strategy:
       matrix:
         # Adding additional destinations, schemes, etc. here will make GitHub run the steps
         # on all combinations of them (e.g., if there are 2 destinations and 2 schemes, the
         # test suite will get run 4 times).
-        destination: ["platform=iOS Simulator,OS=17.0.1,name=iPhone 15"]
+        destination: ["platform=iOS Simulator,OS=17.2,name=iPhone 15"]
         scheme: ["Thumbprint"]
-        xcode: ["/Applications/Xcode_15.0.1.app"]
+        xcode: ["/Applications/Xcode_15.2.app"]
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v2

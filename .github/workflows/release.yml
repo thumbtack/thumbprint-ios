@@ -8,10 +8,10 @@ on:
 jobs:
   release:
     name: Publish SPM
-    runs-on: macos-13
+    runs-on: macos-14
     strategy:
       matrix:
-        xcode: ["/Applications/Xcode_15.0.1.app"]
+        xcode: ["/Applications/Xcode_15.2.app"]
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v2
