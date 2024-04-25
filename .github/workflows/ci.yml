@@ -16,6 +16,9 @@ jobs:
       - name: 📥 Checkout
         uses: actions/checkout@v2
 
+      - name: Select Xcode
+        run: sudo xcode-select -s "/Applications/Xcode_15.3.app"
+
       - name: 🔎 Run lint checks
         run: sh .github/scripts/lint.sh
 
