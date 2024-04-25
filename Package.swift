@@ -1,4 +1,4 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "Thumbprint",
     platforms: [
-        .iOS(.v13),
-        .macOS(.v12), // Required for running swiftformat in CI
+        .iOS(.v15),
+        .macOS(.v14), // Required for running swiftformat in CI
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
