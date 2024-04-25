@@ -88,8 +88,6 @@ line_length: 200
 
 included:
   - Thumbprint
-excluded:
-  - Pods
 
 custom_rules:
   discourage_unowned:
@@ -126,24 +124,11 @@ custom_rules:
     name: "Prefer removeFromSuperview over removeArrangedSubview"
     regex: "removeArrangedSubview"
     message: "Only calling removeArrangedSubview() will leave the view in `subviews` and therefore in the view hierarchy. Since removeFromSuperview() will remove the view from the arrangedSubviews, per the docs, there should never be a need for removeArrangedSubview()."
-  rx_retain_cycle_1:
-    name: "Likely retain cycle detected"
-    regex: '[^\w]+on(Next|Completed|Success|Error):(?! nil)[^{]*$'
-    message: "Passing a function directly to an RxSwift block such as onNext will result in a retain cycle.\nReplace\n    foo.subscribe(onNext: bar)\nwith\n    foo.subscribe(onNext: { [weak self] in\n        self?.bar()\n    })"
-  rx_retain_cycle_2:
-    name: "Likely retain cycle detected"
-    regex: 'configureCell: self\.'
-    message: "Passing a function directly to an RxSwift block such as configureCell will result in a retain cycle.\nReplace `configureCell: self.configureCell` with\n    configureCell: { [weak self] dataSource, tableView, indexPath, element in\n        guard let self = self else { return UITableViewCell() }\n        return self.configureCell(dataSource: dataSource, tableView: tableView, indexPath: indexPath, element: element)\n    }"
   disallow_uiwindow_instantiation:
     included: '.*/Tests/Snapshot/.*\.swift'
     name: "Disallow UIWindow Instantiation"
     regex: 'UIWindow\('
     message: "Do not instantiate UIWindow directly, use the verify(viewController:) helper instead."
-    severity: error
-  disallow_rx_default_nils:
-    name: "Disallow explicit listing of Rx subscribe parameters as the default `nil` value"
-    regex: "onError: *nil, *onCompleted: *nil, *onDisposed: *nil"
-    message: "Delete the unnecessary parameters, since they default to nil."
     severity: error
   disallow_snapshot_testing_direct_usage:
     included: '.*/Tests/Snapshot/.*\.swift'

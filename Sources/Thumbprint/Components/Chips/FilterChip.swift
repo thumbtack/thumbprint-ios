@@ -8,12 +8,12 @@ import UIKit
 
 public final class FilterChip: Chip {
     override class var selectedTheme: Pill.Theme {
-        return .init(backgroundColor: Color.blue100, contentColor: Color.blue)
+        .init(backgroundColor: Color.blue100, contentColor: Color.blue)
     }
 
     override func buildAccessibilityLabel() -> String {
         var result = isSelected ? "remove filter" : "apply filter"
-        if let text = text {
+        if let text {
             result += " for: \(text)"
         }
         return result

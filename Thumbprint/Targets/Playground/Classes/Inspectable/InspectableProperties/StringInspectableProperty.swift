@@ -6,7 +6,7 @@ class StringInspectableProperty<T>: InspectableProperty {
     var inspectedView: T
     var property: WritableKeyPath<T, String?>? {
         didSet {
-            guard let property = property else { return }
+            guard let property else { return }
             textField.text = inspectedView[keyPath: property]
         }
     }
@@ -26,7 +26,7 @@ class StringInspectableProperty<T>: InspectableProperty {
     }
 
     @objc private func textChanged(sender: AnyObject) {
-        guard let property = property else { return }
+        guard let property else { return }
         inspectedView[keyPath: property] = textField.text
     }
 }

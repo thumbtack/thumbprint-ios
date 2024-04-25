@@ -22,33 +22,33 @@ open class SnapshotTestCase: XCTestCase {
         public var cgSize: CGSize {
             switch self {
             case .default:
-                return WindowSize.iPhone8.cgSize
+                WindowSize.iPhone8.cgSize
             case .iPhoneSE:
-                return CGSize(width: 320, height: 568)
+                CGSize(width: 320, height: 568)
             case .iPhone8:
-                return CGSize(width: 375, height: 667)
+                CGSize(width: 375, height: 667)
             case .iPhone8Plus:
-                return CGSize(width: 414, height: 736)
+                CGSize(width: 414, height: 736)
             case .iPadPro9_7:
-                return CGSize(width: 1536, height: 2048)
+                CGSize(width: 1536, height: 2048)
             case .intrinsic:
-                return CGSize(width: .intrinsic, height: .intrinsic)
+                CGSize(width: .intrinsic, height: .intrinsic)
             case .defaultWidthIntrinsicHeight:
-                return CGSize(width: .defaultWidth, height: .intrinsic)
+                CGSize(width: .defaultWidth, height: .intrinsic)
             case let .size(width, height, _):
-                return CGSize(width: width, height: height)
+                CGSize(width: width, height: height)
             }
         }
 
         public func cgSize(compatibleWith traitCollection: UITraitCollection) -> CGSize {
             switch self {
             case let .size(width, height, true):
-                return CGSize(
+                CGSize(
                     width: width,
                     height: Font.scaledValue(height, for: .text1, compatibleWith: traitCollection)
                 )
             default:
-                return cgSize
+                cgSize
             }
         }
     }
@@ -98,7 +98,7 @@ open class SnapshotTestCase: XCTestCase {
 
     static func verifyExpectedSnapshotTestDevice() {
         let expectedDeviceName = "iPhone 15"
-        let expectedSystemVersion = "17.2"
+        let expectedSystemVersion = "17.4"
 
         assert(UIDevice.current.name == expectedDeviceName, "Snapshot tests should be run on \(expectedDeviceName).")
         assert(UIDevice.current.systemVersion == expectedSystemVersion, "Snapshot tests should be run on iOS \(expectedSystemVersion).")
@@ -298,7 +298,7 @@ open class SnapshotTestCase: XCTestCase {
     ) {
         class NoSafeAreaView: UIView {
             override var safeAreaInsets: UIEdgeInsets {
-                return .zero
+                .zero
             }
         }
 
@@ -307,13 +307,11 @@ open class SnapshotTestCase: XCTestCase {
                 scrollView.frame = .init(origin: .zero, size: size.cgSize)
                 scrollView.layoutIfNeeded() //  This will layout all the contents of the table so we know how big it is.
                 //  Build the custom identifier since we're only sending one at a time.
-                var fullIdentifier: String = {
-                    if let identifier = identifier {
-                        return "\(identifier)_"
-                    } else {
-                        return ""
-                    }
-                }()
+                var fullIdentifier: String = if let identifier {
+                    "\(identifier)_"
+                } else {
+                    ""
+                }
                 fullIdentifier.append("w\(Int(size.cgSize.width))")
                 if contentSizeCategory != .unspecified {
                     fullIdentifier.append("_\(contentSizeCategory.rawValue)")
@@ -385,7 +383,7 @@ open class SnapshotTestCase: XCTestCase {
 
                     var identifierParts: [String] = []
 
-                    if let identifier = identifier {
+                    if let identifier {
                         identifierParts.append(identifier)
                     }
 
@@ -413,12 +411,10 @@ open class SnapshotTestCase: XCTestCase {
                     let config = ViewImageConfig(safeArea: safeArea, size: cgSize, traits: collection)
 
                     let viewController = viewControllerFactory()
-                    let snapshotViewController: UIViewController
-
-                    if useNavigationController {
-                        snapshotViewController = UINavigationController(rootViewController: viewController)
+                    let snapshotViewController: UIViewController = if useNavigationController {
+                        UINavigationController(rootViewController: viewController)
                     } else {
-                        snapshotViewController = viewController
+                        viewController
                     }
 
                     assertSnapshot(
@@ -454,7 +450,7 @@ open class SnapshotTestCase: XCTestCase {
     }
 }
 
-public extension Array where Element == SnapshotTestCase.WindowSize {
+public extension [SnapshotTestCase.WindowSize] {
     static var allPhones: [Element] { Element.allPhones }
     static var all: [Element] { Element.all }
 
@@ -477,11 +473,11 @@ public extension Array where Element == SnapshotTestCase.WindowSize {
     }
 }
 
-public extension Array where Element == UIContentSizeCategory {
+public extension [UIContentSizeCategory] {
     static var all: [Element] { [.extraSmall, .large, .accessibilityExtraLarge] }
 }
 
-public extension Set where Element == UIUserInterfaceStyle {
+public extension Set<UIUserInterfaceStyle> {
     static var all: Set<UIUserInterfaceStyle> { [.light, .dark] }
 }
 
@@ -610,7 +606,7 @@ private class Window: UIWindow {
     }
 
     override var safeAreaInsets: UIEdgeInsets {
-        if let safeArea = safeArea {
+        if let safeArea {
             return safeArea
         }
 

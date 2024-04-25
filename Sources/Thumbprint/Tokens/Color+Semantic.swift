@@ -6,17 +6,17 @@ import UIKit
 public extension Color {
     private static func themedColor(light: UIColor, dark: UIColor) -> UIColor {
         if #available(iOS 13.0, *) {
-            return UIColor { traitCollection -> UIColor in
+            UIColor { traitCollection -> UIColor in
                 switch traitCollection.userInterfaceStyle {
                 case .dark:
-                    return dark
+                    dark
 
                 default:
-                    return light
+                    light
                 }
             }
         } else {
-            return light
+            light
         }
     }
 

@@ -8,7 +8,7 @@ class OptionalIntInspectableProperty<T>: InspectableProperty {
 
     var property: WritableKeyPath<T, Int?>? {
         didSet {
-            guard let property = property else { return }
+            guard let property else { return }
             if let i = inspectedView[keyPath: property] {
                 intInspector.textField.text = String(i)
             }
@@ -26,7 +26,7 @@ class OptionalIntInspectableProperty<T>: InspectableProperty {
             .eraseToAnyPublisher()
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] value in
-                guard let self = self, let property = self.property else { return }
+                guard let self, let property else { return }
                 self.inspectedView[keyPath: property] = value
             })
             .store(in: &subscriptions)

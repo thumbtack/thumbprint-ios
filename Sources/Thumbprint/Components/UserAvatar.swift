@@ -44,7 +44,7 @@ public final class UserAvatar: UIView {
     public var initials: String? {
         didSet {
             guard oldValue != initials else { return }
-            if let initials = initials {
+            if let initials {
                 avatar.label.text = String(initials.uppercased().prefix(2))
             } else {
                 avatar.label.text = nil

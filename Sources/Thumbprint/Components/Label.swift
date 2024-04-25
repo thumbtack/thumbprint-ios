@@ -53,7 +53,7 @@ open class Label: UILabel {
         debugDescription += "; frame: \(frame)"
         debugDescription += "; textStyle: \(textStyle)"
         debugDescription += "; adjustsFontForContentSizeCategory: \(adjustsFontForContentSizeCategory)"
-        if let text = text {
+        if let text {
             debugDescription += "; text: '\(text)'"
         } else {
             debugDescription += "; text: nil"

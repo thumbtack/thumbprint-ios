@@ -357,9 +357,9 @@ extension CalendarPickerView: TTCalendarPicker.CalendarPickerDelegate {
     // Prevents infinite loops when delegate == self (e.g. testing subclass)
     private var nonSelfDelegate: CalendarPickerViewDelegate? {
         if delegate === self {
-            return nil
+            nil
         } else {
-            return delegate
+            delegate
         }
     }
 }

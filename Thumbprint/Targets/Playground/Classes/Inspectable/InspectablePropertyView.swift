@@ -16,7 +16,7 @@ class InspectablePropertyView: UIView {
         didSet {
             oldValue?.removeFromSuperview()
 
-            if let controlView = controlView {
+            if let controlView {
                 addSubview(controlView)
                 controlView.snp.makeConstraints { make in
                     make.top.equalTo(titleLabel.snp.bottom).offset(Space.one)

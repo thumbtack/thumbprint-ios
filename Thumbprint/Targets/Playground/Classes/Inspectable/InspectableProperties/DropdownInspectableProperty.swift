@@ -22,10 +22,10 @@ class DropdownInspectableProperty<ViewType, PropertyType: Equatable>: Inspectabl
         self.inspectedView = inspectedView
         self.property = property
         self.values = values
-        self.dropdown = Dropdown(optionTitles: values.map({ $0.1 }))
+        self.dropdown = Dropdown(optionTitles: values.map(\.1))
         dropdown.addTarget(self, action: #selector(valueChanged(sender:)), for: .valueChanged)
 
-        dropdown.selectedIndex = values.map({ $0.0 }).firstIndex(of: inspectedView[keyPath: property])
+        dropdown.selectedIndex = values.map(\.0).firstIndex(of: inspectedView[keyPath: property])
     }
 
     @objc private func valueChanged(sender: AnyObject) {

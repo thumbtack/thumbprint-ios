@@ -145,9 +145,9 @@ public final class AlertBanner: UIView {
     }
 
     func updateAttributedText() {
-        guard let message = message,
-              let action = action,
-              let actionLink = actionLink else { return }
+        guard let message,
+              let action,
+              let actionLink else { return }
 
         let textDynamicFont = Font.TextStyle.text2.scaledFont(compatibleWith: traitCollection)
         let linkDynamicFont = Font.TextStyle.title7.scaledFont(compatibleWith: traitCollection)

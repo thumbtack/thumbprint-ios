@@ -40,7 +40,7 @@ class ButtonTest: SnapshotTestCase {
                 func buttonMaker(postfix: String?) -> Button {
                     let button = Button(theme: buttonConfig.theme, size: buttonConfig.size)
                     var title = "\(themeIdentifier) \(iconIdentifier)"
-                    if let postfix = postfix {
+                    if let postfix {
                         title += " " + postfix
                     }
                     button.title = title

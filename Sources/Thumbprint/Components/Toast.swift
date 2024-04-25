@@ -23,23 +23,23 @@ public class Toast: UIView {
         }
 
         public static func `default`(_ icon: Icon? = nil) -> Theme {
-            return Theme(backgroundColor: Color.black, textColor: Color.white, iconColor: Color.white, icon: icon)
+            Theme(backgroundColor: Color.black, textColor: Color.white, iconColor: Color.white, icon: icon)
         }
 
         public static func alert(_ icon: Icon? = Icon.notificationAlertsBlockedFilledMedium) -> Theme {
-            return Theme(backgroundColor: Color.red500, textColor: Color.white, iconColor: Color.white, icon: icon)
+            Theme(backgroundColor: Color.red500, textColor: Color.white, iconColor: Color.white, icon: icon)
         }
 
         public static func success(_ icon: Icon? = Icon.contentModifierCircleCheckFilledMedium) -> Theme {
-            return Theme(backgroundColor: Color.green500, textColor: Color.white, iconColor: Color.white, icon: icon)
+            Theme(backgroundColor: Color.green500, textColor: Color.white, iconColor: Color.white, icon: icon)
         }
 
         public static func info(_ icon: Icon? = Icon.notificationAlertsInfoFilledMedium) -> Theme {
-            return Theme(backgroundColor: Color.blue500, textColor: Color.white, iconColor: Color.white, icon: icon)
+            Theme(backgroundColor: Color.blue500, textColor: Color.white, iconColor: Color.white, icon: icon)
         }
 
         public static func caution(_ icon: Icon? = Icon.notificationAlertsWarningFilledMedium) -> Theme {
-            return Theme(backgroundColor: Color.yellow300, textColor: Color.black, iconColor: Color.black, icon: icon)
+            Theme(backgroundColor: Color.yellow300, textColor: Color.black, iconColor: Color.black, icon: icon)
         }
     }
 
@@ -124,9 +124,9 @@ public class Toast: UIView {
             initialSpringVelocity: 0.8,
             options: [.curveEaseInOut],
             animations: { [weak self] in
-                guard let self = self else { return }
-                self.hideToastConstraint?.deactivate()
-                self.layoutIfNeeded()
+                guard let self else { return }
+                hideToastConstraint?.deactivate()
+                layoutIfNeeded()
             },
             completion: { _ in completion?() }
         )
@@ -140,10 +140,10 @@ public class Toast: UIView {
             delay: 0,
             options: [.curveEaseInOut],
             animations: { [weak self] in
-                guard let self = self else { return }
-                self.hideToastConstraint?.activate()
-                self.alpha = 0
-                self.layoutIfNeeded()
+                guard let self else { return }
+                hideToastConstraint?.activate()
+                alpha = 0
+                layoutIfNeeded()
             },
             completion: { _ in completion?() }
         )

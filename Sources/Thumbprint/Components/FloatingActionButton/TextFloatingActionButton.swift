@@ -88,7 +88,7 @@ public class TextFloatingActionButton: Control {
     public private(set) var leftView: UIView? {
         didSet {
             oldValue?.removeFromSuperview()
-            guard let leftView = leftView else {
+            guard let leftView else {
                 return
             }
             contentStackView.insertArrangedSubview(leftView, at: 0)

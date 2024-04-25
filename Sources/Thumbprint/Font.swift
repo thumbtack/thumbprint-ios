@@ -116,7 +116,7 @@ public extension Font {
     }
 
     static func scaledValue(_ value: CGFloat, for style: TextStyle, compatibleWith traitCollection: UITraitCollection? = nil) -> CGFloat {
-        return UIFontMetrics(forTextStyle: style.uiFontTextStyle).scaledValue(for: value, compatibleWith: resolvedTraits(for: traitCollection))
+        UIFontMetrics(forTextStyle: style.uiFontTextStyle).scaledValue(for: value, compatibleWith: resolvedTraits(for: traitCollection))
     }
 }
 
@@ -145,17 +145,16 @@ public extension Font {
             self.size = size
             self.uiFontTextStyle = uiFontTextStyle
 
-            if let font = font {
+            if let font {
                 self.uiFont = font
             } else if UIFont.familyNames.contains("Mark For Thumbtack") {
-                let fontName: String
-                switch (weight, UIAccessibility.isBoldTextEnabled) {
+                let fontName = switch (weight, UIAccessibility.isBoldTextEnabled) {
                 case (.normal, false):
-                    fontName = "MarkForThumbtack-Regular"
+                    "MarkForThumbtack-Regular"
                 case (.normal, true), (.bold, false):
-                    fontName = "MarkForThumbtack-Bold"
+                    "MarkForThumbtack-Bold"
                 case (.bold, true):
-                    fontName = "MarkForThumbtack-Heavy"
+                    "MarkForThumbtack-Heavy"
                 }
 
                 self.uiFont = UIFont(name: fontName, size: size)! // swiftlint:disable:this force_unwrapping
@@ -284,7 +283,7 @@ public extension Font {
 // MARK: - UIContentSizeCategoryAdjusting Extension
 public extension UIContentSizeCategoryAdjusting {
     func font(for textStyle: Font.TextStyle) -> UIFont {
-        return adjustsFontForContentSizeCategory ? textStyle.dynamicFont : textStyle.uiFont
+        adjustsFontForContentSizeCategory ? textStyle.dynamicFont : textStyle.uiFont
     }
 }
 
@@ -293,16 +292,16 @@ private extension Font {
     private static func resolvedTraits(for traitCollection: UITraitCollection?) -> UITraitCollection? {
         switch (traitCollection, traitCollectionOverrideForTesting) {
         case (.none, .none):
-            return nil
+            nil
 
         case let (.some(traits), .none):
-            return traits
+            traits
 
         case let (.none, .some(testing)):
-            return testing
+            testing
 
         case let (.some(traits), .some(testing)):
-            return UITraitCollection(traitsFrom: [traits, testing])
+            UITraitCollection(traitsFrom: [traits, testing])
         }
     }
 
