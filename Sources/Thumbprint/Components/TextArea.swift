@@ -230,7 +230,7 @@ private extension TextArea {
     }
 
     func updateState() {
-        let inputState = self.inputState(hasError: hasError)
+        let inputState = inputState(hasError: hasError)
 
         borderedContainer.backgroundColor = inputState.backgroundColor
         borderedContainer.layer.borderColor = inputState.borderColor.cgColor

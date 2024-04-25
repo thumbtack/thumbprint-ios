@@ -46,7 +46,7 @@ public final class RadioGroup<Key> where Key: Hashable {
         }
 
         // Deselect prior selected radio.
-        if let outgoingSelection = outgoingSelection {
+        if let outgoingSelection {
             keyToRadio[outgoingSelection]?.isSelected = false
         }
 

@@ -4,11 +4,10 @@ class DayOfWeekHeaderView: UIView {
     private let stackView: UIStackView
 
     init(calendar: Calendar) {
-        let weekdaySymbols: [String]
-        if calendar.locale?.languageCode == "en" {
-            weekdaySymbols = calendar.weekdaySymbols.map({ String($0.prefix(2)) })
+        let weekdaySymbols: [String] = if calendar.locale?.languageCode == "en" {
+            calendar.weekdaySymbols.map({ String($0.prefix(2)) })
         } else {
-            weekdaySymbols = calendar.veryShortWeekdaySymbols
+            calendar.veryShortWeekdaySymbols
         }
 
         let labels = weekdaySymbols.map({ (weekday: String) -> Label in

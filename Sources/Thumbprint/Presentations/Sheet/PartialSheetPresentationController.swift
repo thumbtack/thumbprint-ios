@@ -50,8 +50,8 @@ open class PartialSheetPresentationController: UIPresentationController {
             alongsideTransition animation: ((UIViewControllerTransitionCoordinatorContext) -> Void)?,
             completion: ((UIViewControllerTransitionCoordinatorContext) -> Void)? = nil
         ) -> Bool {
-            if let animation = animation { alongsideAnimations.append(animation) }
-            if let completion = completion { alongsideCompletions.append(completion) }
+            if let animation { alongsideAnimations.append(animation) }
+            if let completion { alongsideCompletions.append(completion) }
             return true
         }
 
@@ -60,8 +60,8 @@ open class PartialSheetPresentationController: UIPresentationController {
             animation: ((UIViewControllerTransitionCoordinatorContext) -> Void)?,
             completion: ((UIViewControllerTransitionCoordinatorContext) -> Void)? = nil
         ) -> Bool {
-            if let animation = animation { alongsideAnimations.append(animation) }
-            if let completion = completion { alongsideCompletions.append(completion) }
+            if let animation { alongsideAnimations.append(animation) }
+            if let completion { alongsideCompletions.append(completion) }
             return true
         }
     }
@@ -123,7 +123,7 @@ open class PartialSheetPresentationController: UIPresentationController {
     open override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
 
-        guard let containerView = containerView else {
+        guard let containerView else {
             fatalError("Somehow reached presentationTransitionWillBegin with no container view being set")
         }
 
@@ -142,7 +142,7 @@ open class PartialSheetPresentationController: UIPresentationController {
         if let transitionCoordinator = presentedViewController.transitionCoordinator {
             currentTransitionCoordinator = transitionCoordinator
 
-            let size = self.size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView.bounds.size)
+            let size = size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView.bounds.size)
             presentedViewController.viewWillTransition(to: size, with: transitionCoordinator)
 
             grabberView.center = CGPoint(
@@ -202,7 +202,7 @@ open class PartialSheetPresentationController: UIPresentationController {
     public override func dismissalTransitionWillBegin() {
         super.dismissalTransitionWillBegin()
 
-        guard let containerView = containerView else {
+        guard let containerView else {
             fatalError("Somehow reached dismissalTransitionWillBegin with no container view being set")
         }
 
@@ -315,7 +315,7 @@ open class PartialSheetPresentationController: UIPresentationController {
 
         containerView?.setNeedsLayout()
 
-        if let containerView = containerView, currentTransitionCoordinator == nil {
+        if let containerView, currentTransitionCoordinator == nil {
             let sizeTransitionCoordinator = SizeTransitionCoordinator(containerView: containerView)
             currentTransitionCoordinator = sizeTransitionCoordinator
 

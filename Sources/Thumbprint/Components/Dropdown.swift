@@ -198,7 +198,7 @@ public final class Dropdown: Control, UIContentSizeCategoryAdjusting {
     }
 
     private func updateState() {
-        let inputState = self.inputState(hasError: hasError)
+        let inputState = inputState(hasError: hasError)
 
         backgroundColor = inputState.backgroundColor
         layer.borderColor = inputState.borderColor.cgColor
@@ -232,11 +232,11 @@ private extension InputState {
     var arrowColor: UIColor {
         switch self {
         case .disabled:
-            return Color.gray
+            Color.gray
         case .error:
-            return Color.red
+            Color.red
         default:
-            return Color.black
+            Color.black
         }
     }
 }

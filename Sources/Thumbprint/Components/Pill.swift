@@ -59,17 +59,17 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
 
     var contentHeight: CGFloat {
         if adjustsFontForContentSizeCategory {
-            return Font.scaledValue(config.height, for: label.textStyle)
+            Font.scaledValue(config.height, for: label.textStyle)
         } else {
-            return config.height
+            config.height
         }
     }
 
     var sidePadding: CGFloat {
         if adjustsFontForContentSizeCategory {
-            return Font.scaledValue(config.padding, for: label.textStyle)
+            Font.scaledValue(config.padding, for: label.textStyle)
         } else {
-            return config.padding
+            config.padding
         }
     }
 
@@ -107,7 +107,7 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
     }
 
     public static func theme(for string: String?) -> Theme {
-        guard let string = string else { return .gray }
+        guard let string else { return .gray }
 
         switch string {
         case Theme.Name.green:
@@ -257,7 +257,7 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
     }
 
     open override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return intrinsicContentSize
+        intrinsicContentSize
     }
 
     @available(*, unavailable)

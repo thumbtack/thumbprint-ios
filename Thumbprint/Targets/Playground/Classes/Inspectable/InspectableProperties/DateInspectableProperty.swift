@@ -8,7 +8,7 @@ class DateInspectableProperty<T>: InspectableProperty {
     var inspectedView: T
     var property: WritableKeyPath<T, Date>? {
         didSet {
-            guard let property = property else { return }
+            guard let property else { return }
             datePicker.date = inspectedView[keyPath: property]
             textInput.text = dateFormatter.string(from: datePicker.date)
         }
@@ -55,7 +55,7 @@ class DateInspectableProperty<T>: InspectableProperty {
             .throttle(for: 1.0, scheduler: DispatchQueue.main, latest: true)
             .eraseToAnyPublisher()
             .sink { [weak self] date in
-                guard let self = self, let property = self.property else { return }
+                guard let self, let property else { return }
                 self.inspectedView[keyPath: property] = date
             }.store(in: &subscriptions)
     }

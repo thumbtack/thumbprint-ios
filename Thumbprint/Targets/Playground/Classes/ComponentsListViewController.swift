@@ -157,8 +157,8 @@ extension ComponentsListViewController: UITableViewDataSource {
         cell.button.theme = .secondary
 
         cell.buttonCallback = { [weak self] in
-            guard let self = self else { return }
-            self.delegate?.componentsListViewController(self, addViewForComponent: inspectableType)
+            guard let self else { return }
+            delegate?.componentsListViewController(self, addViewForComponent: inspectableType)
         }
 
         return cell

@@ -142,9 +142,9 @@ public enum NavigationBar {
         var foregroundColor: UIColor {
             switch self {
             case .default:
-                return Color.black
+                Color.black
             case .light:
-                return Color.white
+                Color.white
             }
         }
     }

@@ -129,7 +129,7 @@ public final class Radio: Control, UIContentSizeCategoryAdjusting {
 
         containerView.addSubview(radioImage)
 
-        if let contentView = contentView {
+        if let contentView {
             (contentView as? UIContentSizeCategoryAdjusting)?.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
             containerView.addSubview(contentView)
 
@@ -193,7 +193,7 @@ public final class Radio: Control, UIContentSizeCategoryAdjusting {
     }
 
     private func updateInputState() {
-        let inputState = self.inputState(hasError: hasError)
+        let inputState = inputState(hasError: hasError)
         radioImage.isSelected = isSelected
         radioImage.inputState = inputState
 

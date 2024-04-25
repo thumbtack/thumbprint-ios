@@ -44,7 +44,7 @@ extension Toast: InspectableView {
 extension Toast {
     var optionalMessage: String? {
         get {
-            return message
+            message
         }
         set {
             message = newValue ?? ""
@@ -53,7 +53,7 @@ extension Toast {
 
     var actionName: String? {
         get {
-            return action?.text
+            action?.text
         }
         set {
             action = Toast.Action(text: newValue ?? "", handler: {})

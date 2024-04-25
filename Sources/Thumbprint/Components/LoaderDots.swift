@@ -11,9 +11,9 @@ public final class LoaderDots: UIView {
 
         public var color: UIColor {
             switch self {
-            case .brand: return Color.blue
-            case .muted: return Color.black300
-            case .inverse: return Color.white
+            case .brand: Color.blue
+            case .muted: Color.black300
+            case .inverse: Color.white
             }
         }
     }
@@ -24,15 +24,15 @@ public final class LoaderDots: UIView {
 
         public var size: CGFloat {
             switch self {
-            case .medium: return 16
-            case .small: return 8
+            case .medium: 16
+            case .small: 8
             }
         }
 
         public var spacing: CGFloat {
             switch self {
-            case .medium: return 10
-            case .small: return 5
+            case .medium: 10
+            case .small: 5
             }
         }
     }
@@ -81,7 +81,7 @@ public final class LoaderDots: UIView {
         }
 
         override var intrinsicContentSize: CGSize {
-            return CGSize(width: size, height: size)
+            CGSize(width: size, height: size)
         }
     }
 
@@ -129,17 +129,17 @@ public final class LoaderDots: UIView {
             options: [keyframeEasing, .repeat],
             animations: { [weak self] in
                 self?.startTimes.enumerated().forEach { [weak self] index, startTime in
-                    guard let self = self else { return }
+                    guard let self else { return }
                     UIView.addKeyframe(
                         withRelativeStartTime: startTime,
-                        relativeDuration: self.fadeInDuration,
+                        relativeDuration: fadeInDuration,
                         animations: { [weak self] in
                             self?.dotViews[index].backgroundColor = self?.theme.color
                         }
                     )
                     UIView.addKeyframe(
-                        withRelativeStartTime: startTime + self.fadeInDuration,
-                        relativeDuration: self.fadeOutDuration,
+                        withRelativeStartTime: startTime + fadeInDuration,
+                        relativeDuration: fadeOutDuration,
                         animations: { [weak self] in
                             self?.dotViews[index].backgroundColor = self?.theme.color.withAlphaComponent(0.2)
                         }

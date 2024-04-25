@@ -9,11 +9,11 @@ public enum Icon: String, CaseIterable {
         public var dimension: CGFloat {
             switch self {
             case .tiny:
-                return 14
+                14
             case .small:
-                return 18
+                18
             case .medium:
-                return 28
+                28
             }
         }
     }
@@ -438,7 +438,7 @@ public enum Icon: String, CaseIterable {
     /// Use of this function is typically discouraged since it creates a dependency
     /// on the file names used for icons that is not caught by the type checker.
     public static func icon(named name: String, size: Size? = nil) -> UIImage? {
-        guard let size = size else {
+        guard let size else {
             return UIImage(named: name, in: bundle, compatibleWith: nil)
         }
 

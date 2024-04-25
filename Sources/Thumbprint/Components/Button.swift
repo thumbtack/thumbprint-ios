@@ -58,7 +58,7 @@ public final class Button: Control, UIContentSizeCategoryAdjusting {
     public var isLoading: Bool {
         didSet {
             guard isLoading != oldValue,
-                  let loaderDots = loaderDots
+                  let loaderDots
             else { return }
 
             loaderDots.isHidden = !isLoading
@@ -361,7 +361,7 @@ private extension Button {
         activeBackgroundImage = Button.backgroundImage(withColor: theme.activeBackgroundColor, borderColor: theme.activeBorderColor)
         disabledBackgroundImage = Button.backgroundImage(withColor: theme.disabledBackgroundColor, borderColor: theme.disabledBorderColor)
 
-        if let loaderDots = loaderDots {
+        if let loaderDots {
             loaderDots.removeFromSuperview()
         }
         if let loaderTheme = theme.loaderTheme {
@@ -390,7 +390,7 @@ private extension Button {
 
         //  Rejigger icon image view if needed.
         iconImageView?.removeFromSuperview()
-        if let icon = icon {
+        if let icon {
             let imageView = iconImageView ?? {
                 let imageView = UIImageView()
                 imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -475,7 +475,7 @@ private extension Button {
         }
 
         let result = Button.backgroundImageRenderer.image(actions: { context in
-            if let backgroundColor = backgroundColor {
+            if let backgroundColor {
                 backgroundColor.setFill()
 
                 let fillPath = borderColor == nil
@@ -485,7 +485,7 @@ private extension Button {
                 context.cgContext.drawPath(using: .fill)
             }
 
-            if let borderColor = borderColor {
+            if let borderColor {
                 borderColor.setStroke()
 
                 context.cgContext.setLineWidth(borderWidth)

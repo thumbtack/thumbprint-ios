@@ -23,57 +23,57 @@ public enum InputState {
     public var backgroundImage: UIImage {
         switch self {
         case .default:
-            return InputState.defaultInputStateBackgroundImage
+            InputState.defaultInputStateBackgroundImage
         case .highlighted:
-            return InputState.highlightedInputStateBackground
+            InputState.highlightedInputStateBackground
         case .disabled:
-            return InputState.disabledInputStateBackground
+            InputState.disabledInputStateBackground
         case .error:
-            return InputState.errorInputStateBackground
+            InputState.errorInputStateBackground
         }
     }
 
     public var borderColor: UIColor {
         switch self {
         case .default:
-            return Color.gray
+            Color.gray
         case .highlighted:
-            return Color.blue
+            Color.blue
         case .disabled:
-            return Color.gray300
+            Color.gray300
         case .error:
-            return Color.red
+            Color.red
         }
     }
 
     public var backgroundColor: UIColor {
         switch self {
         case .disabled:
-            return Color.gray200
+            Color.gray200
         default:
-            return Color.white
+            Color.white
         }
     }
 
     public var textColor: UIColor {
         switch self {
         case .disabled:
-            return Color.gray
+            Color.gray
         case .error:
-            return Color.red
+            Color.red
         default:
-            return Color.black
+            Color.black
         }
     }
 
     public var placeholderTextColor: UIColor {
         switch self {
         case .error:
-            return Color.red300
+            Color.red300
         case .disabled:
-            return Color.gray
+            Color.gray
         default:
-            return Color.black300
+            Color.black300
         }
     }
 }
@@ -83,11 +83,11 @@ public extension InputState {
     var markableControlTextColor: UIColor {
         switch self {
         case .disabled:
-            return Color.gray
+            Color.gray
         case .error:
-            return Color.red
+            Color.red
         default:
-            return Color.black
+            Color.black
         }
     }
 }
@@ -96,13 +96,13 @@ public extension UIControl {
     // UIControl doesn't have an error state by default, though many of our component subclasses do
     func inputState(hasError: Bool = false) -> InputState {
         if isEnabled == false {
-            return .disabled
+            .disabled
         } else if hasError {
-            return .error
+            .error
         } else if isSelected || isHighlighted || isFirstResponder {
-            return .highlighted
+            .highlighted
         } else {
-            return .default
+            .default
         }
     }
 }

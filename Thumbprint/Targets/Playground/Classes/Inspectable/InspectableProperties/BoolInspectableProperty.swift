@@ -6,7 +6,7 @@ class BoolInspectableProperty<T>: InspectableProperty {
     var inspectedView: T
     var property: WritableKeyPath<T, Bool>? {
         didSet {
-            guard let property = property else { return }
+            guard let property else { return }
             self.switch.isOn = inspectedView[keyPath: property]
         }
     }
@@ -26,7 +26,7 @@ class BoolInspectableProperty<T>: InspectableProperty {
     }
 
     @objc private func switchValueChanged(sender: AnyObject) {
-        guard let property = property else { return }
+        guard let property else { return }
         inspectedView[keyPath: property] = self.switch.isOn
     }
 }

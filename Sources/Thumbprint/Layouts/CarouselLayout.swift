@@ -25,9 +25,9 @@ open class CarouselLayout: UICollectionViewFlowLayout {
 
         return attributes.map {
             if $0.representedElementKind == nil, let itemAttributes = layoutAttributesForItem(at: $0.indexPath) {
-                return itemAttributes
+                itemAttributes
             } else {
-                return $0
+                $0
             }
         }
     }

@@ -21,7 +21,7 @@ open class TextInput: UITextField {
 
     open override var placeholder: String? {
         didSet {
-            guard let placeholder = placeholder, placeholder != oldValue else {
+            guard let placeholder, placeholder != oldValue else {
                 return
             }
 
@@ -78,7 +78,7 @@ open class TextInput: UITextField {
     }
 
     open override func layoutSubviews() {
-        let inputState = self.inputState(hasError: hasError)
+        let inputState = inputState(hasError: hasError)
         let inputStateBackground: UIImage = inputState.backgroundImage
         if background !== inputStateBackground {
             background = inputStateBackground
@@ -89,7 +89,7 @@ open class TextInput: UITextField {
         if placeholderTextColor != inputState.placeholderTextColor {
             placeholderTextColor = inputState.placeholderTextColor
 
-            if let placeholder = placeholder {
+            if let placeholder {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: placeholderTextColor,
                 ]
@@ -101,7 +101,7 @@ open class TextInput: UITextField {
     }
 
     open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        guard let leftView = leftView else {
+        guard let leftView else {
             return .zero
         }
 
@@ -114,7 +114,7 @@ open class TextInput: UITextField {
     }
 
     open override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
-        guard let rightView = rightView else {
+        guard let rightView else {
             return .zero
         }
 

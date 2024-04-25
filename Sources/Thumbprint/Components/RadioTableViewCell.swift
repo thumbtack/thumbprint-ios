@@ -126,7 +126,7 @@ public final class RadioTableViewCellGroup {
 
     fileprivate func didSelectCell(_ cell: RadioTableViewCell) {
         guard let indexPath = tableView?.indexPath(for: cell), indexPath != selectedIndexPath else { return }
-        if let selectedIndexPath = selectedIndexPath {
+        if let selectedIndexPath {
             tableView?.deselectRow(at: selectedIndexPath, animated: true)
         }
 

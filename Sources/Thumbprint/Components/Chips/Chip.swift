@@ -30,7 +30,7 @@ public class Chip: Control {
 
     public var text: String? {
         get {
-            return pill.text
+            pill.text
         }
 
         set {
@@ -56,7 +56,7 @@ public class Chip: Control {
     }
 
     static var unselectedTheme: Pill.Theme {
-        return .init(backgroundColor: Color.white, contentColor: Color.blue)
+        .init(backgroundColor: Color.white, contentColor: Color.blue)
     }
 
     class var selectedTheme: Pill.Theme {
@@ -100,12 +100,12 @@ public class Chip: Control {
 
     public override func sizeThatFits(_ size: CGSize) -> CGSize {
         //  Redirect to the pill.
-        return pill.sizeThatFits(size)
+        pill.sizeThatFits(size)
     }
 
     public override var intrinsicContentSize: CGSize {
         //  Redirect to the pill.
-        return pill.intrinsicContentSize
+        pill.intrinsicContentSize
     }
 
     public override func layoutSubviews() {
@@ -127,7 +127,7 @@ public class Chip: Control {
     }
 
     private func setupView() {
-        let pill = self.pill
+        let pill = pill
         pill.translatesAutoresizingMaskIntoConstraints = false
         addSubview(pill)
 
@@ -172,7 +172,7 @@ extension Chip: UIContentSizeCategoryAdjusting {
     public var adjustsFontForContentSizeCategory: Bool {
         get {
             //  Redirect to pill.
-            return pill.adjustsFontForContentSizeCategory
+            pill.adjustsFontForContentSizeCategory
         }
 
         set {
@@ -210,11 +210,11 @@ open class ChipPill: Pill {
 
     private var borderWidth: CGFloat {
         if !drawsBorder {
-            return 0.0
+            0.0
         } else if adjustsFontForContentSizeCategory {
-            return Font.scaledValue(ChipPill.baseBorderWidth, for: label.textStyle)
+            Font.scaledValue(ChipPill.baseBorderWidth, for: label.textStyle)
         } else {
-            return ChipPill.baseBorderWidth
+            ChipPill.baseBorderWidth
         }
     }
 

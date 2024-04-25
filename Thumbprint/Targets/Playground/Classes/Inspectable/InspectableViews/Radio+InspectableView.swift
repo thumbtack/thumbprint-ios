@@ -31,11 +31,11 @@ extension Radio: InspectableView {
     static func makeInspectable() -> UIView & InspectableView {
         switch Int.random(in: 0 ... 2) {
         case 0:
-            return makeColorRadio()
+            makeColorRadio()
         case 1:
-            return makeTextRadio()
+            makeTextRadio()
         default:
-            return makeEmptyRadio()
+            makeEmptyRadio()
         }
     }
 
