@@ -98,7 +98,7 @@ open class SnapshotTestCase: XCTestCase {
 
     static func verifyExpectedSnapshotTestDevice() {
         let expectedDeviceName = "iPhone 15"
-        let expectedSystemVersion = "17.2"
+        let expectedSystemVersion = "17.4"
 
         assert(UIDevice.current.name == expectedDeviceName, "Snapshot tests should be run on \(expectedDeviceName).")
         assert(UIDevice.current.systemVersion == expectedSystemVersion, "Snapshot tests should be run on iOS \(expectedSystemVersion).")
