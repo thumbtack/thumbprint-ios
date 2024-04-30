@@ -20,7 +20,7 @@ let package = Package(
         .package(url: "https://github.com/SnapKit/SnapKit.git", exact: "5.6.0"),
         .package(url: "https://github.com/thumbtack/TTCalendarPicker.git", exact: "0.2.0"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", exact: "1.16.0"),
-        .package(url: "https://github.com/thumbtack/thumbprint-tokens.git", exact: "13.0.1"),
+        .package(url: "https://github.com/thumbtack/thumbprint-tokens.git", exact: "13.0.2"),
         .package(url: "https://github.com/realm/SwiftLint.git", exact: "0.54.0"),
         .package(url: "https://github.com/nicklockwood/SwiftFormat", exact: "0.52.11"),
     ],
