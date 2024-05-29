@@ -235,6 +235,13 @@ open class PartialSheetPresentationController: UIPresentationController {
             partialSheetDelegate?.partialSheetPresentationControllerDidDismissSheet?(self)
 
             NotificationCenter.default.post(name: PartialSheetPresentationController.partialSheetDidDismissNotification, object: nil)
+        } else {
+            // This is a wildly hacky solution to the problem discussed here: https://thumbtack.slack.com/archives/C04L74B6M/p1697811811558819
+            // "If you drag the sheet at all and then let go, the CTAs [and any other gestures] become unresponsive"
+            // Solution provided here: https://stackoverflow.com/a/74320743
+            // TODO: (mdinicola) Check to see if this is solved in future iOS versions
+            presentedViewController.view.bounds.origin.y = .leastNonzeroMagnitude
+            presentedViewController.view.bounds.origin.y = .zero
         }
     }
 
