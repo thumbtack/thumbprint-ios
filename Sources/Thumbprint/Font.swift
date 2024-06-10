@@ -107,8 +107,8 @@ public extension Font {
             return
         }
 
-        guard UIFont.familyNames.contains("Mark For Thumbtack") else {
-            print("Registered fonts at \(urls), but still missing Mark For Thumbtack font family.")
+        guard UIFont.familyNames.contains("Thumbtack Rise") else {
+            print("Registered fonts at \(urls), but still missing Thumbtack Rise font family.")
             return
         }
 
@@ -147,14 +147,14 @@ public extension Font {
 
             if let font {
                 self.uiFont = font
-            } else if UIFont.familyNames.contains("Mark For Thumbtack") {
+            } else if UIFont.familyNames.contains("Thumbtack Rise") {
                 let fontName = switch (weight, UIAccessibility.isBoldTextEnabled) {
                 case (.normal, false):
-                    "MarkForThumbtack-Regular"
+                    "ThumbtackRise-Regular"
                 case (.normal, true), (.bold, false):
-                    "MarkForThumbtack-Bold"
+                    "ThumbtackRise-Bold"
                 case (.bold, true):
-                    "MarkForThumbtack-Heavy"
+                    "ThumbtackRise-Heavy"
                 }
 
                 self.uiFont = UIFont(name: fontName, size: size)! // swiftlint:disable:this force_unwrapping
