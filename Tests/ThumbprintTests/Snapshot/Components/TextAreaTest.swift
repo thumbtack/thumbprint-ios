@@ -27,9 +27,11 @@ class TextAreaTest: SnapshotTestCase {
     // Disabled because hangs frequently under github actions
     // https://thumbtack.atlassian.net/browse/MINF-2392
     func testFirstResponderEmpty() {
-        verify {
+        verify(setUp: {
+            self.textArea.setNeedsLayout()
+            self.textArea.layoutIfNeeded()
             self.textArea.becomeFirstResponder()
-        }
+        })
     }
 
     // Disabled because hangs frequently under github actions
