@@ -114,16 +114,8 @@ public enum NavigationBar {
             ]
         )
 
-        private static let titleFont = Font.TextStyle(
-            weight: .bold,
-            size: 16,
-            uiFontTextStyle: .body
-        ).uiFont
-        private static let largeTitleFont = Font.TextStyle(
-            weight: .bold,
-            size: 34,
-            uiFontTextStyle: .body
-        ).uiFont
+        private static let titleFont = Font.title6
+        private static let largeTitleFont = Font.title1
     }
 
     /// An enum defining the possible styles of content, which may be
