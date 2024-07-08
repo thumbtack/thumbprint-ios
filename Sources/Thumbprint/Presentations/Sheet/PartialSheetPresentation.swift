@@ -1,6 +1,6 @@
 import UIKit
 
-open class PartialSheetPresentation: NSObject, UIViewControllerTransitioningDelegate {
+open class PartialSheetPresentation: NSObject, UIViewControllerTransitioningDelegate, Sendable {
     private class PercentDrivenInteractiveTransition: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
         private var presentedViewFrame: CGRect = .zero
         private let triggerPercentage: CGFloat = 0.42

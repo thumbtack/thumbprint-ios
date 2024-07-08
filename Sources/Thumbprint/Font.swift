@@ -122,7 +122,7 @@ public extension Font {
 
 // MARK: - Public Member Types
 public extension Font {
-    struct TextStyle: Equatable, Hashable {
+    struct TextStyle: Equatable, Hashable, Sendable {
         /// Static font for this text style.
         public let uiFont: UIFont
         public let weight: ThumbprintTokens.FontWeight

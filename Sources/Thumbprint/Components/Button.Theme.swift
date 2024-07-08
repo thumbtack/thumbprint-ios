@@ -154,7 +154,7 @@ public extension Button {
     /**
      * Button size/layout configuration
      */
-    struct Size: Equatable {
+    struct Size: Equatable, Sendable {
         /// Text style for the button label.
         public let textStyle: Font.TextStyle
 
