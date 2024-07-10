@@ -1,5 +1,6 @@
 import UIKit
 
+@MainActor
 open class PartialSheetPresentation: NSObject, UIViewControllerTransitioningDelegate {
     private class PercentDrivenInteractiveTransition: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
         private var presentedViewFrame: CGRect = .zero
