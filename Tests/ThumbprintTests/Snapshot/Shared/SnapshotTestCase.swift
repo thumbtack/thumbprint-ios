@@ -40,7 +40,7 @@ open class SnapshotTestCase: XCTestCase {
             }
         }
 
-        public func cgSize(compatibleWith traitCollection: UITraitCollection) -> CGSize {
+        @MainActor public func cgSize(compatibleWith traitCollection: UITraitCollection) -> CGSize {
             switch self {
             case let .size(width, height, true):
                 CGSize(
@@ -104,18 +104,18 @@ open class SnapshotTestCase: XCTestCase {
         assert(UIDevice.current.systemVersion == expectedSystemVersion, "Snapshot tests should be run on iOS \(expectedSystemVersion).")
     }
 
-    public func verify<T: UIView>(viewFactory: () -> T,
-                                  identifier: String? = nil,
-                                  useNavigationController: Bool = false,
-                                  sizes: [WindowSize] = [.intrinsic],
-                                  padding: CGFloat = Space.two,
-                                  safeArea: UIEdgeInsets = .zero,
-                                  contentSizeCategories: [UIContentSizeCategory] = .all,
-                                  userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
-                                  verifyLayoutAmbiguity: Bool = true,
-                                  file: StaticString = #filePath,
-                                  line: UInt = #line,
-                                  setUp: ((T) -> Void)? = nil) {
+    @MainActor public func verify<T: UIView>(viewFactory: () -> T,
+                                             identifier: String? = nil,
+                                             useNavigationController: Bool = false,
+                                             sizes: [WindowSize] = [.intrinsic],
+                                             padding: CGFloat = Space.two,
+                                             safeArea: UIEdgeInsets = .zero,
+                                             contentSizeCategories: [UIContentSizeCategory] = .all,
+                                             userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
+                                             verifyLayoutAmbiguity: Bool = true,
+                                             file: StaticString = #filePath,
+                                             line: UInt = #line,
+                                             setUp: ((T) -> Void)? = nil) {
         var newPadding = padding
 
         verifyPrivate(
@@ -156,18 +156,18 @@ open class SnapshotTestCase: XCTestCase {
         )
     }
 
-    public func verify(view: UIView,
-                       identifier: String? = nil,
-                       useNavigationController: Bool = false,
-                       sizes: [WindowSize] = [.intrinsic],
-                       padding: CGFloat = Space.two,
-                       safeArea: UIEdgeInsets = .zero,
-                       contentSizeCategories: [UIContentSizeCategory] = .all,
-                       userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
-                       verifyLayoutAmbiguity: Bool = true,
-                       file: StaticString = #filePath,
-                       line: UInt = #line,
-                       setUp: (() -> Void)? = nil) {
+    @MainActor public func verify(view: UIView,
+                                  identifier: String? = nil,
+                                  useNavigationController: Bool = false,
+                                  sizes: [WindowSize] = [.intrinsic],
+                                  padding: CGFloat = Space.two,
+                                  safeArea: UIEdgeInsets = .zero,
+                                  contentSizeCategories: [UIContentSizeCategory] = .all,
+                                  userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
+                                  verifyLayoutAmbiguity: Bool = true,
+                                  file: StaticString = #filePath,
+                                  line: UInt = #line,
+                                  setUp: (() -> Void)? = nil) {
         var newPadding = padding
 
         if view is UITableView || view is UICollectionView {
@@ -206,17 +206,17 @@ open class SnapshotTestCase: XCTestCase {
         )
     }
 
-    public func verify<T: UIViewController>(viewControllerFactory: () -> T,
-                                            identifier: String? = nil,
-                                            useNavigationController: Bool = false,
-                                            sizes: [WindowSize] = .allPhones,
-                                            safeArea: UIEdgeInsets = .zero,
-                                            contentSizeCategories: [UIContentSizeCategory] = .all,
-                                            userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
-                                            verifyLayoutAmbiguity: Bool = true,
-                                            file: StaticString = #filePath,
-                                            line: UInt = #line,
-                                            setUp: ((T) -> Void)? = nil) {
+    @MainActor public func verify<T: UIViewController>(viewControllerFactory: () -> T,
+                                                       identifier: String? = nil,
+                                                       useNavigationController: Bool = false,
+                                                       sizes: [WindowSize] = .allPhones,
+                                                       safeArea: UIEdgeInsets = .zero,
+                                                       contentSizeCategories: [UIContentSizeCategory] = .all,
+                                                       userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
+                                                       verifyLayoutAmbiguity: Bool = true,
+                                                       file: StaticString = #filePath,
+                                                       line: UInt = #line,
+                                                       setUp: ((T) -> Void)? = nil) {
         if containsIntrinsicSize(in: sizes) {
             XCTFail("Intrinsic size is not supported for view controller snapshots.", file: file, line: line)
             return
@@ -236,16 +236,16 @@ open class SnapshotTestCase: XCTestCase {
                       setUp: setUp)
     }
 
-    public func verify(modalViewControllerFactory: @escaping () -> UIViewController,
-                       identifier: String? = nil,
-                       sizes: [WindowSize] = .allPhones,
-                       safeArea: UIEdgeInsets = .zero,
-                       contentSizeCategories: [UIContentSizeCategory] = .all,
-                       userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
-                       verifyLayoutAmbiguity: Bool = true,
-                       file: StaticString = #filePath,
-                       line: UInt = #line,
-                       setUp: (() -> Void)? = nil) {
+    @MainActor public func verify(modalViewControllerFactory: @escaping () -> UIViewController,
+                                  identifier: String? = nil,
+                                  sizes: [WindowSize] = .allPhones,
+                                  safeArea: UIEdgeInsets = .zero,
+                                  contentSizeCategories: [UIContentSizeCategory] = .all,
+                                  userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
+                                  verifyLayoutAmbiguity: Bool = true,
+                                  file: StaticString = #filePath,
+                                  line: UInt = #line,
+                                  setUp: (() -> Void)? = nil) {
         if containsIntrinsicSize(in: sizes) {
             XCTFail("Intrinsic size is not supported for view controller snapshots.", file: file, line: line)
             return
@@ -286,6 +286,7 @@ open class SnapshotTestCase: XCTestCase {
      - Parameter verifyLayoutAmbiguity: Whether to run the layout ambiguity verifier. Some custom layouts will trigger it no matter what and
      some older logic may be impractical to fix in which cases turning it off is recommended.
      */
+    @MainActor
     public func verify(
         scrollView: UIScrollView,
         identifier: String? = nil,
@@ -345,19 +346,18 @@ open class SnapshotTestCase: XCTestCase {
     }
 
     // MARK: - Private
-
-    private func verifyPrivate<T: UIViewController>(viewControllerFactory: () -> T, // swiftlint:disable:this function_parameter_count
-                                                    identifier: String?,
-                                                    useNavigationController: Bool,
-                                                    sizes: [WindowSize],
-                                                    padding: CGFloat,
-                                                    safeArea: UIEdgeInsets,
-                                                    contentSizeCategories: [UIContentSizeCategory],
-                                                    userInterfaceStyles: Set<UIUserInterfaceStyle>,
-                                                    verifyLayoutAmbiguity: Bool,
-                                                    file: StaticString,
-                                                    line: UInt,
-                                                    setUp: ((T) -> Void)?) {
+    @MainActor private func verifyPrivate<T: UIViewController>(viewControllerFactory: () -> T, // swiftlint:disable:this function_parameter_count
+                                                               identifier: String?,
+                                                               useNavigationController: Bool,
+                                                               sizes: [WindowSize],
+                                                               padding: CGFloat,
+                                                               safeArea: UIEdgeInsets,
+                                                               contentSizeCategories: [UIContentSizeCategory],
+                                                               userInterfaceStyles: Set<UIUserInterfaceStyle>,
+                                                               verifyLayoutAmbiguity: Bool,
+                                                               file: StaticString,
+                                                               line: UInt,
+                                                               setUp: ((T) -> Void)?) {
         sizes.forEach { size in
             contentSizeCategories.forEach { contentSizeCategory in
                 userInterfaceStyles.forEach { userInterfaceStyle in

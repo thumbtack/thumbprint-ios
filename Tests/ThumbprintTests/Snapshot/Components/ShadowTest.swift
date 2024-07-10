@@ -2,7 +2,7 @@
 import UIKit
 
 class ShadowTest: SnapshotTestCase {
-    func testRegularShadows() {
+    @MainActor func testRegularShadows() {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -40,7 +40,7 @@ class ShadowTest: SnapshotTestCase {
         verify(view: stackView, contentSizeCategories: [.unspecified])
     }
 
-    func testRoundedShadows() {
+    @MainActor func testRoundedShadows() {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually

@@ -2,12 +2,12 @@ import Thumbprint
 import UIKit
 
 class TextFloatingActionButtonTest: SnapshotTestCase {
-    func testWithPrimaryTheme() {
+    @MainActor func testWithPrimaryTheme() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testWithPrimaryThemeAndImage() {
+    @MainActor func testWithPrimaryThemeAndImage() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         let imageView = UIImageView()
         imageView.image = Icon.notificationAlertsInfoFilledMedium.image
@@ -15,7 +15,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testWithPrimaryThemeImageAndShortText() {
+    @MainActor func testWithPrimaryThemeImageAndShortText() {
         let button = TextFloatingActionButton(text: "Hey", accessibilityLabel: "Hey")
         let imageView = UIImageView()
         imageView.image = Icon.notificationAlertsInfoFilledMedium.image
@@ -23,7 +23,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testWithSecondaryTheme() {
+    @MainActor func testWithSecondaryTheme() {
         let button = TextFloatingActionButton(
             text: "Floating action button",
             accessibilityLabel: "Floating action button",
@@ -32,7 +32,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testWithSecondaryThemeAndImage() {
+    @MainActor func testWithSecondaryThemeAndImage() {
         let button = TextFloatingActionButton(
             text: "Floating action button",
             accessibilityLabel: "Floating action button",
@@ -44,7 +44,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testWithSecondaryThemeImageAndShortText() {
+    @MainActor func testWithSecondaryThemeImageAndShortText() {
         let button = TextFloatingActionButton(
             text: "Hey",
             accessibilityLabel: "Hey",
@@ -56,13 +56,13 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testIsHighlighted() {
+    @MainActor func testIsHighlighted() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         button.isHighlighted = true
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testIsHighlightedSecondary() {
+    @MainActor func testIsHighlightedSecondary() {
         let button = TextFloatingActionButton(
             text: "Floating action button",
             accessibilityLabel: "Floating action button",
@@ -72,7 +72,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testChangeTheme() {
+    @MainActor func testChangeTheme() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         let imageView = UIImageView()
         imageView.image = Icon.notificationAlertsInfoFilledMedium.image
@@ -81,7 +81,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testChangeThemeHighlighted() {
+    @MainActor func testChangeThemeHighlighted() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         let imageView = UIImageView()
         imageView.image = Icon.notificationAlertsInfoFilledMedium.image
@@ -91,7 +91,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testChangeThemeAndBack() {
+    @MainActor func testChangeThemeAndBack() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         let imageView = UIImageView()
         imageView.image = Icon.notificationAlertsInfoFilledMedium.image
@@ -101,7 +101,7 @@ class TextFloatingActionButtonTest: SnapshotTestCase {
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testChangeThemeAndBackHighlighted() {
+    @MainActor func testChangeThemeAndBackHighlighted() {
         let button = TextFloatingActionButton(text: "Floating action button", accessibilityLabel: "Floating action button")
         let imageView = UIImageView()
         imageView.image = Icon.notificationAlertsInfoFilledMedium.image

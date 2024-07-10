@@ -9,7 +9,7 @@ public class TextFloatingActionButton: Control {
         public static var module = Bundle.module
     }
 
-    public struct Theme: Equatable {
+    public struct Theme: Equatable, Sendable {
         let backgroundColor: UIColor
         let borderColor: UIColor
         let tintColor: UIColor

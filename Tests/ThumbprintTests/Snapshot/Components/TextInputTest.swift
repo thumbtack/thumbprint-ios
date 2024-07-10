@@ -18,63 +18,63 @@ class TextInputTest: SnapshotTestCase {
         super.tearDown()
     }
 
-    func testDefaultState() {
+    @MainActor func testDefaultState() {
         verify()
     }
 
-    func testSelectedEmpty() {
+    @MainActor func testSelectedEmpty() {
         textInput.isSelected = true
 
         verify()
     }
 
-    func testSelectedFilled() {
+    @MainActor func testSelectedFilled() {
         textInput.isSelected = true
         textInput.text = "Me first!"
 
         verify()
     }
 
-    func testHighlightedEmpty() {
+    @MainActor func testHighlightedEmpty() {
         textInput.isHighlighted = true
 
         verify()
     }
 
-    func testHighlightedFilled() {
+    @MainActor func testHighlightedFilled() {
         textInput.isHighlighted = true
         textInput.text = "I am so highlighted right now"
 
         verify()
     }
 
-    func testDisabledEmpty() {
+    @MainActor func testDisabledEmpty() {
         textInput.isEnabled = false
 
         verify()
     }
 
-    func testDisabledFilled() {
+    @MainActor func testDisabledFilled() {
         textInput.isEnabled = false
         textInput.text = "When I was your age..."
 
         verify()
     }
 
-    func testErrorEmpty() {
+    @MainActor func testErrorEmpty() {
         textInput.hasError = true
 
         verify()
     }
 
-    func testErrorFilled() {
+    @MainActor func testErrorFilled() {
         textInput.hasError = true
         textInput.text = "Alert! Alert!"
 
         verify()
     }
 
-    func testErrorAndDisabled() {
+    @MainActor func testErrorAndDisabled() {
         textInput.hasError = true
         textInput.isEnabled = false
         textInput.text = "This should appear disabled"
@@ -82,7 +82,7 @@ class TextInputTest: SnapshotTestCase {
         verify()
     }
 
-    func testErrorAndSelected() {
+    @MainActor func testErrorAndSelected() {
         textInput.hasError = true
         textInput.isSelected = true
         textInput.text = "This should appear as error"
@@ -90,7 +90,7 @@ class TextInputTest: SnapshotTestCase {
         verify()
     }
 
-    func testLeftView() {
+    @MainActor func testLeftView() {
         let leftView = UIButton(type: .system)
         leftView.setTitle("left", for: .normal)
 
@@ -102,7 +102,7 @@ class TextInputTest: SnapshotTestCase {
         verify()
     }
 
-    func testRightView() {
+    @MainActor func testRightView() {
         let rightView = UIButton(type: .system)
         rightView.setTitle("right", for: .normal)
 
@@ -114,7 +114,7 @@ class TextInputTest: SnapshotTestCase {
         verify()
     }
 
-    func testLeftAndRightView() {
+    @MainActor func testLeftAndRightView() {
         let leftView = UIButton(type: .system)
         leftView.setTitle("left", for: .normal)
 
@@ -132,7 +132,7 @@ class TextInputTest: SnapshotTestCase {
         verify()
     }
 
-    private func verify(file: StaticString = #filePath, line: UInt = #line) {
+    @MainActor private func verify(file: StaticString = #filePath, line: UInt = #line) {
         verify(
             view: textInput,
             sizes: [.defaultWidthIntrinsicHeight],

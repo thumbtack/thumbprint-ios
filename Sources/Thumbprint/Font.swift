@@ -10,7 +10,7 @@ import UIKit
  *
  * [Thumbprint Native Figma](https://www.figma.com/file/Z7xbBfwFUb2DGMd2Nptt0KoD/Thumbprint-Native?node-id=212%3A0 )
  */
-public enum Font {
+@MainActor public enum Font {
     // MARK: - Static fonts
 
     /// Static font with title 1 style.
@@ -175,7 +175,7 @@ public extension Font {
         }
 
         /// Font with this text style that supports scaling for accessibility.
-        public var dynamicFont: UIFont {
+        @MainActor public var dynamicFont: UIFont {
             Font.scaledFont(for: self)
         }
 
@@ -185,7 +185,7 @@ public extension Font {
         /// When using attributed strings, UIContentSizeCategoryAdusting.adjustsFontForContentSizeCategory
         /// does not work, and therefore fonts must be configured with a specific trait collection
         /// and updated any time the preferred content size category on the relevant view changes.
-        public func scaledFont(compatibleWith traitCollection: UITraitCollection) -> UIFont {
+        @MainActor public func scaledFont(compatibleWith traitCollection: UITraitCollection) -> UIFont {
             Font.scaledFont(for: self, compatibleWith: traitCollection)
         }
 
