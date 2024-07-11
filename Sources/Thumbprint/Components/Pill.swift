@@ -73,7 +73,7 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
         }
     }
 
-    public struct Theme: Equatable {
+    public struct Theme: Equatable, Sendable {
         public let backgroundColor: UIColor
         public let contentColor: UIColor
         public let name: String? //  Used by some old legacy logic that stores it.

@@ -1,5 +1,5 @@
 {
-  "originHash" : "e57fd28f7238cd1744aae40f6e2a77e9c80533f9725afe4dfaf660a7c1b90530",
+  "originHash" : "3ed2b658c944f9da0c076d8a42ff6448bf7e5a8c3b64a3006c2d62395275b3d9",
   "pins" : [
     {
       "identity" : "collectionconcurrencykit",
@@ -105,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/thumbtack/thumbprint-tokens.git",
       "state" : {
-        "revision" : "746c43b8e75d4678d8bf3fcf2582b74097b0237b",
-        "version" : "13.0.2"
+        "revision" : "b19b9b12db0e35a19adf38d9a769c1cb0b5eb2fb",
+        "version" : "13.0.3"
       }
     },
     {
