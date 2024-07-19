@@ -5,7 +5,7 @@ public extension UIView {
      An option set for we can use when calling our utility methods to easily snap several edges of a view against
      another view, usually its superview.
      */
-    struct SnapEdges: OptionSet {
+    struct SnapEdges: OptionSet, Sendable {
         public let rawValue: Int
 
         public init(rawValue: Int) {
