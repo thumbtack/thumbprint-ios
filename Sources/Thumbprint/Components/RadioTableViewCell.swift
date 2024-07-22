@@ -100,7 +100,7 @@ public final class RadioTableViewCellGroup {
         self.selectedIndexPath = selectedIndexPath
     }
 
-    public func register(indexPath: IndexPath) {
+    @MainActor public func register(indexPath: IndexPath) {
         radioTableViewCellsPaths.insert(indexPath)
         if tableView?.cellForRow(at: indexPath)?.isSelected == true {
             selectedIndexPath = indexPath
@@ -119,12 +119,12 @@ public final class RadioTableViewCellGroup {
         radioTableViewCellsPaths.contains(indexPath)
     }
 
-    fileprivate func shouldReusedCellBeSelected(cell: RadioTableViewCell) -> Bool {
+    @MainActor fileprivate func shouldReusedCellBeSelected(cell: RadioTableViewCell) -> Bool {
         guard let indexPath = tableView?.indexPath(for: cell) else { return false }
         return indexPath == selectedIndexPath
     }
 
-    fileprivate func didSelectCell(_ cell: RadioTableViewCell) {
+    @MainActor fileprivate func didSelectCell(_ cell: RadioTableViewCell) {
         guard let indexPath = tableView?.indexPath(for: cell), indexPath != selectedIndexPath else { return }
         if let selectedIndexPath {
             tableView?.deselectRow(at: selectedIndexPath, animated: true)

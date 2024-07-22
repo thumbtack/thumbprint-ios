@@ -2,7 +2,7 @@
 import UIKit
 
 class CarouselLayoutTest: SnapshotTestCase {
-    func testLayout() {
+    @MainActor func testLayout() {
         let carouselLayout = CarouselLayout()
         carouselLayout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 0)
         carouselLayout.itemSize = CGSize(width: 100, height: 150)

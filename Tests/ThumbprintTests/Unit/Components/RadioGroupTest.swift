@@ -3,7 +3,7 @@ import Combine
 import XCTest
 
 class RadioGroupTest: UnitTestCase {
-    func testRadioGroup() {
+    @MainActor func testRadioGroup() {
         let radioGroup = RadioGroup<Int>()
 
         let radios = [

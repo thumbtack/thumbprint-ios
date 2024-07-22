@@ -39,7 +39,7 @@ public final class RadioGroup<Key> where Key: Hashable {
      Sets the selection to the given key. Can be used to programmatically set the radio group's selection.
      - Parameter value: The new selected key. Pass in `nil` to empty the selection.
      */
-    public func setSelection(_ value: Key?) {
+    @MainActor public func setSelection(_ value: Key?) {
         let outgoingSelection = selectionSubject.value
         guard value != outgoingSelection else {
             return
@@ -69,7 +69,7 @@ public final class RadioGroup<Key> where Key: Hashable {
      - Parameter radio: The `Radio` view associated in the UI with the given key.
      - Parameter key: The key to be associated with the given radio.
      */
-    public func registerRadio(_ radio: Radio, forKey key: Key) {
+    @MainActor public func registerRadio(_ radio: Radio, forKey key: Key) {
         assert(
             !radioToKey.keys.contains(radio),
             "Attempted to register radio object \(radio) with key \(key) already registered for key \(String(describing: radioToKey[radio]))"
@@ -85,7 +85,7 @@ public final class RadioGroup<Key> where Key: Hashable {
         keyToRadio[key] = radio
     }
 
-    @objc private func selectRadio(_ sender: Radio) {
+    @MainActor @objc private func selectRadio(_ sender: Radio) {
         guard let selectedKey = radioToKey[sender] else {
             assertionFailure("Attempted to select radio \(sender) not registered in radio group \(self)")
             return

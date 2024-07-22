@@ -20,7 +20,7 @@ class PillTest: SnapshotTestCase {
         super.tearDown()
     }
 
-    func testBlankPills() {
+    @MainActor func testBlankPills() {
         let defaultPill = Pill()
         stackView.addArrangedSubview(defaultPill)
 
@@ -33,7 +33,7 @@ class PillTest: SnapshotTestCase {
         verify(view: stackView)
     }
 
-    func testPillsWithTextOnly() {
+    @MainActor func testPillsWithTextOnly() {
         let defaultPill = Pill()
         defaultPill.text = "Default"
         stackView.addArrangedSubview(defaultPill)
@@ -48,7 +48,7 @@ class PillTest: SnapshotTestCase {
         verify(view: stackView)
     }
 
-    func testPillsWithIconAndText() {
+    @MainActor func testPillsWithIconAndText() {
         let defaultPill = Pill()
         defaultPill.text = "Default"
         defaultPill.image = Icon.notificationAlertsInfoFilledMedium.image
@@ -66,7 +66,7 @@ class PillTest: SnapshotTestCase {
     }
 
     //  Verifies that the pills look right when expanded beyond their content hugging.
-    func testPillsExpanded() {
+    @MainActor func testPillsExpanded() {
         stackView.alignment = .fill
         let defaultPill = Pill()
         defaultPill.text = "Default"
@@ -89,7 +89,7 @@ class PillTest: SnapshotTestCase {
     //  Verifies that the pills deal with horizontal compression below intrinsic content width gracefully. We'd
     //  expect the contents to eventually use all space in the pill and then start clipping the label before the
     //  icon.
-    func testPillsCompressed() {
+    @MainActor func testPillsCompressed() {
         let defaultPill = Pill()
         defaultPill.text = "Default"
         defaultPill.image = Icon.notificationAlertsInfoFilledMedium.image
@@ -113,7 +113,7 @@ class PillTest: SnapshotTestCase {
     /**
      This one doubles as a way to produce the iamges for the Thumbprint documentation.
      */
-    func testDocumentationPills() {
+    @MainActor func testDocumentationPills() {
         let documentationPills: [(title: String, icon: UIImage, theme: Pill.Theme)] = [
             ("Green", Icon.notificationAlertsInfoFilledMedium.image, .green),
             ("Red", Icon.notificationAlertsInfoFilledMedium.image, .red),

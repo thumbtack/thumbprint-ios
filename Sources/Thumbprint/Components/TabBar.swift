@@ -3,7 +3,7 @@ import UIKit
 
 /// A set of utilities for configuring the appearance of tab bars
 /// to match Thumbprint guidelines.
-public enum TabBar {
+@MainActor public enum TabBar {
     private static var normalTitleTextAttributes: [NSAttributedString.Key: Any] = [
         .foregroundColor: Color.black300,
         .font: Font.TextStyle(

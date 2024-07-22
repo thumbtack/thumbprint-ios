@@ -15,18 +15,18 @@ class TextAreaTest: SnapshotTestCase {
         super.tearDown()
     }
 
-    func testDefaultState() {
+    @MainActor func testDefaultState() {
         verify()
     }
 
-    func testDefaultStateWithText() {
+    @MainActor func testDefaultStateWithText() {
         textArea.text = "This is a simple text that can cover multiple lines if the control is too small to fit everything on one line."
         verify()
     }
 
     // Disabled because hangs frequently under github actions
     // https://thumbtack.atlassian.net/browse/MINF-2392
-    func testFirstResponderEmpty() {
+    @MainActor func testFirstResponderEmpty() {
         verify {
             self.textArea.becomeFirstResponder()
         }
@@ -34,7 +34,7 @@ class TextAreaTest: SnapshotTestCase {
 
     // Disabled because hangs frequently under github actions
     // https://thumbtack.atlassian.net/browse/MINF-2392
-    func testFirstResponderFilled() {
+    @MainActor func testFirstResponderFilled() {
         textArea.text = "Test."
 
         verify {
@@ -42,46 +42,46 @@ class TextAreaTest: SnapshotTestCase {
         }
     }
 
-    func testHighlightedEmpty() {
+    @MainActor func testHighlightedEmpty() {
         textArea.isHighlighted = true
 
         verify()
     }
 
-    func testHighlightedFilled() {
+    @MainActor func testHighlightedFilled() {
         textArea.isHighlighted = true
         textArea.text = "Come up with something buzzworthy time vampire. To be inspired is to become creative, innovative and energized we want this philosophy to trickle down to all our stakeholders shotgun approach."
 
         verify()
     }
 
-    func testDisabledEmpty() {
+    @MainActor func testDisabledEmpty() {
         textArea.isEnabled = false
 
         verify()
     }
 
-    func testDisabledFilled() {
+    @MainActor func testDisabledFilled() {
         textArea.isEnabled = false
         textArea.text = "Blue money guerrilla marketing hard stop we need to future-proof this, nor criticality or low hanging fruit the last person we talked to said this would be ready."
 
         verify()
     }
 
-    func testErrorEmpty() {
+    @MainActor func testErrorEmpty() {
         textArea.hasError = true
 
         verify()
     }
 
-    func testErrorFilled() {
+    @MainActor func testErrorFilled() {
         textArea.hasError = true
         textArea.text = "Alert! Alert!"
 
         verify()
     }
 
-    func testErrorAndDisabled() {
+    @MainActor func testErrorAndDisabled() {
         textArea.hasError = true
         textArea.isEnabled = false
         textArea.text = "This should appear disabled"
@@ -89,7 +89,7 @@ class TextAreaTest: SnapshotTestCase {
         verify()
     }
 
-    func testErrorAndSelected() {
+    @MainActor func testErrorAndSelected() {
         textArea.hasError = true
         textArea.isSelected = true
         textArea.text = "This should appear as error"
@@ -97,7 +97,7 @@ class TextAreaTest: SnapshotTestCase {
         verify()
     }
 
-    private func verify(file: StaticString = #filePath, line: UInt = #line, setUp: (() -> Void)? = nil) {
+    @MainActor private func verify(file: StaticString = #filePath, line: UInt = #line, setUp: (() -> Void)? = nil) {
         verify(view: textArea,
                sizes: [.size(width: .defaultWidth, height: 400)],
                file: file,

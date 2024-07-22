@@ -2,14 +2,14 @@ import Thumbprint
 import UIKit
 
 class ButtonStackTest: SnapshotTestCase {
-    func testOneButton() {
+    @MainActor func testOneButton() {
         let button1 = Button(adjustsFontForContentSizeCategory: false)
         button1.title = "Button 1"
 
         verify(ButtonStack(buttons: [button1]))
     }
 
-    func testTwoButtons() {
+    @MainActor func testTwoButtons() {
         let button1 = Button(adjustsFontForContentSizeCategory: false)
         button1.title = "Button 1"
 
@@ -19,7 +19,7 @@ class ButtonStackTest: SnapshotTestCase {
         verify(ButtonStack(buttons: [button1, button2]))
     }
 
-    func testThreeButtons() {
+    @MainActor func testThreeButtons() {
         let button1 = Button(adjustsFontForContentSizeCategory: false)
         button1.title = "Button 1"
 
@@ -32,7 +32,7 @@ class ButtonStackTest: SnapshotTestCase {
         verify(ButtonStack(buttons: [button1, button2, button3]))
     }
 
-    func verify(_ buttonStack: ButtonStack, file: StaticString = #filePath, line: UInt = #line) {
+    @MainActor func verify(_ buttonStack: ButtonStack, file: StaticString = #filePath, line: UInt = #line) {
         verify(view: buttonStack,
                identifier: "\(buttonStack.arrangedSubviews.count)buttons",
                contentSizeCategories: [.unspecified],

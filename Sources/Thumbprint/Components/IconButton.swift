@@ -5,7 +5,7 @@ import UIKit
 public final class IconButton: Control {
     // MARK: - Public Interface
     /// Icon button theme
-    public struct Theme: Equatable {
+    public struct Theme: Equatable, Sendable {
         let tintColor: UIColor
         let activeTintColor: UIColor
         let disabledTintColor: UIColor

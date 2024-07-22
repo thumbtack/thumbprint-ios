@@ -17,7 +17,7 @@ public final class AlertBanner: UIView {
     /**
      *  Themes
      */
-    public struct Theme: Equatable {
+    public struct Theme: Equatable, Sendable {
         public let icon: UIImage
         public let textColor: UIColor
         public let backgroundColor: UIColor

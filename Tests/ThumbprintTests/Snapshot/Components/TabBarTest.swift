@@ -2,6 +2,7 @@ import Thumbprint
 import UIKit
 
 class TabBarTest: SnapshotTestCase {
+    @MainActor
     func testAppearance() {
         let tabBar = UITabBar(frame: CGRect(origin: .zero, size: SnapshotTestCase.WindowSize.defaultWidthIntrinsicHeight.cgSize))
         let items = [

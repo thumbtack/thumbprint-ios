@@ -202,7 +202,7 @@ public extension Button {
             self.init(textStyle: textStyle, contentPadding: contentPadding, iconTextSpacing: Space.one)
         }
 
-        public static func height(for size: Size) -> CGFloat {
+        @MainActor public static func height(for size: Size) -> CGFloat {
             size.textStyle.dynamicFont.lineHeight + size.contentPadding.height * 2.0
         }
     }
