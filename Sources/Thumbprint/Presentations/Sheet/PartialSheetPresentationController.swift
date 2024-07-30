@@ -101,10 +101,8 @@ open class PartialSheetPresentationController: UIPresentationController {
 
     // Indicates that the modal was dismissed either by tapping the background area, or swiping down
     var userDidDismissModal = false
-    func didCompleteInteractiveTransition(success: Bool) {
-        if success {
-            userDidDismissModal = true
-        }
+    func didCompleteInteractiveTransition() {
+        userDidDismissModal = true
     }
 
     public var partialSheetDelegate: PartialSheetPresentationControllerDelegate? {
