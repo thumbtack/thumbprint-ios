@@ -12,8 +12,14 @@ public protocol PartialSheetPresentationControllerDelegate: UIAdaptivePresentati
     @objc
     optional func partialSheetPresentationControllerWillDismissSheet(_ partialSheetPresentationController: PartialSheetPresentationController)
 
+    /**
+     Called upon dismissal of the modal
+     - Parameters:
+         - partialSheetPresentationController: The partial sheet presentation controller responsible for the partial sheet presentation
+         - interactively: true if the modal was dismissed either by tapping on the background area or swiping down
+     */
     @objc
-    optional func partialSheetPresentationControllerDidDismissSheet(_ partialSheetPresentationController: PartialSheetPresentationController)
+    optional func partialSheetPresentationControllerDidDismissSheet(_ partialSheetPresentationController: PartialSheetPresentationController, interactively: Bool)
 }
 
 open class PartialSheetPresentationController: UIPresentationController {
@@ -92,6 +98,14 @@ open class PartialSheetPresentationController: UIPresentationController {
 
     let backgroundTapGestureRecognizer = UITapGestureRecognizer()
     let panGestureRecognizer = UIPanGestureRecognizer()
+
+    // Indicates that the modal was dismissed either by tapping the background area, or swiping down
+    var userDidDismissModal = false
+    func didCompleteInteractiveTransition(success: Bool) {
+        if success {
+            userDidDismissModal = true
+        }
+    }
 
     public var partialSheetDelegate: PartialSheetPresentationControllerDelegate? {
         get {
@@ -174,11 +188,13 @@ open class PartialSheetPresentationController: UIPresentationController {
     @objc
     private func backgroundTapGestureRecognizerHandler(sender: UITapGestureRecognizer) {
         guard let shouldDismissSheetMethod = partialSheetDelegate?.partialSheetPresentationControllerShouldDismissSheet else {
+            userDidDismissModal = true
             presentingViewController.dismiss(animated: true, completion: nil)
             return
         }
 
         if shouldDismissSheetMethod(self) {
+            userDidDismissModal = true
             presentingViewController.dismiss(animated: true, completion: nil)
         }
     }
@@ -232,7 +248,7 @@ open class PartialSheetPresentationController: UIPresentationController {
         super.dismissalTransitionDidEnd(completed)
 
         if completed {
-            partialSheetDelegate?.partialSheetPresentationControllerDidDismissSheet?(self)
+            partialSheetDelegate?.partialSheetPresentationControllerDidDismissSheet?(self, interactively: userDidDismissModal)
 
             NotificationCenter.default.post(name: PartialSheetPresentationController.partialSheetDidDismissNotification, object: nil)
         } else {

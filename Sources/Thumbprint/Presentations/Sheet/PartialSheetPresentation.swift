@@ -7,9 +7,11 @@ open class PartialSheetPresentation: NSObject, UIViewControllerTransitioningDele
         private let triggerPercentage: CGFloat = 0.42
 
         let panGestureRecognizer: UIPanGestureRecognizer
+        let completion: ((_ didFinish: Bool) -> Void)?
 
-        required init(panGestureRecognizer: UIPanGestureRecognizer) {
+        required init(panGestureRecognizer: UIPanGestureRecognizer, completion: ((_ didFinish: Bool) -> Void)?) {
             self.panGestureRecognizer = panGestureRecognizer
+            self.completion = completion
 
             super.init()
 
@@ -40,8 +42,10 @@ open class PartialSheetPresentation: NSObject, UIViewControllerTransitioningDele
             case .ended:
                 if percentComplete > triggerPercentage {
                     finish()
+                    completion?(true)
                 } else {
                     cancel()
+                    completion?(false)
                 }
 
             default:
@@ -76,7 +80,9 @@ open class PartialSheetPresentation: NSObject, UIViewControllerTransitioningDele
             return nil
         }
 
-        return PercentDrivenInteractiveTransition(panGestureRecognizer: partialSheetPresentationController.panGestureRecognizer)
+        return PercentDrivenInteractiveTransition(panGestureRecognizer: partialSheetPresentationController.panGestureRecognizer) { didFinish in
+            partialSheetPresentationController.didCompleteInteractiveTransition(success: didFinish)
+        }
     }
 
     public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
