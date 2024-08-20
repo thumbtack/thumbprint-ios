@@ -6,7 +6,7 @@ import UIKit
  */
 
 public final class Avatar: UIView {
-    public struct Size: Equatable {
+    public struct Size: Equatable, Sendable {
         public let dimension: CGFloat
         public let textFont: UIFont
         public let badgeSize: CGFloat
