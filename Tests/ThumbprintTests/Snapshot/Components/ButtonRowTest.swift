@@ -14,7 +14,7 @@ class ButtonRowTest: SnapshotTestCase {
         .minimal,
     ]
 
-    func testAll() {
+    @MainActor func testAll() {
         let buttonRow = ButtonRow(leftButton: Button(theme: .tertiary, adjustsFontForContentSizeCategory: false), rightButton: Button(adjustsFontForContentSizeCategory: false))
 
         distributions.forEach { distribution in

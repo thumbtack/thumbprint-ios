@@ -19,7 +19,7 @@ class AvatarTest: SnapshotTestCase {
         .xLarge,
     ]
 
-    func testInitialsUser() {
+    @MainActor func testInitialsUser() {
         let initials = [
             "AYYYY",
             "BOOOOOOO",
@@ -38,7 +38,7 @@ class AvatarTest: SnapshotTestCase {
         verifyViews(views: views)
     }
 
-    func testImageUser() {
+    @MainActor func testImageUser() {
         let image = UIImage(named: "eric",
                             in: Bundle.testing,
                             compatibleWith: nil)
@@ -51,7 +51,7 @@ class AvatarTest: SnapshotTestCase {
         verifyViews(views: views)
     }
 
-    func testInitialsEntity() {
+    @MainActor func testInitialsEntity() {
         let initials = [
             "AYYYY",
             "BOOOOOOO",
@@ -70,7 +70,7 @@ class AvatarTest: SnapshotTestCase {
         verifyViews(views: views)
     }
 
-    func testImageEntity() {
+    @MainActor func testImageEntity() {
         let image = UIImage(named: "eric",
                             in: Bundle.testing,
                             compatibleWith: nil)
@@ -83,7 +83,7 @@ class AvatarTest: SnapshotTestCase {
         verifyViews(views: views)
     }
 
-    func testOnlineEntity() {
+    @MainActor func testOnlineEntity() {
         let image = UIImage(named: "eric",
                             in: Bundle.testing,
                             compatibleWith: nil)
@@ -97,7 +97,7 @@ class AvatarTest: SnapshotTestCase {
         verifyViews(views: views)
     }
 
-    func testOnlineUser() {
+    @MainActor func testOnlineUser() {
         let image = UIImage(named: "eric",
                             in: Bundle.testing,
                             compatibleWith: nil)
@@ -111,13 +111,13 @@ class AvatarTest: SnapshotTestCase {
         verifyViews(views: views)
     }
 
-    func testInitialization() {
+    @MainActor func testInitialization() {
         let userAvatar = UserAvatar(size: .medium, initials: "DR", name: "Daniel Roth", isOnline: false)
         let entityAvatar = EntityAvatar(size: .medium, initials: "DR", name: "Daniel Roth", isOnline: true)
         verifyViews(views: [userAvatar, entityAvatar])
     }
 
-    func verifyViews(views: [AvatarView]) {
+    @MainActor func verifyViews(views: [AvatarView]) {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .leading
