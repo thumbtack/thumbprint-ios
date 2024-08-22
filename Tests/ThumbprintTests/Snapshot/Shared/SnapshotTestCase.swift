@@ -8,7 +8,6 @@ import XCTest
 open class SnapshotTestCase: XCTestCase {
     public enum WindowSize {
         case `default`
-        case iPhoneSE
         case iPhone8
         case iPhone8Plus
         case iPadPro9_7
@@ -16,15 +15,13 @@ open class SnapshotTestCase: XCTestCase {
         case defaultWidthIntrinsicHeight
         case size(width: CGFloat, height: CGFloat, scaleHeightForContentSizeCategory: Bool = false)
 
-        public static var allPhones: [WindowSize] { [.iPhoneSE, .iPhone8, .iPhone8Plus] }
+        public static var allPhones: [WindowSize] { [.iPhone8, .iPhone8Plus] }
         public static var all: [WindowSize] { .allPhones + [.iPadPro9_7] }
 
         public var cgSize: CGSize {
             switch self {
             case .default:
                 WindowSize.iPhone8.cgSize
-            case .iPhoneSE:
-                CGSize(width: 320, height: 568)
             case .iPhone8:
                 CGSize(width: 375, height: 667)
             case .iPhone8Plus:
@@ -79,7 +76,6 @@ open class SnapshotTestCase: XCTestCase {
 
     open override func setUp() {
         super.setUp()
-
         behavior = TestCaseBehavior()
     }
 
@@ -98,7 +94,7 @@ open class SnapshotTestCase: XCTestCase {
 
     static func verifyExpectedSnapshotTestDevice() {
         let expectedDeviceName = "iPhone 15"
-        let expectedSystemVersion = "17.4"
+        let expectedSystemVersion = "17.5"
 
         assert(UIDevice.current.name == expectedDeviceName, "Snapshot tests should be run on \(expectedDeviceName).")
         assert(UIDevice.current.systemVersion == expectedSystemVersion, "Snapshot tests should be run on iOS \(expectedSystemVersion).")

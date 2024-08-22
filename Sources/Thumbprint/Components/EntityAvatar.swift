@@ -106,7 +106,7 @@ public final class EntityAvatar: UIView {
     }
 
     private func setupViews() {
-        avatar.layer.cornerRadius = 4.0
+        avatar.layer.cornerRadius = size.dimension / 2
         avatar.clipsToBounds = true
         avatar.label.text = initials
 
