@@ -100,7 +100,7 @@ public class UserAvatar: UIView {
 
     // User Avatar - private
 
-    private let avatar: Avatar
+    let avatar: Avatar
 
     public override var intrinsicContentSize: CGSize {
         CGSize(width: size.dimension, height: size.dimension)
@@ -140,7 +140,7 @@ public class UserAvatar: UIView {
         setNeedsLayout()
     }
 
-    private func updateEmptyTheme() {
+    func updateEmptyTheme() {
         avatar.emptyTheme = Avatar.backgroundColor(initials: initials)
     }
 

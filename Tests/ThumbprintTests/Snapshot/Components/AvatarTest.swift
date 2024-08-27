@@ -8,8 +8,6 @@ protocol AvatarView: UIView {
 
 extension UserAvatar: AvatarView {}
 
-extension EntityAvatar: AvatarView {}
-
 class AvatarTest: SnapshotTestCase {
     private static let allSizes: [Avatar.Size] = [
         .xSmall,
