@@ -7,7 +7,7 @@ import UIKit
  *
  * See Thumbprint Documentation on [Avatar]( https://thumbprint.design/components/avatar/react/ ).
  */
-public final class UserAvatar: UIView {
+public class UserAvatar: UIView {
     /**
      The image displayed in the avatar image view
      */
