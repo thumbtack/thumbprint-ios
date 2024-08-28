@@ -8,8 +8,6 @@ protocol AvatarView: UIView {
 
 extension UserAvatar: AvatarView {}
 
-extension EntityAvatar: AvatarView {}
-
 class AvatarTest: SnapshotTestCase {
     private static let allSizes: [Avatar.Size] = [
         .xSmall,
@@ -113,7 +111,7 @@ class AvatarTest: SnapshotTestCase {
 
     func testInitialization() {
         let userAvatar = UserAvatar(size: .medium, initials: "DR", name: "Daniel Roth", isOnline: false)
-        let entityAvatar = EntityAvatar(size: .medium, initials: "DR", name: "Daniel Roth", isOnline: true)
+        let entityAvatar = EntityAvatar(size: .medium, initials: "D", name: "Daniel Roth", isOnline: true)
         verifyViews(views: [userAvatar, entityAvatar])
     }
 

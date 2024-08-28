@@ -7,7 +7,7 @@ import UIKit
  *
  * See Thumbprint Documentation on [Avatar]( https://thumbprint.design/components/avatar/react/ ).
  */
-public final class UserAvatar: UIView {
+public class UserAvatar: UIView {
     /**
      The image displayed in the avatar image view
      */
@@ -100,7 +100,7 @@ public final class UserAvatar: UIView {
 
     // User Avatar - private
 
-    private let avatar: Avatar
+    let avatar: Avatar
 
     public override var intrinsicContentSize: CGSize {
         CGSize(width: size.dimension, height: size.dimension)
@@ -140,7 +140,7 @@ public final class UserAvatar: UIView {
         setNeedsLayout()
     }
 
-    private func updateEmptyTheme() {
+    func updateEmptyTheme() {
         avatar.emptyTheme = Avatar.backgroundColor(initials: initials)
     }
 
