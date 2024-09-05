@@ -1,8 +1,26 @@
+import Combine
 import SnapKit
 import UIKit
 
 private protocol ToastViewDelegate: AnyObject {
     func actionDidFire()
+}
+
+private class KeyboardTracker {
+    var keyboardHeight: CGFloat = 0
+    let keyboardNotificationPublisher = PassthroughSubject<NotificationCenter.Publisher.Output, Never>()
+    private var subscriptions = Set<AnyCancellable>()
+
+    init() {
+        NotificationCenter.default.publisher(for: UIView.keyboardWillShowNotification).sink { notification in
+            self.keyboardHeight = (notification.userInfo?[UIView.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height ?? 0
+            self.keyboardNotificationPublisher.send(notification)
+        }.store(in: &subscriptions)
+        NotificationCenter.default.publisher(for: UIView.keyboardWillHideNotification).sink { notification in
+            self.keyboardHeight = 0
+            self.keyboardNotificationPublisher.send(notification)
+        }.store(in: &subscriptions)
+    }
 }
 
 /**
@@ -43,6 +61,14 @@ public class Toast: UIView {
         }
     }
 
+    private static var keyboardTracker: KeyboardTracker?
+
+    /// Call this function inside of UIApplicationDelegate's application(_:didFinishLaunchingWithOptions:)
+    /// to have toasts reposition themselves above the software keyboard
+    public static func registerForKeyboardNotifications() {
+        keyboardTracker = KeyboardTracker()
+    }
+
     public struct Action {
         public let text: String
         public let handler: () -> Void
@@ -74,6 +100,14 @@ public class Toast: UIView {
     private var didTriggerAction: Bool = false
     private var hideToastConstraint: Constraint?
     private let toastView: ToastView
+    private var subscriptions = Set<AnyCancellable>()
+
+    private let leftRightPadding: CGFloat = 16
+    private var bottomConstraint: Constraint?
+
+    private var bottomInset: CGFloat {
+        (Self.keyboardTracker?.keyboardHeight ?? 0) + 8
+    }
 
     private lazy var slidingContainer = UIView()
 
@@ -93,9 +127,6 @@ public class Toast: UIView {
         slidingContainer.addSubview(toastView)
         addSubview(slidingContainer)
 
-        let leftRightPadding: CGFloat = 16
-        let bottomOffset: CGFloat = 8
-
         toastView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -103,9 +134,32 @@ public class Toast: UIView {
         slidingContainer.snp.makeConstraints { make in
             self.hideToastConstraint = make.top.equalTo(self.snp.bottom).priority(.required).constraint
             make.left.right.equalToSuperview().inset(leftRightPadding)
-            make.bottom.equalToSuperview().offset(-bottomOffset).priority(.low)
-            make.height.equalToSuperview().offset(-bottomOffset).priority(.medium)
+            self.bottomConstraint = make.bottom.equalToSuperview().inset(bottomInset).priority(.medium).constraint
+            make.height.equalToSuperview().offset(-bottomInset).priority(.medium)
         }
+
+        Self.keyboardTracker?.keyboardNotificationPublisher.sink(receiveValue: { [weak self] notification in
+            self?.updateBottomConstraint(notification: notification)
+        }).store(in: &subscriptions)
+    }
+
+    private func updateBottomConstraint(notification: NotificationCenter.Publisher.Output) {
+        let durationKey = UIResponder.keyboardAnimationDurationUserInfoKey
+        let duration = notification.userInfo![durationKey] as! Double
+
+        let curveKey = UIResponder.keyboardAnimationCurveUserInfoKey
+        let curveValue = notification.userInfo![curveKey] as! Int
+        let curve = UIView.AnimationCurve(rawValue: curveValue)!
+
+        let animator = UIViewPropertyAnimator(
+            duration: duration,
+            curve: curve
+        ) {
+            self.bottomConstraint?.update(inset: self.bottomInset)
+            self.layoutIfNeeded()
+        }
+
+        animator.startAnimation()
     }
 
     @available(*, unavailable)
