@@ -1,27 +1,5 @@
 import UIKit
 
-// TODO: (team) Much of what's included in this delegate has been added to UIAdaptivePresentationControllerDelegate
-// in iOS 13.  Once we're on a minimum target of iOS 13, we can get rid of PartialSheetPresentationControllerDelegate and
-// just use UIAdaptivePresentationControllerDelegate directly (for which UIPresentationController already has a delegate
-// property)
-@objc
-public protocol PartialSheetPresentationControllerDelegate: UIAdaptivePresentationControllerDelegate {
-    @objc
-    optional func partialSheetPresentationControllerShouldDismissSheet(_ partialSheetPresentationController: PartialSheetPresentationController) -> Bool
-
-    @objc
-    optional func partialSheetPresentationControllerWillDismissSheet(_ partialSheetPresentationController: PartialSheetPresentationController)
-
-    /**
-     Called upon dismissal of the modal
-     - Parameters:
-         - partialSheetPresentationController: The partial sheet presentation controller responsible for the partial sheet presentation
-         - interactively: true if the modal was dismissed either by tapping on the background area or swiping down
-     */
-    @objc
-    optional func partialSheetPresentationControllerDidDismissSheet(_ partialSheetPresentationController: PartialSheetPresentationController, interactively: Bool)
-}
-
 open class PartialSheetPresentationController: UIPresentationController {
     public static let partialSheetDidPresentNotification = Notification.Name("PartialSheetDidPresentNotification")
     public static let partialSheetDidDismissNotification = Notification.Name("PartialSheetDidDismissNotification")
@@ -105,9 +83,9 @@ open class PartialSheetPresentationController: UIPresentationController {
         userDidDismissModal = true
     }
 
-    public var partialSheetDelegate: PartialSheetPresentationControllerDelegate? {
+    public var partialSheetDelegate: UISheetPresentationControllerDelegate? {
         get {
-            delegate as? PartialSheetPresentationControllerDelegate
+            delegate as? UISheetPresentationControllerDelegate
         }
         set {
             delegate = newValue
@@ -185,7 +163,7 @@ open class PartialSheetPresentationController: UIPresentationController {
 
     @objc
     private func backgroundTapGestureRecognizerHandler(sender: UITapGestureRecognizer) {
-        guard let shouldDismissSheetMethod = partialSheetDelegate?.partialSheetPresentationControllerShouldDismissSheet else {
+        guard let shouldDismissSheetMethod = partialSheetDelegate?.presentationControllerShouldDismiss else {
             userDidDismissModal = true
             presentingViewController.dismiss(animated: true, completion: nil)
             return
@@ -203,7 +181,7 @@ open class PartialSheetPresentationController: UIPresentationController {
             return
         }
 
-        guard let shouldDismissSheetMethod = partialSheetDelegate?.partialSheetPresentationControllerShouldDismissSheet else {
+        guard let shouldDismissSheetMethod = partialSheetDelegate?.presentationControllerShouldDismiss else {
             presentingViewController.dismiss(animated: true, completion: nil)
             return
         }
@@ -220,7 +198,7 @@ open class PartialSheetPresentationController: UIPresentationController {
             fatalError("Somehow reached dismissalTransitionWillBegin with no container view being set")
         }
 
-        partialSheetDelegate?.partialSheetPresentationControllerWillDismissSheet?(self)
+        partialSheetDelegate?.presentationControllerWillDismiss?(self)
 
         if let transitionCoordinator = presentedViewController.transitionCoordinator {
             currentTransitionCoordinator = transitionCoordinator
@@ -246,7 +224,7 @@ open class PartialSheetPresentationController: UIPresentationController {
         super.dismissalTransitionDidEnd(completed)
 
         if completed {
-            partialSheetDelegate?.partialSheetPresentationControllerDidDismissSheet?(self, interactively: userDidDismissModal)
+            partialSheetDelegate?.presentationControllerDidDismiss?(self)
 
             NotificationCenter.default.post(name: PartialSheetPresentationController.partialSheetDidDismissNotification, object: nil)
         } else {
