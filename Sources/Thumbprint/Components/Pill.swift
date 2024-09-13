@@ -106,7 +106,7 @@ open class Pill: UIView, UIContentSizeCategoryAdjusting {
         public static let allPredefined: [Theme] = [.green, .blue, .red, .indigo, .gray, .yellow, .purple]
     }
 
-    public static func theme(for string: String?) -> Theme {
+    public nonisolated static func theme(for string: String?) -> Theme {
         guard let string else { return .gray }
 
         switch string {
