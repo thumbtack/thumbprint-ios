@@ -63,7 +63,7 @@ public enum NavigationBar {
 
         /// Navigation bar appearance that has a shadow, but the shadow does not appear
         /// when at the scroll edge of a scroll view, i.e. does not appear until scrolled up
-        public static let scrollEdgeShadowless = NavigationBar.Appearance(
+        @MainActor public static let scrollEdgeShadowless = NavigationBar.Appearance(
             isTranslucent: false,
             backgroundImage: UIImage(),
             barTintColor: Color.white,
@@ -81,7 +81,7 @@ public enum NavigationBar {
         )
 
         /// Navigation bar appearance without a bottom shadow.
-        public static let shadowless = NavigationBar.Appearance(
+        @MainActor public static let shadowless = NavigationBar.Appearance(
             isTranslucent: false,
             backgroundImage: UIImage(),
             barTintColor: Color.white,
@@ -99,7 +99,7 @@ public enum NavigationBar {
         )
 
         /// Transparent navigation bar appearance.
-        public static let transparent = NavigationBar.Appearance(
+        @MainActor public static let transparent = NavigationBar.Appearance(
             isTranslucent: true,
             backgroundImage: UIImage(),
             barTintColor: .clear,
