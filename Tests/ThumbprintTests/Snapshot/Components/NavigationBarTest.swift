@@ -2,7 +2,7 @@ import Thumbprint
 import UIKit
 
 class NavigationBarTest: SnapshotTestCase {
-    private let appearances: [String: NavigationBar.Appearance] = [
+    @MainActor private let appearances: [String: NavigationBar.Appearance] = [
         "default": .default,
         "scrollEdgeShadowless": .scrollEdgeShadowless,
         "shadowless": .shadowless,
@@ -24,7 +24,7 @@ class NavigationBarTest: SnapshotTestCase {
         }
     }
 
-    func testContentStyles() {
+    @MainActor func testContentStyles() {
         contentStyles.forEach {
             let (contentStyleIdentifier, contentStyle) = $0
 
