@@ -101,17 +101,17 @@ open class SnapshotTestCase: XCTestCase {
     }
 
     @MainActor public func verify<T: UIView>(viewFactory: () -> T,
-                                  identifier: String? = nil,
-                                  useNavigationController: Bool = false,
-                                  sizes: [WindowSize] = [.intrinsic],
-                                  padding: CGFloat = Space.two,
-                                  safeArea: UIEdgeInsets = .zero,
-                                  contentSizeCategories: [UIContentSizeCategory] = .all,
-                                  userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
-                                  verifyLayoutAmbiguity: Bool = true,
-                                  file: StaticString = #filePath,
-                                  line: UInt = #line,
-                                  setUp: ((T) -> Void)? = nil) {
+                                             identifier: String? = nil,
+                                             useNavigationController: Bool = false,
+                                             sizes: [WindowSize] = [.intrinsic],
+                                             padding: CGFloat = Space.two,
+                                             safeArea: UIEdgeInsets = .zero,
+                                             contentSizeCategories: [UIContentSizeCategory] = .all,
+                                             userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
+                                             verifyLayoutAmbiguity: Bool = true,
+                                             file: StaticString = #filePath,
+                                             line: UInt = #line,
+                                             setUp: ((T) -> Void)? = nil) {
         var newPadding = padding
 
         verifyPrivate(
@@ -153,17 +153,17 @@ open class SnapshotTestCase: XCTestCase {
     }
 
     @MainActor public func verify(view: UIView,
-                       identifier: String? = nil,
-                       useNavigationController: Bool = false,
-                       sizes: [WindowSize] = [.intrinsic],
-                       padding: CGFloat = Space.two,
-                       safeArea: UIEdgeInsets = .zero,
-                       contentSizeCategories: [UIContentSizeCategory] = .all,
-                       userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
-                       verifyLayoutAmbiguity: Bool = true,
-                       file: StaticString = #filePath,
-                       line: UInt = #line,
-                       setUp: (() -> Void)? = nil) {
+                                  identifier: String? = nil,
+                                  useNavigationController: Bool = false,
+                                  sizes: [WindowSize] = [.intrinsic],
+                                  padding: CGFloat = Space.two,
+                                  safeArea: UIEdgeInsets = .zero,
+                                  contentSizeCategories: [UIContentSizeCategory] = .all,
+                                  userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
+                                  verifyLayoutAmbiguity: Bool = true,
+                                  file: StaticString = #filePath,
+                                  line: UInt = #line,
+                                  setUp: (() -> Void)? = nil) {
         var newPadding = padding
 
         if view is UITableView || view is UICollectionView {
@@ -203,16 +203,16 @@ open class SnapshotTestCase: XCTestCase {
     }
 
     @MainActor public func verify<T: UIViewController>(viewControllerFactory: () -> T,
-                                            identifier: String? = nil,
-                                            useNavigationController: Bool = false,
-                                            sizes: [WindowSize] = .allPhones,
-                                            safeArea: UIEdgeInsets = .zero,
-                                            contentSizeCategories: [UIContentSizeCategory] = .all,
-                                            userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
-                                            verifyLayoutAmbiguity: Bool = true,
-                                            file: StaticString = #filePath,
-                                            line: UInt = #line,
-                                            setUp: ((T) -> Void)? = nil) {
+                                                       identifier: String? = nil,
+                                                       useNavigationController: Bool = false,
+                                                       sizes: [WindowSize] = .allPhones,
+                                                       safeArea: UIEdgeInsets = .zero,
+                                                       contentSizeCategories: [UIContentSizeCategory] = .all,
+                                                       userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
+                                                       verifyLayoutAmbiguity: Bool = true,
+                                                       file: StaticString = #filePath,
+                                                       line: UInt = #line,
+                                                       setUp: ((T) -> Void)? = nil) {
         if containsIntrinsicSize(in: sizes) {
             XCTFail("Intrinsic size is not supported for view controller snapshots.", file: file, line: line)
             return
@@ -233,15 +233,15 @@ open class SnapshotTestCase: XCTestCase {
     }
 
     @MainActor public func verify(modalViewControllerFactory: @escaping () -> UIViewController,
-                       identifier: String? = nil,
-                       sizes: [WindowSize] = .allPhones,
-                       safeArea: UIEdgeInsets = .zero,
-                       contentSizeCategories: [UIContentSizeCategory] = .all,
-                       userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
-                       verifyLayoutAmbiguity: Bool = true,
-                       file: StaticString = #filePath,
-                       line: UInt = #line,
-                       setUp: (() -> Void)? = nil) {
+                                  identifier: String? = nil,
+                                  sizes: [WindowSize] = .allPhones,
+                                  safeArea: UIEdgeInsets = .zero,
+                                  contentSizeCategories: [UIContentSizeCategory] = .all,
+                                  userInterfaceStyles: Set<UIUserInterfaceStyle> = [.light],
+                                  verifyLayoutAmbiguity: Bool = true,
+                                  file: StaticString = #filePath,
+                                  line: UInt = #line,
+                                  setUp: (() -> Void)? = nil) {
         if containsIntrinsicSize(in: sizes) {
             XCTFail("Intrinsic size is not supported for view controller snapshots.", file: file, line: line)
             return
@@ -343,17 +343,17 @@ open class SnapshotTestCase: XCTestCase {
     // MARK: - Private
 
     @MainActor private func verifyPrivate<T: UIViewController>(viewControllerFactory: () -> T, // swiftlint:disable:this function_parameter_count
-                                                    identifier: String?,
-                                                    useNavigationController: Bool,
-                                                    sizes: [WindowSize],
-                                                    padding: CGFloat,
-                                                    safeArea: UIEdgeInsets,
-                                                    contentSizeCategories: [UIContentSizeCategory],
-                                                    userInterfaceStyles: Set<UIUserInterfaceStyle>,
-                                                    verifyLayoutAmbiguity: Bool,
-                                                    file: StaticString,
-                                                    line: UInt,
-                                                    setUp: ((T) -> Void)?) {
+                                                               identifier: String?,
+                                                               useNavigationController: Bool,
+                                                               sizes: [WindowSize],
+                                                               padding: CGFloat,
+                                                               safeArea: UIEdgeInsets,
+                                                               contentSizeCategories: [UIContentSizeCategory],
+                                                               userInterfaceStyles: Set<UIUserInterfaceStyle>,
+                                                               verifyLayoutAmbiguity: Bool,
+                                                               file: StaticString,
+                                                               line: UInt,
+                                                               setUp: ((T) -> Void)?) {
         sizes.forEach { size in
             contentSizeCategories.forEach { contentSizeCategory in
                 userInterfaceStyles.forEach { userInterfaceStyle in
