@@ -2,7 +2,7 @@
 import UIKit
 
 class ShadowCardTest: SnapshotTestCase {
-    func testWhiteBox() {
+    @MainActor func testWhiteBox() {
         let shadowCard = ShadowCard()
         verify(
             view: shadowCard,
@@ -11,7 +11,7 @@ class ShadowCardTest: SnapshotTestCase {
         )
     }
 
-    func testHighlighted() {
+    @MainActor func testHighlighted() {
         let shadowCard = ShadowCard()
         shadowCard.isHighlighted = true
         verify(

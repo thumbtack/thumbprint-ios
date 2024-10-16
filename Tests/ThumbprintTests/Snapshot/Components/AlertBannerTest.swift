@@ -2,7 +2,7 @@ import Thumbprint
 import UIKit
 
 class AlertBannerTest: SnapshotTestCase {
-    func testInfo() {
+    @MainActor func testInfo() {
         let alertBanner = Thumbprint.AlertBanner(
             theme: .info,
             message: "This is a sample message for an info banner.",
@@ -13,7 +13,7 @@ class AlertBannerTest: SnapshotTestCase {
         verify(alertBanner: alertBanner)
     }
 
-    func testWarning() {
+    @MainActor func testWarning() {
         let alertBanner = Thumbprint.AlertBanner(
             theme: .warning,
             message: "This is a sample message for a warning banner.",
@@ -24,7 +24,7 @@ class AlertBannerTest: SnapshotTestCase {
         verify(alertBanner: alertBanner)
     }
 
-    func testCaution() {
+    @MainActor func testCaution() {
         let alertBanner = Thumbprint.AlertBanner(
             theme: .caution,
             message: "This is a sample message for a caution banner.",
@@ -35,7 +35,7 @@ class AlertBannerTest: SnapshotTestCase {
         verify(alertBanner: alertBanner)
     }
 
-    func testMaxHeight() {
+    @MainActor func testMaxHeight() {
         let alertBanner = Thumbprint.AlertBanner(
             theme: .info,
             message: "This is a sample message for an info banner.",
@@ -49,7 +49,7 @@ class AlertBannerTest: SnapshotTestCase {
         verify(alertBanner: alertBanner)
     }
 
-    func testUpdate() {
+    @MainActor func testUpdate() {
         let alertBanner = Thumbprint.AlertBanner(
             theme: .info,
             message: "This is a sample message for an info banner.",
@@ -61,7 +61,7 @@ class AlertBannerTest: SnapshotTestCase {
         verify(alertBanner: alertBanner)
     }
 
-    func verify(alertBanner: AlertBanner) {
+    @MainActor func verify(alertBanner: AlertBanner) {
         for widthToVerify in WindowSize.allPhones.map({ windowSize in windowSize.cgSize.width }) {
             verify(
                 view: alertBanner,

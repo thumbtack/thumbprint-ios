@@ -2,7 +2,7 @@ import Thumbprint
 import UIKit
 
 class TabBarTest: SnapshotTestCase {
-    func testAppearance() {
+    @MainActor func testAppearance() {
         let tabBar = UITabBar(frame: CGRect(origin: .zero, size: SnapshotTestCase.WindowSize.defaultWidthIntrinsicHeight.cgSize))
         let items = [
             UITabBarItem(title: "Left", image: Icon.notificationAlertsInfoFilledMedium.image, selectedImage: nil),
