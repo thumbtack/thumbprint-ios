@@ -84,7 +84,7 @@ public enum Font {
     private static var didRegisterFonts = false
 
     // MARK: - Testing
-    /// Used by snapshot tests to forcefully apply the given trait collection. Do not use in application code.
+    /// Used by snapshot tests to forcefully apply the given trait collection. Do not use in application code. same for nonisolated(unsafe)
     public nonisolated(unsafe) static var traitCollectionOverrideForTesting: UITraitCollection?
 }
 
