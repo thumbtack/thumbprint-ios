@@ -49,44 +49,43 @@ public enum Font {
     // MARK: - Fonts that support scaling for accessibility.
 
     /// Font with title 1 style that supports scaling for accessibility.
-    @MainActor public static var dynamicTitle1: UIFont { TextStyle.title1.dynamicFont }
+    public static var dynamicTitle1: UIFont { TextStyle.title1.dynamicFont }
 
     /// Font with title 2 style that supports scaling for accessibility.
-    @MainActor public static var dynamicTitle2: UIFont { TextStyle.title2.dynamicFont }
+    public static var dynamicTitle2: UIFont { TextStyle.title2.dynamicFont }
 
     /// Font with title 3 style that supports scaling for accessibility.
-    @MainActor public static var dynamicTitle3: UIFont { TextStyle.title3.dynamicFont }
+    public static var dynamicTitle3: UIFont { TextStyle.title3.dynamicFont }
 
     /// Font with title 4 style that supports scaling for accessibility.
-    @MainActor public static var dynamicTitle4: UIFont { TextStyle.title4.dynamicFont }
+    public static var dynamicTitle4: UIFont { TextStyle.title4.dynamicFont }
 
     /// Font with title 5 style that supports scaling for accessibility.
-    @MainActor public static var dynamicTitle5: UIFont { TextStyle.title5.dynamicFont }
+    public static var dynamicTitle5: UIFont { TextStyle.title5.dynamicFont }
 
     /// Font with title 6 style that supports scaling for accessibility.
-    @MainActor public static var dynamicTitle6: UIFont { TextStyle.title6.dynamicFont }
+    public static var dynamicTitle6: UIFont { TextStyle.title6.dynamicFont }
 
     /// Font with title 7 style that supports scaling for accessibility.
-    @MainActor public static var dynamicTitle7: UIFont { TextStyle.title7.dynamicFont }
+    public static var dynamicTitle7: UIFont { TextStyle.title7.dynamicFont }
 
     /// Font with title 8 style that supports scaling for accessibility.
-    @MainActor public static var dynamicTitle8: UIFont { TextStyle.title8.dynamicFont }
+    public static var dynamicTitle8: UIFont { TextStyle.title8.dynamicFont }
 
     /// Font with text 1 style that supports scaling for accessibility.
-    @MainActor public static var dynamicText1: UIFont { TextStyle.text1.dynamicFont }
+    public static var dynamicText1: UIFont { TextStyle.text1.dynamicFont }
 
     /// Font with text 2 style that supports scaling for accesssibility.
-    @MainActor public static var dynamicText2: UIFont { TextStyle.text2.dynamicFont }
+    public static var dynamicText2: UIFont { TextStyle.text2.dynamicFont }
 
     /// Font with text 3 style that supports scaling for accessibility.
-    @MainActor public static var dynamicText3: UIFont { TextStyle.text3.dynamicFont }
-
-    // MARK: - Testing
-
-    /// Used by snapshot tests to forcefully apply the given trait collection. Do not use in application code.
-    @MainActor public static var traitCollectionOverrideForTesting: UITraitCollection?
+    public static var dynamicText3: UIFont { TextStyle.text3.dynamicFont }
 
     private static var didRegisterFonts = false
+
+    // MARK: - Testing
+    /// Used by snapshot tests to forcefully apply the given trait collection. Do not use in application code.
+    public nonisolated(unsafe) static var traitCollectionOverrideForTesting: UITraitCollection?
 }
 
 // MARK: - Public Functions
@@ -115,7 +114,7 @@ public extension Font {
         didRegisterFonts = true
     }
 
-    @MainActor static func scaledValue(_ value: CGFloat, for style: TextStyle, compatibleWith traitCollection: UITraitCollection? = nil) -> CGFloat {
+    static func scaledValue(_ value: CGFloat, for style: TextStyle, compatibleWith traitCollection: UITraitCollection? = nil) -> CGFloat {
         UIFontMetrics(forTextStyle: style.uiFontTextStyle).scaledValue(for: value, compatibleWith: resolvedTraits(for: traitCollection))
     }
 }
@@ -175,7 +174,7 @@ public extension Font {
         }
 
         /// Font with this text style that supports scaling for accessibility.
-        @MainActor public var dynamicFont: UIFont {
+        public var dynamicFont: UIFont {
             Font.scaledFont(for: self)
         }
 
@@ -185,7 +184,7 @@ public extension Font {
         /// When using attributed strings, UIContentSizeCategoryAdusting.adjustsFontForContentSizeCategory
         /// does not work, and therefore fonts must be configured with a specific trait collection
         /// and updated any time the preferred content size category on the relevant view changes.
-        @MainActor public func scaledFont(compatibleWith traitCollection: UITraitCollection) -> UIFont {
+        public func scaledFont(compatibleWith traitCollection: UITraitCollection) -> UIFont {
             Font.scaledFont(for: self, compatibleWith: traitCollection)
         }
 
@@ -289,7 +288,7 @@ public extension UIContentSizeCategoryAdjusting {
 
 // MARK: - Private
 private extension Font {
-    @MainActor private static func resolvedTraits(for traitCollection: UITraitCollection?) -> UITraitCollection? {
+    private static func resolvedTraits(for traitCollection: UITraitCollection?) -> UITraitCollection? {
         switch (traitCollection, traitCollectionOverrideForTesting) {
         case (.none, .none):
             nil
@@ -305,7 +304,7 @@ private extension Font {
         }
     }
 
-    @MainActor static func scaledFont(for style: TextStyle, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
+    static func scaledFont(for style: TextStyle, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
         let fontMetrics = UIFontMetrics(forTextStyle: style.uiFontTextStyle)
         let scaledFont = fontMetrics.scaledFont(for: style.uiFont, compatibleWith: resolvedTraits(for: traitCollection))
         switch (traitCollection, traitCollectionOverrideForTesting) {
