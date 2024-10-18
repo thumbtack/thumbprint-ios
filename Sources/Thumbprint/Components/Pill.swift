@@ -11,10 +11,10 @@ import UIKit
 open class Pill: UIView, UIContentSizeCategoryAdjusting {
     // MARK: - Class configuration
 
-    public struct Config {
-        public static var defaultHeight: CGFloat = 24.0
-        public static var defaultPadding: CGFloat = 12.0
-        public static var defaultTextStyle: Font.TextStyle = .title7
+    public struct Config: Sendable {
+        public static let defaultHeight: CGFloat = 24.0
+        public static let defaultPadding: CGFloat = 12.0
+        public static let defaultTextStyle: Font.TextStyle = .title7
 
         public private(set) var height: CGFloat
         public private(set) var padding: CGFloat
