@@ -2,43 +2,43 @@
 import UIKit
 
 class ToastTest: SnapshotTestCase {
-    func testDefaultTheme() {
+    @MainActor func testDefaultTheme() {
         let toast = Toast(message: "This is a message?", theme: Toast.Theme.default(), action: Toast.Action(text: "Take Action", handler: {}))
         verify(toast: toast)
     }
 
-    func testAlertTheme() {
+    @MainActor func testAlertTheme() {
         let toast = Toast(message: "This is a message?", theme: Toast.Theme.alert(), action: Toast.Action(text: "Take Action", handler: {}))
         verify(toast: toast)
     }
 
-    func testInfoTheme() {
+    @MainActor func testInfoTheme() {
         let toast = Toast(message: "This is a message?", theme: Toast.Theme.info(), action: Toast.Action(text: "Take Action", handler: {}))
         verify(toast: toast)
     }
 
-    func testCautionTheme() {
+    @MainActor func testCautionTheme() {
         let toast = Toast(message: "This is a message?", theme: Toast.Theme.caution(), action: Toast.Action(text: "Take Action", handler: {}))
         verify(toast: toast)
     }
 
-    func testSuccessTheme() {
+    @MainActor func testSuccessTheme() {
         // NOTE WE SET NO IMAGE HERE BECAUSE THE DEFAULT IMAGE ISNT BUNDLED
         let toast = Toast(message: "This is a message?", theme: Toast.Theme.success(nil), action: Toast.Action(text: "Take Action", handler: {}))
         verify(toast: toast)
     }
 
-    func testCustomImage() {
+    @MainActor func testCustomImage() {
         let toast = Toast(message: "This is a message?", theme: Toast.Theme.success(Icon.contentActionsAddMedium), action: Toast.Action(text: "Take Action", handler: {}))
         verify(toast: toast)
     }
 
-    func testLongText() {
+    @MainActor func testLongText() {
         let toast = Toast(message: "This is a very long message that should probably wrap to fit multiple lines, except on iPad.", theme: Toast.Theme.success(Icon.contentActionsAddMedium), action: Toast.Action(text: "Hyperlink Text", handler: {}))
         verify(toast: toast)
     }
 
-    private func verify(toast: Toast) {
+    @MainActor private func verify(toast: Toast) {
         verify(
             viewFactory: {
                 toast.showToast(animated: false, completion: nil)

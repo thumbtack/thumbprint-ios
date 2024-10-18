@@ -32,12 +32,12 @@ class ButtonTest: SnapshotTestCase {
         super.tearDown()
     }
 
-    func testThemes() {
+    @MainActor func testThemes() {
         themes.forEach { themeIdentifier, buttonConfig in
             icons.forEach { iconIdentifier, iconConfig in
                 let size = WindowSize.intrinsic
 
-                func buttonMaker(postfix: String?) -> Button {
+                @MainActor func buttonMaker(postfix: String?) -> Button {
                     let button = Button(theme: buttonConfig.theme, size: buttonConfig.size)
                     var title = "\(themeIdentifier) \(iconIdentifier)"
                     if let postfix {
@@ -87,7 +87,7 @@ class ButtonTest: SnapshotTestCase {
         }
     }
 
-    func testSizes() {
+    @MainActor func testSizes() {
         sizes.forEach { sizeIdentifier, buttonConfig in
             icons.forEach { iconIdentifier, iconConfig in
                 button = Button(theme: buttonConfig.exampleTheme, size: buttonConfig.size)
@@ -102,7 +102,7 @@ class ButtonTest: SnapshotTestCase {
         }
     }
 
-    func testStretchWidth() {
+    @MainActor func testStretchWidth() {
         button = Button(adjustsFontForContentSizeCategory: true)
         button.title = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium ornare magna et tristique."
         button.icon = .init(.leading, image: Icon.notificationAlertsInfoFilledMedium.image)

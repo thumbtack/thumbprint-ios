@@ -9,7 +9,7 @@ class FooterTest: SnapshotTestCase {
         "short-secondary": ("Etiam egestas, metus id dignissim ultrices, odio enim imperdiet est, placerat ullamcorper augue ligula sed odio.", "Title"),
     ]
 
-    func testSafeArea() {
+    @MainActor func testSafeArea() {
         let factory: () -> UIViewController = {
             let buttonRow = ButtonRow(leftButton: Button(theme: .tertiary, adjustsFontForContentSizeCategory: false), rightButton: Button(adjustsFontForContentSizeCategory: false))
             buttonRow.leftButton.title = "Title"
@@ -41,7 +41,7 @@ class FooterTest: SnapshotTestCase {
                contentSizeCategories: [.unspecified])
     }
 
-    func testScreenWidths() {
+    @MainActor func testScreenWidths() {
         verify(
             viewControllerFactory: {
                 let buttonRow = ButtonRow(leftButton: Button(theme: .tertiary, adjustsFontForContentSizeCategory: false), rightButton: Button(adjustsFontForContentSizeCategory: false))
@@ -67,7 +67,7 @@ class FooterTest: SnapshotTestCase {
         )
     }
 
-    func testRegularSizeClass() {
+    @MainActor func testRegularSizeClass() {
         verify(
             viewControllerFactory: {
                 let buttonRow = ButtonRow(leftButton: Button(theme: .tertiary, adjustsFontForContentSizeCategory: false), rightButton: Button(adjustsFontForContentSizeCategory: false))
@@ -102,7 +102,7 @@ class FooterTest: SnapshotTestCase {
         )
     }
 
-    func testShowShadowByDefault() {
+    @MainActor func testShowShadowByDefault() {
         verify(
             viewControllerFactory: {
                 let viewController = UIViewController(nibName: nil, bundle: nil)

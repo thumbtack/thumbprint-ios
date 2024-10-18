@@ -20,83 +20,83 @@ class CheckboxTest: SnapshotTestCase {
 
     // MARK: - Checkbox
 
-    func testCheckboxEmpty() {
+    @MainActor func testCheckboxEmpty() {
         verifyCheckbox()
     }
 
-    func testCheckboxEmptyHighlighted() {
+    @MainActor func testCheckboxEmptyHighlighted() {
         checkbox.isHighlighted = true
         verifyCheckbox()
     }
 
-    func testCheckboxEmptyDisabled() {
+    @MainActor func testCheckboxEmptyDisabled() {
         checkbox.isEnabled = false
         verifyCheckbox()
     }
 
-    func testCheckboxEmptyError() {
+    @MainActor func testCheckboxEmptyError() {
         checkbox.hasError = true
         verifyCheckbox()
     }
 
-    func testCheckboxEmptyLarge() {
+    @MainActor func testCheckboxEmptyLarge() {
         checkbox.checkBoxSize = 80
         verifyCheckbox()
     }
 
-    func testCheckboxChecked() {
+    @MainActor func testCheckboxChecked() {
         checkbox.isSelected = true
         verifyCheckbox()
     }
 
-    func testCheckboxCheckedHighlighted() {
+    @MainActor func testCheckboxCheckedHighlighted() {
         checkbox.isSelected = true
         checkbox.isHighlighted = true
         verifyCheckbox()
     }
 
-    func testCheckboxCheckedDisabled() {
+    @MainActor func testCheckboxCheckedDisabled() {
         checkbox.isSelected = true
         checkbox.isEnabled = false
         verifyCheckbox()
     }
 
-    func testCheckboxCheckedError() {
+    @MainActor func testCheckboxCheckedError() {
         checkbox.isSelected = true
         checkbox.hasError = true
         verifyCheckbox()
     }
 
-    func testCheckboxCheckedLarge() {
+    @MainActor func testCheckboxCheckedLarge() {
         checkbox.checkBoxSize = 80
         checkbox.isSelected = true
         verifyCheckbox()
     }
 
-    func testCheckboxIntermediate() {
+    @MainActor func testCheckboxIntermediate() {
         checkbox.mark = .intermediate
         verifyCheckbox()
     }
 
-    func testCheckboxIntermediateDisabled() {
+    @MainActor func testCheckboxIntermediateDisabled() {
         checkbox.mark = .intermediate
         checkbox.isEnabled = false
         verifyCheckbox()
     }
 
-    func testCheckboxIntermediateHighlighted() {
+    @MainActor func testCheckboxIntermediateHighlighted() {
         checkbox.mark = .intermediate
         checkbox.isHighlighted = true
         verifyCheckbox()
     }
 
-    func testCheckboxIntermediateError() {
+    @MainActor func testCheckboxIntermediateError() {
         checkbox.mark = .intermediate
         checkbox.hasError = true
         verifyCheckbox()
     }
 
-    func testCheckboxIntermediateLarge() {
+    @MainActor func testCheckboxIntermediateLarge() {
         checkbox.checkBoxSize = 80
         checkbox.mark = .intermediate
         verifyCheckbox()
@@ -104,99 +104,99 @@ class CheckboxTest: SnapshotTestCase {
 
     // MARK: - LabelCheckbox
 
-    func testLabelCheckboxEmpty() {
+    @MainActor func testLabelCheckboxEmpty() {
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxEmptyDisabled() {
+    @MainActor func testLabelCheckboxEmptyDisabled() {
         labeledCheckbox.isEnabled = false
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxEmptyHighlighted() {
+    @MainActor func testLabelCheckboxEmptyHighlighted() {
         labeledCheckbox.isHighlighted = true
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxEmptyError() {
+    @MainActor func testLabelCheckboxEmptyError() {
         labeledCheckbox.hasError = true
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxEmptyLarge() {
+    @MainActor func testLabelCheckboxEmptyLarge() {
         labeledCheckbox.checkBoxSize = 80
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxChecked() {
+    @MainActor func testLabelCheckboxChecked() {
         labeledCheckbox.isSelected = true
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxCheckedDisabled() {
+    @MainActor func testLabelCheckboxCheckedDisabled() {
         labeledCheckbox.isSelected = true
         labeledCheckbox.isEnabled = false
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxCheckedHighlighted() {
+    @MainActor func testLabelCheckboxCheckedHighlighted() {
         labeledCheckbox.isSelected = true
         labeledCheckbox.isHighlighted = true
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxCheckedError() {
+    @MainActor func testLabelCheckboxCheckedError() {
         labeledCheckbox.isSelected = true
         labeledCheckbox.hasError = true
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxCheckedLarge() {
+    @MainActor func testLabelCheckboxCheckedLarge() {
         labeledCheckbox.checkBoxSize = 80
         labeledCheckbox.isSelected = true
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxIntermediate() {
+    @MainActor func testLabelCheckboxIntermediate() {
         labeledCheckbox.mark = .intermediate
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxIntermediateDisabled() {
+    @MainActor func testLabelCheckboxIntermediateDisabled() {
         labeledCheckbox.mark = .intermediate
         labeledCheckbox.isEnabled = false
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxIntermediateHighlighted() {
+    @MainActor func testLabelCheckboxIntermediateHighlighted() {
         labeledCheckbox.mark = .intermediate
         labeledCheckbox.isHighlighted = true
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxIntermediateError() {
+    @MainActor func testLabelCheckboxIntermediateError() {
         labeledCheckbox.mark = .intermediate
         labeledCheckbox.hasError = true
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxIntermediateLarge() {
+    @MainActor func testLabelCheckboxIntermediateLarge() {
         labeledCheckbox.checkBoxSize = 80
         labeledCheckbox.mark = .intermediate
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxContentLeft() {
+    @MainActor func testLabelCheckboxContentLeft() {
         labeledCheckbox.contentPlacement = .left
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxContentInsets() {
+    @MainActor func testLabelCheckboxContentInsets() {
         labeledCheckbox.contentInsets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
         verifyLabelCheckbox()
     }
 
-    func testLabelCheckboxMultilineText() {
+    @MainActor func testLabelCheckboxMultilineText() {
         labeledCheckbox.numberOfLines = 0
         labeledCheckbox.text = "This is a checkbox label text that will spread out over multiple lines because this text is too big to fit on one line"
         verifyLabelCheckbox(limitedWidth: true)
@@ -204,11 +204,11 @@ class CheckboxTest: SnapshotTestCase {
 
     // MARK: - Private
 
-    private func verifyCheckbox() {
+    @MainActor private func verifyCheckbox() {
         verify(view: checkbox, contentSizeCategories: [.large])
     }
 
-    private func verifyLabelCheckbox(limitedWidth: Bool = false) {
+    @MainActor private func verifyLabelCheckbox(limitedWidth: Bool = false) {
         verify(
             view: labeledCheckbox,
             sizes: [limitedWidth ? .defaultWidthIntrinsicHeight : .intrinsic],

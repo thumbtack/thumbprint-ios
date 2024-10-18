@@ -1,6 +1,6 @@
 import UIKit
 
-public enum Icon: String, CaseIterable {
+public enum Icon: String, CaseIterable, Sendable {
     public enum Size: String, CaseIterable {
         case tiny = "--tiny"
         case small = "--small"

@@ -2,12 +2,12 @@ import Thumbprint
 import UIKit
 
 class IconFloatingActionButtonTest: SnapshotTestCase {
-    func testWithPrimaryTheme() {
+    @MainActor func testWithPrimaryTheme() {
         let button = IconFloatingActionButton(icon: Icon.notificationAlertsInfoFilledMedium.image, accessibilityLabel: "Add action")
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testWithSecondaryTheme() {
+    @MainActor func testWithSecondaryTheme() {
         let button = IconFloatingActionButton(
             icon: Icon.notificationAlertsInfoFilledMedium.image,
             accessibilityLabel: "Add action",
@@ -16,13 +16,13 @@ class IconFloatingActionButtonTest: SnapshotTestCase {
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testIsHighlighted() {
+    @MainActor func testIsHighlighted() {
         let button = IconFloatingActionButton(icon: Icon.notificationAlertsInfoFilledMedium.image, accessibilityLabel: "Add action")
         button.isHighlighted = true
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testIsHighlightedSecondary() {
+    @MainActor func testIsHighlightedSecondary() {
         let button = IconFloatingActionButton(
             icon: Icon.notificationAlertsInfoFilledMedium.image,
             accessibilityLabel: "Add action",
@@ -32,33 +32,33 @@ class IconFloatingActionButtonTest: SnapshotTestCase {
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testChangeIcon() {
+    @MainActor func testChangeIcon() {
         let button = IconFloatingActionButton(icon: Icon.notificationAlertsInfoFilledMedium.image, accessibilityLabel: "Add action")
         button.setIcon(Icon.notificationAlertsBlockedFilledMedium.image, accessibilityLabel: "Archive")
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testChangeTheme() {
+    @MainActor func testChangeTheme() {
         let button = IconFloatingActionButton(icon: Icon.notificationAlertsInfoFilledMedium.image, accessibilityLabel: "Add action")
         button.theme = .secondary
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testChangeThemeHighlighted() {
+    @MainActor func testChangeThemeHighlighted() {
         let button = IconFloatingActionButton(icon: Icon.notificationAlertsInfoFilledMedium.image, accessibilityLabel: "Add action")
         button.theme = .secondary
         button.isHighlighted = true
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testChangeThemeAndBack() {
+    @MainActor func testChangeThemeAndBack() {
         let button = IconFloatingActionButton(icon: Icon.notificationAlertsInfoFilledMedium.image, accessibilityLabel: "Add action")
         button.theme = .secondary
         button.theme = .primary
         verify(view: button, contentSizeCategories: [.unspecified])
     }
 
-    func testChangeThemeAndBackHighlighted() {
+    @MainActor func testChangeThemeAndBackHighlighted() {
         let button = IconFloatingActionButton(icon: Icon.notificationAlertsInfoFilledMedium.image, accessibilityLabel: "Add action")
         button.theme = .secondary
         button.theme = .primary

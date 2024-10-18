@@ -15,33 +15,33 @@ class FilterChipTest: SnapshotTestCase {
         super.tearDown()
     }
 
-    private func verifyChip(selected: Bool, highlighted: Bool) {
+    @MainActor private func verifyChip(selected: Bool, highlighted: Bool) {
         filterChip.isSelected = selected
         filterChip.isHighlighted = highlighted
 
         verify(view: filterChip)
     }
 
-    func testDefault() {
+    @MainActor func testDefault() {
         verifyChip(selected: false, highlighted: false)
     }
 
-    func testDefaultHighlighted() {
+    @MainActor func testDefaultHighlighted() {
         verifyChip(selected: false, highlighted: true)
     }
 
-    func testSelected() {
+    @MainActor func testSelected() {
         verifyChip(selected: true, highlighted: false)
     }
 
-    func testSelectedHighlighted() {
+    @MainActor func testSelectedHighlighted() {
         verifyChip(selected: true, highlighted: true)
     }
 
     /**
      Use this to produce the image to show in the Thumprint iOS Chip documentation
      */
-    func testDocumentation() {
+    @MainActor func testDocumentation() {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = Space.two

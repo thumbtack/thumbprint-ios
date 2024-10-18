@@ -19,36 +19,36 @@ class DropdownTest: SnapshotTestCase {
         super.tearDown()
     }
 
-    func testDefaultPlaceholder() {
+    @MainActor func testDefaultPlaceholder() {
         verify()
     }
 
-    func testCustomPlaceholder() {
+    @MainActor func testCustomPlaceholder() {
         dropdown.placeholder = "Make a selection..."
         verify()
     }
 
-    func testHighlighted() {
+    @MainActor func testHighlighted() {
         dropdown.isHighlighted = true
         verify()
     }
 
-    func testErroroneous() {
+    @MainActor func testErroroneous() {
         dropdown.hasError = true
         verify()
     }
 
-    func testDisabled() {
+    @MainActor func testDisabled() {
         dropdown.isEnabled = false
         verify()
     }
 
-    func testSelect() {
+    @MainActor func testSelect() {
         dropdown.selectedIndex = 0
         verify()
     }
 
-    private func verify() {
+    @MainActor private func verify() {
         let container = UIView()
         container.addSubview(dropdown)
 

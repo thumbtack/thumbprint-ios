@@ -27,7 +27,7 @@ private class KeyboardTracker {
  * A wrapper around ToastView to handle the toast presentation and dismissal animations
  */
 public class Toast: UIView {
-    public struct Theme: Equatable {
+    public struct Theme: Equatable, Sendable {
         public let backgroundColor: UIColor
         public let textColor: UIColor
         public let iconColor: UIColor
