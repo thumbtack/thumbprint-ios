@@ -81,12 +81,11 @@ public enum Font {
     /// Font with text 3 style that supports scaling for accessibility.
     public static var dynamicText3: UIFont { TextStyle.text3.dynamicFont }
 
-    // MARK: - Testing
-
-    /// Used by snapshot tests to forcefully apply the given trait collection. Do not use in application code.
-    public static var traitCollectionOverrideForTesting: UITraitCollection?
-
     private static var didRegisterFonts = false
+
+    // MARK: - Testing
+    /// Used by snapshot tests to forcefully apply the given trait collection. Do not use in application code. same for nonisolated(unsafe)
+    public nonisolated(unsafe) static var traitCollectionOverrideForTesting: UITraitCollection?
 }
 
 // MARK: - Public Functions

@@ -22,29 +22,29 @@ class CalendarPickerViewTest: SnapshotTestCase {
         super.tearDown()
     }
 
-    func testNoPreviousMonths() {
+    @MainActor func testNoPreviousMonths() {
         calendarPicker.previousMonthCount = 0
         calendarPicker.additionalMonthCount = 1
         verify()
     }
 
-    func testNoAdditionalMonths() {
+    @MainActor func testNoAdditionalMonths() {
         calendarPicker.previousMonthCount = 1
         calendarPicker.additionalMonthCount = 0
         verify()
     }
 
-    func testFixedCellHeight() {
+    @MainActor func testFixedCellHeight() {
         calendarPicker.cellHeightMode = .fixed(70)
         verify()
     }
 
-    func testGoToDate() {
+    @MainActor func testGoToDate() {
         calendarPicker.goToDate(Calendar.current.date(from: DateComponents(year: 2021, month: 1, day: 20))!, animated: false)
         verify()
     }
 
-    func testRecreateFigmaMock() {
+    @MainActor func testRecreateFigmaMock() {
         calendarPicker.selectedDates = [
             calendar.date(from: DateComponents(year: 2020, month: 1, day: 10))!,
         ]
@@ -63,7 +63,7 @@ class CalendarPickerViewTest: SnapshotTestCase {
         verify()
     }
 
-    func testMultipleSelection() {
+    @MainActor func testMultipleSelection() {
         calendarPicker.allowsMultipleSelection = true
         calendarPicker.selectedDates = [
             calendar.date(from: DateComponents(year: 2020, month: 1, day: 4))!,
@@ -75,12 +75,12 @@ class CalendarPickerViewTest: SnapshotTestCase {
         verify()
     }
 
-    func testFixedHeight() {
+    @MainActor func testFixedHeight() {
         calendarPicker.calendarHeightMode = .fixed
         verify()
     }
 
-    func testNonGregorianCalendar() {
+    @MainActor func testNonGregorianCalendar() {
         calendar = Calendar(identifier: .hebrew)
         calendar.locale = Locale(identifier: "he_IL")
         calendarPicker = TestCalendarPickerView(visibleDate: today, calendar: calendar)
@@ -92,7 +92,7 @@ class CalendarPickerViewTest: SnapshotTestCase {
         verify(identifier: "indian")
     }
 
-    private func verify(identifier: String? = nil) {
+    @MainActor private func verify(identifier: String? = nil) {
         verify(view: calendarPicker,
                identifier: identifier,
                contentSizeCategories: [.unspecified])

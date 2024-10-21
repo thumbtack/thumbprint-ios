@@ -14,7 +14,7 @@ class NavigationBarTest: SnapshotTestCase {
         "light": .light,
     ]
 
-    func testAppearances() {
+    @MainActor func testAppearances() {
         appearances.forEach {
             let (appearanceIdentifier, appearance) = $0
 
@@ -34,7 +34,7 @@ class NavigationBarTest: SnapshotTestCase {
         }
     }
 
-    func verify(identifier: String?, file: StaticString = #file, line: UInt = #line, configure: (UINavigationBar) -> Void) {
+    @MainActor func verify(identifier: String?, file: StaticString = #file, line: UInt = #line, configure: (UINavigationBar) -> Void) {
         verify(
             viewControllerFactory: {
                 let viewController = UIViewController()

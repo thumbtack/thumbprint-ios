@@ -7,7 +7,7 @@ class IconButtonTest: SnapshotTestCase {
         "dark": .dark,
     ]
 
-    func testIconButton() {
+    @MainActor func testIconButton() {
         let containerView = UIView()
         containerView.backgroundColor = Color.blue
 
@@ -47,7 +47,7 @@ class IconButtonTest: SnapshotTestCase {
         }
     }
 
-    func testChangeIconSize() {
+    @MainActor func testChangeIconSize() {
         let iconButton = IconButton(
             icon: Icon.notificationAlertsInfoFilledMedium.image,
             accessibilityLabel: "Add",
@@ -62,7 +62,7 @@ class IconButtonTest: SnapshotTestCase {
         verify(view: iconButton, contentSizeCategories: [.unspecified])
     }
 
-    func testAddInsetsToIconButton() {
+    @MainActor func testAddInsetsToIconButton() {
         let iconButton = IconButton(
             icon: Icon.notificationAlertsInfoFilledMedium.image,
             accessibilityLabel: "Add",
@@ -73,7 +73,7 @@ class IconButtonTest: SnapshotTestCase {
         verify(view: iconButton, contentSizeCategories: [.unspecified])
     }
 
-    func testChangeIconAndTheme() {
+    @MainActor func testChangeIconAndTheme() {
         let iconButton = IconButton(
             icon: Icon.notificationAlertsInfoFilledMedium.image,
             accessibilityLabel: "Add",
